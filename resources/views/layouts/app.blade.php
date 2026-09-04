@@ -30,6 +30,54 @@
             content: ""; position: absolute; bottom: -12px; left: 0;
             width: 100%; height: 2px; background: #dc2626; border-radius: 10px;
         }
+
+        /* Footer compact dan rapi agar tidak membuat halaman terlalu panjang. */
+        footer {
+            margin-top: auto;
+        }
+        footer .py-12 {
+            padding-top: 2.5rem !important;
+            padding-bottom: 2rem !important;
+        }
+        footer .py-10 {
+            padding-top: 2rem !important;
+            padding-bottom: 1.5rem !important;
+        }
+        footer .py-8 {
+            padding-top: 1.5rem !important;
+            padding-bottom: 1.25rem !important;
+        }
+        footer .gap-8,
+        footer .gap-10,
+        footer .gap-12 {
+            gap: 1.5rem !important;
+        }
+        footer .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+            margin-top: .75rem !important;
+        }
+        footer .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+            margin-top: .5rem !important;
+        }
+        footer h2,
+        footer h3,
+        footer h4 {
+            margin-bottom: .75rem !important;
+            line-height: 1.3 !important;
+        }
+        footer .border-t {
+            margin-top: 1.5rem !important;
+            padding-top: 1rem !important;
+        }
+        @media (max-width: 640px) {
+            footer .py-12,
+            footer .py-10 {
+                padding-top: 2rem !important;
+                padding-bottom: 1.5rem !important;
+            }
+            footer .grid {
+                row-gap: 1.25rem !important;
+            }
+        }
     </style>
     @stack('styles')
 </head>
@@ -37,7 +85,7 @@
 
     @php
         $navLinks = [
-            'about' => ['label'=>'About PICT','url'=>'/'],
+            'about' => ['label'=>'Home','url'=>'/'],
             'facilities'=>['label'=>'Terminal Facilities','url'=>'/facilities'],
             'location'=>['label'=>'Strategic Location','url'=>'/location'],
             'services'=>['label'=>'Ro-Ro Services','url'=>'/services'],
@@ -70,7 +118,7 @@
                 <ul class="hidden lg:flex items-center gap-3 xl:gap-5 font-medium text-[13px] xl:text-sm whitespace-nowrap text-blue-950">
                     @foreach($navLinks as $key=>$link)
                     <li>
-                        <a href="{{ $link['url'] }}" data-nav-key="{{ $key }}" class="nav-link">
+                        <a href="{{ $link['url'] }}" data-nav-key="{{ $key }}" class="nav-link {{ request()->is(ltrim($link['url'], '/') ?: '/') ? 'active' : '' }}">
                             {{ $link['label'] }}
                         </a>
                     </li>

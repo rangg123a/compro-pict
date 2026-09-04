@@ -5,7 +5,7 @@
 @push('styles')
 <style>
     .hero-bg-services {
-        background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('{{ asset('assets/images/pict-roro-bg.jpg') }}');
+        background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), var(--services-bg);
         background-size: cover;
         background-position: center;
     }
@@ -17,17 +17,17 @@
 @section('content')
 
 {{-- ═══ HERO SECTION ═══ --}}
-<div class="hero-bg-services min-h-[380px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-16 relative">
+<div class="hero-bg-services min-h-[380px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-16 relative" style="--services-bg: url('{{ asset('assets/images/pict-roro-bg.jpg') }}');">
 
     <span class="text-yellow-400 font-bold tracking-widest text-sm uppercase mb-3">Ro-Ro Services</span>
 
     <h2 class="text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
-        Layanan Bongkar Muat Roll-on/Roll-off Terpadu
+        Integrated Roll-on/Roll-off Cargo Handling Services
     </h2>
 
     <p class="text-slate-200 max-w-2xl mt-4 leading-relaxed">
-        PICT menyediakan layanan end-to-end untuk pengiriman kendaraan, mulai dari kedatangan kapal hingga
-        distribusi unit ke diler di seluruh Indonesia maupun tujuan ekspor.
+        PICT provides end-to-end vehicle shipping services, from vessel arrival through unit distribution
+        to dealerships across Indonesia and export destinations.
     </p>
 
 </div>
@@ -37,7 +37,7 @@
 
     <div class="text-center mb-14">
         <span class="text-teal-600 font-bold tracking-widest text-sm uppercase">What We Do</span>
-        <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">Layanan Utama Kami</h3>
+        <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">Our Main Services</h3>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -48,8 +48,8 @@
             </div>
             <h4 class="font-bold text-slate-900 text-lg mb-2">Stevedoring</h4>
             <p class="text-slate-600 text-sm leading-relaxed">
-                Proses bongkar muat kendaraan dari dan ke kapal PCTC dengan tenaga kerja dan prosedur
-                keselamatan yang terlatih dan tersertifikasi.
+                Vehicle loading and unloading to and from PCTC vessels by trained and certified personnel
+                following established safety procedures.
             </p>
         </div>
 
@@ -59,8 +59,8 @@
             </div>
             <h4 class="font-bold text-slate-900 text-lg mb-2">Cargodoring &amp; Storage</h4>
             <p class="text-slate-600 text-sm leading-relaxed">
-                Penyimpanan kendaraan sementara di storage yard dengan sistem penataan blok yang tertata
-                dan mudah dilacak.
+                Temporary vehicle storage in an organized storage yard with a block-based layout that is
+                easy to track.
             </p>
         </div>
 
@@ -70,8 +70,8 @@
             </div>
             <h4 class="font-bold text-slate-900 text-lg mb-2">Pre-Delivery Inspection</h4>
             <p class="text-slate-600 text-sm leading-relaxed">
-                Pemeriksaan kualitas, pemasangan aksesoris, dan proses touch-up kendaraan sebelum unit
-                dikirim ke tujuan akhir.
+                Quality inspections, accessory installation, and vehicle touch-up before units are shipped
+                to their final destinations.
             </p>
         </div>
 
@@ -81,8 +81,8 @@
             </div>
             <h4 class="font-bold text-slate-900 text-lg mb-2">Domestic Distribution</h4>
             <p class="text-slate-600 text-sm leading-relaxed">
-                Koordinasi pengiriman kendaraan ke jaringan diler di seluruh Indonesia menggunakan truk
-                pengangkut maupun kapal Ro-Ro domestik.
+                Coordination of vehicle delivery to dealership networks throughout Indonesia using car
+                carriers and domestic Ro-Ro vessels.
             </p>
         </div>
 
@@ -92,8 +92,8 @@
             </div>
             <h4 class="font-bold text-slate-900 text-lg mb-2">Export &amp; Import Handling</h4>
             <p class="text-slate-600 text-sm leading-relaxed">
-                Penanganan dokumen kepabeanan serta koordinasi dengan otoritas pelabuhan untuk kelancaran
-                proses ekspor dan impor kendaraan.
+                Customs documentation and coordination with port authorities to ensure smooth vehicle
+                export and import processes.
             </p>
         </div>
 
@@ -103,8 +103,7 @@
             </div>
             <h4 class="font-bold text-slate-900 text-lg mb-2">Vehicle Maintenance</h4>
             <p class="text-slate-600 text-sm leading-relaxed">
-                Layanan perbaikan minor dan perawatan kendaraan selama masa penyimpanan untuk menjaga
-                kondisi unit tetap optimal.
+                Minor repairs and vehicle maintenance during storage to keep units in optimal condition.
             </p>
         </div>
 
@@ -118,29 +117,29 @@
 
         <div class="text-center mb-14">
             <span class="text-teal-600 font-bold tracking-widest text-sm uppercase">How It Works</span>
-            <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">Alur Layanan Ro-Ro</h3>
+            <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">Ro-Ro Service Workflow</h3>
         </div>
 
         <div class="grid md:grid-cols-4 gap-6">
             <div class="text-center">
                 <div class="w-14 h-14 mx-auto rounded-full bg-teal-600 text-white flex items-center justify-center font-bold text-lg mb-4">1</div>
-                <h5 class="font-bold text-slate-900 mb-2">Kapal Sandar</h5>
-                <p class="text-slate-600 text-sm leading-relaxed">Kapal PCTC merapat di dermaga sepanjang 300 meter.</p>
+                <h5 class="font-bold text-slate-900 mb-2">Vessel Berthing</h5>
+                <p class="text-slate-600 text-sm leading-relaxed">The PCTC vessel berths at the 300-meter quay.</p>
             </div>
             <div class="text-center">
-                <div class="w-14 h-14 mx-auto rounded-full bg-teal-600 text-white flex items-center justify-center font-bold text-lg mb-4">2</div>
-                <h5 class="font-bold text-slate-900 mb-2">Bongkar Muat</h5>
-                <p class="text-slate-600 text-sm leading-relaxed">Kendaraan diturunkan langsung menggunakan jalur ramp kapal.</p>
+                <div class="w-14 h-14 mx-auto rounded-full bg-blue-900 text-white flex items-center justify-center font-bold text-lg mb-4">2</div>
+                <h5 class="font-bold text-slate-900 mb-2">Cargo Handling</h5>
+                <p class="text-slate-600 text-sm leading-relaxed">Vehicles are driven directly through the vessel ramp.</p>
             </div>
             <div class="text-center">
-                <div class="w-14 h-14 mx-auto rounded-full bg-teal-600 text-white flex items-center justify-center font-bold text-lg mb-4">3</div>
-                <h5 class="font-bold text-slate-900 mb-2">Inspeksi &amp; Simpan</h5>
-                <p class="text-slate-600 text-sm leading-relaxed">Unit diperiksa di PDI Center lalu ditempatkan di storage yard.</p>
+                <div class="w-14 h-14 mx-auto rounded-full bg-blue-900 text-white flex items-center justify-center font-bold text-lg mb-4">3</div>
+                <h5 class="font-bold text-slate-900 mb-2">Inspect &amp; Store</h5>
+                <p class="text-slate-600 text-sm leading-relaxed">Units are inspected at the PDI Center and placed in the storage yard.</p>
             </div>
             <div class="text-center">
-                <div class="w-14 h-14 mx-auto rounded-full bg-teal-600 text-white flex items-center justify-center font-bold text-lg mb-4">4</div>
-                <h5 class="font-bold text-slate-900 mb-2">Distribusi</h5>
-                <p class="text-slate-600 text-sm leading-relaxed">Kendaraan dikirim ke diler atau tujuan ekspor sesuai jadwal.</p>
+                <div class="w-14 h-14 mx-auto rounded-full bg-blue-900 text-white flex items-center justify-center font-bold text-lg mb-4">4</div>
+                <h5 class="font-bold text-slate-900 mb-2">Distribution</h5>
+                <p class="text-slate-600 text-sm leading-relaxed">Vehicles are delivered to dealerships or export destinations as scheduled.</p>
             </div>
         </div>
 
@@ -151,15 +150,15 @@
 <section class="bg-blue-900 py-14">
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
         <div>
-            <h4 class="text-white text-2xl font-extrabold mb-2 tracking-tight">Ingin Menggunakan Layanan Kami?</h4>
-            <p class="text-slate-300 font-medium">Lihat struktur tarif atau hubungi tim kami untuk penawaran khusus.</p>
+            <h4 class="text-white text-2xl font-extrabold mb-2 tracking-tight">Would You Like to Use Our Services?</h4>
+            <p class="text-slate-300 font-medium">View our tariff structure or contact our team for a tailored quotation.</p>
         </div>
         <div class="flex gap-3">
             <a href="{{ url('/tariffs') }}" class="inline-block bg-white hover:bg-slate-100 text-blue-900 font-bold py-3 px-6 rounded text-sm transition shadow-sm">
-                LIHAT TARIFF
+                VIEW TARIFFS
             </a>
             <a href="{{ url('/contact') }}" class="inline-block bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold py-3 px-6 rounded text-sm transition shadow-sm">
-                HUBUNGI KAMI
+                CONTACT US
             </a>
         </div>
     </div>

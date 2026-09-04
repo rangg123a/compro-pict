@@ -5,7 +5,7 @@
 @push('styles')
 <style>
     .hero-bg-about {
-        background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('{{ asset('assets/images/pict-roro-bg.jpg') }}');
+        background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('/assets/images/pict-roro-bg.jpg');
         background-size: cover;
         background-position: center;
     }

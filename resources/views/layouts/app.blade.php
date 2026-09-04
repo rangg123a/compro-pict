@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Memastikan scaling awal benar di perangkat mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>@yield('title', 'PT Patimban International Car Terminal — PICT')</title>
     <meta name="description" content="PT Patimban International Car Terminal (PICT) — Indonesia's premier automotive gateway and modern roll-on/roll-off (Ro-Ro) terminal at Patimban Port, West Java.">
@@ -19,144 +18,111 @@
     <style>
         body { 
             font-family: 'DM Sans', sans-serif; 
-            overflow-x: hidden; /* Mencegah horizontal scroll di mobile */
+            overflow-x: hidden;
         }
         .font-serif { font-family: 'Playfair Display', serif; }
-        nav { backdrop-filter: blur(10px); }
-        .nav-link { position: relative; transition: .3s; }
-        .nav-link:hover { color: #dc2626; /* Red */ }
-        .nav-link.active { color: #dc2626; font-weight: 700; }
+        nav {
+            background: rgba(7, 31, 69, .92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        nav .nav-brand-title { color: #fff; }
+        nav .nav-brand-subtitle { color: #f87171; }
+        .nav-link { position: relative; transition: .3s; color: #e2e8f0; }
+        .nav-link:hover { color: #f87171; }
+        .nav-link.active { color: #f87171; font-weight: 700; }
         .nav-link.active::after {
             content: ""; position: absolute; bottom: -12px; left: 0;
-            width: 100%; height: 2px; background: #dc2626; border-radius: 10px;
+            width: 100%; height: 2px; background: #ef4444; border-radius: 10px;
         }
 
-        /* Footer compact dan rapi agar tidak membuat halaman terlalu panjang. */
-        footer {
-            margin-top: auto;
-        }
-        footer .py-12 {
-            padding-top: 2.5rem !important;
-            padding-bottom: 2rem !important;
-        }
-        footer .py-10 {
-            padding-top: 2rem !important;
-            padding-bottom: 1.5rem !important;
-        }
-        footer .py-8 {
-            padding-top: 1.5rem !important;
-            padding-bottom: 1.25rem !important;
-        }
-        footer .gap-8,
-        footer .gap-10,
-        footer .gap-12 {
-            gap: 1.5rem !important;
-        }
-        footer .space-y-6 > :not([hidden]) ~ :not([hidden]) {
-            margin-top: .75rem !important;
-        }
-        footer .space-y-4 > :not([hidden]) ~ :not([hidden]) {
-            margin-top: .5rem !important;
-        }
-        footer h2,
-        footer h3,
-        footer h4 {
-            margin-bottom: .75rem !important;
-            line-height: 1.3 !important;
-        }
-        footer .border-t {
-            margin-top: 1.5rem !important;
-            padding-top: 1rem !important;
-        }
+        footer { margin-top: auto; }
+        footer .py-12 { padding-top: 2.5rem !important; padding-bottom: 2rem !important; }
+        footer .py-10 { padding-top: 2rem !important; padding-bottom: 1.5rem !important; }
+        footer .py-8 { padding-top: 1.5rem !important; padding-bottom: 1.25rem !important; }
+        footer .gap-8, footer .gap-10, footer .gap-12 { gap: 1.5rem !important; }
+        footer .space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: .75rem !important; }
+        footer .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: .5rem !important; }
+        footer h2, footer h3, footer h4 { margin-bottom: .75rem !important; line-height: 1.3 !important; }
+        footer .border-t { margin-top: 1.5rem !important; padding-top: 1rem !important; }
         @media (max-width: 640px) {
-            footer .py-12,
-            footer .py-10 {
-                padding-top: 2rem !important;
-                padding-bottom: 1.5rem !important;
-            }
-            footer .grid {
-                row-gap: 1.25rem !important;
-            }
+            footer .py-12, footer .py-10 { padding-top: 2rem !important; padding-bottom: 1.5rem !important; }
+            footer .grid { row-gap: 1.25rem !important; }
+            /* Aktifkan View Transitions API untuk browser modern */
+@view-transition {
+    navigation: auto;
+}
+
+/* Animasi geser untuk halaman baru yang masuk (Slide In) */
+::view-transition-new(root) {
+    animation: slideInRight 0.4s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+
+/* Animasi geser untuk halaman lama yang keluar (Slide Out) */
+::view-transition-old(root) {
+    animation: slideOutLeft 0.4s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0.8;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-30%);
+        opacity: 0.3;
+    }
+}
+
+/* Fallback untuk browser yang belum mendukung View Transitions API */
+main.page-transition-enter {
+    animation: pageSlideIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pageSlideIn {
+    from {
+        transform: translateX(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+main.page-transition-exit {
+    animation: pageSlideOut 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pageSlideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-40px);
+        opacity: 0;
+    }
+}
         }
     </style>
     @stack('styles')
 </head>
 <body class="bg-slate-50 flex flex-col min-h-screen">
 
-    @php
-        $navLinks = [
-            'about' => ['label'=>'Home','url'=>'/'],
-            'facilities'=>['label'=>'Terminal Facilities','url'=>'/facilities'],
-            'location'=>['label'=>'Strategic Location','url'=>'/location'],
-            'services'=>['label'=>'Ro-Ro Services','url'=>'/services'],
-            'tariffs'=>['label'=>'Our Tariffs','url'=>'/tariffs'],
-            'sustainability'=>['label'=>'Sustainability','url'=>'/sustainability'],
-            'news'=>['label'=>'News','url'=>'/news'],
-        ];
-    @endphp
-
-    <nav class="sticky top-0 z-50 bg-white/95 border-b border-slate-200 shadow-sm w-full">
-        <!-- Penyesuaian px-4 untuk layar sangat kecil -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="h-16 md:h-20 flex items-center justify-between gap-4">
-                
-                <!-- ═══ NAVBAR LOGO ═══ -->
-                <a href="{{ url('/') }}" class="flex items-center gap-2 md:gap-3 shrink-0">
-                    <!-- Ukuran logo diperkecil di mobile (h-8) -->
-                    <img src="{{ asset('assets/images/pict.png') }}" alt="PICT Logo" class="h-8 sm:h-10 md:h-12 w-auto object-contain">
-                    
-                    <!-- Menampilkan text di layar medium/besar saja -->
-                    <div class="hidden md:block">
-                        <h1 class="font-bold text-blue-900 tracking-wide text-sm md:text-base leading-tight whitespace-nowrap">
-                            PATIMBAN INTERNATIONAL
-                        </h1>
-                        <p class="text-[10px] md:text-xs text-red-600 tracking-wide font-bold">CAR TERMINAL</p>
-                    </div>
-                </a>
-
-                <!-- Desktop Menu -->
-                <ul class="hidden lg:flex items-center gap-3 xl:gap-5 font-medium text-[13px] xl:text-sm whitespace-nowrap text-blue-950">
-                    @foreach($navLinks as $key=>$link)
-                    <li>
-                        <a href="{{ $link['url'] }}" data-nav-key="{{ $key }}" class="nav-link {{ request()->is(ltrim($link['url'], '/') ?: '/') ? 'active' : '' }}">
-                            {{ $link['label'] }}
-                        </a>
-                    </li>
-                    @endforeach
-                </ul>
-
-                <!-- Desktop Contact Button -->
-                <div class="hidden lg:flex items-center shrink-0">
-                    <a href="{{ url('/contact') }}" class="bg-red-600 hover:bg-red-700 transition px-5 py-2.5 rounded-lg font-semibold text-white shadow whitespace-nowrap text-sm xl:text-base">
-                        Contact Us
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" aria-label="Toggle Menu" class="lg:hidden p-2 rounded-lg text-blue-900 hover:bg-red-50 ml-auto focus:outline-none focus:ring-2 focus:ring-red-500">
-                    <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu Dropdown -->
-    <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-200 bg-blue-900 shadow-xl absolute w-full z-40 top-[64px] md:top-[80px]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-5 space-y-2">
-            @foreach($navLinks as $link)
-                <a href="{{ $link['url'] }}" class="block text-white hover:text-red-400 hover:bg-blue-800 rounded px-3 py-2.5 text-sm md:text-base transition">
-                    {{ $link['label'] }}
-                </a>
-            @endforeach
-            <div class="pt-4 mt-2 border-t border-blue-800">
-                <a href="{{ url('/contact') }}" class="block bg-red-600 hover:bg-red-700 text-white text-center py-3 rounded-lg font-semibold text-sm transition">
-                    Contact Us
-                </a>
-            </div>
-        </div>
-    </div>
+    <!-- ═══ INCLUDE NAVBAR ═══ -->
+    @include('layouts.navbar')
 
     <!-- Main Content Wrapper -->
     <main class="flex-grow w-full overflow-hidden">
@@ -181,19 +147,17 @@
         
         if (mobileBtn && mobileMenu) { 
             mobileBtn.addEventListener('click', (e) => { 
-                e.stopPropagation(); // Mencegah event klik menjalar ke document
+                e.stopPropagation();
                 mobileMenu.classList.toggle('hidden'); 
             }); 
         }
         
-        // Menutup menu mobile saat mengklik di luar area menu
         document.addEventListener('click', (e) => {
             if (mobileMenu && !mobileMenu.classList.contains('hidden') && !mobileBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
                 mobileMenu.classList.add('hidden');
             }
         });
 
-        // Menutup menu saat link diklik
         document.querySelectorAll('#mobileMenu a').forEach(item => {
             item.addEventListener('click', () => { 
                 mobileMenu.classList.add('hidden'); 
@@ -210,7 +174,6 @@
             }
         });
 
-        // Smooth Scroll to Top
         if(backToTop) {
             backToTop.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -234,6 +197,40 @@
             }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
             sections.forEach(section => spyObserver.observe(section));
         }
+        <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const main = document.getElementById('mainContent');
+        const links = document.querySelectorAll('a[href]:not([target="_blank"]):not([href^="#"]):not([href^="javascript:"])');
+
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Jangan jalankan efek jika menekan Ctrl/Cmd (buka di tab baru)
+                if (e.metaKey || e.ctrlKey) return;
+
+                const targetUrl = this.getAttribute('href');
+                
+                // Pastikan link menuju domain lokal/internal yang sama
+                if (targetUrl.startsWith('/') || targetUrl.startsWith(window.location.origin)) {
+                    // Jika browser mendukung View Transitions API natif
+                    if (document.startViewTransition) {
+                        return; // Biarkan browser menangani View Transition otomatis
+                    }
+
+                    // Fallback efek geser keluar sebelum pindah URL
+                    e.preventDefault();
+                    if (main) {
+                        main.classList.remove('page-transition-enter');
+                        main.classList.add('page-transition-exit');
+                    }
+
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 300);
+                }
+            });
+        });
+    });
+
     </script>
     @stack('scripts')
 

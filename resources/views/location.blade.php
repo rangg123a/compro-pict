@@ -53,8 +53,8 @@
     </h2>
 
     <p class="location-reveal text-slate-200 max-w-2xl mt-5 leading-relaxed text-lg" style="animation-delay:.45s">
-        Patimban Port is designed as a primary logistics hub connecting Indonesia’s largest automotive
-        industrial estates with domestic and international distribution routes.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae justo nec ipsum
+        facilisis consequat at vel lorem.
     </p>
 
 </div>
@@ -69,22 +69,21 @@
                 Pelabuhan Patimban
             </h3>
             <p class="text-slate-600 leading-relaxed mb-6">
-                The PICT Terminal is located within the Patimban Port area, Pusakanagara District, Subang
-                Regency, West Java Province &mdash; in close proximity to the automotive industrial estates
-                of Karawang and Bekasi.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
+                ut labore et dolore magna aliqua.
             </p>
 
             <div class="space-y-4">
                 <div class="flex items-start gap-3">
                     <svg class="w-5 h-5 text-teal-600 mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                     <p class="text-slate-600 text-sm leading-relaxed">
-                        Jl. Raya Patimban, Pusakanagara, Subang Regency, West Java 41255, Indonesia
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
                     </p>
                 </div>
                 <div class="flex items-start gap-3">
                     <svg class="w-5 h-5 text-teal-600 mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7l9-4 9 4M4 10v9a1 1 0 001 1h4v-6h6v6h4a1 1 0 001-1v-9"/></svg>
                     <p class="text-slate-600 text-sm leading-relaxed">
-                        Approximately 120 km east of central Jakarta, connected via toll roads and the North Coast National Route.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.
                     </p>
                 </div>
             </div>
@@ -117,19 +116,19 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div class="location-card bg-white border border-slate-100 rounded-xl p-6 text-center">
                 <p class="text-3xl font-extrabold text-blue-900 mb-1 tracking-tight">&plusmn;120 <span class="text-base font-medium text-slate-500">km</span></p>
-                <p class="text-slate-600 text-sm font-medium">Jakarta</p>
+                <p class="text-slate-600 text-sm font-medium">Lorem ipsum</p>
             </div>
             <div class="location-card bg-white border border-slate-100 rounded-xl p-6 text-center">
                 <p class="text-3xl font-extrabold text-blue-900 mb-1 tracking-tight">&plusmn;40 <span class="text-base font-medium text-slate-500">km</span></p>
-                <p class="text-slate-600 text-sm font-medium">Karawang Industrial Estate</p>
+                <p class="text-slate-600 text-sm font-medium">Lorem ipsum</p>
             </div>
             <div class="location-card bg-white border border-slate-100 rounded-xl p-6 text-center">
                 <p class="text-3xl font-extrabold text-blue-900 mb-1 tracking-tight">&plusmn;80 <span class="text-base font-medium text-slate-500">km</span></p>
-                <p class="text-slate-600 text-sm font-medium">Bekasi Industrial Estate</p>
+                <p class="text-slate-600 text-sm font-medium">Lorem ipsum</p>
             </div>
             <div class="location-card bg-white border border-slate-100 rounded-xl p-6 text-center">
                 <p class="text-3xl font-extrabold text-blue-900 mb-1 tracking-tight">&plusmn;15 <span class="text-base font-medium text-slate-500">km</span></p>
-                <p class="text-slate-600 text-sm font-medium">Subang City Centre</p>
+                <p class="text-slate-600 text-sm font-medium">Lorem ipsum</p>
             </div>
         </div>
 
@@ -141,7 +140,7 @@
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
         <div>
             <h4 class="text-white text-2xl font-extrabold mb-2 tracking-tight">Need Directions to the Terminal?</h4>
-            <p class="text-slate-300 font-medium">Our team is ready to assist with your shipment planning and vehicle access requirements.</p>
+            <p class="text-slate-300 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
         </div>
         <a href="{{ url('/contact') }}" class="inline-block bg-yellow-500 hover:bg-yellow-400 hover:-translate-y-1 text-slate-900 font-bold py-3 px-8 rounded text-sm transition-all duration-300 shadow-sm hover:shadow-lg">
             CONTACT US

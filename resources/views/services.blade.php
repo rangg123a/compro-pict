@@ -26,8 +26,8 @@
     </h2>
 
     <p class="text-slate-200 max-w-2xl mt-4 leading-relaxed">
-        PICT provides end-to-end vehicle shipping services, from vessel arrival through unit distribution
-        to dealerships across Indonesia and export destinations.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula, ipsum sed consequat
+        posuere, lorem neque tincidunt erat, vitae facilisis magna justo at nisi.
     </p>
 
 </div>
@@ -48,8 +48,8 @@
             </div>
             <h4 class="font-bold text-slate-900 text-lg mb-2">Stevedoring</h4>
             <p class="text-slate-600 text-sm leading-relaxed">
-                Vehicle loading and unloading to and from PCTC vessels by trained and certified personnel
-                following established safety procedures.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae sapien at justo
+                efficitur consequat, sed porttitor lorem hendrerit.
             </p>
         </div>
 
@@ -59,8 +59,8 @@
             </div>
             <h4 class="font-bold text-slate-900 text-lg mb-2">Cargodoring &amp; Storage</h4>
             <p class="text-slate-600 text-sm leading-relaxed">
-                Temporary vehicle storage in an organized storage yard with a block-based layout that is
-                easy to track.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Curabitur
+                commodo, metus at tincidunt luctus, urna enim aliquet nulla.
             </p>
         </div>
 
@@ -70,8 +70,8 @@
             </div>
             <h4 class="font-bold text-slate-900 text-lg mb-2">Pre-Delivery Inspection</h4>
             <p class="text-slate-600 text-sm leading-relaxed">
-                Quality inspections, accessory installation, and vehicle touch-up before units are shipped
-                to their final destinations.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent blandit, nibh sed
+                vestibulum tincidunt, lectus lorem cursus nunc, quis vulputate magna erat vel mi.
             </p>
         </div>
 
@@ -81,8 +81,8 @@
             </div>
             <h4 class="font-bold text-slate-900 text-lg mb-2">Domestic Distribution</h4>
             <p class="text-slate-600 text-sm leading-relaxed">
-                Coordination of vehicle delivery to dealership networks throughout Indonesia using car
-                carriers and domestic Ro-Ro vessels.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam erat volutpat. Mauris
+                luctus, sapien at dignissim suscipit, arcu libero gravida eros.
             </p>
         </div>
 
@@ -92,8 +92,8 @@
             </div>
             <h4 class="font-bold text-slate-900 text-lg mb-2">Export &amp; Import Handling</h4>
             <p class="text-slate-600 text-sm leading-relaxed">
-                Customs documentation and coordination with port authorities to ensure smooth vehicle
-                export and import processes.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam facilisis sem vel magna
+                malesuada, sed bibendum lorem posuere.
             </p>
         </div>
 
@@ -103,7 +103,8 @@
             </div>
             <h4 class="font-bold text-slate-900 text-lg mb-2">Vehicle Maintenance</h4>
             <p class="text-slate-600 text-sm leading-relaxed">
-                Minor repairs and vehicle maintenance during storage to keep units in optimal condition.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consequat, justo non
+                suscipit placerat, magna nisl faucibus neque, vitae tempus arcu lorem sed nibh.
             </p>
         </div>
 
@@ -124,22 +125,22 @@
             <div class="text-center">
                 <div class="w-14 h-14 mx-auto rounded-full bg-teal-600 text-white flex items-center justify-center font-bold text-lg mb-4">1</div>
                 <h5 class="font-bold text-slate-900 mb-2">Vessel Berthing</h5>
-                <p class="text-slate-600 text-sm leading-relaxed">The PCTC vessel berths at the 300-meter quay.</p>
+                <p class="text-slate-600 text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
             <div class="text-center">
                 <div class="w-14 h-14 mx-auto rounded-full bg-blue-900 text-white flex items-center justify-center font-bold text-lg mb-4">2</div>
                 <h5 class="font-bold text-slate-900 mb-2">Cargo Handling</h5>
-                <p class="text-slate-600 text-sm leading-relaxed">Vehicles are driven directly through the vessel ramp.</p>
+                <p class="text-slate-600 text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
             <div class="text-center">
                 <div class="w-14 h-14 mx-auto rounded-full bg-blue-900 text-white flex items-center justify-center font-bold text-lg mb-4">3</div>
                 <h5 class="font-bold text-slate-900 mb-2">Inspect &amp; Store</h5>
-                <p class="text-slate-600 text-sm leading-relaxed">Units are inspected at the PDI Center and placed in the storage yard.</p>
+                <p class="text-slate-600 text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
             <div class="text-center">
                 <div class="w-14 h-14 mx-auto rounded-full bg-blue-900 text-white flex items-center justify-center font-bold text-lg mb-4">4</div>
                 <h5 class="font-bold text-slate-900 mb-2">Distribution</h5>
-                <p class="text-slate-600 text-sm leading-relaxed">Vehicles are delivered to dealerships or export destinations as scheduled.</p>
+                <p class="text-slate-600 text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
         </div>
 
@@ -151,7 +152,7 @@
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
         <div>
             <h4 class="text-white text-2xl font-extrabold mb-2 tracking-tight">Would You Like to Use Our Services?</h4>
-            <p class="text-slate-300 font-medium">View our tariff structure or contact our team for a tailored quotation.</p>
+            <p class="text-slate-300 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
         <div class="flex gap-3">
             <a href="{{ url('/tariffs') }}" class="inline-block bg-white hover:bg-slate-100 text-blue-900 font-bold py-3 px-6 rounded text-sm transition shadow-sm">

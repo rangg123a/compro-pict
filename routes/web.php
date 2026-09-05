@@ -5,14 +5,17 @@ use Illuminate\Support\Facades\Route;
 // Halaman utama (landing page)
 Route::view('/', 'welcome')->name('home');
 
-// Halaman-halaman yang direferensikan navbar
-Route::view('/about', 'about')->name('about');
-Route::view('/facilities', 'facilities')->name('facilities');
-Route::view('/location', 'location')->name('location');
+// Halaman sesuai menu Navbar
+Route::view('/cargo-handling', 'cargo-handling')->name('cargo-handling');
+Route::view('/operations', 'operations')->name('operations');
 Route::view('/services', 'services')->name('services');
-Route::view('/tariffs', 'tariffs')->name('tariffs');
 Route::view('/sustainability', 'sustainability')->name('sustainability');
+
+// Halaman pendukung lainnya
+Route::view('/about', 'about')->name('about');
+Route::view('/location', 'location')->name('location');
+Route::view('/tariffs', 'tariffs')->name('tariffs');
 Route::view('/news', 'news')->name('news');
 
-// Contact — GET untuk tampilkan form, POST untuk kirim pesan
+// Contact
 Route::view('/contact', 'contact')->name('contact');

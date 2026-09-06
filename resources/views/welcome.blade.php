@@ -122,7 +122,7 @@
         box-shadow: 0 0 0 1px #1e3a8a;
     }
 
-    /* ═══ CSS GRID LAYOUT UNTUK ANIME.JS TRANSITIONS ═══ */
+    /* ═══ CSS GRID LAYOUT FOR ANIME.JS TRANSITIONS ═══ */
     .layout-container {
         display: grid;
         width: 100%;
@@ -192,7 +192,7 @@
         border-top-color: #dc2626; 
     }
 
-    /* Animasi pergerakan baris kargo */
+    /* Moving Cargo Rows Animation */
     .cargo-row-bottom {
         animation: cargoMoveBottom 6s linear infinite;
     }
@@ -243,7 +243,7 @@
         }
     }
 
-    /* ═══ Interaktivitas Peta Jaringan Rute ═══ */
+    /* ═══ Route Map Interactivity ═══ */
     #routeMapSvg { touch-action: manipulation; }
     #routeMapSvg .route-line { transition: opacity .3s ease, stroke-width .3s ease; }
     #routeMapSvg .route-line.is-dim { opacity: .12 !important; }
@@ -288,17 +288,23 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             
             <div class="lg:col-span-7 hero-content space-y-6 text-left">
-        
+                <span class="text-red-500 font-bold tracking-widest text-xs sm:text-sm uppercase inline-block">
+                    INDONESIA PREMIER AUTOMOTIVE GATEWAY
+                </span>
 
                 <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15]">
                     PT PATIMBAN <br class="hidden sm:inline">INTERNATIONAL <br>
                     <span class="text-red-500">CAR TERMINAL</span>
                 </h1>
 
+                <p class="text-slate-200 max-w-xl leading-relaxed text-base sm:text-lg border-l-2 border-red-500 pl-4 font-normal">
+                    A premier modern roll-on/roll-off (Ro-Ro) vehicle terminal gateway at Patimban Port, West Java. Connecting national automotive manufacturing hubs directly to global markets.
+                </p>
+
                 <div class="pt-2">
-                    <a href="{{ url('/about') }}" class="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold py-3.5 px-8 rounded-xl shadow-lg shadow-red-600/30 transition transform hover:-translate-y-0.5">
+                    <a href="{{ url('/about') }}" class="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold py-2.5 px-6 rounded-xl shadow-lg shadow-red-600/30 transition transform hover:-translate-y-0.5">
                         <span>About Us</span>
-                        <span class="text-lg">&rarr;</span>
+                    
                     </a>
                 </div>
             </div>
@@ -371,67 +377,60 @@
     </div>
 </div>
 
-<!-- ═══ 2. STATS STRIP (RESPONSIVE KHUSUS MOBILE) ═══ -->
-<section class="stats-strip max-w-7xl mx-auto px-4 sm:px-6 -mt-8 sm:-mt-10 relative z-20">
+<!-- ═══ 2. STATS STRIP (RESPONSIVE MOBILE) ═══ -->
+<section class="stats-strip max-w-7xl mx-auto px-4 sm:px-6 mt-8 sm:mt-10 relative z-20">
     <div class="bg-white rounded-2xl shadow-xl p-5 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-y-6 sm:gap-y-0 divide-x-0 md:divide-x divide-slate-200 border-t-4 border-red-600">
-        <!-- Stat Item 1 -->
         <div class="stat-item text-center px-2 sm:px-4">
             <p class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-1"><span class="stat-number" data-target="400">400</span><span class="text-red-600 text-xl sm:text-2xl">k</span></p>
-            <p class="text-slate-500 text-[10px] sm:text-sm font-medium uppercase tracking-wide">Kapasitas Tahunan</p>
+            <p class="text-slate-500 text-[10px] sm:text-sm font-medium uppercase tracking-wide">Annual Capacity</p>
         </div>
-        <!-- Stat Item 2 -->
         <div class="stat-item text-center px-2 sm:px-4 border-l border-slate-200 md:border-l-0">
             <p class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-1"><span class="stat-number" data-target="600">600</span><span class="text-red-600 text-xl sm:text-2xl">k</span></p>
-            <p class="text-slate-500 text-[10px] sm:text-sm font-medium uppercase tracking-wide">Target Tahap 3</p>
+            <p class="text-slate-500 text-[10px] sm:text-sm font-medium uppercase tracking-wide">Phase 3 Target</p>
         </div>
-        <!-- Stat Item 3 -->
         <div class="stat-item text-center px-2 sm:px-4 border-t pt-4 md:border-t-0 md:pt-0 border-slate-200">
             <p class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-1"><span class="stat-number" data-target="300">300</span><span class="text-slate-400 text-lg sm:text-xl ml-1">m</span></p>
-            <p class="text-slate-500 text-[10px] sm:text-sm font-medium uppercase tracking-wide">Panjang Dermaga</p>
+            <p class="text-slate-500 text-[10px] sm:text-sm font-medium uppercase tracking-wide">Berth Length</p>
         </div>
-        <!-- Stat Item 4 -->
         <div class="stat-item text-center px-2 sm:px-4 border-t border-l pt-4 md:border-t-0 md:pt-0 border-slate-200">
             <p class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-1"><span class="text-slate-400 text-xl mr-1">&plusmn;</span><span class="stat-number" data-target="120">120</span><span class="text-slate-400 text-lg sm:text-xl ml-1">km</span></p>
-            <p class="text-slate-500 text-[10px] sm:text-sm font-medium uppercase tracking-wide">Jarak Industri</p>
+            <p class="text-slate-500 text-[10px] sm:text-sm font-medium uppercase tracking-wide">Industrial Distance</p>
         </div>
     </div>
 </section>
 
-<!-- ═══ 3. TENTANG KAMI ═══ -->
+<!-- ═══ 3. ABOUT US ═══ -->
 <section class="about-section py-20 bg-white">
     <div class="section-inner max-w-7xl mx-auto px-4 sm:px-6">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-slate-200 gap-4">
             <div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Tentang PICT</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">About PICT</h2>
             </div>
-            <p class="text-slate-500 text-sm max-w-md">Operator terminal kendaraan internasional modern pelopor efisiensi logistik otomotif Indonesia.</p>
+            <p class="text-slate-500 text-sm max-w-md">A modern international vehicle terminal operator pioneering automotive logistics efficiency in Indonesia.</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <div class="about-copy lg:col-span-6 space-y-6">
-                <h3 class="text-2xl font-bold text-blue-950">Gerbang Utama Ekspor &amp; Impor Otomotif Nasional</h3>
+                <h3 class="text-2xl font-bold text-blue-950">Indonesia's Strategic Gateway for Automotive Export &amp; Import</h3>
                 <p class="text-slate-600 leading-relaxed">
-                    PT Patimban International Car Terminal (PICT) dibentuk sebagai operator khusus pelabuhan mobil berstandar internasional yang beroperasi di Pelabuhan Patimban, Subang, Jawa Barat.
+                    PT Patimban International Car Terminal (PICT) was established as a dedicated, international-standard vehicle port operator at Patimban Port, Subang, West Java.
                 </p>
                 <p class="text-slate-600 leading-relaxed">
-                    Dengan akses langsung ke jalan tol pelabuhan dan kawasan industri terpadu Karawang-Bekasi-Purwakarta, kami memangkas waktu tempuh distribusi kargo serta menekan biaya logistik secara signifikan.
+                    With direct access to the port toll road and the integrated industrial corridor of Karawang-Bekasi-Purwakarta, we significantly reduce cargo transit times and logistics costs.
                 </p>
             </div>
 
             <div class="about-values lg:col-span-6">
                 <div class="about-value-item">
-                    <h4 class="text-lg font-bold text-blue-950 mb-2">Visi</h4>
+                    <h4 class="text-lg font-bold text-blue-950 mb-2">Vision</h4>
                     <p class="text-slate-600 text-sm leading-relaxed">
-                        Menjadi pelabuhan terminal kendaraan kelas dunia yang andal, ramah lingkungan, serta menjadi hub otomotif terdepan di kawasan Asia Tenggara.
-                    </p>
+                       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus, inventore. Animi perferendis incidunt dicta, voluptates eos a necessitatibus accusamus cupiditate at nisi facilis iste repellendus veniam non esse nesciunt deserunt!
                 </div>
 
                 <div class="about-value-item">
-                    <h4 class="text-lg font-bold text-blue-950 mb-2">Misi</h4>
+                    <h4 class="text-lg font-bold text-blue-950 mb-2">Mission</h4>
                     <ul class="text-slate-600 text-sm space-y-2 list-disc list-inside">
-                        <li>Memberikan layanan bongkar muat kargo Ro-Ro berstandar kualitas global dan zero accident.</li>
-                        <li>Menerapkan integrasi teknologi terminal operating system berbasis digital yang presisi dan transparan.</li>
-                        <li>Mendukung daya saing ekspor manufaktur nasional lewat efisiensi rantai pasok maritim.</li>
+                        <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur illo, perspiciatis perferendis tempora ducimus, est distinctio voluptas possimus in eveniet dolorem rem? Temporibus pariatur reprehenderit optio neque! Temporibus, sed sint.</li>
                     </ul>
                 </div>
             </div>
@@ -439,20 +438,19 @@
     </div>
 </section>
 
-<!-- ═══ 4. JENIS KENDARAAN & MUATAN (ANIME.JS DYNAMIC GRID LAYOUT) ═══ -->
+<!-- ═══ 4. VEHICLE & CARGO TYPES (ANIME.JS DYNAMIC GRID LAYOUT) ═══ -->
 <section class="py-20 bg-slate-50 border-y border-slate-200 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-slate-200 gap-4">
             <div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Jenis Kendaraan &amp; Muatan</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Vehicle &amp; Cargo Types</h2>
             </div>
-            <span class="text-slate-500 text-sm font-medium">Standardisasi penanganan kargo otomotif Ro-Ro</span>
+            <span class="text-slate-500 text-sm font-medium">Standardized handling protocols for Ro-Ro automotive cargo</span>
         </div>
 
-        <!-- Container Grid yang Dianimasikan oleh Anime.js -->
         <div id="cargoLayout" class="layout-container" data-grid="1">
             
-            <!-- Card 1: Mobil Penumpang -->
+            <!-- Card 1: Passenger Vehicles -->
             <div class="cargo-item item flex flex-col justify-between group">
                 <div>
                     <div class="w-24 h-24 sm:w-28 sm:h-28 mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
@@ -487,18 +485,18 @@
                             <polygon points="20,70 24,71 22,75 19,73" fill="#ef4444" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Kendaraan Penumpang (CBU)</h3>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Passenger Vehicles (CBU)</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Penanganan unit mobil Completely Built Up (Sedan, SUV, MPV, EV) dari proses ramp door kapal hingga staging yard dengan protokol zero-scratch.
+                        Handling Completely Built Up (CBU) units—including sedans, SUVs, MPVs, and EVs—from vessel ramp doors to the staging yard under strict zero-scratch protocols.
                     </p>
                 </div>
                 <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
-                    <span class="text-slate-400">Klasifikasi Muatan</span>
+                    <span class="text-slate-400">Cargo Classification</span>
                     <span class="text-red-600 font-bold tracking-wide">LIGHT VEHICLE</span>
                 </div>
             </div>
 
-            <!-- Card 2: Truk & Bus -->
+            <!-- Card 2: Commercial Trucks & Buses -->
             <div class="cargo-item item flex flex-col justify-between group">
                 <div>
                     <div class="w-24 h-24 sm:w-28 sm:h-28 mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
@@ -529,18 +527,18 @@
                             <polygon points="107,72 110,71 110,74 107,75" fill="#facc15" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Truk &amp; Bus Komersial</h3>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Commercial Trucks &amp; Buses</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Akomodasi kendaraan komersial berdimensi besar, bus antarkota, prime mover, serta chassis angkutan logistik industri dengan ramp dermaga berdaya dukung tinggi.
+                        Accommodating heavy-duty commercial vehicles, coaches, prime movers, and industrial chassis via high-load-bearing vessel ramp access.
                     </p>
                 </div>
                 <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
-                    <span class="text-slate-400">Klasifikasi Muatan</span>
+                    <span class="text-slate-400">Cargo Classification</span>
                     <span class="text-blue-900 font-bold tracking-wide">COMMERCIAL &amp; BUS</span>
                 </div>
             </div>
 
-            <!-- Card 3: Alat Berat -->
+            <!-- Card 3: Heavy Equipment & Project Cargo -->
             <div class="cargo-item item flex flex-col justify-between group">
                 <div>
                     <div class="w-24 h-24 sm:w-28 sm:h-28 mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
@@ -572,13 +570,13 @@
                             <polygon points="106,78 114,84 118,72 112,58" fill="#1e293b" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Alat Berat &amp; Muatan Khusus</h3>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Heavy Equipment &amp; Special Cargo</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Layanan bongkar muat alat berat pertambangan, agrikultur, dan konstruksi (Excavator, Wheel Loader, Bulldozer) dengan metode roll/towing yang tersertifikasi.
+                        Handling mining, agricultural, and construction machinery (excavators, wheel loaders, bulldozers) using certified self-propelled roll-on/roll-off and towing methods.
                     </p>
                 </div>
                 <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
-                    <span class="text-slate-400">Klasifikasi Muatan</span>
+                    <span class="text-slate-400">Cargo Classification</span>
                     <span class="text-red-600 font-bold tracking-wide">HEAVY EQUIPMENT</span>
                 </div>
             </div>
@@ -587,15 +585,15 @@
     </div>
 </section>
 
-<!-- ═══ 5. LINI LAYANAN ═══ -->
+<!-- ═══ 5. OUR SERVICE LINES ═══ -->
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-slate-200 gap-4">
             <div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Lini Layanan</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Our Service Lines</h2>
             </div>
             <a href="{{ url('/services') }}" class="text-blue-900 font-bold hover:text-red-600 transition flex items-center gap-1.5 text-sm">
-                Lihat Semua Layanan <span class="text-lg">&rarr;</span>
+                View All Services <span class="text-lg">&rarr;</span>
             </a>
         </div>
 
@@ -604,7 +602,7 @@
                 <span class="text-2xl font-black text-red-600">01</span>
                 <h3 class="text-lg font-bold text-blue-950 mt-3 mb-2">Stevedoring</h3>
                 <p class="text-slate-600 text-sm leading-relaxed">
-                    Kegiatan bongkar muat kendaraan dari dan ke kapal di dermaga secara sistematis.
+                    Systematic vessel loading and discharging operations at the dedicated Ro-Ro berth.
                 </p>
             </div>
 
@@ -612,7 +610,7 @@
                 <span class="text-2xl font-black text-red-600">02</span>
                 <h3 class="text-lg font-bold text-blue-950 mt-3 mb-2">Cargodoring</h3>
                 <p class="text-slate-600 text-sm leading-relaxed">
-                    Pemindahan kendaraan dari dermaga ke area penumpukan (yard) sesuai kategori unit.
+                    Marshalling and moving vehicles from the quay apron to designated staging yards by unit category.
                 </p>
             </div>
 
@@ -620,7 +618,7 @@
                 <span class="text-2xl font-black text-red-600">03</span>
                 <h3 class="text-lg font-bold text-blue-950 mt-3 mb-2">Receiving &amp; Delivery</h3>
                 <p class="text-slate-600 text-sm leading-relaxed">
-                    Penerimaan dan penyerahan kendaraan ke dan dari pihak pengguna jasa.
+                    Gate-in receiving and delivery handover for logistics transport partners and car carriers.
                 </p>
             </div>
 
@@ -628,33 +626,33 @@
                 <span class="text-2xl font-black text-red-600">04</span>
                 <h3 class="text-lg font-bold text-blue-950 mt-3 mb-2">Value Added Services</h3>
                 <p class="text-slate-600 text-sm leading-relaxed">
-                    Layanan tambahan seperti pre-delivery inspection, PDI, dan fasilitas penyimpanan.
+                    Complementary services including pre-delivery inspection (PDI), wash bays, and secure holding yards.
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══ 6. ALUR LAYANAN TERMINAL ═══ -->
+<!-- ═══ 6. TERMINAL SERVICE FLOW ═══ -->
 <section class="py-20 bg-slate-50 border-t border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-slate-200 gap-4">
             <div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Alur Layanan Terminal</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Terminal Service Flow</h2>
             </div>
-            <span class="text-slate-500 text-sm">SOP Terintegrasi Terminal Operating System</span>
+            <span class="text-slate-500 text-sm">Integrated Terminal Operating System (TOS) SOP</span>
         </div>
 
         <p class="md:hidden text-xs text-slate-500 font-medium mb-3 flex items-center gap-1.5">
-            <span class="text-red-600">&larr;</span> Geser untuk melihat semua langkah <span class="text-red-600">&rarr;</span>
+            <span class="text-red-600">&larr;</span> Swipe to view all steps <span class="text-red-600">&rarr;</span>
         </p>
 
         <div class="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-0 bg-slate-200 p-1 rounded-2xl overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-smooth no-scrollbar -mx-4 px-4 md:mx-0 md:px-1">
             <div class="flow-step relative bg-white p-6 rounded-xl lg:rounded-none lg:first:rounded-l-xl flex flex-col justify-between shrink-0 w-[72%] xs:w-[62%] sm:w-[45%] md:w-auto snap-start">
                 <div>
                     <span class="text-2xl font-black text-red-600">01</span>
-                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Kapal Sandar</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">Kapal Ro-Ro merapat dan menurunkan ramp door dermaga.</p>
+                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Vessel Berthing</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">The Ro-Ro vessel berths and deploys its stern/quarter ramp onto the quay.</p>
                 </div>
             </div>
 
@@ -662,15 +660,15 @@
                 <div>
                     <span class="text-2xl font-black text-red-600">02</span>
                     <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Stevedoring</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">Penurunan unit kendaraan oleh operator tersertifikasi.</p>
+                    <p class="text-slate-600 text-xs leading-relaxed">Discharging and driving vehicles off the ship by certified professional drivers.</p>
                 </div>
             </div>
 
             <div class="flow-step relative bg-white p-6 rounded-xl lg:rounded-none flex flex-col justify-between shrink-0 w-[72%] xs:w-[62%] sm:w-[45%] md:w-auto snap-start">
                 <div>
                     <span class="text-2xl font-black text-red-600">03</span>
-                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Pemeriksaan &amp; PDI</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">Inspeksi fisik kondisi bodi dan barcode unit scanning.</p>
+                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Inspection &amp; PDI</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">Exterior condition check, barcode VIN optical scanning, and initial tally.</p>
                 </div>
             </div>
 
@@ -678,7 +676,7 @@
                 <div>
                     <span class="text-2xl font-black text-red-600">04</span>
                     <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Cargodoring</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">Penataan rapi ke slot staging yard berkapasitas besar.</p>
+                    <p class="text-slate-600 text-xs leading-relaxed">Organized vehicle marshalling to designated parking slots across high-capacity yards.</p>
                 </div>
             </div>
 
@@ -686,32 +684,31 @@
                 <div>
                     <span class="text-2xl font-black text-red-600">05</span>
                     <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Receiving &amp; Delivery</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">Distribusi ke car-carrier transporter menuju diler/tujuan.</p>
+                    <p class="text-slate-600 text-xs leading-relaxed">Gate-out dispatch onto car-carrier transporter trucks toward dealerships and assembly hubs.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══ 7. JARINGAN RUTE PELAYARAN INTERNASIONAL ═══ -->
+<!-- ═══ 7. INTERNATIONAL SHIPPING ROUTE NETWORK ═══ -->
 <section class="py-20 bg-blue-950 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-white/10 gap-4">
             <div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Jaringan Rute Pelayaran Internasional</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">International Shipping Route Network</h2>
             </div>
-            <p class="text-slate-300 text-sm max-w-md">Pelabuhan Patimban terhubung dengan jalur pelayaran domestik dan internasional menuju hub-hub otomotif utama di Asia.</p>
+            <p class="text-slate-300 text-sm max-w-md">Patimban Port is seamlessly linked to domestic feeder channels and international deep-sea lanes connecting major Asian automotive hubs.</p>
         </div>
 
         <div class="bg-white/5 border border-white/10 rounded-2xl p-2 sm:p-6 backdrop-blur-sm">
             
             <p class="md:hidden text-xs text-slate-300 font-medium mb-3 mt-2 flex justify-center items-center gap-1.5 opacity-80">
-                <span class="text-red-500">&larr;</span> Geser peta untuk navigasi rute <span class="text-red-500">&rarr;</span>
+                <span class="text-red-500">&larr;</span> Scroll map to explore routes <span class="text-red-500">&rarr;</span>
             </p>
 
-            <!-- Container Horizontal Scroll Khusus HP -->
             <div class="overflow-x-auto no-scrollbar snap-x snap-mandatory rounded-xl -mx-2 px-2 sm:mx-0 sm:px-0 pb-4">
-                <div class="min-w-[700px] md:min-w-0"> <!-- Peta tidak akan mengecil di bawah 700px -->
+                <div class="min-w-[700px] md:min-w-0">
                     <svg id="routeMapSvg" class="w-full h-auto touch-manipulation snap-center" viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="seaGrad" x1="0" y1="0" x2="900" y2="460" gradientUnits="userSpaceOnUse">
@@ -761,7 +758,7 @@
                             <path d="M 543.3 296.8 L 548.1 312.9 L 543.0 319.9 L 537.5 312.1 L 530.5 316.0 L 535.2 321.6 L 530.9 325.2 L 513.3 320.8 L 509.1 315.2 L 513.7 311.6 L 504.2 307.9 L 499.4 311.1 L 492.4 310.8 L 481.3 315.1 L 478.8 312.9 L 484.7 306.4 L 502.3 301.4 L 507.6 304.8 L 519.0 302.7 L 521.5 299.3 L 532.1 299.1 L 531.2 293.2 L 543.3 296.8 Z M 509.7 289.2 L 494.9 298.8 L 485.7 293.5 L 492.6 289.3 L 494.2 284.6 L 502.5 284.1 L 500.1 289.3 L 511.2 281.9 L 509.7 289.2 Z M 427.6 296.6 L 407.6 303.8 L 415.0 298.5 L 434.8 288.4 L 442.7 280.8 L 445.3 287.1 L 435.4 291.3 L 427.6 296.6 Z M 478.3 276.8 L 487.3 279.2 L 496.8 279.2 L 496.5 282.4 L 489.6 285.6 L 480.0 288.0 L 480.6 280.5 L 478.3 276.8 Z M 532.5 274.8 L 536.8 283.3 L 525.2 281.3 L 529.2 288.6 L 522.0 290.3 L 521.4 284.9 L 516.9 284.5 L 514.5 279.9 L 523.4 280.5 L 523.2 277.6 L 514.0 271.7 L 528.4 271.9 L 532.5 274.8 Z M 472.9 267.8 L 468.9 274.4 L 454.9 264.8 L 467.7 265.0 L 472.9 267.8 Z M 469.8 226.1 L 479.1 228.3 L 483.7 226.3 L 485.1 228.3 L 482.6 231.5 L 487.7 236.9 L 483.8 243.3 L 474.9 245.9 L 472.6 252.0 L 475.9 258.1 L 483.9 259.0 L 490.5 258.1 L 509.3 262.3 L 507.8 266.5 L 512.7 268.4 L 511.2 271.9 L 499.5 268.1 L 493.9 264.1 L 490.1 266.9 L 480.5 262.3 L 466.9 263.5 L 459.4 261.8 L 460.2 258.6 L 464.9 256.6 L 460.4 254.9 L 458.5 257.6 L 451.1 253.2 L 448.8 249.9 L 448.3 242.5 L 454.3 245.1 L 455.9 233.1 L 460.7 226.1 L 469.8 226.1 Z" fill="#16233f" stroke="#334155" stroke-width="0.6" stroke-opacity="0.7" />
                             <path d="M 988.2 420.3 L 984.0 421.1 L 977.5 418.1 L 970.9 413.2 L 967.7 407.4 L 969.8 406.7 L 971.4 408.9 L 990.3 418.1 L 988.2 420.3 Z M 929.7 410.0 L 921.9 410.6 L 919.5 412.8 L 903.6 416.4 L 895.6 416.4 L 874.8 412.1 L 876.0 409.7 L 889.5 410.8 L 897.7 410.2 L 899.9 406.5 L 902.1 406.3 L 903.6 410.4 L 912.1 409.8 L 916.3 407.2 L 924.7 404.5 L 923.1 400.0 L 932.1 399.8 L 935.1 401.1 L 934.8 405.3 L 929.7 410.0 Z M 857.9 424.6 L 871.3 429.7 L 881.0 437.8 L 889.6 437.5 L 889.0 440.9 L 900.6 442.2 L 896.1 443.7 L 912.0 446.9 L 910.4 449.1 L 900.4 449.7 L 896.7 447.7 L 868.7 445.7 L 848.5 436.6 L 840.7 429.9 L 821.2 426.5 L 799.3 431.2 L 801.2 436.9 L 789.4 439.5 L 781.0 438.2 L 765.5 437.9 L 765.0 387.9 L 818.8 397.6 L 837.4 405.4 L 839.7 409.9 L 864.7 414.6 L 868.4 418.7 L 854.6 419.5 L 857.9 424.6 Z M 947.1 402.5 L 942.4 404.5 L 936.1 397.1 L 920.8 391.3 L 909.9 389.0 L 914.1 387.2 L 933.6 392.8 L 945.3 398.5 L 947.1 402.5 Z" fill="#16233f" stroke="#334155" stroke-width="0.6" stroke-opacity="0.7" />
                             <path d="M 599.9 38.4 L 611.7 44.3 L 606.0 43.9 L 595.0 49.1 L 595.6 54.6 L 587.8 56.3 L 579.5 59.9 L 569.5 61.1 L 563.0 63.2 L 562.5 66.5 L 560.8 67.4 L 575.2 72.0 L 573.1 73.8 L 556.1 74.7 L 550.3 78.2 L 543.6 77.9 L 542.6 78.6 L 535.3 77.1 L 533.5 78.6 L 529.1 79.2 L 528.6 77.8 L 520.7 75.8 L 524.8 72.5 L 528.3 71.6 L 527.0 70.2 L 530.8 66.0 L 529.8 64.8 L 521.1 63.9 L 514.0 61.9 L 526.2 57.0 L 542.7 52.8 L 553.0 47.4 L 560.2 49.8 L 573.1 50.1 L 570.8 46.0 L 594.0 42.7 L 599.9 38.4 Z" fill="#16233f" stroke="#334155" stroke-width="0.6" stroke-opacity="0.7" />
-                            <path d="M 804.7 -21.1 L 819.8 -7.5 L 797.6 -10.0 L 788.4 1.1 L 803.0 8.9 L 802.6 14.3 L 791.2 9.7 L 781.4 15.6 L 778.6 9.2 L 780.3 1.7 L 778.6 -6.6 L 782.0 -12.4 L 782.7 -22.6 L 773.9 -30.2 L 775.2 -40.6 L 789.1 -44.2 L 783.1 -47.7 L 789.8 -48.8 L 798.9 -36.3 L 798.5 -28.8 L 804.7 -21.1 Z M -1009.0 -48.5 L -1036.6 -48.4 L -1055.1 -49.3 L -1051.7 -52.6 L -1031.0 -55.1 L -1008.6 -52.6 L -1010.2 -50.5 L -1009.0 -48.5 Z M -3975.2 -142.5 L -3965.1 -140.6 L -3968.6 -146.1 L -3927.9 -145.0 L -3989.5 -137.8 L -3913.4 -134.5 L -3938.0 -133.7 L -3938.3 -126.2 L -3944.3 -124.6 L -3958.4 -124.8 L -3969.8 -127.5 L -3989.8 -129.7 L -3993.1 -133.1 L -4008.3 -134.3 L -4025.4 -133.3 L -4033.5 -136.0 L -4030.3 -138.9 L -4048.3 -137.0 L -4041.5 -133.4 L -4050.0 -130.2 L -4050.0 -160.7 L -4013.2 -154.9 L -3973.9 -147.2 L -3975.2 -142.5 Z M 1350.0 -175.0 L 1333.6 -174.7 L 1330.9 -177.1 L 1350.0 -180.3 L 1350.0 -175.0 Z M -4030.4 -175.5 L -4050.0 -175.0 L -4050.0 -180.3 L -4035.4 -180.6 L -4013.7 -178.4 L -4015.0 -177.4 L -4030.4 -175.5 Z M 804.1 -193.3 L 781.3 -193.2 L 747.9 -194.5 L 762.2 -197.5 L 780.9 -198.2 L 802.2 -195.3 L 804.1 -193.3 Z M 911.0 -207.6 L 893.6 -204.6 L 869.7 -205.3 L 841.8 -208.3 L 845.4 -210.8 L 911.0 -207.6 Z M 826.3 -211.3 L 814.5 -205.6 L 759.2 -205.8 L 734.3 -204.0 L 704.6 -209.0 L 712.7 -214.3 L 732.5 -215.7 L 772.1 -215.4 L 826.3 -211.3 Z M -487.0 -174.2 L -495.8 -173.5 L -544.8 -174.5 L -548.8 -177.9 L -576.0 -180.0 L -578.2 -184.1 L -562.8 -185.8 L -563.3 -189.9 L -533.6 -196.5 L -547.4 -197.4 L -511.5 -204.1 L -515.5 -207.6 L -432.4 -216.6 L -382.5 -218.0 L -356.8 -220.9 L -327.6 -221.9 L -317.2 -218.8 L -327.3 -216.5 L -426.2 -209.0 L -472.8 -201.7 L -518.7 -186.8 L -515.7 -180.5 L -487.0 -174.2 Z M 254.6 -222.1 L 258.6 -218.3 L 272.3 -220.2 L 316.2 -220.1 L 350.0 -216.4 L 362.0 -213.5 L 358.3 -209.5 L 302.3 -203.0 L 291.0 -200.7 L 331.8 -197.7 L 345.3 -199.2 L 352.9 -194.2 L 359.5 -196.2 L 383.5 -197.4 L 431.6 -196.2 L 435.3 -192.6 L 498.0 -191.4 L 498.9 -197.3 L 554.6 -196.0 L 578.9 -192.0 L 585.8 -187.1 L 576.9 -183.8 L 595.7 -177.8 L 619.3 -174.7 L 633.8 -182.7 L 657.9 -179.3 L 683.4 -181.4 L 712.5 -179.0 L 723.5 -181.1 L 748.0 -180.1 L 737.2 -187.2 L 757.0 -190.5 L 892.5 -185.5 L 905.3 -181.0 L 944.5 -175.1 L 1005.1 -176.6 L 1035.0 -175.3 L 1047.5 -172.1 L 1045.6 -166.5 L 1064.1 -164.4 L 1084.2 -165.9 L 1110.8 -166.1 L 1139.1 -164.6 L 1167.5 -165.5 L 1193.7 -158.7 L 1212.3 -161.1 L 1200.1 -166.0 L 1206.8 -169.4 L 1254.7 -167.3 L 1285.9 -167.7 L 1329.0 -164.1 L 1350.0 -160.7 L 1350.0 -130.2 L 1330.6 -126.8 L 1311.2 -127.3 L 1324.7 -123.2 L 1333.6 -116.9 L 1340.6 -114.9 L 1342.3 -111.7 L 1338.4 -109.7 L 1310.5 -111.3 L 1268.5 -105.6 L 1255.2 -104.7 L 1210.5 -94.6 L 1205.0 -91.1 L 1183.5 -96.4 L 1144.4 -90.4 L 1137.6 -93.2 L 1123.2 -89.9 L 1103.1 -91.0 L 1098.3 -86.0 L 1080.3 -78.5 L 1080.8 -75.4 L 1097.9 -73.7 L 1095.9 -62.6 L 1081.9 -62.3 L 1075.5 -55.9 L 1081.8 -52.6 L 1055.5 -48.6 L 1050.3 -39.9 L 1028.0 -38.0 L 1023.5 -30.2 L 1001.8 -23.1 L 996.3 -28.4 L 981.5 -56.6 L 988.7 -67.2 L 1001.4 -71.8 L 1002.2 -75.4 L 1025.5 -77.1 L 1078.1 -94.6 L 1105.0 -100.7 L 1117.1 -111.6 L 1098.9 -110.9 L 1089.9 -104.6 L 1051.8 -96.2 L 1039.5 -105.6 L 1000.8 -103.0 L 963.3 -90.1 L 975.7 -85.4 L 919.0 -82.7 L 920.1 -88.2 L 896.8 -89.4 L 878.2 -85.6 L 832.3 -86.9 L 783.0 -84.6 L 676.9 -51.6 L 700.5 -50.6 L 707.9 -45.8 L 722.5 -44.1 L 732.1 -48.0 L 748.5 -47.5 L 770.2 -39.0 L 770.7 -32.5 L 759.0 -24.8 L 757.7 -15.7 L 750.9 -3.4 L 728.3 7.7 L 723.3 13.0 L 673.0 35.3 L 653.1 39.8 L 643.6 39.9 L 634.2 36.2 L 614.0 41.8 L 611.7 44.3 L 609.6 43.0 L 609.5 39.1 L 617.2 38.9 L 619.3 29.8 L 615.4 23.2 L 628.3 20.5 L 646.5 21.9 L 656.5 14.4 L 661.7 6.0 L 667.5 3.2 L 675.4 -3.7 L 650.6 -1.4 L 637.6 1.6 L 614.8 1.6 L 608.7 -5.6 L 591.0 -11.0 L 564.9 -13.5 L 559.3 -21.0 L 539.2 -36.7 L 526.0 -39.6 L 503.6 -41.9 L 465.0 -40.3 L 452.7 -36.4 L 460.9 -34.6 L 461.1 -30.4 L 452.7 -27.9 L 439.2 -19.8 L 439.3 -16.4 L 418.2 -11.6 L 400.2 -14.5 L 382.3 -13.8 L 374.4 -16.4 L 365.4 -17.2 L 343.5 -11.8 L 309.9 -8.7 L 277.1 -9.8 L 268.0 -13.8 L 253.3 -17.4 L 238.3 -18.4 L 205.1 -16.0 L 183.8 -19.2 L 181.0 -25.0 L 149.7 -27.9 L 132.9 -31.0 L 117.4 -23.1 L 123.5 -18.6 L 108.9 -13.2 L 87.2 -15.2 L 72.2 -15.4 L 62.2 -19.0 L 46.6 -19.1 L 33.5 -21.5 L 10.7 -17.9 L -17.9 -11.3 L -39.6 -9.3 L -47.6 -14.0 L -66.9 -13.0 L -73.3 -16.2 L -83.8 -17.7 L -91.0 -22.2 L -99.3 -23.5 L -120.8 -21.6 L -141.5 -26.0 L -149.5 -22.0 L -183.0 -41.4 L -202.1 -47.4 L -196.6 -49.8 L -234.2 -42.5 L -248.6 -42.1 L -247.4 -46.3 L -266.6 -48.9 L -282.3 -47.0 L -287.0 -55.0 L -314.0 -56.6 L -327.5 -53.4 L -365.0 -50.6 L -372.3 -48.7 L -428.5 -46.0 L -435.3 -43.4 L -424.5 -38.2 L -438.9 -36.2 L -436.1 -34.1 L -450.5 -30.4 L -426.2 -25.1 L -429.9 -21.5 L -451.0 -21.8 L -455.4 -19.5 L -474.6 -23.5 L -498.3 -23.3 L -514.2 -20.1 L -565.1 -28.5 L -588.5 -28.3 L -619.5 -20.0 L -621.3 -14.4 L -636.8 -18.8 L -648.7 -10.4 L -644.3 -8.8 L -653.0 -3.0 L -640.3 2.2 L -629.1 2.0 L -619.6 7.1 L -621.1 11.0 L -613.5 12.3 L -620.3 16.8 L -634.9 18.1 L -649.8 26.0 L -636.1 33.3 L -637.6 38.4 L -621.2 47.5 L -630.2 50.6 L -632.8 52.5 L -639.4 52.0 L -649.7 47.3 L -663.4 45.3 L -667.9 42.1 L -681.9 40.5 L -691.0 41.7 L -693.7 40.3 L -714.1 36.6 L -748.8 34.1 L -750.7 35.0 L -769.8 28.5 L -786.9 25.6 L -799.9 21.1 L -789.0 19.9 L -776.5 13.5 L -784.9 10.5 L -762.8 7.3 L -763.2 5.6 L -776.6 6.9 L -776.2 3.5 L -768.4 1.3 L -753.9 0.8 L -751.6 -1.8 L -754.9 -6.0 L -748.8 -10.0 L -749.0 -12.3 L -771.1 -14.8 L -779.8 -14.7 L -789.1 -18.3 L -800.6 -17.1 L -819.7 -19.8 L -819.3 -21.3 L -824.7 -24.6 L -836.6 -25.0 L -837.9 -27.3 L -834.1 -28.9 L -843.7 -33.2 L -863.8 -32.9 L -867.6 -31.1 L -873.2 -31.4 L -880.4 -38.9 L -877.5 -39.6 L -865.4 -39.4 L -859.6 -41.0 L -863.9 -43.1 L -874.0 -44.4 L -873.1 -45.8 L -879.2 -47.2 L -888.6 -52.2 L -885.4 -54.3 L -886.9 -57.9 L -901.6 -59.7 L -909.4 -58.8 L -911.6 -60.7 L -927.3 -62.6 L -932.2 -67.2 L -933.4 -70.9 L -940.7 -72.6 L -934.2 -75.1 L -938.7 -82.2 L -928.0 -86.6 L -930.3 -88.0 L -913.2 -92.2 L -929.0 -95.9 L -882.9 -110.1 L -877.3 -114.0 L -899.5 -119.2 L -893.3 -124.2 L -906.8 -129.9 L -896.7 -136.5 L -914.2 -145.2 L -900.3 -151.0 L -923.3 -156.1 L -921.1 -161.5 L -883.5 -165.3 L -868.0 -167.9 L -843.4 -163.3 L -802.3 -161.5 L -745.6 -152.8 L -734.1 -149.2 L -733.1 -144.1 L -749.8 -140.0 L -774.3 -138.0 L -841.2 -143.8 L -852.2 -142.8 L -827.8 -137.2 L -825.8 -125.8 L -794.8 -121.5 L -792.9 -125.2 L -801.9 -128.5 L -792.4 -131.4 L -756.1 -126.7 L -743.5 -128.5 L -753.6 -134.1 L -718.6 -141.7 L -704.8 -141.2 L -690.8 -138.5 L -682.0 -143.8 L -694.5 -148.4 L -687.2 -153.0 L -698.2 -157.7 L -656.2 -155.2 L -647.7 -151.0 L -666.7 -150.0 L -666.6 -145.7 L -654.8 -143.1 L -631.6 -144.8 L -627.9 -149.7 L -544.2 -159.9 L -532.9 -159.5 L -547.7 -154.9 L -529.1 -154.1 L -518.4 -156.7 L -490.2 -156.9 L -468.0 -160.1 L -450.9 -155.5 L -433.8 -160.5 L -449.6 -165.0 L -441.8 -167.5 L -397.4 -165.2 L -376.7 -162.8 L -322.3 -154.0 L -312.3 -158.1 L -327.5 -162.1 L -328.0 -163.7 L -346.0 -164.5 L -341.1 -168.1 L -349.1 -174.1 L -349.6 -176.6 L -321.9 -183.5 L -312.1 -190.5 L -300.9 -192.0 L -261.2 -190.0 L -258.1 -185.7 L -272.3 -179.5 L -262.9 -177.0 L -258.1 -171.7 L -261.5 -161.2 L -245.0 -156.5 L -251.4 -151.3 L -280.8 -140.5 L -263.7 -139.3 L -257.7 -142.1 L -241.2 -144.1 L -237.2 -147.8 L -224.2 -151.5 L -233.0 -155.9 L -226.0 -160.9 L -242.4 -161.5 L -246.0 -165.8 L -234.0 -173.5 L -253.5 -179.8 L -226.6 -184.9 L -230.1 -190.4 L -222.6 -190.6 L -214.7 -186.3 L -220.7 -178.9 L -204.6 -177.5 L -211.5 -183.0 L -186.4 -186.0 L -155.2 -186.5 L -127.5 -182.1 L -140.8 -188.5 L -142.3 -196.6 L -116.3 -198.2 L -80.2 -197.8 L -47.7 -198.8 L -59.9 -202.9 L -42.5 -207.9 L -25.3 -208.1 L 3.9 -211.9 L 43.5 -212.9 L 48.5 -215.0 L 87.9 -215.7 L 100.2 -214.0 L 133.8 -218.1 L 161.4 -218.0 L 165.5 -221.3 L 179.9 -224.5 L 215.3 -227.7 L 241.0 -225.2 L 220.6 -223.3 L 254.6 -222.1 Z M 226.1 -232.4 L 141.6 -229.4 L 169.0 -239.5 L 181.3 -240.3 L 230.6 -235.5 L 226.1 -232.4 Z M -583.0 -249.5 L -616.6 -247.9 L -618.7 -246.7 L -636.2 -245.4 L -652.5 -247.2 L -643.9 -249.6 L -677.3 -249.9 L -625.2 -251.3 L -622.2 -249.3 L -613.5 -251.1 L -599.4 -252.4 L -577.2 -250.7 L -583.0 -249.5 Z M 149.1 -236.8 L 116.4 -235.8 L 74.6 -238.0 L 49.7 -240.9 L 38.2 -246.4 L 17.7 -248.0 L 56.7 -253.2 L 89.1 -254.9 L 118.3 -251.1 L 152.8 -243.6 L 149.1 -236.8 Z" fill="#16233f" stroke="#334155" stroke-width="0.6" stroke-opacity="0.7" />
+                            <path d="M 804.7 -21.1 L 819.8 -7.5 L 797.6 -10.0 L 788.4 1.1 L 803.0 8.9 L 802.6 14.3 L 791.2 9.7 L 781.4 15.6 L 778.6 9.2 L 780.3 1.7 L 778.6 -6.6 L 782.0 -12.4 L 782.7 -22.6 L 773.9 -30.2 L 775.2 -40.6 L 789.1 -44.2 L 783.1 -47.7 L 789.8 -48.8 L 798.9 -36.3 L 798.5 -28.8 L 804.7 -21.1 Z M -1009.0 -48.5 L -1036.6 -48.4 L -1055.1 -49.3 L -1051.7 -52.6 L -1031.0 -55.1 L -1008.6 -52.6 L -1010.2 -50.5 L -1009.0 -48.5 Z M -3975.2 -142.5 L -3965.1 -140.6 L -3968.6 -146.1 L -3927.9 -145.0 L -3898.5 -137.8 L -3913.4 -134.5 L -3938.0 -133.7 L -3938.3 -126.2 L -3944.3 -124.6 L -3958.4 -124.8 L -3969.8 -127.5 L -3989.8 -129.7 L -3993.1 -133.1 L -4008.3 -134.3 L -4025.4 -133.3 L -4033.5 -136.0 L -4030.3 -138.9 L -4048.3 -137.0 L -4041.5 -133.4 L -4050.0 -130.2 L -4050.0 -160.7 L -4013.2 -154.9 L -3973.9 -147.2 L -3975.2 -142.5 Z M 1350.0 -175.0 L 1333.6 -174.7 L 1330.9 -177.1 L 1350.0 -180.3 L 1350.0 -175.0 Z M -4030.4 -175.5 L -4050.0 -175.0 L -4050.0 -180.3 L -4035.4 -180.6 L -4013.7 -178.4 L -4015.0 -177.4 L -4030.4 -175.5 Z M 804.1 -193.3 L 781.3 -193.2 L 747.9 -194.5 L 762.2 -197.5 L 780.9 -198.2 L 802.2 -195.3 L 804.1 -193.3 Z M 911.0 -207.6 L 893.6 -204.6 L 869.7 -205.3 L 841.8 -208.3 L 845.4 -210.8 L 911.0 -207.6 Z M 826.3 -211.3 L 814.5 -205.6 L 759.2 -205.8 L 734.3 -204.0 L 704.6 -209.0 L 712.7 -214.3 L 732.5 -215.7 L 772.1 -215.4 L 826.3 -211.3 Z M -487.0 -174.2 L -495.8 -173.5 L -544.8 -174.5 L -548.8 -177.9 L -576.0 -180.0 L -578.2 -184.1 L -562.8 -185.8 L -563.3 -189.9 L -533.6 -196.5 L -547.4 -197.4 L -511.5 -204.1 L -515.5 -207.6 L -432.4 -216.6 L -382.5 -218.0 L -356.8 -220.9 L -327.6 -221.9 L -317.2 -218.8 L -327.3 -216.5 L -426.2 -209.0 L -472.8 -201.7 L -518.7 -186.8 L -515.7 -180.5 L -487.0 -174.2 Z M 254.6 -222.1 L 258.6 -218.3 L 272.3 -220.2 L 316.2 -220.1 L 350.0 -216.4 L 362.0 -213.5 L 358.3 -209.5 L 302.3 -203.0 L 291.0 -200.7 L 331.8 -197.7 L 345.3 -199.2 L 352.9 -194.2 L 359.5 -196.2 L 383.5 -197.4 L 431.6 -196.2 L 435.3 -192.6 L 498.0 -191.4 L 498.9 -197.3 L 554.6 -196.0 L 578.9 -192.0 L 585.8 -187.1 L 576.9 -183.8 L 595.7 -177.8 L 619.3 -174.7 L 633.8 -182.7 L 657.9 -179.3 L 683.4 -181.4 L 712.5 -179.0 L 723.5 -181.1 L 748.0 -180.1 L 737.2 -187.2 L 757.0 -190.5 L 892.5 -185.5 L 905.3 -181.0 L 944.5 -175.1 L 1005.1 -176.6 L 1035.0 -175.3 L 1047.5 -172.1 L 1045.6 -166.5 L 1064.1 -164.4 L 1084.2 -165.9 L 1110.8 -166.1 L 1139.1 -164.6 L 1167.5 -165.5 L 1193.7 -158.7 L 1212.3 -161.1 L 1200.1 -166.0 L 1206.8 -169.4 L 1254.7 -167.3 L 1285.9 -167.7 L 1329.0 -164.1 L 1350.0 -160.7 L 1350.0 -130.2 L 1330.6 -126.8 L 1311.2 -127.3 L 1324.7 -123.2 L 1333.6 -116.9 L 1340.6 -114.9 L 1342.3 -111.7 L 1338.4 -109.7 L 1310.5 -111.3 L 1268.5 -105.6 L 1255.2 -104.7 L 1210.5 -94.6 L 1205.0 -91.1 L 1183.5 -96.4 L 1144.4 -90.4 L 1137.6 -93.2 L 1123.2 -89.9 L 1103.1 -91.0 L 1098.3 -86.0 L 1080.3 -78.5 L 1080.8 -75.4 L 1097.9 -73.7 L 1095.9 -62.6 L 1081.9 -62.3 L 1075.5 -55.9 L 1081.8 -52.6 L 1055.5 -48.6 L 1050.3 -39.9 L 1028.0 -38.0 L 1023.5 -30.2 L 1001.8 -23.1 L 996.3 -28.4 L 981.5 -56.6 L 988.7 -67.2 L 1001.4 -71.8 L 1002.2 -75.4 L 1025.5 -77.1 L 1078.1 -94.6 L 1105.0 -100.7 L 1117.1 -111.6 L 1098.9 -110.9 L 1089.9 -104.6 L 1051.8 -96.2 L 1039.5 -105.6 L 1000.8 -103.0 L 963.3 -90.1 L 975.7 -85.4 L 919.0 -82.7 L 920.1 -88.2 L 896.8 -89.4 L 878.2 -85.6 L 832.3 -86.9 L 783.0 -84.6 L 676.9 -51.6 L 700.5 -50.6 L 707.9 -45.8 L 722.5 -44.1 L 732.1 -48.0 L 748.5 -47.5 L 770.2 -39.0 L 770.7 -32.5 L 759.0 -24.8 L 757.7 -15.7 L 750.9 -3.4 L 728.3 7.7 L 723.3 13.0 L 673.0 35.3 L 653.1 39.8 L 643.6 39.9 L 634.2 36.2 L 614.0 41.8 L 611.7 44.3 L 609.6 43.0 L 609.5 39.1 L 617.2 38.9 L 619.3 29.8 L 615.4 23.2 L 628.3 20.5 L 646.5 21.9 L 656.5 14.4 L 661.7 6.0 L 667.5 3.2 L 675.4 -3.7 L 650.6 -1.4 L 637.6 1.6 L 614.8 1.6 L 608.7 -5.6 L 591.0 -11.0 L 564.9 -13.5 L 559.3 -21.0 L 539.2 -36.7 L 526.0 -39.6 L 503.6 -41.9 L 465.0 -40.3 L 452.7 -36.4 L 460.9 -34.6 L 461.1 -30.4 L 452.7 -27.9 L 439.2 -19.8 L 439.3 -16.4 L 418.2 -11.6 L 400.2 -14.5 L 382.3 -13.8 L 374.4 -16.4 L 365.4 -17.2 L 343.5 -11.8 L 309.9 -8.7 L 277.1 -9.8 L 268.0 -13.8 L 253.3 -17.4 L 238.3 -18.4 L 205.1 -16.0 L 183.8 -19.2 L 181.0 -25.0 L 149.7 -27.9 L 132.9 -31.0 L 117.4 -23.1 L 123.5 -18.6 L 108.9 -13.2 L 87.2 -15.2 L 72.2 -15.4 L 62.2 -19.0 L 46.6 -19.1 L 33.5 -21.5 L 10.7 -17.9 L -17.9 -11.3 L -39.6 -9.3 L -47.6 -14.0 L -66.9 -13.0 L -73.3 -16.2 L -83.8 -17.7 L -91.0 -22.2 L -99.3 -23.5 L -120.8 -21.6 L -141.5 -26.0 L -149.5 -22.0 L -183.0 -41.4 L -202.1 -47.4 L -196.6 -49.8 L -234.2 -42.5 L -248.6 -42.1 L -247.4 -46.3 L -266.6 -48.9 L -282.3 -47.0 L -287.0 -55.0 L -314.0 -56.6 L -327.5 -53.4 L -365.0 -50.6 L -372.3 -48.7 L -428.5 -46.0 L -435.3 -43.4 L -424.5 -38.2 L -438.9 -36.2 L -436.1 -34.1 L -450.5 -30.4 L -426.2 -25.1 L -429.9 -21.5 L -451.0 -21.8 L -455.4 -19.5 L -474.6 -23.5 L -498.3 -23.3 L -514.2 -20.1 L -565.1 -28.5 L -588.5 -28.3 L -619.5 -20.0 L -621.3 -14.4 L -636.8 -18.8 L -648.7 -10.4 L -644.3 -8.8 L -653.0 -3.0 L -640.3 2.2 L -629.1 2.0 L -619.6 7.1 L -621.1 11.0 L -613.5 12.3 L -620.3 16.8 L -634.9 18.1 L -649.8 26.0 L -636.1 33.3 L -637.6 38.4 L -621.2 47.5 L -630.2 50.6 L -632.8 52.5 L -639.4 52.0 L -649.7 47.3 L -663.4 45.3 L -667.9 42.1 L -681.9 40.5 L -691.0 41.7 L -693.7 40.3 L -714.1 36.6 L -748.8 34.1 L -750.7 35.0 L -769.8 28.5 L -786.9 25.6 L -799.9 21.1 L -789.0 19.9 L -776.5 13.5 L -784.9 10.5 L -762.8 7.3 L -763.2 5.6 L -776.6 6.9 L -776.2 3.5 L -768.4 1.3 L -753.9 0.8 L -751.6 -1.8 L -754.9 -6.0 L -748.8 -10.0 L -749.0 -12.3 L -771.1 -14.8 L -779.8 -14.7 L -789.1 -18.3 L -800.6 -17.1 L -819.7 -19.8 L -819.3 -21.3 L -824.7 -24.6 L -836.6 -25.0 L -837.9 -27.3 L -834.1 -28.9 L -843.7 -33.2 L -863.8 -32.9 L -867.6 -31.1 L -873.2 -31.4 L -880.4 -38.9 L -877.5 -39.6 L -865.4 -39.4 L -859.6 -41.0 L -863.9 -43.1 L -874.0 -44.4 L -873.1 -45.8 L -879.2 -47.2 L -888.6 -52.2 L -885.4 -54.3 L -886.9 -57.9 L -901.6 -59.7 L -909.4 -58.8 L -911.6 -60.7 L -927.3 -62.6 L -932.2 -67.2 L -933.4 -70.9 L -940.7 -72.6 L -934.2 -75.1 L -938.7 -82.2 L -928.0 -86.6 L -930.3 -88.0 L -913.2 -92.2 L -929.0 -95.9 L -882.9 -110.1 L -877.3 -114.0 L -899.5 -119.2 L -893.3 -124.2 L -906.8 -129.9 L -896.7 -136.5 L -914.2 -145.2 L -900.3 -151.0 L -923.3 -156.1 L -921.1 -161.5 L -883.5 -165.3 L -868.0 -167.9 L -843.4 -163.3 L -802.3 -161.5 L -745.6 -152.8 L -734.1 -149.2 L -733.1 -144.1 L -749.8 -140.0 L -774.3 -138.0 L -841.2 -143.8 L -852.2 -142.8 L -827.8 -137.2 L -825.8 -125.8 L -794.8 -121.5 L -792.9 -125.2 L -801.9 -128.5 L -792.4 -131.4 L -756.1 -126.7 L -743.5 -128.5 L -753.6 -134.1 L -718.6 -141.7 L -704.8 -141.2 L -690.8 -138.5 L -682.0 -143.8 L -694.5 -148.4 L -687.2 -153.0 L -698.2 -157.7 L -656.2 -155.2 L -647.7 -151.0 L -666.7 -150.0 L -666.6 -145.7 L -654.8 -143.1 L -631.6 -144.8 L -627.9 -149.7 L -544.2 -159.9 L -532.9 -159.5 L -547.7 -154.9 L -529.1 -154.1 L -518.4 -156.7 L -490.2 -156.9 L -468.0 -160.1 L -450.9 -155.5 L -433.8 -160.5 L -449.6 -165.0 L -441.8 -167.5 L -397.4 -165.2 L -376.7 -162.8 L -322.3 -154.0 L -312.3 -158.1 L -327.5 -162.1 L -328.0 -163.7 L -346.0 -164.5 L -341.1 -168.1 L -349.1 -174.1 L -349.6 -176.6 L -321.9 -183.5 L -312.1 -190.5 L -300.9 -192.0 L -261.2 -190.0 L -258.1 -185.7 L -272.3 -179.5 L -262.9 -177.0 L -258.1 -171.7 L -261.5 -161.2 L -245.0 -156.5 L -251.4 -151.3 L -280.8 -140.5 L -263.7 -139.3 L -257.7 -142.1 L -241.2 -144.1 L -237.2 -147.8 L -224.2 -151.5 L -233.0 -155.9 L -226.0 -160.9 L -242.4 -161.5 L -246.0 -165.8 L -234.0 -173.5 L -253.5 -179.8 L -226.6 -184.9 L -230.1 -190.4 L -222.6 -190.6 L -214.7 -186.3 L -220.7 -178.9 L -204.6 -177.5 L -211.5 -183.0 L -186.4 -186.0 L -155.2 -186.5 L -127.5 -182.1 L -140.8 -188.5 L -142.3 -196.6 L -116.3 -198.2 L -80.2 -197.8 L -47.7 -198.8 L -59.9 -202.9 L -42.5 -207.9 L -25.3 -208.1 L 3.9 -211.9 L 43.5 -212.9 L 48.5 -215.0 L 87.9 -215.7 L 100.2 -214.0 L 133.8 -218.1 L 161.4 -218.0 L 165.5 -221.3 L 179.9 -224.5 L 215.3 -227.7 L 241.0 -225.2 L 220.6 -223.3 L 254.6 -222.1 Z M 226.1 -232.4 L 141.6 -229.4 L 169.0 -239.5 L 181.3 -240.3 L 230.6 -235.5 L 226.1 -232.4 Z M -583.0 -249.5 L -616.6 -247.9 L -618.7 -246.7 L -636.2 -245.4 L -652.5 -247.2 L -643.9 -249.6 L -677.3 -249.9 L -625.2 -251.3 L -622.2 -249.3 L -613.5 -251.1 L -599.4 -252.4 L -577.2 -250.7 L -583.0 -249.5 Z M 149.1 -236.8 L 116.4 -235.8 L 74.6 -238.0 L 49.7 -240.9 L 38.2 -246.4 L 17.7 -248.0 L 56.7 -253.2 L 89.1 -254.9 L 118.3 -251.1 L 152.8 -243.6 L 149.1 -236.8 Z" fill="#16233f" stroke="#334155" stroke-width="0.6" stroke-opacity="0.7" />
                             <path d="M 188.8 274.6 L 175.3 271.0 L 162.5 271.2 L 164.7 265.2 L 151.5 265.2 L 150.3 273.6 L 137.3 291.6 L 138.3 297.2 L 148.1 297.4 L 154.2 304.4 L 156.9 311.0 L 165.3 315.4 L 174.3 316.3 L 182.1 320.3 L 177.2 323.5 L 167.3 324.4 L 166.1 320.4 L 153.9 317.1 L 151.3 318.4 L 145.4 315.5 L 142.8 311.7 L 127.6 303.7 L 125.1 308.2 L 122.3 304.0 L 128.3 291.8 L 143.8 276.8 L 137.9 269.8 L 136.5 262.0 L 126.5 255.9 L 122.9 252.1 L 128.1 250.6 L 133.6 244.0 L 117.9 233.3 L 110.6 226.6 L 117.0 225.2 L 123.8 216.9 L 134.4 216.6 L 143.1 213.2 L 151.7 211.5 L 158.2 213.8 L 159.1 218.4 L 169.2 218.8 L 165.5 226.9 L 165.9 233.7 L 181.7 229.2 L 186.2 230.5 L 195.0 230.3 L 198.0 227.6 L 209.3 228.2 L 220.8 234.4 L 221.7 241.9 L 233.8 248.6 L 233.2 255.1 L 228.3 258.6 L 214.2 257.5 L 194.8 258.9 L 185.2 265.3 L 188.8 274.6 Z" fill="#16233f" stroke="#334155" stroke-width="0.6" stroke-opacity="0.7" />
                             <path d="M 524.5 436.2 L 526.3 434.4 L 539.2 432.6 L 554.4 431.4 L 560.0 432.4 L 554.5 434.5 L 526.3 440.0 L 524.5 436.2 Z" fill="#25406b" stroke="#dc2626" stroke-width="0.6" stroke-opacity="0.7" />
                             <path d="M 479.3 176.4 L 467.6 193.3 L 461.2 199.6 L 453.3 193.1 L 451.6 187.4 L 460.4 179.9 L 472.4 174.1 L 479.3 176.4 Z" fill="#16233f" stroke="#334155" stroke-width="0.6" stroke-opacity="0.7" />
@@ -772,9 +769,9 @@
                         <text x="100" y="300" fill="#94a3b8" font-size="10" font-weight="700" letter-spacing="1">THAILAND</text>
                         <text x="185" y="345" fill="#94a3b8" font-size="9" font-weight="700" letter-spacing="1">BATAM</text>
                         <text x="500" y="90" fill="#94a3b8" font-size="11" font-weight="700" letter-spacing="1">CHINA</text>
-                        <text x="700" y="70" fill="#94a3b8" font-size="10" font-weight="700" letter-spacing="1">JEPANG</text>
+                        <text x="700" y="70" fill="#94a3b8" font-size="10" font-weight="700" letter-spacing="1">JAPAN</text>
 
-                        <!-- Rute: Patimban -> Batam -->
+                        <!-- Route: Patimban -> Batam -->
                         <path class="route-hit" data-route="batam" d="M268 416 Q 235 388 210 360" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
                         <path id="rutePatBatam" class="route-line" data-route="batam" d="M268 416 Q 235 388 210 360" stroke="#38bdf8" stroke-width="1.6" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
                         <g class="route-marker" data-route="batam" fill="#38bdf8">
@@ -784,7 +781,7 @@
                             </animateMotion>
                         </g>
 
-                        <!-- Rute: Patimban -> Thailand -->
+                        <!-- Route: Patimban -> Thailand -->
                         <path class="route-hit" data-route="thailand" d="M268 416 Q 200 330 158 263" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
                         <path id="rutePatThailand" class="route-line" data-route="thailand" d="M268 416 Q 200 330 158 263" stroke="#facc15" stroke-width="1.6" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
                         <g class="route-marker" data-route="thailand" fill="#facc15">
@@ -794,7 +791,7 @@
                             </animateMotion>
                         </g>
 
-                        <!-- Rute: Patimban -> China -->
+                        <!-- Route: Patimban -> China -->
                         <path class="route-hit" data-route="china" d="M268 416 Q 350 250 472 129" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
                         <path id="rutePatChina" class="route-line" data-route="china" d="M268 416 Q 350 250 472 129" stroke="#ef4444" stroke-width="1.6" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
                         <g class="route-marker" data-route="china" fill="#ef4444">
@@ -804,7 +801,7 @@
                             </animateMotion>
                         </g>
 
-                        <!-- Rute: Patimban -> Jepang -->
+                        <!-- Route: Patimban -> Japan -->
                         <path class="route-hit" data-route="jepang" d="M268 416 Q 480 260 745 95" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
                         <path id="rutePatJepang" class="route-line" data-route="jepang" d="M268 416 Q 480 260 745 95" stroke="#34d399" stroke-width="1.6" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
                         <g class="route-marker" data-route="jepang" fill="#34d399">
@@ -814,7 +811,7 @@
                             </animateMotion>
                         </g>
 
-                        <!-- Rute: Patimban -> Asia & Global -->
+                        <!-- Route: Patimban -> Asia & Global -->
                         <path class="route-hit" data-route="asia" d="M275 420 Q 560 400 880 340" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
                         <path id="rutePatAsia" class="route-line" data-route="asia" d="M275 420 Q 560 400 880 340" stroke="#f97316" stroke-width="1.6" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
                         <g class="route-marker" data-route="asia" fill="#f97316">
@@ -826,14 +823,14 @@
                         <path class="route-line" data-route="asia" pointer-events="none" d="M880 340 L 862 331 L 866 340 L 862 349 Z" fill="#f97316" />
                         <text class="route-line" data-route="asia" pointer-events="none" x="795" y="368" fill="#fdba74" font-size="10" font-weight="700" letter-spacing="1">ASIA &amp; GLOBAL</text>
 
-                        <!-- Titik Pelabuhan Tujuan -->
-                        <g class="dest-marker" data-route="batam" tabindex="0" role="button" aria-label="Lihat detail rute ke Batam"><circle cx="210" cy="360" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="210" cy="360" r="4" fill="#38bdf8" stroke="#ffffff" stroke-width="1" /></g>
-                        <g class="dest-marker" data-route="thailand" tabindex="0" role="button" aria-label="Lihat detail rute ke Thailand"><circle cx="158" cy="263" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="158" cy="263" r="4" fill="#facc15" stroke="#ffffff" stroke-width="1" /></g>
-                        <g class="dest-marker" data-route="china" tabindex="0" role="button" aria-label="Lihat detail rute ke China"><circle cx="472" cy="129" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="472" cy="129" r="4" fill="#ef4444" stroke="#ffffff" stroke-width="1" /></g>
-                        <g class="dest-marker" data-route="jepang" tabindex="0" role="button" aria-label="Lihat detail rute ke Jepang"><circle cx="745" cy="95" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="745" cy="95" r="4" fill="#34d399" stroke="#ffffff" stroke-width="1" /></g>
+                        <!-- Destination Port Markers -->
+                        <g class="dest-marker" data-route="batam" tabindex="0" role="button" aria-label="View route details to Batam"><circle cx="210" cy="360" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="210" cy="360" r="4" fill="#38bdf8" stroke="#ffffff" stroke-width="1" /></g>
+                        <g class="dest-marker" data-route="thailand" tabindex="0" role="button" aria-label="View route details to Thailand"><circle cx="158" cy="263" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="158" cy="263" r="4" fill="#facc15" stroke="#ffffff" stroke-width="1" /></g>
+                        <g class="dest-marker" data-route="china" tabindex="0" role="button" aria-label="View route details to China"><circle cx="472" cy="129" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="472" cy="129" r="4" fill="#ef4444" stroke="#ffffff" stroke-width="1" /></g>
+                        <g class="dest-marker" data-route="jepang" tabindex="0" role="button" aria-label="View route details to Japan"><circle cx="745" cy="95" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="745" cy="95" r="4" fill="#34d399" stroke="#ffffff" stroke-width="1" /></g>
 
-                        <!-- Titik Asal Patimban -->
-                        <g class="origin-marker" data-route="all" tabindex="0" role="button" aria-label="Tampilkan semua rute dari Patimban">
+                        <!-- Origin Port Marker: Patimban -->
+                        <g class="origin-marker" data-route="all" tabindex="0" role="button" aria-label="Show all routes from Patimban">
                             <circle cx="268" cy="416" r="20" fill="transparent" pointer-events="all" />
                             <circle cx="268" cy="416" r="18" fill="url(#patimbanGlow)">
                                 <animate attributeName="r" values="10;20;10" dur="2.4s" repeatCount="indefinite" />
@@ -841,80 +838,69 @@
                             </circle>
                             <circle class="visible-dot" cx="268" cy="416" r="5.5" fill="#dc2626" stroke="#ffffff" stroke-width="1.5" />
                         </g>
-                        <text x="150" y="446" fill="#ffffff" font-size="12" font-weight="800" letter-spacing="1">PELABUHAN PATIMBAN — SUBANG, JAWA BARAT</text>
+                        <text x="150" y="446" fill="#ffffff" font-size="12" font-weight="800" letter-spacing="1">PATIMBAN PORT — SUBANG, WEST JAVA</text>
                     </svg>
                 </div>
             </div>
 
-            <!-- Legenda Rute -->
+            <!-- Route Legends -->
             <div id="routeLegend" class="flex flex-wrap gap-2 justify-center mt-2 sm:mt-6 pt-3 sm:pt-5 border-t border-white/10">
-                <button type="button" data-route="all" aria-pressed="true" class="route-legend-btn is-active flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-red-600 inline-block"></span>Patimban (Asal)</button>
-                <button type="button" data-route="batam" aria-pressed="false" class="route-legend-btn flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-sky-400 inline-block"></span>Batam</button>
-                <button type="button" data-route="thailand" aria-pressed="false" class="route-legend-btn flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-yellow-400 inline-block"></span>Thailand</button>
-                <button type="button" data-route="china" aria-pressed="false" class="route-legend-btn flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span>China</button>
-                <button type="button" data-route="jepang" aria-pressed="false" class="route-legend-btn flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400 inline-block"></span>Jepang</button>
-                <button type="button" data-route="asia" aria-pressed="false" class="route-legend-btn flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-orange-500 inline-block"></span>Asia &amp; Global</button>
+                <button type="button" data-route="all" class="route-legend-btn is-active flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-red-600 inline-block"></span>Patimban (Origin)</button>
+                <button type="button" data-route="batam" class="route-legend-btn flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-sky-400 inline-block"></span>Batam</button>
+                <button type="button" data-route="thailand" class="route-legend-btn flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-yellow-400 inline-block"></span>Thailand</button>
+                <button type="button" data-route="china" class="route-legend-btn flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span>China</button>
+                <button type="button" data-route="jepang" class="route-legend-btn flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400 inline-block"></span>Japan</button>
+                <button type="button" data-route="asia" class="route-legend-btn flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-orange-500 inline-block"></span>Asia &amp; Global</button>
             </div>
 
-            <!-- Panel Info Rute -->
+            <!-- Route Info Panel -->
             <div id="routeInfoPanel" class="mt-4 rounded-xl border-l-4 border-red-600 bg-white/5 px-4 py-3 text-sm text-slate-200 leading-relaxed transition-colors">
-                <p id="routeInfoTitle" class="font-bold text-white mb-0.5">Pelabuhan Patimban</p>
-                <p id="routeInfoDesc">Ketuk salah satu titik tujuan pada peta, atau pilih label di atas, untuk melihat detail jalur pelayaran dari Patimban.</p>
+                <p id="routeInfoTitle" class="font-bold text-white mb-0.5">Patimban Port</p>
+                <p id="routeInfoDesc">Tap any destination point on the map or select a label above to view shipping route details from Patimban.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══ 8. LOKASI & FASILITAS ═══ -->
-<section class="py-20 bg-white">
+<!-- ═══ 8. LOCATION & FACILITIES ═══ -->
+<section class="py-20 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-slate-200 gap-4">
-            <div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Lokasi &amp; Fasilitas</h2>
+        <div class="max-w-3xl mb-10">
+            <p class="text-red-600 text-xs font-extrabold uppercase tracking-[0.22em] mb-3">Infrastructure &amp; Access</p>
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+                <div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Location &amp; Facilities</h2>
+                    <p class="mt-3 text-slate-600 leading-relaxed">An integrated vehicle terminal facility engineered to streamline domestic and international automotive supply chains.</p>
+                </div>
             </div>
-            <a href="{{ url('/location') }}" class="text-blue-900 font-bold hover:text-red-600 transition flex items-center gap-1 text-sm">
-                Lihat Peta Lokasi <span class="text-lg">&rarr;</span>
-            </a>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            <div class="lg:col-span-8 bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
-                <div class="p-5 bg-blue-950 text-white font-bold text-base flex justify-between items-center">
-                    <span>Parameter Fasilitas Utama</span>
-                    <span class="text-xs font-normal text-slate-300">Tahap 1 Operasional Aktif</span>
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+            <div class="lg:col-span-3 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="px-6 py-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <div>
+                        <h3 class="text-lg font-extrabold text-slate-900">Key Facility Specifications</h3>
+                        <p class="text-xs text-slate-500 mt-1">PICT Terminal Operational Information</p>
+                    </div>
                 </div>
-                <div class="divide-y divide-slate-200 text-sm">
-                    <div class="flex flex-col sm:flex-row p-4 justify-between hover:bg-slate-100 transition">
-                        <span class="font-semibold text-slate-700 sm:w-1/2">Alamat Pelabuhan</span>
-                        <span class="text-slate-900 font-medium sm:w-1/2">Pelabuhan Patimban, Pusakanagara, Kab. Subang, Jawa Barat</span>
-                    </div>
-                    <div class="flex flex-col sm:flex-row p-4 justify-between hover:bg-slate-100 transition">
-                        <span class="font-semibold text-slate-700 sm:w-1/2">Panjang Dermaga Ro-Ro</span>
-                        <span class="text-slate-900 font-medium sm:w-1/2">300 meter</span>
-                    </div>
-                    <div class="flex flex-col sm:flex-row p-4 justify-between hover:bg-slate-100 transition">
-                        <span class="font-semibold text-slate-700 sm:w-1/2">Kedalaman Kolam (Draft)</span>
-                        <span class="text-slate-900 font-medium sm:w-1/2">-10.0 m LWS (Mampu disandari Kapal Car Carrier Besar)</span>
-                    </div>
-                    <div class="flex flex-col sm:flex-row p-4 justify-between hover:bg-slate-100 transition">
-                        <span class="font-semibold text-slate-700 sm:w-1/2">Area Penumpukan (Staging Yard)</span>
-                        <span class="text-slate-900 font-medium sm:w-1/2">Kapasitas hingga 218.000 unit CBU per tahun</span>
-                    </div>
+                <div class="divide-y divide-slate-100">
+                    <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Port Address</span><span class="text-sm font-semibold text-slate-900">Patimban Port, Pusakanagara, Subang Regency, West Java</span></div>
+                    <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Ro-Ro Berth</span><span class="text-sm font-semibold text-slate-900">300 meters</span></div>
+                    <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Basin Draft (Depth)</span><span class="text-sm font-semibold text-slate-900">-10.0 m LWS</span></div>
+                    <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Staging Yard Capacity</span><span class="text-sm font-semibold text-slate-900">218,000 CBU units / year</span></div>
                 </div>
             </div>
 
-            <div class="lg:col-span-4 space-y-4">
-                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200">
-                    <h4 class="font-bold text-blue-950 text-base mb-2">Keselamatan &amp; Keamanan K3</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        Sistem pengamanan ISPS Code standar IMO dan perlindungan CCTV 24/7 di seluruh perimeter penumpukan kendaraan.
-                    </p>
+            <div class="lg:col-span-2 grid sm:grid-cols-2 lg:grid-cols-1 gap-6">
+                <div class="rounded-2xl bg-blue-950 p-6 text-white shadow-sm">
+                    <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-xl">&#128737;</div>
+                    <h3 class="font-extrabold text-lg">Safety &amp; Security</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-slate-300">Compliant with IMO ISPS Code standards and equipped with 24/7 CCTV surveillance across all terminal zones.</p>
                 </div>
-                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200">
-                    <h4 class="font-bold text-blue-950 text-base mb-2">Green Port Initiative</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">
-                        Pengurangan emisi karbon operasional lewat efisiensi energi terminal dan manajemen limbah maritim berkelanjutan.
-                    </p>
+                <div class="rounded-2xl bg-white p-6 border border-slate-200 shadow-sm">
+                    <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-xl">&#127807;</div>
+                    <h3 class="font-extrabold text-lg text-slate-900">Green Port Initiative</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-slate-600">Energy efficiency and proactive marine waste management to champion sustainable terminal operations.</p>
                 </div>
             </div>
         </div>
@@ -926,14 +912,13 @@
     <div class="absolute inset-0 bg-red-700 transform skew-x-12 translate-x-1/3 z-0 pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
         <div>
-            <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Siap Bermitra dengan PICT?</h4>
-            <p class="text-red-100 text-sm sm:text-base mt-1">Dapatkan penawaran tarif dan integrasi layanan terminal kendaraan terbaik.</p>
+            <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Ready to Partner with PICT?</h4>
+            <p class="text-red-100 text-sm sm:text-base mt-1">Inquire about terminal tariffs, berthing schedules, and automotive handling solutions.</p>
         </div>
         <div class="flex flex-wrap justify-center gap-3">
             <a href="{{ url('/location') }}" class="inline-block bg-blue-950 hover:bg-blue-900 text-white font-bold py-3.5 px-8 rounded-xl text-sm transition shadow-xl whitespace-nowrap">
-                LOKASI TERMINAL
+                TERMINAL LOCATION
             </a>
-           
         </div>
     </div>
 </section>
@@ -941,7 +926,7 @@
 @endsection
 
 @push('scripts')
-<!-- Three.js CDN untuk Animasi Hyperspeed Highway Perspective -->
+<!-- Three.js CDN for Hyperspeed Highway Perspective Animation -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
@@ -1072,7 +1057,7 @@ document.addEventListener('DOMContentLoaded', () => {
 @endpush
 
 @push('scripts')
-<!-- Interaktivitas Peta Jaringan Rute Pelayaran -->
+<!-- International Shipping Routes Interactivity -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const svg = document.getElementById('routeMapSvg');
@@ -1080,28 +1065,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const ROUTE_INFO = {
         all: {
-            title: 'Pelabuhan Patimban',
-            desc: 'Titik keberangkatan seluruh jalur pelayaran Ro-Ro dari Subang, Jawa Barat menuju jaringan domestik dan internasional.'
+            title: 'Patimban Port',
+            desc: 'Origin and departure hub for all Ro-Ro shipping routes from Subang, West Java to domestic and global networks.'
         },
         batam: {
-            title: 'Rute Patimban → Batam',
-            desc: 'Jalur feeder domestik dan simpul transshipment regional menuju Kepulauan Riau.'
+            title: 'Patimban → Batam Route',
+            desc: 'Domestic feeder line and regional transshipment hub serving the Riau Islands economic zone.'
         },
         thailand: {
-            title: 'Rute Patimban → Thailand (Bangkok)',
-            desc: 'Konektivitas ekspor/impor CBU menuju salah satu basis manufaktur otomotif terbesar Asia Tenggara.'
+            title: 'Patimban → Thailand (Bangkok) Route',
+            desc: 'Direct bilateral connectivity with Southeast Asia\'s primary automotive manufacturing powerhouse.'
         },
         china: {
-            title: 'Rute Patimban → China (Shanghai)',
-            desc: 'Jalur strategis menuju hub manufaktur dan pasar otomotif terbesar di Asia Timur.'
+            title: 'Patimban → China (Shanghai) Route',
+            desc: 'Strategic ocean gateway serving the world\'s largest automotive and EV manufacturing markets.'
         },
         jepang: {
-            title: 'Rute Patimban → Jepang (Tokyo)',
-            desc: 'Menghubungkan Patimban dengan basis utama produsen otomotif Jepang.'
+            title: 'Patimban → Japan (Tokyo) Route',
+            desc: 'Direct sea link connecting Patimban with Japan\'s primary OEM headquarters and automotive supply chains.'
         },
         asia: {
-            title: 'Rute Patimban → Asia & Global',
-            desc: 'Jaringan lanjutan yang memperluas jangkauan distribusi ke pasar Asia dan mancanegara.'
+            title: 'Patimban → Asia & Global Network',
+            desc: 'Deep-sea extended trunk routes expanding export distribution across broader Asia and worldwide destinations.'
         }
     };
 
@@ -1182,6 +1167,69 @@ document.addEventListener('DOMContentLoaded', () => {
 @endpush
 
 @push('scripts')
+<!-- Auto-scroll for Terminal Service Flow Section (Smooth container-only scroll on mobile) -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const flowSection = [...document.querySelectorAll('section')]
+            .find(section => section.querySelector('h2')?.textContent.trim() === 'Terminal Service Flow');
+        const flowScroller = flowSection?.querySelector('.flow-step')?.parentElement;
+        
+        if (!flowSection || !flowScroller || !window.matchMedia('(max-width: 767px)').matches) return;
+
+        const flowSteps = flowScroller.querySelectorAll('.flow-step');
+        if (flowSteps.length < 2) return;
+
+        let currentStep = 0;
+        let autoScrollInterval = null;
+        let isInteracting = false;
+
+        function scrollToStep(index) {
+            const targetStep = flowSteps[index];
+            if (!targetStep) return;
+            
+            const scrollOffset = targetStep.offsetLeft - flowScroller.offsetLeft;
+            flowScroller.scrollTo({
+                left: scrollOffset,
+                behavior: 'smooth'
+            });
+        }
+
+        function startAutoScroll() {
+            if (autoScrollInterval) return;
+            autoScrollInterval = setInterval(() => {
+                if (isInteracting) return;
+                currentStep = (currentStep + 1) % flowSteps.length;
+                scrollToStep(currentStep);
+            }, 3500);
+        }
+
+        function stopAutoScroll() {
+            if (autoScrollInterval) {
+                clearInterval(autoScrollInterval);
+                autoScrollInterval = null;
+            }
+        }
+
+        flowScroller.addEventListener('touchstart', () => { isInteracting = true; }, { passive: true });
+        flowScroller.addEventListener('touchend', () => { 
+            setTimeout(() => { isInteracting = false; }, 2000); 
+        }, { passive: true });
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                const entry = entries[0];
+                if (entry.isIntersecting) {
+                    startAutoScroll();
+                } else {
+                    stopAutoScroll();
+                }
+            }, { threshold: 0.3 });
+
+            observer.observe(flowSection);
+        }
+    });
+</script>
+
 <!-- ═══ ANIME.JS V4 DYNAMIC LAYOUT ANIMATION ═══ -->
 <script type="module">
     import { createLayout, stagger } from 'https://esm.sh/animejs';
@@ -1190,7 +1238,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const layoutEl = document.querySelector('#cargoLayout');
         if (!layoutEl) return;
 
-        // Hanya aktif pada layar desktop/tablet (min-width 768px)
         if (window.innerWidth < 768) return;
 
         const layout = createLayout('#cargoLayout');
@@ -1204,13 +1251,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 ease: 'out(3)',
                 delay: stagger(100),
                 onComplete: () => {
-                    // Beri jeda 3 detik agar pengguna sempat membaca kartu sebelum berubah susunan
                     setTimeout(animateLayout, 3000);
                 }
             });
         }
 
-        // Mulai transisi pertama setelah 3 detik halaman dimuat
         setTimeout(animateLayout, 3000);
     });
 </script>

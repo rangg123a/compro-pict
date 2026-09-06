@@ -93,10 +93,6 @@
 
         <!-- Right Side -->
         <div class="flex items-center gap-2">
-            <!-- Tombol CTA terpisah tetap dipertahankan jika layar cukup besar -->
-            <a href="{{ url('/contact') }}" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 shadow-lg shadow-red-600/30 transition transform hover:-translate-y-0.5 active:scale-95">
-                <span>Contact Us</span>
-            </a>
 
             <!-- Tombol Mobile dengan area sentuh yang diperluas -->
             <button id="mobileMenuBtn" aria-label="Toggle Menu" class="flex lg:hidden w-11 h-11 rounded-full items-center justify-center text-slate-300 hover:text-white bg-white/5 border border-white/10 active:scale-90 transition tap-highlight-transparent">

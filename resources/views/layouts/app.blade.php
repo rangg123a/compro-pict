@@ -13,7 +13,7 @@
     <title>@yield('title', 'PT Patimban International Car Terminal — PICT')</title>
     <meta name="description" content="PT Patimban International Car Terminal (PICT) — Indonesia's premier automotive gateway and modern roll-on/roll-off (Ro-Ro) terminal at Patimban Port, West Java.">
     
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/pict.png') }}">
+<link rel="icon" type="image/png" href="{{ asset('assets/images/pict.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('assets/images/pict.png') }}">
     
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">

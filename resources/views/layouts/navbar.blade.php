@@ -1,23 +1,67 @@
 @php
     $navLinks = [
         'home'           => ['label' => 'Home', 'url' => '/'],
-        'cargo'          => ['label' => 'Cargo Handling', 'url' => '/cargo-handling'],
+        'cargo'          => ['label' => 'Cargo Handhelds', 'url' => '/cargo-handhelds'],
         'operations'     => ['label' => 'Operations', 'url' => '/operations'],
         'services'       => ['label' => 'Our Services', 'url' => '/services'],
         'sustainability' => ['label' => 'Sustainability', 'url' => '/sustainability'],
+        'contact'        => ['label' => 'Contact Us', 'url' => '/contact'],
     ];
-
     $currentPath = trim(request()->path(), '/');
 @endphp
 
+<style>
+    .pict-logo-shell {
+        box-shadow: 0 0 0 1px rgba(248, 113, 113, .12), 0 0 14px rgba(239, 68, 68, .28), 0 0 28px rgba(56, 189, 248, .12);
+        animation: pictLogoGlow 3.6s ease-in-out infinite;
+    }
+    .pict-logo-shell::after {
+        content: "";
+        position: absolute;
+        inset: -45% 35%;
+        background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, .72) 50%, transparent 65%);
+        transform: translateX(-170%) rotate(12deg);
+        animation: pictLogoShine 5s ease-in-out infinite;
+        pointer-events: none;
+    }
+    .group:hover .pict-logo-shell {
+        animation-duration: 1.8s;
+        box-shadow: 0 0 0 1px rgba(248, 113, 113, .3), 0 0 18px rgba(239, 68, 68, .5), 0 0 34px rgba(56, 189, 248, .2);
+    }
+    @keyframes pictLogoGlow {
+        0%, 100% { box-shadow: 0 0 0 1px rgba(248, 113, 113, .12), 0 0 14px rgba(239, 68, 68, .28), 0 0 28px rgba(56, 189, 248, .12); }
+        50% { box-shadow: 0 0 0 1px rgba(248, 113, 113, .25), 0 0 22px rgba(239, 68, 68, .46), 0 0 38px rgba(56, 189, 248, .2); }
+    }
+    @keyframes pictLogoShine {
+        0%, 35% { transform: translateX(-170%) rotate(12deg); opacity: 0; }
+        45% { opacity: .9; }
+        58%, 100% { transform: translateX(170%) rotate(12deg); opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .pict-logo-shell, .pict-logo-shell::after { animation: none; }
+    }
+    
+    /* Native App Mobile Menu Animation */
+    #mobileMenu {
+        transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: top center;
+    }
+    #mobileMenu.is-closed {
+        opacity: 0;
+        transform: scaleY(0.95) translateY(-10px);
+        pointer-events: none;
+    }
+</style>
+
 <!-- ═══ FLOATING CAPSULE NAVBAR ═══ -->
-<header class="fixed top-4 inset-x-0 z-50 px-4 sm:px-6 pointer-events-none">
+<!-- Menggunakan env(safe-area-inset-top) agar aman dari poni (notch) HP modern -->
+<header class="fixed top-4 inset-x-0 z-50 px-4 sm:px-6 pointer-events-none" style="padding-top: max(1rem, env(safe-area-inset-top));">
     <div class="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto bg-[#0b1120]/80 backdrop-blur-md border border-white/10 rounded-full px-4 sm:px-6 py-2.5 shadow-2xl shadow-black/80">
         
-        <!-- Brand Logo Bersih dengan Efek Kilatan -->
+        <!-- Brand Logo -->
         <a href="{{ url('/') }}" class="flex items-center gap-2.5 sm:gap-3 shrink-0 group">
-            <div class="relative flex items-center justify-center p-1.5 rounded-full bg-white/5 border border-white/10 overflow-hidden">
-                <img src="{{ asset('assets/images/pict.png') }}" alt="PICT Logo" class="h-7 sm:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+            <div class="pict-logo-shell relative flex items-center justify-center p-1.5 rounded-full bg-white/5 border border-white/10 overflow-hidden">
+                <img src="{{ asset('assets/images/pict.png') }}" alt="PICT Logo" class="relative z-10 h-7 sm:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
                 <span class="absolute -bottom-0.5 -right-0.5 flex h-2 w-2">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
@@ -26,46 +70,37 @@
             
             <div class="leading-none">
                 <div class="flex items-center gap-1.5">
-                    <span class="text-white font-extrabold text-xs sm:text-sm tracking-wider">PATIMBAN</span>
-                    <span class="text-[10px] font-bold text-red-500 px-1.5 py-0.5 rounded bg-red-500/10 border border-red-500/20">PICT</span>
+                    <span class="text-white font-extrabold text-xs sm:text-sm tracking-wider">Patimban International <br> Car Terminal</span>
                 </div>
-                <p class="text-slate-400 text-[9px] uppercase tracking-widest mt-1 font-medium">International Car Terminal</p>
             </div>
         </a>
 
-        <!-- Desktop Navigation dengan Sliding Pill -->
-        <nav id="navContainer" class="relative hidden md:flex items-center p-1 rounded-full bg-white/[0.04]">
-            <!-- Pil Merah Geser -->
-            <span id="navSlider" 
-                  class="absolute rounded-full bg-gradient-to-r from-red-600 to-rose-600 shadow-lg shadow-red-600/40 pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] opacity-0 z-0">
-            </span>
-
+        <!-- Desktop Navigation -->
+        <nav id="navContainer" class="relative hidden lg:flex items-center p-1 rounded-full bg-white/[0.04]">
+            <span id="navSlider" class="absolute rounded-full bg-gradient-to-r from-red-600 to-rose-600 shadow-lg shadow-red-600/40 pointer-events-none transition-all duration-300 opacity-0 z-0"></span>
             <div class="relative flex items-center z-10">
                 @foreach($navLinks as $key => $link)
                     @php
                         $targetPath = trim($link['url'], '/');
                         $isCurrent = ($targetPath === '' && $currentPath === '') || ($targetPath !== '' && request()->is($targetPath . '*'));
                     @endphp
-                    <a href="{{ url($link['url']) }}" 
-                       data-nav-key="{{ $key }}"
-                       class="nav-tab relative inline-flex items-center justify-center px-4 py-2 rounded-full text-xs lg:text-[13px] font-medium transition-colors duration-200 select-none whitespace-nowrap {{ $isCurrent ? 'active-tab text-white font-bold' : 'text-slate-300 hover:text-white' }}">
+                    <a href="{{ url($link['url']) }}" data-nav-key="{{ $key }}" class="nav-tab relative inline-flex items-center justify-center px-4 py-2 rounded-full text-xs lg:text-[13px] font-medium transition-colors duration-200 select-none whitespace-nowrap {{ $isCurrent ? 'active-tab text-white font-bold' : 'text-slate-300 hover:text-white' }}">
                         {{ $link['label'] }}
                     </a>
                 @endforeach
             </div>
         </nav>
 
-        <!-- Right Side: Contact Us & Mobile Button -->
+        <!-- Right Side -->
         <div class="flex items-center gap-2">
-            <a href="{{ url('/contact') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 shadow-lg shadow-red-600/30 border border-red-400/20 transition transform hover:-translate-y-0.5 active:scale-95 whitespace-nowrap">
+            <!-- Tombol CTA terpisah tetap dipertahankan jika layar cukup besar -->
+            <a href="{{ url('/contact') }}" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 shadow-lg shadow-red-600/30 transition transform hover:-translate-y-0.5 active:scale-95">
                 <span>Contact Us</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
-                </svg>
             </a>
 
-            <button id="mobileMenuBtn" aria-label="Toggle Menu" class="flex md:hidden w-10 h-10 rounded-full items-center justify-center text-slate-300 hover:text-white bg-white/5 border border-white/10 active:scale-90 transition">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <!-- Tombol Mobile dengan area sentuh yang diperluas -->
+            <button id="mobileMenuBtn" aria-label="Toggle Menu" class="flex lg:hidden w-11 h-11 rounded-full items-center justify-center text-slate-300 hover:text-white bg-white/5 border border-white/10 active:scale-90 transition tap-highlight-transparent">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"/>
                 </svg>
             </button>
@@ -73,32 +108,20 @@
     </div>
 
     <!-- Mobile Dropdown Menu -->
-    <div id="mobileMenu" class="hidden md:hidden mt-3 pointer-events-auto max-w-sm mx-auto">
+    <div id="mobileMenu" class="lg:hidden mt-3 pointer-events-auto max-w-sm mx-auto is-closed">
         <div class="bg-[#0b1120]/95 backdrop-blur-2xl border border-white/15 rounded-3xl p-5 shadow-2xl shadow-black/80 space-y-2">
             @foreach($navLinks as $link)
                 @php
                     $targetPath = trim($link['url'], '/');
                     $isCurrent = ($targetPath === '' && $currentPath === '') || ($targetPath !== '' && request()->is($targetPath . '*'));
                 @endphp
-                <a href="{{ url($link['url']) }}" 
-                   class="mobile-nav-link flex items-center justify-between px-5 py-3.5 rounded-2xl text-sm font-medium transition {{ $isCurrent ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold shadow-lg shadow-red-600/30' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
+                <a href="{{ url($link['url']) }}" class="flex items-center justify-between px-5 py-3.5 rounded-2xl text-sm font-medium transition tap-highlight-transparent active:scale-95 {{ $isCurrent ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold shadow-lg' : 'text-slate-300 bg-white/5' }}">
                     <span>{{ $link['label'] }}</span>
                     @if($isCurrent)
                         <span class="w-2 h-2 rounded-full bg-white inline-block"></span>
-                    @else
-                        <span class="text-slate-500">&rarr;</span>
                     @endif
                 </a>
             @endforeach
-
-            <div class="pt-2">
-                <a href="{{ url('/contact') }}" class="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold text-sm shadow-lg shadow-red-600/30 transition hover:opacity-95 active:scale-95">
-                    <span>Contact Us</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
-                    </svg>
-                </a>
-            </div>
         </div>
     </div>
 </header>

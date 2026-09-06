@@ -1,6 +1,5 @@
 <footer class="footer bg-blue-950 text-white mt-16 md:mt-20 border-t-4 border-red-600">
     <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12 md:py-16">
-        <!-- Grid: 1 kolom di mobile, 2 di tablet (sm/md), 4 di desktop (lg) -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-8 lg:gap-12">
             
             <!-- Company Info -->
@@ -23,7 +22,7 @@
             <div class="min-w-0">
                 <h4 class="text-lg font-bold mb-4 md:mb-6 text-white border-b border-blue-800 pb-2 inline-block">Quick Links</h4>
                 <ul class="space-y-3 text-sm text-blue-200">
-                    <li><a href="{{ url('/') }}" class="hover:text-red-400 transition flex items-center gap-2"><span class="text-red-500">&rsaquo;</span> About PICT</a></li>
+                    <li><a href="{{ url('/about') }}" class="hover:text-red-400 transition flex items-center gap-2"><span class="text-red-500">&rsaquo;</span> About PICT</a></li>
                     <li><a href="{{ url('/facilities') }}" class="hover:text-red-400 transition flex items-center gap-2"><span class="text-red-500">&rsaquo;</span> Terminal Facilities</a></li>
                     <li><a href="{{ url('/services') }}" class="hover:text-red-400 transition flex items-center gap-2"><span class="text-red-500">&rsaquo;</span> Ro-Ro Services</a></li>
                     <li><a href="{{ url('/location') }}" class="hover:text-red-400 transition flex items-center gap-2"><span class="text-red-500">&rsaquo;</span> Strategic Location</a></li>
@@ -63,15 +62,10 @@
         </div>
     </div>
 
-    <!-- Copyright (Responsive Flex & Text Alignment) -->
-    <div class="border-t border-blue-900 bg-blue-950">
+    <!-- Copyright -->
+    <div class="border-t border-blue-900 bg-blue-950" style="padding-bottom: env(safe-area-inset-bottom);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-5 sm:py-6 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 text-xs sm:text-sm text-blue-300 text-center md:text-left">
             <p class="max-w-full break-words">&copy; {{ date('Y') }} PT Patimban International Car Terminal. All Rights Reserved.</p>
-            <div class="flex flex-wrap justify-center gap-3 md:gap-4">
-                <a href="{{ url('/privacy') }}" class="hover:text-white transition">Privacy Policy</a>
-                <span class="hidden md:inline">|</span>
-                <a href="{{ url('/terms') }}" class="hover:text-white transition">Terms of Service</a>
-            </div>
         </div>
     </div>
 </footer>

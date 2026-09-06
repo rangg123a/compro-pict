@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome')->name('home');
 
 // Halaman sesuai menu Navbar
-Route::view('/cargo-handling', 'cargo-handling')->name('cargo-handling');
+Route::view('/cargo-handhelds', 'cargo-handhelds')->name('cargo-handhelds');
 Route::view('/operations', 'operations')->name('operations');
 Route::view('/services', 'services')->name('services');
 Route::view('/sustainability', 'sustainability')->name('sustainability');

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Cargo Handhelds & Terminal Operating System — PT Patimban International Car Terminal')
+@section('title', 'Cargo Handling & Terminal Operating System — PT Patimban International Car Terminal')
 
 @push('styles')
 <style>
@@ -17,6 +17,16 @@
         border-color: #dc2626;
         box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.12); 
     }
+    /* Styling untuk efek tumpukan kartu foto */
+    .stack-card {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: bottom right;
+    }
 </style>
 @endpush
 
@@ -30,19 +40,14 @@
 
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
         <div class="max-w-3xl space-y-6">
-               
-
             <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
-                Cargo Handhelds <br>
+                Cargo Handling <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-rose-400">&amp; Digital Tally System</span>
             </h1>
 
             <p class="text-slate-200 text-sm sm:text-base leading-relaxed border-l-2 border-red-500 pl-4 font-normal">
                 Wireless handheld terminal standardization seamlessly integrated into the Terminal Operating System (TOS) in real-time for accurate tracking of thousands of vehicle cargo units at Patimban Port.
             </p>
-
-           
-            </div>
         </div>
     </div>
 </section>
@@ -83,11 +88,15 @@
                 </div>
             </div>
 
-            <div class="lg:col-span-6 relative">
-                <div class="relative rounded-2xl overflow-hidden border border-slate-200 shadow-xl group">
-                    <img src="{{ asset('assets/images/patimban-yard-3.jpeg') }}" alt="Patimban Car Staging Area" class="w-full h-80 sm:h-96 object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-80"></div>
-                        
+            <!-- Bagian Tumpukan Foto Bertumpuk (Card Stack Showcase) -->
+            <div class="lg:col-span-6 relative flex justify-center">
+                <div class="relative w-full h-80 sm:h-96 rounded-2xl shadow-xl border border-slate-200 overflow-hidden bg-slate-100">
+                    <div id="photo-stack" class="relative w-full h-full">
+                        <img src="{{ asset('assets/images/patimban-yard-1.jpeg') }}" alt="Patimban Yard 1" class="stack-card card-item">
+                        <img src="{{ asset('assets/images/patimban-yard-2.jpeg') }}" alt="Patimban Yard 2" class="stack-card card-item">
+                        <img src="{{ asset('assets/images/patimban-yard-3.jpeg') }}" alt="Patimban Yard 3" class="stack-card card-item">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-80 pointer-events-none z-40"></div>
+                    </div>
                 </div>
             </div>
 
@@ -184,3 +193,44 @@
 </section>
 
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const cards = document.querySelectorAll('.card-item');
+        let currentIndex = 0;
+
+        function updateStack() {
+            cards.forEach((card, i) => {
+                const offset = (i - currentIndex + cards.length) % cards.length;
+                
+                if (offset === 0) {
+                    // Kartu paling depan (aktif)
+                    card.style.zIndex = '30';
+                    card.style.transform = 'translate(0px, 0px) scale(1) rotate(0deg)';
+                    card.style.opacity = '1';
+                } else if (offset === 1) {
+                    // Kartu lapis pertama di belakangnya (sedikit bergeser & miring)
+                    card.style.zIndex = '20';
+                    card.style.transform = 'translate(16px, -14px) scale(0.95) rotate(3deg)';
+                    card.style.opacity = '0.75';
+                } else {
+                    // Kartu lapis kedua di belakangnya
+                    card.style.zIndex = '10';
+                    card.style.transform = 'translate(32px, -28px) scale(0.90) rotate(6deg)';
+                    card.style.opacity = '0.5';
+                }
+            });
+        }
+
+        // Jalankan posisi awal
+        updateStack();
+
+        // Putar tumpukan kartu setiap 4 detik
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % cards.length;
+            updateStack();
+        }, 4000);
+    });
+</script>
+@endpush

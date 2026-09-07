@@ -98,7 +98,7 @@
         </div>
         <div class="flex flex-wrap justify-center gap-3">
             <a href="{{ url('/contact') }}" class="px-6 py-3 rounded-xl bg-blue-950 hover:bg-blue-900 text-white font-bold text-xs uppercase tracking-wider transition shadow-xl whitespace-nowrap">
-                Contact Us &rarr;
+                Contact Us
             </a>
         </div>
     </div>

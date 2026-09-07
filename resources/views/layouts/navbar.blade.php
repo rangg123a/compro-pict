@@ -1,7 +1,7 @@
 @php
     $navLinks = [
         'home'           => ['label' => 'Home', 'url' => '/'],
-        'cargo'          => ['label' => 'Cargo Handhelds', 'url' => '/cargo-handhelds'],
+        'cargo'          => ['label' => 'Cargo Handling', 'url' => '/cargo-handling'],
         'operations'     => ['label' => 'Operations', 'url' => '/operations'],
         'services'       => ['label' => 'Our Services', 'url' => '/services'],
         'sustainability' => ['label' => 'Sustainability', 'url' => '/sustainability'],

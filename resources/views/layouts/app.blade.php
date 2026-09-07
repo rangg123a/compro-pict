@@ -7,13 +7,13 @@
     <!-- Meta tags untuk Native App-like Experience -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#020617">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#ffffff">
 
     <title>@yield('title', 'PT Patimban International Car Terminal — PICT')</title>
     <meta name="description" content="PT Patimban International Car Terminal (PICT) — Indonesia's premier automotive gateway and modern roll-on/roll-off (Ro-Ro) terminal at Patimban Port, West Java.">
     
-<link rel="icon" type="image/png" href="{{ asset('assets/images/pict.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/pict.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('assets/images/pict.png') }}">
     
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -29,6 +29,11 @@
         }
         .font-serif { font-family: 'Playfair Display', serif; }
         .tap-highlight-transparent { -webkit-tap-highlight-color: transparent; }
+        
+        /* Aksen Gold/Brown Kustom */
+        .text-gold { color: #b45309; }
+        .bg-gold { background-color: #d97706; }
+        .border-gold { border-color: #d97706; }
         
         footer { margin-top: auto; }
         footer .py-12 { padding-top: 2.5rem !important; padding-bottom: 2rem !important; }
@@ -62,7 +67,7 @@
     </style>
     @stack('styles')
 </head>
-<body class="bg-slate-950 flex flex-col min-h-screen">
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
 
     @include('layouts.navbar')
 
@@ -70,7 +75,8 @@
         @yield('content')
     </main>
 
-    <button id="backToTop" aria-label="Back to top" class="fixed bottom-6 right-4 md:bottom-6 md:right-6 w-11 h-11 md:w-12 md:h-12 rounded-full bg-red-600 text-white shadow-xl hover:bg-red-700 transition duration-300 hidden z-50 items-center justify-center text-lg md:text-xl font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 active:scale-90" style="margin-bottom: env(safe-area-inset-bottom);">
+    <!-- Tombol Back to Top dengan aksen Merah Tua & Gold -->
+    <button id="backToTop" aria-label="Back to top" class="fixed bottom-6 right-4 md:bottom-6 md:right-6 w-11 h-11 md:w-12 md:h-12 rounded-full bg-red-900 text-amber-400 border border-amber-500/30 shadow-xl hover:bg-red-800 transition duration-300 hidden z-50 items-center justify-center text-lg md:text-xl font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-900 active:scale-90" style="margin-bottom: env(safe-area-inset-bottom);">
         &uarr;
     </button>
 

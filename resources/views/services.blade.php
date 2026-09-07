@@ -24,7 +24,7 @@
 
 {{-- ═══ HERO SECTION ═══ --}}
 <div class="hero-bg-services min-h-[380px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-16 relative border-b border-white/10 bg-slate-950 pt-[env(safe-area-inset-top)]">
-    <span class="text-red-500 font-bold tracking-widest text-xs uppercase mb-3">Ro-Ro Services</span>
+
     <h2 class="text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
         Integrated Roll-on/Roll-off Cargo Handling Services
     </h2>

@@ -55,7 +55,7 @@
 
 <!-- ═══ FLOATING CAPSULE NAVBAR ═══ -->
 <!-- Menggunakan env(safe-area-inset-top) agar aman dari poni (notch) HP modern -->
-<header class="fixed top-4 inset-x-0 z-50 px-4 sm:px-6 pointer-events-none" style="padding-top: max(1rem, env(safe-area-inset-top));">
+<header class="fixed top-0 inset-x-0 z-50 px-4 sm:px-6 pointer-events-none" style="padding-top: max(0.5rem, env(safe-area-inset-top));">
     <div class="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto bg-[#0b1120]/80 backdrop-blur-md border border-white/10 rounded-full px-4 sm:px-6 py-2.5 shadow-2xl shadow-black/80">
         
         <!-- Brand Logo -->
@@ -75,24 +75,24 @@
             </div>
         </a>
 
-        <!-- Desktop Navigation -->
-        <nav id="navContainer" class="relative hidden lg:flex items-center p-1 rounded-full bg-white/[0.04]">
-            <span id="navSlider" class="absolute rounded-full bg-gradient-to-r from-red-600 to-rose-600 shadow-lg shadow-red-600/40 pointer-events-none transition-all duration-300 opacity-0 z-0"></span>
-            <div class="relative flex items-center z-10">
-                @foreach($navLinks as $key => $link)
-                    @php
-                        $targetPath = trim($link['url'], '/');
-                        $isCurrent = ($targetPath === '' && $currentPath === '') || ($targetPath !== '' && request()->is($targetPath . '*'));
-                    @endphp
-                    <a href="{{ url($link['url']) }}" data-nav-key="{{ $key }}" class="nav-tab relative inline-flex items-center justify-center px-4 py-2 rounded-full text-xs lg:text-[13px] font-medium transition-colors duration-200 select-none whitespace-nowrap {{ $isCurrent ? 'active-tab text-white font-bold' : 'text-slate-300 hover:text-white' }}">
-                        {{ $link['label'] }}
-                    </a>
-                @endforeach
-            </div>
-        </nav>
-
-        <!-- Right Side -->
+        <!-- ═══ GABUNGAN NAVIGASI & TOMBOL MOBILE ═══ -->
         <div class="flex items-center gap-2">
+            
+            <!-- Desktop Navigation -->
+            <nav id="navContainer" class="relative hidden lg:flex items-center p-1 rounded-full bg-white/[0.04]">
+                <span id="navSlider" class="absolute rounded-full bg-gradient-to-r from-red-600 to-rose-600 shadow-lg shadow-red-600/40 pointer-events-none transition-all duration-300 opacity-0 z-0"></span>
+                <div class="relative flex items-center z-10">
+                    @foreach($navLinks as $key => $link)
+                        @php
+                            $targetPath = trim($link['url'], '/');
+                            $isCurrent = ($targetPath === '' && $currentPath === '') || ($targetPath !== '' && request()->is($targetPath . '*'));
+                        @endphp
+                        <a href="{{ url($link['url']) }}" data-nav-key="{{ $key }}" class="nav-tab relative inline-flex items-center justify-center px-4 py-2 rounded-full text-xs lg:text-[13px] font-medium transition-colors duration-200 select-none whitespace-nowrap {{ $isCurrent ? 'active-tab text-white font-bold' : 'text-slate-300 hover:text-white' }}">
+                            {{ $link['label'] }}
+                        </a>
+                    @endforeach
+                </div>
+            </nav>
 
             <!-- Tombol Mobile dengan area sentuh yang diperluas -->
             <button id="mobileMenuBtn" aria-label="Toggle Menu" class="flex lg:hidden w-11 h-11 rounded-full items-center justify-center text-slate-300 hover:text-white bg-white/5 border border-white/10 active:scale-90 transition tap-highlight-transparent">

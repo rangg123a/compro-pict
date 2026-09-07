@@ -5,7 +5,7 @@
 @push('styles')
 <style>
     .hero-bg-contact {
-        background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('{{ asset("assets/images/background.jpeg") }}');
+        background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('{{ asset("assets/images/patimban-yard-2.jpeg") }}');
         background-size: cover;
         background-position: center;
     }

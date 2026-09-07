@@ -298,8 +298,8 @@
                 </h1>
 
                 <p class="text-slate-200 max-w-xl leading-relaxed text-base sm:text-lg border-l-2 border-red-500 pl-4 font-normal">
-                    A premier modern roll-on/roll-off (Ro-Ro) vehicle terminal gateway at Patimban Port, West Java. Connecting national automotive manufacturing hubs directly to global markets.
-                </p>
+Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat non nobis, quos corrupti quae rerum architecto eligendi reprehenderit nisi perferendis illum, ea ut maiores, aspernatur dolore iste deserunt nam molestiae.
+            </p>
 
                 <div class="pt-2">
                     <a href="{{ url('/about') }}" class="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold py-2.5 px-6 rounded-xl shadow-lg shadow-red-600/30 transition transform hover:-translate-y-0.5">
@@ -406,18 +406,19 @@
             <div>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">About PICT</h2>
             </div>
-            <p class="text-slate-500 text-sm max-w-md">A modern international vehicle terminal operator pioneering automotive logistics efficiency in Indonesia.</p>
+            <p class="text-slate-500 text-sm max-w-md">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta mollitia eveniet dolor neque quae ut expedita doloremque alias quam aperiam quia quasi fuga inventore, laudantium perspiciatis laborum, tenetur est sed.</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <div class="about-copy lg:col-span-6 space-y-6">
-                <h3 class="text-2xl font-bold text-blue-950">Indonesia's Strategic Gateway for Automotive Export &amp; Import</h3>
+                <h3 class="text-2xl font-bold text-blue-950">Indonesia's Strategic Gateway for Automotive Export Import</h3>
                 <p class="text-slate-600 leading-relaxed">
-                    PT Patimban International Car Terminal (PICT) was established as a dedicated, international-standard vehicle port operator at Patimban Port, Subang, West Java.
-                </p>
+LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT. QUASI, VOLUPTATES. ANIMI PERFERENDIS INCIDUNT DICTA, VOLUPTATES EOS A NECESSITATIBUS ACCUSAMUS CUPIDITATE AT NISI FACILIS ISTE REPELLENDUS VENIAM NON ESSE NESCIUNT DESERUNT!
+            </p>
                 <p class="text-slate-600 leading-relaxed">
-                    With direct access to the port toll road and the integrated industrial corridor of Karawang-Bekasi-Purwakarta, we significantly reduce cargo transit times and logistics costs.
-                </p>
+LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT. QUASI, VOLUPTATES. ANIMI PERFERENDIS INCIDUNT DICTA, VOLUPTATES EOS A NECESSITATIBUS ACCUSAMUS CUPIDITATE AT NISI FACILIS ISTE REPELLENDUS VENIAM NON ESSE NESCIUNT DESERUNT!
+
+            </p>
             </div>
 
             <div class="about-values lg:col-span-6">
@@ -443,7 +444,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-slate-200 gap-4">
             <div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Vehicle &amp; Cargo Types</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Vehicle Cargo Types</h2>
             </div>
             <span class="text-slate-500 text-sm font-medium">Standardized handling protocols for Ro-Ro automotive cargo</span>
         </div>
@@ -487,7 +488,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-2">Passenger Vehicles (CBU)</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Handling Completely Built Up (CBU) units—including sedans, SUVs, MPVs, and EVs—from vessel ramp doors to the staging yard under strict zero-scratch protocols.
+                        Handling Completely Built Up (CBU) units including sedans, SUVs, MPVs, and EVs from vessel ramp doors to the staging yard under strict zero scratch protocols.
                     </p>
                 </div>
                 <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
@@ -527,14 +528,14 @@
                             <polygon points="107,72 110,71 110,74 107,75" fill="#facc15" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Commercial Trucks &amp; Buses</h3>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Commercial Trucks Buses</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Accommodating heavy-duty commercial vehicles, coaches, prime movers, and industrial chassis via high-load-bearing vessel ramp access.
+                        Accommodating heavy duty commercial vehicles, coaches, prime movers, and industrial chassis via high load bearing vessel ramp access.
                     </p>
                 </div>
                 <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
                     <span class="text-slate-400">Cargo Classification</span>
-                    <span class="text-blue-900 font-bold tracking-wide">COMMERCIAL &amp; BUS</span>
+                    <span class="text-blue-900 font-bold tracking-wide">COMMERCIAL BUS</span>
                 </div>
             </div>
 
@@ -570,7 +571,7 @@
                             <polygon points="106,78 114,84 118,72 112,58" fill="#1e293b" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Heavy Equipment &amp; Special Cargo</h3>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Heavy Equipment Special Cargo</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-4">
                         Handling mining, agricultural, and construction machinery (excavators, wheel loaders, bulldozers) using certified self-propelled roll-on/roll-off and towing methods.
                     </p>
@@ -616,7 +617,7 @@
 
             <div class="service-item">
                 <span class="text-2xl font-black text-red-600">03</span>
-                <h3 class="text-lg font-bold text-blue-950 mt-3 mb-2">Receiving &amp; Delivery</h3>
+                <h3 class="text-lg font-bold text-blue-950 mt-3 mb-2">Receiving Delivery</h3>
                 <p class="text-slate-600 text-sm leading-relaxed">
                     Gate-in receiving and delivery handover for logistics transport partners and car carriers.
                 </p>
@@ -667,7 +668,7 @@
             <div class="flow-step relative bg-white p-6 rounded-xl lg:rounded-none flex flex-col justify-between shrink-0 w-[72%] xs:w-[62%] sm:w-[45%] md:w-auto snap-start">
                 <div>
                     <span class="text-2xl font-black text-red-600">03</span>
-                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Inspection &amp; PDI</h4>
+                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Inspection PDI</h4>
                     <p class="text-slate-600 text-xs leading-relaxed">Exterior condition check, barcode VIN optical scanning, and initial tally.</p>
                 </div>
             </div>
@@ -683,7 +684,7 @@
             <div class="flow-step relative bg-white p-6 rounded-xl lg:rounded-none lg:last:rounded-r-xl flex flex-col justify-between shrink-0 w-[72%] xs:w-[62%] sm:w-[45%] md:w-auto snap-start">
                 <div>
                     <span class="text-2xl font-black text-red-600">05</span>
-                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Receiving &amp; Delivery</h4>
+                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Receiving Delivery</h4>
                     <p class="text-slate-600 text-xs leading-relaxed">Gate-out dispatch onto car-carrier transporter trucks toward dealerships and assembly hubs.</p>
                 </div>
             </div>
@@ -821,7 +822,7 @@
                             </animateMotion>
                         </g>
                         <path class="route-line" data-route="asia" pointer-events="none" d="M880 340 L 862 331 L 866 340 L 862 349 Z" fill="#f97316" />
-                        <text class="route-line" data-route="asia" pointer-events="none" x="795" y="368" fill="#fdba74" font-size="10" font-weight="700" letter-spacing="1">ASIA &amp; GLOBAL</text>
+                        <text class="route-line" data-route="asia" pointer-events="none" x="795" y="368" fill="#fdba74" font-size="10" font-weight="700" letter-spacing="1">ASIA GLOBAL</text>
 
                         <!-- Destination Port Markers -->
                         <g class="dest-marker" data-route="batam" tabindex="0" role="button" aria-label="View route details to Batam"><circle cx="210" cy="360" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="210" cy="360" r="4" fill="#38bdf8" stroke="#ffffff" stroke-width="1" /></g>
@@ -850,7 +851,7 @@
                 <button type="button" data-route="thailand" class="route-legend-btn flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-yellow-400 inline-block"></span>Thailand</button>
                 <button type="button" data-route="china" class="route-legend-btn flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span>China</button>
                 <button type="button" data-route="jepang" class="route-legend-btn flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400 inline-block"></span>Japan</button>
-                <button type="button" data-route="asia" class="route-legend-btn flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-orange-500 inline-block"></span>Asia &amp; Global</button>
+                <button type="button" data-route="asia" class="route-legend-btn flex items-center gap-2 text-xs font-semibold text-slate-300 rounded-full px-3 py-2 hover:bg-white/10 transition"><span class="w-2.5 h-2.5 rounded-full bg-orange-500 inline-block"></span>Asia Global</button>
             </div>
 
             <!-- Route Info Panel -->
@@ -866,10 +867,10 @@
 <section class="py-20 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="max-w-3xl mb-10">
-            <p class="text-red-600 text-xs font-extrabold uppercase tracking-[0.22em] mb-3">Infrastructure &amp; Access</p>
+            <p class="text-red-600 text-xs font-extrabold uppercase tracking-[0.22em] mb-3">Infrastructure Access</p>
             <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
                 <div>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Location &amp; Facilities</h2>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Location Facilities</h2>
                     <p class="mt-3 text-slate-600 leading-relaxed">An integrated vehicle terminal facility engineered to streamline domestic and international automotive supply chains.</p>
                 </div>
             </div>
@@ -894,7 +895,7 @@
             <div class="lg:col-span-2 grid sm:grid-cols-2 lg:grid-cols-1 gap-6">
                 <div class="rounded-2xl bg-blue-950 p-6 text-white shadow-sm">
                     <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-xl">&#128737;</div>
-                    <h3 class="font-extrabold text-lg">Safety &amp; Security</h3>
+                    <h3 class="font-extrabold text-lg">Safety Security</h3>
                     <p class="mt-2 text-sm leading-relaxed text-slate-300">Compliant with IMO ISPS Code standards and equipped with 24/7 CCTV surveillance across all terminal zones.</p>
                 </div>
                 <div class="rounded-2xl bg-white p-6 border border-slate-200 shadow-sm">

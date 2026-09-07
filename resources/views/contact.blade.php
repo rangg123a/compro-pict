@@ -56,7 +56,7 @@
                     </div>
                     <div>
                         <h5 class="font-bold text-slate-900 mb-1 text-sm">Email</h5>
-                        <p class="text-slate-600 text-xs leading-relaxed">rang123ga12@gmail.com</p>
+                        <p class="text-slate-600 text-xs leading-relaxed">info@pict.co.id</p>
                     </div>
                 </div>
             </div>
@@ -114,7 +114,7 @@
         const message = document.getElementById('message').value;
 
         // Email tujuan Anda
-        const targetEmail = "rang123ga12@gmail.com";
+        const targetEmail = "info@pict.co.id";
 
         // Format isi email
         const bodyText = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;

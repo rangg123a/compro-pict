@@ -31,7 +31,7 @@
 
 {{-- ═══ HERO SECTION ═══ --}}
 <div class="hero-bg-about min-h-[380px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-16 relative border-b border-slate-200 bg-slate-900 pt-[env(safe-area-inset-top)]">
-    <span class="text-red-500 font-bold tracking-widest text-xs uppercase mb-3">About PICT</span>
+  <br><br>
     <h2 class="text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
         A Modern Vehicle Terminal at the Heart of Indonesia's Automotive Industry
     </h2>

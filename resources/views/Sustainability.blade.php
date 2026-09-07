@@ -24,7 +24,8 @@
 
 {{-- ═══ HERO SECTION ═══ --}}
 <div class="hero-bg-sustainability min-h-[380px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-16 relative border-b border-slate-200 bg-slate-900 pt-[env(safe-area-inset-top)]">
-    <span class="text-red-500 font-bold tracking-widest text-xs uppercase mb-3">Sustainability</span>
+<br>
+<br>
     <h2 class="text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
         Committed to Responsible Operations
     </h2>

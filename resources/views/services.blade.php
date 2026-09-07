@@ -139,6 +139,112 @@
     </div>
 </section>
 
+<!-- ═══ 6. TERMINAL SERVICE FLOW ═══ -->
+<section class="py-20 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-slate-200 gap-4">
+            <div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Terminal Service Flow</h2>
+            </div>
+            <span class="text-slate-500 text-sm">Integrated Terminal Operating System (TOS) SOP</span>
+        </div>
+
+        <p class="md:hidden text-xs text-slate-500 font-medium mb-3 flex items-center gap-1.5">
+            <span class="text-red-600">&larr;</span> Swipe to view all steps <span class="text-red-600">&rarr;</span>
+        </p>
+
+        <div class="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-0 bg-slate-200 p-1 rounded-2xl overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-smooth no-scrollbar -mx-4 px-4 md:mx-0 md:px-1">
+            <div class="flow-step relative bg-white p-6 rounded-xl lg:rounded-none lg:first:rounded-l-xl flex flex-col justify-between shrink-0 w-[72%] xs:w-[62%] sm:w-[45%] md:w-auto snap-start">
+                <div>
+                    <span class="text-2xl font-black text-red-600">01</span>
+                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Vessel Berthing</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">The Ro-Ro vessel berths and deploys its stern/quarter ramp onto the quay.</p>
+                </div>
+            </div>
+
+            <div class="flow-step relative bg-white p-6 rounded-xl lg:rounded-none flex flex-col justify-between shrink-0 w-[72%] xs:w-[62%] sm:w-[45%] md:w-auto snap-start">
+                <div>
+                    <span class="text-2xl font-black text-red-600">02</span>
+                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Stevedoring</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">Discharging and driving vehicles off the ship by certified professional drivers.</p>
+                </div>
+            </div>
+
+            <div class="flow-step relative bg-white p-6 rounded-xl lg:rounded-none flex flex-col justify-between shrink-0 w-[72%] xs:w-[62%] sm:w-[45%] md:w-auto snap-start">
+                <div>
+                    <span class="text-2xl font-black text-red-600">03</span>
+                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Inspection PDI</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">Exterior condition check, barcode VIN optical scanning, and initial tally.</p>
+                </div>
+            </div>
+
+            <div class="flow-step relative bg-white p-6 rounded-xl lg:rounded-none flex flex-col justify-between shrink-0 w-[72%] xs:w-[62%] sm:w-[45%] md:w-auto snap-start">
+                <div>
+                    <span class="text-2xl font-black text-red-600">04</span>
+                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Cargodoring</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">Organized vehicle marshalling to designated parking slots across high-capacity yards.</p>
+                </div>
+            </div>
+
+            <div class="flow-step relative bg-white p-6 rounded-xl lg:rounded-none lg:last:rounded-r-xl flex flex-col justify-between shrink-0 w-[72%] xs:w-[62%] sm:w-[45%] md:w-auto snap-start">
+                <div>
+                    <span class="text-2xl font-black text-red-600">05</span>
+                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Receiving Delivery</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">Gate-out dispatch onto car-carrier transporter trucks toward dealerships and assembly hubs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 5. OUR SERVICE LINES ═══ -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-slate-200 gap-4">
+            <div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Our Service Lines</h2>
+            </div>
+            <a href="{{ url('/services') }}" class="text-blue-900 font-bold hover:text-red-600 transition flex items-center gap-1.5 text-sm">
+                View All Services <span class="text-lg">&rarr;</span>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="service-item">
+                <span class="text-2xl font-black text-red-600">01</span>
+                <h3 class="text-lg font-bold text-blue-950 mt-3 mb-2">Stevedoring</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Systematic vessel loading and discharging operations at the dedicated Ro-Ro berth.
+                </p>
+            </div>
+
+            <div class="service-item">
+                <span class="text-2xl font-black text-red-600">02</span>
+                <h3 class="text-lg font-bold text-blue-950 mt-3 mb-2">Cargodoring</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Marshalling and moving vehicles from the quay apron to designated staging yards by unit category.
+                </p>
+            </div>
+
+            <div class="service-item">
+                <span class="text-2xl font-black text-red-600">03</span>
+                <h3 class="text-lg font-bold text-blue-950 mt-3 mb-2">Receiving Delivery</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Gate-in receiving and delivery handover for logistics transport partners and car carriers.
+                </p>
+            </div>
+
+            <div class="service-item">
+                <span class="text-2xl font-black text-red-600">04</span>
+                <h3 class="text-lg font-bold text-blue-950 mt-3 mb-2">Value Added Services</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Complementary services including pre-delivery inspection (PDI), wash bays, and secure holding yards.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
 {{-- ═══ CTA STRIP ═══ --}}
 <section class="bg-red-600 py-14 relative overflow-hidden text-white">
     <div class="absolute inset-0 bg-red-700 transform skew-x-12 translate-x-1/3 z-0 pointer-events-none"></div>

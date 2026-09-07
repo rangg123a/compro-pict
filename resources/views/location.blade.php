@@ -56,61 +56,7 @@
 
 </div>
 
-{{-- ═══ MAP + ADDRESS (LIGHT MODE) ═══ --}}
-<section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800">
-    <div class="grid lg:grid-cols-12 gap-14 items-start">
 
-        <div class="lg:col-span-5 location-reveal space-y-6" style="animation-delay:.15s">
-            <div>
-                <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Our Address</span>
-                <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">
-                    Patimban Port Terminal
-                </h3>
-            </div>
-            <p class="text-slate-600 leading-relaxed text-sm">
-                Situated within the Patimban National Strategic Project zone in Subang Regency, offering optimized transit routes for automotive manufacturers across West Java.
-            </p>
-
-            <div class="space-y-4 pt-2">
-                <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200 shadow-sm">
-                    <div class="w-10 h-10 rounded-lg bg-red-600/10 text-red-600 flex items-center justify-center shrink-0">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                    </div>
-                    <div>
-                        <h5 class="font-bold text-slate-900 mb-1 text-sm">Port Location</h5>
-                        <p class="text-slate-600 text-xs leading-relaxed">
-                            Patimban Port, Pusakanagara, Subang Regency, West Java, Indonesia
-                        </p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200 shadow-sm">
-                    <div class="w-10 h-10 rounded-lg bg-blue-600/10 text-blue-600 flex items-center justify-center shrink-0">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7l9-4 9 4M4 10v9a1 1 0 001 1h4v-6h6v6h4a1 1 0 001-1v-9"/></svg>
-                    </div>
-                    <div>
-                        <h5 class="font-bold text-slate-900 mb-1 text-sm">Accessibility Access</h5>
-                        <p class="text-slate-600 text-xs leading-relaxed">
-                            Direct connectivity to arterial highways and dedicated port access roads.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{-- Google Maps Embed --}}
-        <div class="lg:col-span-7 location-reveal rounded-2xl overflow-hidden shadow-lg border border-slate-200 h-80 md:h-[420px] bg-slate-100" style="animation-delay:.3s">
-            <iframe
-                src="https://www.google.com/maps?q=Pelabuhan+Patimban,+Subang,+Jawa+Barat&output=embed"
-                class="w-full h-full"
-                style="border:0;" 
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-
-    </div>
-</section>
 
 {{-- ═══ DISTANCE STATS (LIGHT MODE) ═══ --}}
 <section class="bg-slate-100 py-20 border-t border-slate-200 text-slate-800">

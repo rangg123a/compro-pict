@@ -623,13 +623,17 @@
                         <path d="M 143.1 213.2 L 134.4 216.6 L 123.8 216.9 L 117.0 225.2 L 110.6 226.6 L 117.9 233.3 L 133.6 244.0 L 128.1 250.6 L 122.9 252.1 L 126.5 255.9 L 136.5 262.0 L 137.9 269.8 L 143.8 276.8 L 128.3 291.8 L 126.9 286.2 L 131.5 280.3 L 126.4 275.7 L 127.6 267.4 L 121.6 263.4 L 114.0 244.6 L 107.5 238.2 L 80.5 247.5 L 62.8 245.0 L 68.0 235.5 L 64.9 228.4 L 53.1 219.5 L 54.9 216.8 L 46.2 215.8 L 35.5 209.5 L 34.5 203.4 L 39.8 204.5 L 40.1 199.0 L 47.5 197.2 L 45.9 193.9 L 49.3 191.3 L 49.9 183.4 L 61.6 185.1 L 68.3 178.8 L 69.0 175.1 L 77.3 168.7 L 76.9 164.3 L 96.3 159.0 L 107.0 160.4 L 105.8 155.6 L 111.0 154.2 L 109.9 151.3 L 118.7 150.8 L 123.7 155.3 L 130.2 157.1 L 130.1 169.3 L 115.9 175.7 L 114.1 184.8 L 129.9 183.5 L 133.5 190.6 L 143.0 192.1 L 138.6 198.4 L 156.2 202.7 L 167.3 200.5 L 167.7 203.7 L 154.9 208.6 L 151.7 211.5 L 143.1 213.2 Z" fill="#dcfce7" stroke="#86efac" stroke-width="0.8" stroke-opacity="0.8" />
                         <path d="M -33.7 -9.9 L -17.9 -11.3 L 10.7 -17.9 L 33.5 -21.5 L 46.6 -19.1 L 62.2 -19.0 L 72.2 -15.4 L 87.2 -15.2 L 108.9 -13.2 L 123.5 -18.6 L 117.4 -23.1 L 132.9 -31.0 L 149.7 -27.9 L 181.0 -25.0 L 183.8 -19.2 L 205.1 -16.0 L 238.3 -18.4 L 253.3 -17.4 L 268.0 -13.8 L 277.1 -9.8 L 309.9 -8.7 L 343.5 -11.8 L 365.4 -17.2 L 374.4 -16.4 L 382.3 -13.8 L 400.2 -14.5 L 382.3 -1.0 L 386.1 2.1 L 394.6 1.1 L 409.4 2.3 L 421.0 -0.5 L 433.0 1.9 L 446.6 7.3 L 444.9 10.0 L 433.1 9.2 L 411.3 10.2 L 400.8 12.4 L 389.8 17.4 L 366.9 20.4 L 352.0 24.5 L 328.1 22.2 L 320.2 27.2 L 327.4 32.6 L 316.9 35.2 L 306.2 39.3 L 288.7 42.0 L 266.2 42.3 L 241.9 45.0 L 224.5 49.1 L 217.8 46.7 L 199.7 46.7 L 177.5 42.1 L 162.7 40.9 L 142.7 42.0 L 111.8 40.3 L 95.2 40.4 L 86.4 35.9 L 79.6 28.8 L 70.3 28.0 L 52.2 23.2 L 14.2 20.8 L 8.8 17.5 L 14.2 20.8 L 52.2 23.2 L 70.3 28.0 L 79.6 28.8 L 86.4 35.9 L 95.2 40.4 L 111.8 40.3 L 142.7 42.0 L 162.7 40.9 L 177.5 42.1 L 199.7 46.7 L 217.8 46.7 L 224.5 49.1 L 241.9 45.0 L 266.2 42.3 L 288.7 42.0 L 306.2 39.3 L 316.9 35.2 L 327.4 32.6 L 320.2 27.2 L 328.1 22.2 L 352.0 24.5 L 366.9 20.4 L 389.8 17.4 L 400.8 12.4 L 411.3 10.2 L 433.1 9.2 L 444.9 10.0 L 446.6 7.3 L 433.0 1.9 L 421.0 -0.5 L 409.4 2.3 L 394.6 1.1 L 386.1 2.1 L 382.3 -1.0 L 400.2 -14.5 L 418.2 -11.6 L 439.3 -16.4 L 439.2 -19.8 L 452.7 -27.9 L 461.1 -30.4 L 460.9 -34.6 L 452.7 -36.4 L 465.0 -40.3 L 503.6 -41.9 L 526.0 -39.6 L 539.2 -36.7 L 559.3 -21.0 L 564.9 -13.5 Z" fill="#dcfce7" stroke="#86efac" stroke-width="0.8" stroke-opacity="0.8" />
 
-                   
-                    <text x="330" y="430" fill="#0369a1" font-size="12" font-weight="800" letter-spacing="1.5">INDONESIA</text>
-                    <text x="100" y="300" fill="#475569" font-size="10" font-weight="700" letter-spacing="1">THAILAND</text>
-                    <text x="500" y="90" fill="#475569" font-size="11" font-weight="700" letter-spacing="1">CHINA</text>
-                    <text x="700" y="70" fill="#475569" font-size="10" font-weight="700" letter-spacing="1">JAPAN</text>
+                   <text x="90" y="325" fill="#0369a1" font-size="12" font-weight="800" letter-spacing="1.5">Belawan</text>
+               <text x="165" y="330" fill="#0369a1" font-size="12" font-weight="800" letter-spacing="1.5">Batam</text>
+                <text x="330" y="340" fill="#0369a1" font-size="12" font-weight="800" letter-spacing="1.5">Pontianak & Banjarmasin</text>
 
-                    <!-- DOMESTIC ROUTES (Blue Color #0284c7) -->
+                    <text x="330" y="430" fill="#a10303" font-size="12" font-weight="800" letter-spacing="1.5">INDONESIA</text>
+                    <text x="120" y="270" fill="#475569" font-size="10" font-weight="700" letter-spacing="1">THAILAND</text>
+                    <text x="470" y="120" fill="#475569" font-size="11" font-weight="700" letter-spacing="1">CHINA</text>
+                    <text x="700" y="70" fill="#475569" font-size="10" font-weight="700" letter-spacing="1">JAPAN</text>
+                    <text x="570" y="340" fill="#475569" font-size="10" font-weight="700" letter-spacing="1">ASIA</text>
+
+                    <!-- DOMESTIC ROUTES (Blue Color #0284c7)
                     <path class="route-hit" data-route="domestic" d="M268  Q 240 370 220 330" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
                     <path id="rutePatPontianak" class="route-line" data-route="domestic" d="M268 416 Q 240 370 220 330" stroke="#0284c7" stroke-width="1.8" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
                     <g class="route-marker" data-route="domestic" fill="#0284c7">
@@ -637,7 +641,7 @@
                         <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
                             <mpath href="#rutePatPontianak"/>
                         </animateMotion>
-                    </g>
+                    </g> -->
 
                     <path class="route-hit" data-route="domestic" d="M268 416 Q 210 390 170 340" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
                     <path id="rutePatBatam" class="route-line" data-route="domestic" d="M268 416 Q 210 390 170 340" stroke="#0284c7" stroke-width="1.8" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
@@ -704,7 +708,7 @@
                     </g>
 
                     <!-- Destination Port Markers -->
-                    <g class="dest-marker" data-route="domestic" tabindex="0" role="button" aria-label="View Domestic route details"><circle cx="220" cy="330" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="220" cy="330" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1" /></g>
+                    <!-- <g class="dest-marker" data-route="domestic" tabindex="0" role="button" aria-label="View Domestic route details"><circle cx="220" cy="330" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="220" cy="330" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1" /></g> pontianak-->
                     <g class="dest-marker" data-route="domestic" tabindex="0" role="button" aria-label="View Domestic route details"><circle cx="170" cy="340" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="170" cy="340" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1" /></g>
                     <g class="dest-marker" data-route="domestic" tabindex="0" role="button" aria-label="View Domestic route details"><circle cx="90" cy="310" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="90" cy="310" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1" /></g>
                     <g class="dest-marker" data-route="domestic" tabindex="0" role="button" aria-label="View Domestic route details"><circle cx="390" cy="350" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="390" cy="350" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1" /></g>
@@ -723,7 +727,7 @@
                         </circle>
                         <circle class="visible-dot" cx="268" cy="416" r="5.5" fill="#dc2626" stroke="#ffffff" stroke-width="1.5" />
                     </g>
-                    <text x="150" y="446" fill="#1e293b" font-size="12" font-weight="800" letter-spacing="1">PATIMBAN PORT — SUBANG, WEST JAVA</text>
+                    <text x="20" y="446" fill="#1e293b" font-size="12" font-weight="800" letter-spacing="1">PATIMBAN PORT — SUBANG, WEST JAVA</text>
                 </svg>
             </div>
         </div>

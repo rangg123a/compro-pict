@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Ro-Ro Services — PT Patimban International Car Terminal')
+@section('title', 'Our Services — PT Patimban International Car Terminal')
 
 @push('styles')
 <style>
     .hero-bg-services {
-        background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('{{ asset("assets/images/patimban-yard-3.jpeg") }}');
+        background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('{{ secure_asset("assets/images/patimban-yard-3.jpeg") }}');
         background-size: cover;
         background-position: center;
     }
@@ -22,226 +22,136 @@
 
 @section('content')
 
-{{-- ═══ HERO SECTION ═══ --}}
+{{-- ═══ HERO SECTION ═══ -->
 <div class="hero-bg-services min-h-[380px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-16 relative border-b border-white/10 bg-slate-950 pt-[env(safe-area-inset-top)]">
-
-    <h2 class="text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
-        Integrated Roll-on/Roll-off Cargo Handling Services
-    </h2>
-    <p class="text-slate-200 max-w-2xl mt-4 leading-relaxed text-sm">
-        Comprehensive port handling solutions designed for maximum efficiency, safety, and seamless vehicle distribution from vessel ramp to regional industrial corridors.
+    <span class="text-red-500 font-bold tracking-widest text-xs uppercase block mb-2">Terminal Capabilities</span>
+    <h1 class="text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
+        Our Services
+    </h1>
+    <p class="text-slate-200 max-w-2xl mt-4 leading-relaxed text-sm sm:text-base">
+        Solusi penanganan kargo dan layanan kepelabuhanan terpadu yang dirancang untuk efisiensi, keamanan, dan kelancaran distribusi logistik otomotif global.
     </p>
 </div>
 
-{{-- ═══ SERVICES GRID (LIGHT MODE) ═══ --}}
+{{-- ═══ 1. MAIN SERVICES SECTION (Cargodoring, Stevedoring, Wharfage, Equipment Rental) ═══ --}}
 <section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800">
     <div class="text-center mb-14">
-        <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">What We Do</span>
-        <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Our Main Services</h3>
+        <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Core Offerings</span>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Main Services</h2>
         <p class="text-slate-500 max-w-2xl mx-auto mt-3 text-sm">
-            Professional port terminal management adhering to rigorous international automotive logistics benchmarks.
+            Layanan inti penanganan kapal, bongkar muat kargo, penyediaan dermaga, serta dukungan alat berat berstandar internasional.
         </p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6">
-            <div class="w-12 h-12 rounded-lg bg-red-600/10 text-red-600 flex items-center justify-center mb-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4M4 17h12m0 0l-4 4m4-4l-4-4"/></svg>
+        <!-- Cargodoring -->
+        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between">
+            <div>
+                <div class="w-12 h-12 rounded-lg bg-red-600/10 text-red-600 flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
+                </div>
+                <h3 class="font-bold text-slate-900 text-lg mb-2">Cargodoring</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Pengaturan, pemindahan, dan penataan kargo dari apron dermaga menuju lapangan penumpukan (staging yard) secara sistematis menggunakan TOS digital.
+                </p>
             </div>
-            <h4 class="font-bold text-slate-900 text-lg mb-2">Stevedoring</h4>
-            <p class="text-slate-600 text-sm leading-relaxed">
-                Systematic and secure vessel unloading and loading operations handled by certified professional drivers at our dedicated 300-meter Ro-Ro berth.
-            </p>
+            <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-slate-400">Main Service 01</div>
         </div>
 
-        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6">
-            <div class="w-12 h-12 rounded-lg bg-blue-600/10 text-blue-600 flex items-center justify-center mb-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7l9-4 9 4M4 10v9a1 1 0 001 1h4v-6h6v6h4a1 1 0 001-1v-9"/></svg>
+        <!-- Stevedoring -->
+        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between">
+            <div>
+                <div class="w-12 h-12 rounded-lg bg-blue-600/10 text-blue-600 flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4M4 17h12m0 0l-4 4m4-4l-4-4"/></svg>
+                </div>
+                <h3 class="font-bold text-slate-900 text-lg mb-2">Stevedoring</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Kegiatan bongkar muat kendaraan dari dan ke kapal car carrier melalui ramp door kapal yang dikelola oleh pengemudi bersertifikasi profesional.
+                </p>
             </div>
-            <h4 class="font-bold text-slate-900 text-lg mb-2">Cargodoring &amp; Storage</h4>
-            <p class="text-slate-600 text-sm leading-relaxed">
-                Efficient transfer of vehicles from the quay apron to our high-capacity staging yards utilizing digital lot mapping and automated slot allocation.
-            </p>
+            <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-slate-400">Main Service 02</div>
         </div>
 
-        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6">
-            <div class="w-12 h-12 rounded-lg bg-emerald-600/10 text-emerald-600 flex items-center justify-center mb-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <!-- Wharfage -->
+        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between">
+            <div>
+                <div class="w-12 h-12 rounded-lg bg-emerald-600/10 text-emerald-600 flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                </div>
+                <h3 class="font-bold text-slate-900 text-lg mb-2">Wharfage</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Penyediaan fasilitas dermaga Ro-Ro sepanjang 300 meter dengan kedalaman kolam mumpuni untuk menjamin kelancaran sandar kapal ekapanjang.
+                </p>
             </div>
-            <h4 class="font-bold text-slate-900 text-lg mb-2">Pre-Delivery Inspection</h4>
-            <p class="text-slate-600 text-sm leading-relaxed">
-                Thorough physical checks, quality control logging, and optical barcode scanning to guarantee zero-scratch delivery before onward transport.
-            </p>
+            <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-slate-400">Main Service 03</div>
         </div>
 
-        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6">
-            <div class="w-12 h-12 rounded-lg bg-yellow-600/10 text-yellow-600 flex items-center justify-center mb-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7h1a2 2 0 012 2v6a2 2 0 01-2 2h-1M5 7H4a2 2 0 00-2 2v6a2 2 0 002 2h1m0-10h14M5 7v10m14-10v10"/></svg>
+        <!-- Equipment Rental -->
+        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between">
+            <div>
+                <div class="w-12 h-12 rounded-lg bg-amber-600/10 text-amber-600 flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+                <h3 class="font-bold text-slate-900 text-lg mb-2">Equipment Rental</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Penyewaan alat-alat pendukung terminal dan logistik penunjang operasional bongkar muat kendaraan serta kargo khusus.
+                </p>
             </div>
-            <h4 class="font-bold text-slate-900 text-lg mb-2">Domestic Distribution</h4>
-            <p class="text-slate-600 text-sm leading-relaxed">
-                Streamlined gate-out coordination connecting port staging yards directly to regional car-carrier transporter trucks and domestic networks.
-            </p>
-        </div>
-
-        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6">
-            <div class="w-12 h-12 rounded-lg bg-purple-600/10 text-purple-600 flex items-center justify-center mb-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18 15 15 0 010-18z"/></svg>
-            </div>
-            <h4 class="font-bold text-slate-900 text-lg mb-2">Export &amp; Import Handling</h4>
-            <p class="text-slate-600 text-sm leading-relaxed">
-                Seamless customs clearance synchronization via electronic data interchange (EDI) for international vehicle export and import shipments.
-            </p>
-        </div>
-
-        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6">
-            <div class="w-12 h-12 rounded-lg bg-rose-600/10 text-rose-600 flex items-center justify-center mb-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
-            </div>
-            <h4 class="font-bold text-slate-900 text-lg mb-2">Vehicle Maintenance</h4>
-            <p class="text-slate-600 text-sm leading-relaxed">
-                Specialized technical support, washing facilities, battery charging maintenance, and minor pre-delivery adjustments on-site.
-            </p>
+            <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-slate-400">Main Service 04</div>
         </div>
 
     </div>
 </section>
 
-{{-- ═══ WORKFLOW (LIGHT MODE) ═══ --}}
+{{-- ═══ 2. SERVICES EXPORT & IMPORT SECTION ═══ --}}
 <section class="bg-slate-100 py-20 border-t border-slate-200 text-slate-800">
-    <div class="max-w-5xl mx-auto px-6">
+    <div class="max-w-7xl mx-auto px-6">
 
         <div class="text-center mb-14">
-            <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">How It Works</span>
-            <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Ro-Ro Service Workflow</h3>
+            <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Global Trade Support</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Services: Export & Import</h2>
+            <p class="text-slate-500 max-w-2xl mx-auto mt-3 text-sm">
+                Integrasi penuh dengan alur kepabeanan internasional untuk mempercepat arus logistik kendaraan luar dan dalam negeri.
+            </p>
         </div>
 
-        <div class="grid md:grid-cols-4 gap-6">
-            <div class="text-center">
-                <h5 class="font-bold text-slate-900 text-base mb-2">Vessel Berthing</h5>
-                <p class="text-slate-600 text-xs leading-relaxed">Car carrier vessel docks safely at the 300m dedicated Ro-Ro berth.</p>
-            </div>
-            <div class="text-center">
-                <h5 class="font-bold text-slate-900 text-base mb-2">Cargo Handling</h5>
-                <p class="text-slate-600 text-xs leading-relaxed">Ramp deployment and systematic vehicle discharge via skilled drivers.</p>
-            </div>
-            <div class="text-center">
-                <h5 class="font-bold text-slate-900 text-base mb-2">Inspect &amp; Store</h5>
-                <p class="text-slate-600 text-xs leading-relaxed">VIN scanning, digital logging, and marshalling into staging yards.</p>
-            </div>
-            <div class="text-center">
-                <h5 class="font-bold text-slate-900 text-base mb-2">Distribution</h5>
-                <p class="text-slate-600 text-xs leading-relaxed">Gate-out processing and transport dispatch to final destinations.</p>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- ═══ 6. TERMINAL SERVICE FLOW ═══ -->
-<section class="py-20 bg-slate-50 border-t border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-slate-200 gap-4">
-            <div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Terminal Service Flow</h2>
-            </div>
-            <span class="text-slate-500 text-sm">Integrated Terminal Operating System (TOS) SOP</span>
-        </div>
-
-        <p class="md:hidden text-xs text-slate-500 font-medium mb-3 flex items-center gap-1.5">
-            <span class="text-red-600">&larr;</span> Swipe to view all steps <span class="text-red-600">&rarr;</span>
-        </p>
-
-        <div class="flex md:grid md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-0 bg-slate-200 p-1 rounded-2xl overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-smooth no-scrollbar -mx-4 px-4 md:mx-0 md:px-1">
-            <div class="flow-step relative bg-white p-6 rounded-xl lg:rounded-none lg:first:rounded-l-xl flex flex-col justify-between shrink-0 w-[72%] xs:w-[62%] sm:w-[45%] md:w-auto snap-start">
+        <div class="grid md:grid-cols-2 gap-8">
+            
+            <!-- Export Handling -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm flex flex-col justify-between">
                 <div>
-                    <span class="text-2xl font-black text-red-600">01</span>
-                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Vessel Berthing</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">The Ro-Ro vessel berths and deploys its stern/quarter ramp onto the quay.</p>
+                    <div class="w-14 h-14 rounded-xl bg-sky-600/10 text-sky-600 flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3">Export Handling</h3>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                        Layanan pengiriman kendaraan buatan Indonesia menuju berbagai hub internasional. Mencakup penerimaan unit dari pabrikan, pemeriksaan kualitas fisik akhir (PDI), penumpukan sementara di staging yard, hingga proses muat ke kapal ekspor secara terjadwal.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2 text-xs font-bold text-sky-700 bg-sky-50 px-4 py-2.5 rounded-xl w-fit">
+                    <span>⚡ Seamless Outbound Logistics</span>
                 </div>
             </div>
 
-            <div class="flow-step relative bg-white p-6 rounded-xl lg:rounded-none flex flex-col justify-between shrink-0 w-[72%] xs:w-[62%] sm:w-[45%] md:w-auto snap-start">
+            <!-- Import Handling -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm flex flex-col justify-between">
                 <div>
-                    <span class="text-2xl font-black text-red-600">02</span>
-                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Stevedoring</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">Discharging and driving vehicles off the ship by certified professional drivers.</p>
+                    <div class="w-14 h-14 rounded-xl bg-purple-600/10 text-purple-600 flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3">Import Handling</h3>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                        Pengelolaan bongkar muat kargo impor dari kapal internasional dengan sinkronisasi data kepabeanan (EDI). Memastikan proses pengeluaran unit dari terminal menuju jaringan distribusi domestik berjalan cepat, aman, dan transparan.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2 text-xs font-bold text-purple-700 bg-purple-50 px-4 py-2.5 rounded-xl w-fit">
+                    <span>🔒 Secure Customs Synchronization</span>
                 </div>
             </div>
 
-            <div class="flow-step relative bg-white p-6 rounded-xl lg:rounded-none flex flex-col justify-between shrink-0 w-[72%] xs:w-[62%] sm:w-[45%] md:w-auto snap-start">
-                <div>
-                    <span class="text-2xl font-black text-red-600">03</span>
-                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Inspection PDI</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">Exterior condition check, barcode VIN optical scanning, and initial tally.</p>
-                </div>
-            </div>
-
-            <div class="flow-step relative bg-white p-6 rounded-xl lg:rounded-none flex flex-col justify-between shrink-0 w-[72%] xs:w-[62%] sm:w-[45%] md:w-auto snap-start">
-                <div>
-                    <span class="text-2xl font-black text-red-600">04</span>
-                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Cargodoring</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">Organized vehicle marshalling to designated parking slots across high-capacity yards.</p>
-                </div>
-            </div>
-
-            <div class="flow-step relative bg-white p-6 rounded-xl lg:rounded-none lg:last:rounded-r-xl flex flex-col justify-between shrink-0 w-[72%] xs:w-[62%] sm:w-[45%] md:w-auto snap-start">
-                <div>
-                    <span class="text-2xl font-black text-red-600">05</span>
-                    <h4 class="font-bold text-blue-950 mt-2 mb-1.5 text-base">Receiving Delivery</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">Gate-out dispatch onto car-carrier transporter trucks toward dealerships and assembly hubs.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══ 5. OUR SERVICE LINES ═══ -->
-<section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-slate-200 gap-4">
-            <div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Our Service Lines</h2>
-            </div>
-            <a href="{{ url('/services') }}" class="text-blue-900 font-bold hover:text-red-600 transition flex items-center gap-1.5 text-sm">
-                View All Services <span class="text-lg">&rarr;</span>
-            </a>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="service-item">
-                <span class="text-2xl font-black text-red-600">01</span>
-                <h3 class="text-lg font-bold text-blue-950 mt-3 mb-2">Stevedoring</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">
-                    Systematic vessel loading and discharging operations at the dedicated Ro-Ro berth.
-                </p>
-            </div>
-
-            <div class="service-item">
-                <span class="text-2xl font-black text-red-600">02</span>
-                <h3 class="text-lg font-bold text-blue-950 mt-3 mb-2">Cargodoring</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">
-                    Marshalling and moving vehicles from the quay apron to designated staging yards by unit category.
-                </p>
-            </div>
-
-            <div class="service-item">
-                <span class="text-2xl font-black text-red-600">03</span>
-                <h3 class="text-lg font-bold text-blue-950 mt-3 mb-2">Receiving Delivery</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">
-                    Gate-in receiving and delivery handover for logistics transport partners and car carriers.
-                </p>
-            </div>
-
-            <div class="service-item">
-                <span class="text-2xl font-black text-red-600">04</span>
-                <h3 class="text-lg font-bold text-blue-950 mt-3 mb-2">Value Added Services</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">
-                    Complementary services including pre-delivery inspection (PDI), wash bays, and secure holding yards.
-                </p>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -250,8 +160,8 @@
     <div class="absolute inset-0 bg-red-700 transform skew-x-12 translate-x-1/3 z-0 pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
         <div>
-            <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Would You Like to Use Our Services?</h4>
-            <p class="text-red-100 text-sm sm:text-base mt-1">Review our competitive terminal service tariffs or speak with our commercial team.</p>
+            <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Ready to Utilize Our Services?</h4>
+            <p class="text-red-100 text-sm sm:text-base mt-1">Cek struktur tarif layanan terminal kami atau hubungi tim komersial untuk konsultasi logistik.</p>
         </div>
         <div class="flex flex-wrap justify-center gap-3">
             <a href="{{ url('/tariffs') }}" class="px-6 py-3 rounded-xl bg-blue-950 hover:bg-blue-900 text-white font-bold text-xs uppercase tracking-wider transition shadow-xl whitespace-nowrap">

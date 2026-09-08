@@ -17,6 +17,15 @@
         border-color: #dc2626;
         box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.12); 
     }
+    .shareholder-card {
+        transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background-color .25s ease;
+    }
+    .shareholder-card:hover {
+        transform: translateY(-4px);
+        border-color: #dc2626;
+        box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.12);
+        background-color: #f8fafc;
+    }
     @keyframes timeline-check-pop {
         0%, 100% { opacity: 0; transform: scale(0.35) rotate(-45deg); }
         20%, 75% { opacity: 1; transform: scale(1) rotate(0deg); }
@@ -148,33 +157,44 @@
     </div>
 </section>
 
-{{-- ═══ SHAREHOLDERS (LIGHT MODE) ═══ --}}
+{{-- ═══ SHAREHOLDERS (LIGHT MODE WITH LINKS) ═══ --}}
 <section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800 border-t border-slate-200">
     <div class="text-center mb-12">
         <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Our Shareholders</span>
         <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Shareholder Consortium</h3>
         <p class="text-slate-500 max-w-2xl mx-auto mt-3 text-sm">
-            PICT is supported by a consortium of leading Japanese automotive logistics and shipping companies.
+            PICT is supported by a consortium of leading Japanese automotive logistics and shipping companies. Click a card to visit their official site.
         </p>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm hover:border-slate-300 transition">
-            <p class="text-3xl font-extrabold text-slate-900 mb-1 tracking-tight">34%</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <!-- Toyota Tsusho Corporation -->
+        <a href="https://www.toyota-tsusho.com/" target="_blank" rel="noopener noreferrer" class="shareholder-card bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm block group">
+            <p class="text-3xl font-extrabold text-slate-900 mb-1 tracking-tight group-hover:text-red-600 transition-colors">34%</p>
             <p class="text-slate-600 text-xs font-medium">Toyota Tsusho Corporation Group</p>
-        </div>
-        <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm hover:border-slate-300 transition">
-            <p class="text-3xl font-extrabold text-slate-900 mb-1 tracking-tight">26%</p>
+            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">Visit Website &rarr;</span>
+        </a>
+
+        <!-- Toyofuji Shipping Co., Ltd. -->
+        <a href="https://www.toyofuji.co.jp/en/english/company/company.html" target="_blank" rel="noopener noreferrer" class="shareholder-card bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm block group">
+            <p class="text-3xl font-extrabold text-slate-900 mb-1 tracking-tight group-hover:text-red-600 transition-colors">26%</p>
             <p class="text-slate-600 text-xs font-medium">Toyofuji Shipping Co., Ltd.</p>
-        </div>
-        <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm hover:border-slate-300 transition">
-            <p class="text-3xl font-extrabold text-slate-900 mb-1 tracking-tight">25%</p>
+            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">Visit Website &rarr;</span>
+        </a>
+
+        <!-- NYK Line -->
+        <a href="https://www.nyk.com/english/" target="_blank" rel="noopener noreferrer" class="shareholder-card bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm block group">
+            <p class="text-3xl font-extrabold text-slate-900 mb-1 tracking-tight group-hover:text-red-600 transition-colors">25%</p>
             <p class="text-slate-600 text-xs font-medium">NYK Line</p>
-        </div>
-        <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm hover:border-slate-300 transition">
-            <p class="text-3xl font-extrabold text-slate-900 mb-1 tracking-tight">15%</p>
+            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">Visit Website &rarr;</span>
+        </a>
+
+        <!-- Kamigumi Co., Ltd. -->
+        <a href="https://www.kamigumi.co.jp/english/" target="_blank" rel="noopener noreferrer" class="shareholder-card bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm block group">
+            <p class="text-3xl font-extrabold text-slate-900 mb-1 tracking-tight group-hover:text-red-600 transition-colors">15%</p>
             <p class="text-slate-600 text-xs font-medium">Kamigumi Co., Ltd.</p>
-        </div>
+            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">Visit Website &rarr;</span>
+        </a>
     </div>
 </section>
 

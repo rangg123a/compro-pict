@@ -1001,19 +1001,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    if (reducedMotion || !('IntersectionObserver' in window)) {
-        showStats();
-        return;
-    }
-
-    const observer = new IntersectionObserver(entries => {
-        if (!entries[0].isIntersecting) return;
-        showStats();
-        observer.disconnect();
-    }, { threshold: 0.25 });
-
-    observer.observe(statsStrip);
-});
 </script>
 @endpush
 

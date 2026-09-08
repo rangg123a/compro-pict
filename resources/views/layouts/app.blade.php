@@ -20,7 +20,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.css">
-
+    <link rel="preload" as="image" href="{{ asset('assets/images/background.jpeg') }}">
     <style>
         body { 
             font-family: 'DM Sans', sans-serif; 

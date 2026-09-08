@@ -24,10 +24,8 @@
 @section('content')
 
 {{-- ═══ HERO SECTION ═══ --}}
-<div class="hero-bg-sustainability min-h-[380px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-16 relative border-b border-slate-200 bg-slate-900 pt-[env(safe-area-inset-top)]" data-aos="fade-down">
-<br>
-<br>
-    <h2 class="text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
+<div class="hero-bg-sustainability min-h-[320px] md:min-h-[380px] flex flex-col items-start justify-center text-left px-6 md:px-16 py-12 md:py-16 relative border-b border-slate-200 bg-slate-900 pt-[calc(env(safe-area-inset-top)+4rem)] md:pt-16" data-aos="fade-down">
+    <h2 class="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
         Committed to Responsible Operations
     </h2>
     <p class="text-slate-200 max-w-2xl mt-4 leading-relaxed text-sm">
@@ -78,7 +76,7 @@
 </section>
 
 {{-- ═══ COMMITMENT STATEMENT (LIGHT MODE) ═══ --}}
-<section class="bg-slate-100 py-20 border-t border-slate-200 text-slate-800" data-aos="fade-up">
+<section class="bg-slate-100 pt-10 pb-20 border-t border-slate-200 text-slate-800" data-aos="fade-up">
     <div class="max-w-4xl mx-auto px-6 text-center">
         <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Our Commitment</span>
         <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 tracking-tight">

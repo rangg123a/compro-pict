@@ -1,175 +1,218 @@
 @extends('layouts.app')
 
-@section('title', 'Tarif Layanan Terminal — PT Patimban International Car Terminal')
+@section('title', 'Terminal Service Tariffs — PT Patimban International Car Terminal')
+
+@php
+    $filePathDomestik = public_path('assets/pdf/contoh.pdf');
+    $fileExistsDomestik = file_exists($filePathDomestik);
+    $pdfUrlDomestik = $fileExistsDomestik ? asset('assets/pdf/contoh.pdf') : '#';
+
+    $filePathIntl = public_path('assets/pdf/contoh.pdf');
+    $fileExistsIntl = file_exists($filePathIntl);
+    $pdfUrlIntl = $fileExistsIntl ? asset('assets/pdf/contoh.pdf') : '#';
+@endphp
+
+@push('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+<style>
+    .page-transition {
+        animation: pageMorphIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes pageMorphIn {
+        from {
+            opacity: 0;
+            transform: translateY(16px) scale(0.99);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+</style>
+@endpush
 
 @section('content')
 
-@php
-    // Cek keberadaan fisik file di folder public/assets/pdf/contoh.pdf
-    $filePath = public_path('assets/pdf/contoh.pdf');
-    $fileExists = file_exists($filePath);
-    
-    // Tentukan URL tujuan
-    $pdfUrl = $fileExists ? secure_asset('assets/pdf/contoh.pdf') : '#';
-@endphp
+<div class="page-transition">
 
-<!-- ═══ PREMIUM NOTIFICATION TOAST ═══ -->
-<div id="pdfNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-400 ease-out pointer-events-none">
-    <div class="pointer-events-auto bg-slate-900/95 backdrop-blur-xl border border-slate-800 text-white p-4 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.4)] flex items-start gap-4 max-w-sm relative overflow-hidden">
-        
-        <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-amber-400 to-rose-500"></div>
-
-        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0 border border-amber-500/20">
-            <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-            </svg>
+    <!-- ═══ NOTIFICATION TOAST ═══ -->
+    <div id="pdfNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-300 ease-out pointer-events-none">
+        <div class="pointer-events-auto bg-blue-950 border-l-4 border-red-600 text-white pl-4 pr-3 py-3 shadow-lg flex items-start gap-3 max-w-sm">
+            <div class="flex-1">
+                <p class="text-xs font-bold uppercase tracking-wide text-red-400">Information</p>
+                <p id="notificationText" class="text-sm text-slate-200 mt-1 leading-relaxed">
+                    Document not available.
+                </p>
+            </div>
+            <button type="button" onclick="hideNotification()" class="text-slate-400 hover:text-white transition-colors cursor-pointer leading-none text-lg">
+                &times;
+            </button>
         </div>
+    </div>
 
-        <div class="flex-1 pr-2">
-            <h5 class="font-bold text-sm text-slate-100 flex items-center gap-1.5">
-                <span>Perhatian</span>
-                <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-            </h5>
-            <p id="notificationText" class="text-xs text-slate-400 mt-1 leading-relaxed">
-                Dokumen PDF untuk kategori ini sedang dalam pembaruan.
+    <!-- HERO SECTION -->
+    <div class="relative w-full min-h-[400px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-20 pt-40 border-b border-white/10 bg-slate-950 overflow-hidden">
+        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('{{ asset("assets/images/background.jpeg") }}');"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-w-full w-full" data-aos="fade-down">
+            <span class="text-red-500 font-bold tracking-widest text-xs uppercase block mb-2">Terminal Capabilities</span>
+            <h1 class="text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
+                Terminal Service Tariffs
+            </h1>
+            <p class="text-slate-200 max-w-2xl mt-4 leading-relaxed text-sm sm:text-base">
+                Official fee structure for domestic and international vehicle handling services at Patimban Terminal.
             </p>
         </div>
-
-        <button type="button" onclick="hideNotification()" class="text-slate-500 hover:text-slate-200 transition-colors p-1 rounded-lg hover:bg-slate-800 cursor-pointer">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-        </button>
-
-        <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-slate-800">
-            <div id="toastProgress" class="h-full bg-amber-500 w-full transition-all linear duration-[4500ms]"></div>
-        </div>
     </div>
-</div>
 
-<!-- HEADER -->
-<div class="relative bg-slate-950 py-20 border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-        <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-2">
-            Dokumen Resmi
-        </span>
+    <div class="max-w-6xl mx-auto px-6 py-14" data-aos="fade-up" data-aos-delay="100">
 
-        <h1 class="text-4xl font-extrabold text-white">
-            Tarif Pelayanan Terminal (PICT)
-        </h1>
+        {{-- DOMESTIC --}}
+        <div class="border border-slate-300 bg-white shadow-sm transition-all duration-300 hover:shadow-md">
+            <div class="border-b border-slate-300 bg-slate-50 px-6 py-6 flex flex-wrap justify-between items-center gap-4">
+                <div class="flex items-center gap-4">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Domestic Tariffs</h2>
+                        <p class="text-xs text-slate-500 mt-0.5">Inter-island domestic services</p>
+                    </div>
+                </div>
 
-        <p class="mt-4 text-slate-400 max-w-3xl mx-auto">
-            Transparansi struktur biaya layanan terminal kendaraan domestik maupun internasional.
+                <div class="flex gap-2">
+                    <button type="button" onclick="togglePreview('preview-domestik', this)" class="border border-slate-400 text-slate-700 hover:bg-slate-100 px-4 py-2.5 text-sm font-semibold transition inline-flex items-center gap-2 cursor-pointer">
+                        <span class="preview-label">View Document</span>
+                        <svg class="w-3.5 h-3.5 transition-transform preview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+
+                </div>
+            </div>
+
+            <div id="preview-domestik" class="hidden border-t border-slate-300 transition-all duration-300">
+                <div class="p-6 bg-slate-100 flex flex-col items-center justify-center">
+                    <div class="w-full max-w-2xl bg-white border border-slate-300 p-8 rounded-2xl shadow-sm text-center">
+                        @if($fileExistsDomestik)
+                            <div class="w-16 h-16 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">Domestic_Tariff_2026.pdf</h3>
+                            <p class="text-xs text-slate-500 mb-6">Official document detailing domestic port handling fees.</p>
+                            <div class="flex justify-center gap-3">
+                                <a href="{{ $pdfUrlDomestik }}" target="_blank" class="bg-red-600 hover:bg-red-500 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition inline-flex items-center gap-2">
+                                    <span>Preview in New Tab</span>
+                                </a>
+                                <a href="{{ $pdfUrlDomestik }}" download class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition inline-flex items-center gap-2">
+                                    <span>Download PDF</span>
+                                </a>
+                            </div>
+                        @else
+                            <p class="text-slate-400 text-sm">Document preview is not available yet.</p>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- INTERNATIONAL --}}
+        <div class="border border-slate-300 border-t-0 bg-white shadow-sm transition-all duration-300 hover:shadow-md mt-6">
+            <div class="border-b border-slate-300 bg-slate-50 px-6 py-6 flex flex-wrap justify-between items-center gap-4">
+                <div class="flex items-center gap-4">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">International Tariffs</h2>
+                        <p class="text-xs text-slate-500 mt-0.5">Cross-border export-import services</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-2">
+                    <button type="button" onclick="togglePreview('preview-internasional', this)" class="border border-slate-400 text-slate-700 hover:bg-slate-100 px-4 py-2.5 text-sm font-semibold transition inline-flex items-center gap-2 cursor-pointer">
+                        <span class="preview-label">View Document</span>
+                        <svg class="w-3.5 h-3.5 transition-transform preview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+
+                    @if($fileExistsIntl)
+                       
+                    @else
+                        <button type="button" onclick="showNotification('The International Tariff PDF document is not yet available on the server.')" class="bg-blue-950 hover:bg-blue-900 text-white px-4 py-2.5 text-sm font-semibold transition cursor-pointer">
+                            Download PDF
+                        </button>
+                    @endif
+                </div>
+            </div>
+
+            <div id="preview-internasional" class="hidden border-t border-slate-300 transition-all duration-300">
+                <div class="p-6 bg-slate-100 flex flex-col items-center justify-center">
+                    <div class="w-full max-w-2xl bg-white border border-slate-300 p-8 rounded-2xl shadow-sm text-center">
+                        @if($fileExistsIntl)
+                            <div class="w-16 h-16 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 mb-1">International_Tariff_2026.pdf</h3>
+                            <p class="text-xs text-slate-500 mb-6">Official document detailing international port handling fees.</p>
+                            <div class="flex justify-center gap-3">
+                                <a href="{{ $pdfUrlIntl }}" target="_blank" class="bg-red-600 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition inline-flex items-center gap-2">
+                                    <span>Preview in New Tab</span>
+                                </a>
+                                <a href="{{ $pdfUrlIntl }}" download class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition inline-flex items-center gap-2">
+                                    <span>Download PDF</span>
+                                </a>
+                            </div>
+                        @else
+                            <p class="text-slate-400 text-sm">Document preview is not available yet.</p>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-xs text-slate-400 mt-6 pt-4 border-t border-slate-200">
+            Tariffs are subject to change at any time in accordance with company policy. Contact info@pict.co.id to confirm the latest rates.
         </p>
-    </div>
-</div>
 
-<div class="max-w-7xl mx-auto px-6 py-16 space-y-14">
-
-    {{-- DOMESTIK --}}
-    <div class="bg-white rounded-2xl shadow border overflow-hidden">
-        <div class="p-6 flex justify-between items-center bg-slate-50">
-            <div>
-                <span class="bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-xs font-bold">
-                    DOMESTIC
-                </span>
-                <h2 class="text-2xl font-bold mt-3">
-                    Tarif Domestik
-                </h2>
-            </div>
-
-            @if($fileExists)
-                <a href="{{ $pdfUrl }}" download class="bg-sky-600 hover:bg-sky-700 text-white px-5 py-3 rounded-xl font-semibold transition shadow-sm inline-block">
-                    Download PDF
-                </a>
-            @else
-                <button type="button" onclick="showNotification('Dokumen PDF Tarif Domestik belum tersedia di server.')" class="bg-sky-600 hover:bg-sky-700 text-white px-5 py-3 rounded-xl font-semibold transition cursor-pointer shadow-sm">
-                    Download PDF
-                </button>
-            @endif
-        </div>
-
-        <div class="p-5 bg-slate-100">
-            <div class="w-full h-[700px] rounded-lg bg-white border relative overflow-hidden">
-                @if($fileExists)
-                    <iframe src="{{ $pdfUrl }}#view=FitH" width="100%" height="100%" class="w-full h-full border-0"></iframe>
-                @else
-                    <div class="flex flex-col items-center justify-center h-full text-slate-400 text-sm">
-                        <p>Pratinjau PDF belum tersedia.</p>
-                    </div>
-                @endif
-            </div>
-        </div>
-    </div>
-
-    {{-- INTERNASIONAL --}}
-    <div class="bg-white rounded-2xl shadow border overflow-hidden">
-        <div class="p-6 flex justify-between items-center bg-slate-50">
-            <div>
-                <span class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-bold">
-                    INTERNATIONAL
-                </span>
-                <h2 class="text-2xl font-bold mt-3">
-                    Tarif Internasional
-                </h2>
-            </div>
-
-            @if($fileExists)
-                <a href="{{ $pdfUrl }}" download class="bg-amber-600 hover:bg-amber-700 text-white px-5 py-3 rounded-xl font-semibold transition shadow-sm inline-block">
-                    Download PDF
-                </a>
-            @else
-                <button type="button" onclick="showNotification('Dokumen PDF Tarif Internasional belum tersedia di server.')" class="bg-amber-600 hover:bg-amber-700 text-white px-5 py-3 rounded-xl font-semibold transition cursor-pointer shadow-sm">
-                    Download PDF
-                </button>
-            @endif
-        </div>
-
-        <div class="p-5 bg-slate-100">
-            <div class="w-full h-[700px] rounded-lg bg-white border relative overflow-hidden">
-                @if($fileExists)
-                    <iframe src="{{ $pdfUrl }}#view=FitH" width="100%" height="100%" class="w-full h-full border-0"></iframe>
-                @else
-                    <div class="flex flex-col items-center justify-center h-full text-slate-400 text-sm">
-                        <p>Pratinjau PDF belum tersedia.</p>
-                    </div>
-                @endif
-            </div>
-        </div>
     </div>
 
 </div>
 
 @push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof AOS !== 'undefined') {
+            AOS.init({ duration: 800, once: true });
+        }
+    });
+
     let notificationTimeout;
 
     function showNotification(message) {
         const toast = document.getElementById('pdfNotification');
-        const textEl = document.getElementById('notificationText');
-        const progressBar = document.getElementById('toastProgress');
-        
-        textEl.textContent = message;
-        
-        progressBar.style.transition = 'none';
-        progressBar.style.width = '100%';
-        
+        document.getElementById('notificationText').textContent = message;
         toast.classList.remove('translate-y-32', 'opacity-0');
-        
-        setTimeout(() => {
-            progressBar.style.transition = 'width 4500ms linear';
-            progressBar.style.width = '0%';
-        }, 50);
-        
         clearTimeout(notificationTimeout);
-        notificationTimeout = setTimeout(() => {
-            hideNotification();
-        }, 4500);
+        notificationTimeout = setTimeout(hideNotification, 4000);
     }
 
     function hideNotification() {
-        const toast = document.getElementById('pdfNotification');
-        toast.classList.add('translate-y-32', 'opacity-0');
+        document.getElementById('pdfNotification').classList.add('translate-y-32', 'opacity-0');
+    }
+
+    function togglePreview(previewId, btn) {
+        const preview = document.getElementById(previewId);
+        const icon = btn.querySelector('.preview-icon');
+        const label = btn.querySelector('.preview-label');
+        const isHidden = preview.classList.contains('hidden');
+
+        if (isHidden) {
+            preview.classList.remove('hidden');
+            icon.classList.add('rotate-180');
+            label.textContent = 'Close Document';
+        } else {
+            preview.classList.add('hidden');
+            icon.classList.remove('rotate-180');
+            label.textContent = 'View Document';
+        }
     }
 </script>
 @endpush

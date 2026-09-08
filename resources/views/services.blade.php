@@ -23,7 +23,7 @@
 
 @section('content')
 
-{{-- ═══ HERO SECTION ═══ -->
+{{-- ═══ HERO SECTION ═══ --}}
 <div class="hero-bg-services min-h-[380px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-16 relative border-b border-white/10 bg-slate-950 pt-[env(safe-area-inset-top)]" data-aos="fade-down">
     <span class="text-red-500 font-bold tracking-widest text-xs uppercase block mb-2">Terminal Capabilities</span>
     <h1 class="text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
@@ -37,7 +37,7 @@
 {{-- ═══ 1. MAIN SERVICES SECTION (Cargodoring, Stevedoring, Wharfage, Equipment Rental) ═══ --}}
 <section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800" data-aos="fade-up">
     <div class="text-center mb-14">
-        <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Core Offerings</span>
+        <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1"></span>
         <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Main Services</h2>
         <p class="text-slate-500 max-w-2xl mx-auto mt-3 text-sm">
             Layanan inti penanganan kapal, bongkar muat kargo, penyediaan dermaga, serta dukungan alat berat berstandar internasional.

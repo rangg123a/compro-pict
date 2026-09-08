@@ -47,14 +47,13 @@
 <div class="relative bg-slate-950 py-24 border-b border-red-600/30 overflow-hidden" data-aos="fade-down">
     <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image: url('{{ secure_asset("assets/images/background.jpeg") }}')"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent"></div>
-    
+
     <div class="relative max-w-7xl mx-auto px-6 text-center lg:text-left">
-        <span class="text-red-500 font-bold tracking-widest text-xs uppercase block mb-3">Terminal Services</span>
         <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
             Terminal Operations
         </h1>
         <p class="mt-4 text-slate-300 max-w-2xl text-base sm:text-lg leading-relaxed">
-            Menghadirkan layanan bongkar muat kendaraan dan kargo Ro-Ro profesional dengan standar keselamatan internasional, efisiensi tinggi, dan teknologi terintegrasi di Pelabuhan Patimban.
+            Providing professional Ro-Ro vehicle and cargo loading and unloading services at Patimban Port, featuring international safety standards, high efficiency, and integrated technology.
         </p>
     </div>
 </div>
@@ -62,14 +61,11 @@
 <!-- ═══ 2. OVERVIEW OPERATIONS SECTION ═══ -->
 <section class="py-20 bg-white" data-aos="fade-up">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 mb-4">
-            OVERVIEW OPERATIONS
-        </div>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Sistem Penanganan Kargo Ro-Ro Terintegrasi
+            Integrated Ro-Ro Cargo Handling System
         </h2>
         <p class="text-slate-600 leading-relaxed text-sm sm:text-base mt-4 max-w-3xl mx-auto">
-            PT Patimban International Car Terminal (PICT) mengelola alur operasional kendaraan dari kapal (*vessel ramp*) hingga lapangan penumpukan (*staging yard*) dengan protokol keamanan ketat bebas gores (*zero scratch protocol*). Didukung oleh sistem manajemen terminal berbasis digital, setiap unit kendaraan tercatat secara real-time untuk memastikan kecepatan proses bongkar muat, akurasi data inventaris, serta kelancaran rantai pasok otomotif nasional maupun ekspor-impor.
+            PT Patimban International Car Terminal (PICT) manages the operational flow of vehicles from the vessel ramp to the staging yard under a strict “zero scratch” safety protocol. Supported by a digital terminal management system, each vehicle is tracked in real time to ensure fast loading and unloading, accurate inventory data, and a smooth national automotive supply chain as well as import and export operations.
         </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 max-w-2xl mx-auto">
@@ -94,7 +90,7 @@
                 Vehicle Cargo Type
             </h2>
             <p class="mt-3 text-slate-600 text-sm sm:text-base">
-                Penanganan khusus yang disesuaikan dengan spesifikasi dan dimensi berbagai jenis kendaraan serta kargo berat.
+                Specialized handling tailored to the specifications and dimensions of various types of vehicles and heavy cargo.
             </p>
         </div>
 
@@ -110,11 +106,11 @@
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-2">Passenger Vehicles (CBU)</h3>
                     <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        Penanganan Completely Built Up (CBU) seperti sedan, SUV, MPV, hingga kendaraan listrik (EV) dengan prosedur tanpa gores.
+                        Handling of Completely Built-Up (CBU) vehicles—such as sedans, SUVs, MPVs, and electric vehicles (EVs)—using a scratch-free procedure.
                     </p>
                 </div>
                 <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-400">
-                    <span>Klasifikasi</span>
+                    <span>Classification</span>
                     <span class="text-red-600 font-bold">Light Vehicle</span>
                 </div>
             </div>
@@ -130,11 +126,11 @@
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-2">Bus & Commercial Truck</h3>
                     <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        Akomodasi kendaraan komersial berat, bus pariwisata, truk logistik, hingga sasis industri melalui jalur ramp yang kokoh.
+                        Accommodation for heavy commercial vehicles, tourist buses, logistics trucks, and industrial chassis through robust ramp pathways.
                     </p>
                 </div>
                 <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-400">
-                    <span>Klasifikasi</span>
+                    <span>Classification</span>
                     <span class="text-blue-900 font-bold">Commercial</span>
                 </div>
             </div>
@@ -150,11 +146,11 @@
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-2">Heavy Equipment</h3>
                     <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        Pengelolaan alat berat sektor pertambangan, perkebunan, dan konstruksi seperti excavator, wheel loader, serta bulldozer.
+                        Management of heavy machinery in the mining, plantation, and construction sectors such as excavators, wheel loaders, and bulldozers.
                     </p>
                 </div>
                 <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-400">
-                    <span>Klasifikasi</span>
+                    <span>Classification</span>
                     <span class="text-red-600 font-bold">Project Cargo</span>
                 </div>
             </div>
@@ -169,11 +165,11 @@
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-2">Static & General Cargo</h3>
                     <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        Fasilitas penyimpanan serta penanganan kargo umum non-kendaraan dan muatan statis dengan manajemen area terpadu.
+                        Facilities for storage and handling of general non-vehicle cargo and static loads with integrated area management.
                     </p>
                 </div>
                 <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-400">
-                    <span>Klasifikasi</span>
+                    <span>Classification</span>
                     <span class="text-blue-900 font-bold">General Cargo</span>
                 </div>
             </div>
@@ -189,7 +185,7 @@
             <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Field Activity</span>
             <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Dokumentasi Operasional</h2>
             <p class="text-slate-500 mt-2 text-sm">
-                Potret langsung kegiatan penanganan kargo, area penumpukan kendaraan, dan fasilitas dermaga Pelabuhan Patimban.
+                A firsthand look at cargo handling operations, the vehicle staging area, and the dock facilities at Patimban Port.
             </p>
         </div>
     </div>
@@ -205,7 +201,7 @@
                 <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
                     <img src="{{ secure_asset('assets/images/background.jpeg') }}" alt="Dermaga" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
-                        <h4 class="text-white font-bold text-lg">Aktivitas Dermaga</h4>
+                        <h4 class="text-white font-bold text-lg">Dock Activities</h4>
                     </div>
                 </div>
                 <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
@@ -233,7 +229,7 @@
                 <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
                     <img src="{{ secure_asset('assets/images/background.jpeg') }}" alt="Dermaga" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
-                        <h4 class="text-white font-bold text-lg">Aktivitas Dermaga</h4>
+                        <h4 class="text-white font-bold text-lg">Dock Activities</h4>
                     </div>
                 </div>
                 <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
@@ -245,13 +241,13 @@
                 <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
                     <img src="{{ secure_asset('assets/images/patimban-yard-2.jpeg') }}" alt="Yard 2" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
-                        <h4 class="text-white font-bold text-lg">Area Penumpukan</h4>
+                        <h4 class="text-white font-bold text-lg">Staging Area</h4>
                     </div>
                 </div>
                 <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
                     <img src="{{ secure_asset('assets/images/patimban-yard-3.jpeg') }}" alt="Logistik" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
-                        <h4 class="text-white font-bold text-lg">Logistik Otomotif</h4>
+                        <h4 class="text-white font-bold text-lg">Logistics</h4>
                     </div>
                 </div>
             </div>
@@ -268,7 +264,7 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent flex items-end p-8">
                     <div>
                         <span class="text-xs font-semibold uppercase tracking-wider text-blue-400">Terminal Area</span>
-                        <h4 class="text-white font-bold text-xl mt-1">Aktivitas Dermaga</h4>
+                        <h4 class="text-white font-bold text-xl mt-1">Dock Activities</h4>
                     </div>
                 </div>
             </div>
@@ -290,7 +286,7 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent flex items-end p-8">
                     <div>
                         <span class="text-xs font-semibold uppercase tracking-wider text-blue-400">Yard Capacity</span>
-                        <h4 class="text-white font-bold text-xl mt-1">Area Penumpukan</h4>
+                        <h4 class="text-white font-bold text-xl mt-1">Staging Area</h4>
                     </div>
                 </div>
             </div>
@@ -301,7 +297,7 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent flex items-end p-8">
                     <div>
                         <span class="text-xs font-semibold uppercase tracking-wider text-red-400">Supply Chain</span>
-                        <h4 class="text-white font-bold text-xl mt-1">Logistik Otomotif</h4>
+                        <h4 class="text-white font-bold text-xl mt-1">Logistics</h4>
                     </div>
                 </div>
             </div>
@@ -315,7 +311,7 @@
 @push('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
     AOS.init({
         duration: 900,
         easing: 'ease-out-cubic',

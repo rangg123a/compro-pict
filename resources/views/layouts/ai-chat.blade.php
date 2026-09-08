@@ -15,14 +15,14 @@
         <div id="ai-chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs bg-slate-50">
             <div class="flex justify-start">
                 <div class="bg-white border border-slate-200 text-slate-800 p-3 rounded-2xl rounded-tl-none shadow-sm max-w-[80%]">
-                    Halo! Ada yang bisa saya bantu terkait layanan terminal atau informasi Pelabuhan Patimban?
+                    Hello! How can I help you with terminal services or information about Patimban International Car Terminal?
                 </div>
             </div>
         </div>
 
         <div class="p-3 bg-white border-t border-slate-200 flex gap-2">
-            <input type="text" id="ai-chat-input" placeholder="Ketik pesan..." class="flex-1 px-3 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-red-600 bg-slate-50">
-            <button id="ai-chat-send" class="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer">Kirim</button>
+            <input type="text" id="ai-chat-input" placeholder="Type a message..." class="flex-1 px-3 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-red-600 bg-slate-50">
+            <button id="ai-chat-send" class="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer">Send</button>
         </div>
     </div>
 </div>
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         inputField.value = '';
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-        const loadingId = appendMessage('Sedang mengetik...', 'bot', true);
+        const loadingId = appendMessage('Typing...', 'bot', true);
 
         try {
             const response = await fetch('/api/chat', {
@@ -79,13 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     conversationHistory = conversationHistory.slice(-20);
                 }
             } else if (data.error) {
-                appendMessage("Error AI: " + data.error, 'bot');
+                appendMessage("AI Error: " + data.error, 'bot');
             } else {
-                appendMessage("Maaf, terjadi kesalahan pada respons server.", 'bot');
+                appendMessage("Sorry, there was an error in the server response.", 'bot');
             }
         } catch (error) {
             document.getElementById(loadingId)?.remove();
-            appendMessage("Gagal terhubung ke server. Periksa koneksi Anda.", 'bot');
+            appendMessage("Failed to connect to the server. Please check your connection.", 'bot');
         }
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }

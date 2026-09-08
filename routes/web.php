@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AiChatController;
 
 // Halaman utama (landing page)
 Route::view('/', 'welcome')->name('home');
@@ -13,6 +14,7 @@ Route::view('/sustainability', 'sustainability')->name('sustainability');
 
 // Halaman pendukung lainnya
 Route::view('/about', 'about')->name('about');
+Route::post('/api/chat', [AiChatController::class, 'send'])->name('ai.chat');
 
 // Contact
 // Ubah rute /contact menjadi seperti ini:

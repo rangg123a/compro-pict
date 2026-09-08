@@ -3,6 +3,7 @@
 @section('title', 'PT Patimban International Car Terminal — PICT')
 
 @push('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 <style>
     /* Hero Full Width Background */
     .hero-banner {
@@ -321,11 +322,11 @@
     <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-24 lg:py-28 w-full mt-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             
-            <div class="lg:col-span-7 hero-content space-y-6 text-left">
+            <div class="lg:col-span-7 hero-content space-y-6 text-left" data-aos="fade-right">
 
                 <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15]">
                     PT PATIMBAN <br class="hidden sm:inline">INTERNATIONAL <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-amber-400 to-sky-400">CAR TERMINAL</span>
+                    <span class="text-red-500">CAR TERMINAL</span>
                 </h1>
 
                 <p class="text-slate-200 max-w-xl leading-relaxed text-base sm:text-lg border-l-4 border-amber-500 pl-4 font-normal bg-white/5 backdrop-blur-sm py-2.5 rounded-r-xl border-y border-r border-white/10">
@@ -336,11 +337,11 @@
                     <a href="{{ url('/about') }}" class="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold py-3 px-7 rounded-xl shadow-lg shadow-red-600/30 transition transform hover:-translate-y-0.5">
                         <span>About Us</span>
                     </a>
-                 
+                
                 </div>
             </div>
 
-            <div class="lg:col-span-5 flex justify-center lg:justify-end items-center">
+            <div class="lg:col-span-5 flex justify-center lg:justify-end items-center" data-aos="fade-left">
                 <div class="w-full max-w-md bg-white/10 backdrop-blur-xl p-6 rounded-3xl border border-white/20 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]">
                     <svg class="w-full h-auto drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)]" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
@@ -387,22 +388,22 @@
                         </circle>
 
                         <g class="cargo-row-bottom" opacity="0.95">
-                            <use href="#heroCar1" transform="translate(18 175) scale(.9)" />
-                            <use href="#heroCar2" transform="translate(81 175) scale(.9)" />
-                            <use href="#heroCar3" transform="translate(144 175) scale(.9)" />
-                            <use href="#heroCar1" transform="translate(207 175) scale(.9)" />
-                            <use href="#heroCar2" transform="translate(270 175) scale(.9)" />
-                            <use href="#heroCar3" transform="translate(333 175) scale(.9)" />
+                            <use href="#heroCar1" transform="translate(8 175) scale(.7)" />
+                            <use href="#heroCar2" transform="translate(78 175) scale(.7)" />
+                            <use href="#heroCar3" transform="translate(148 175) scale(.7)" />
+                            <use href="#heroCar1" transform="translate(218 175) scale(.7)" />
+                            <use href="#heroCar2" transform="translate(288 175) scale(.7)" />
+                            <use href="#heroCar3" transform="translate(358 175) scale(.7)" />
                         </g>
 
                         <g class="cargo-row-top" opacity="0.85">
-                            <use href="#heroCar2" transform="translate(48 135) scale(.82)" />
-                            <use href="#heroCar3" transform="translate(108 135) scale(.82)" />
-                            <use href="#heroCar1" transform="translate(168 135) scale(.82)" />
-                            <use href="#heroCar2" transform="translate(228 135) scale(.82)" />
-                            <use href="#heroCar3" transform="translate(288 135) scale(.82)" />
+                            <use href="#heroCar2" transform="translate(35 135) scale(.65)" />
+                            <use href="#heroCar3" transform="translate(105 135) scale(.65)" />
+                            <use href="#heroCar1" transform="translate(175 135) scale(.65)" />
+                            <use href="#heroCar2" transform="translate(245 135) scale(.65)" />
+                            <use href="#heroCar3" transform="translate(315 135) scale(.65)" />
                         </g>
-                    </svg>
+                    </div>
                 </div>
             </div>
 
@@ -411,7 +412,7 @@
 </div>
 
 <!-- ═══ 2. STATS STRIP (RESPONSIVE MOBILE) ═══ -->
-<section class="stats-strip max-w-7xl mx-auto px-4 sm:px-6 mt-8 sm:mt-10 relative z-20">
+<section class="stats-strip max-w-7xl mx-auto px-4 sm:px-6 mt-8 sm:mt-10 relative z-20" data-aos="fade-up">
     <div class="bg-white rounded-2xl shadow-xl p-5 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-y-6 sm:gap-y-0 divide-x-0 md:divide-x divide-slate-200 border-t-4 border-red-600">
         <div class="stat-item text-center px-2 sm:px-4">
             <p class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-1"><span class="stat-number" data-target="400">400</span><span class="text-red-600 text-xl sm:text-2xl">k</span></p>
@@ -433,7 +434,7 @@
 </section>
 
 <!-- ═══ 3. ABOUT US ═══ -->
-<section class="about-section py-20 bg-white">
+<section class="about-section py-20 bg-white" data-aos="fade-up">
     <div class="section-inner max-w-7xl mx-auto px-4 sm:px-6">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-slate-200 gap-4">
             <div>
@@ -443,7 +444,7 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-            <div class="about-copy lg:col-span-6 space-y-6">
+            <div class="about-copy lg:col-span-6 space-y-6" data-aos="fade-right">
                 <h3 class="text-2xl font-bold text-blue-950">Indonesia's Strategic Gateway for Automotive Export Import</h3>
                 <p class="text-slate-600 leading-relaxed">
                     LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT. QUASI, VOLUPTATES. ANIMI PERFERENDIS INCIDUNT DICTA, VOLUPTATES EOS A NECESSITATIBUS ACCUSAMUS CUPIDITATE AT NISI FACILIS ISTE REPELLENDUS VENIAM NON ESSE NESCIUNT DESERUNT!
@@ -453,7 +454,7 @@
                 </p>
             </div>
 
-            <div class="about-values lg:col-span-6">
+            <div class="about-values lg:col-span-6" data-aos="fade-left">
                 <div class="about-value-item">
                     <h4 class="text-lg font-bold text-blue-950 mb-2">Vision</h4>
                     <p class="text-slate-600 text-sm leading-relaxed">
@@ -473,7 +474,7 @@
 </section>
 
 <!-- ═══ 4. VEHICLE & CARGO TYPES (ANIME.JS DYNAMIC GRID LAYOUT) ═══ -->
-<section class="py-20 bg-slate-50 border-y border-slate-200 overflow-hidden">
+<section class="py-20 bg-slate-50 border-y border-slate-200 overflow-hidden" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-slate-200 gap-4">
             <div>
@@ -557,10 +558,8 @@
     </div>
 </section>
 
-
-
 <!-- ═══ 7. INTERNATIONAL & DOMESTIC SHIPPING ROUTE NETWORK (EARTH GREEN MAP STYLE) ═══ -->
-<section class="py-20 bg-slate-50 relative overflow-hidden">
+<section class="py-20 bg-slate-50 relative overflow-hidden" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-slate-200 gap-4">
             <div>
@@ -633,16 +632,6 @@
                     <text x="700" y="70" fill="#475569" font-size="10" font-weight="700" letter-spacing="1">JAPAN</text>
                     <text x="570" y="340" fill="#475569" font-size="10" font-weight="700" letter-spacing="1">ASIA</text>
 
-                    <!-- DOMESTIC ROUTES (Blue Color #0284c7)
-                    <path class="route-hit" data-route="domestic" d="M268  Q 240 370 220 330" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
-                    <path id="rutePatPontianak" class="route-line" data-route="domestic" d="M268 416 Q 240 370 220 330" stroke="#0284c7" stroke-width="1.8" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
-                    <g class="route-marker" data-route="domestic" fill="#0284c7">
-                        <use href="#shipIcon" />
-                        <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
-                            <mpath href="#rutePatPontianak"/>
-                        </animateMotion>
-                    </g> -->
-
                     <path class="route-hit" data-route="domestic" d="M268 416 Q 210 390 170 340" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
                     <path id="rutePatBatam" class="route-line" data-route="domestic" d="M268 416 Q 210 390 170 340" stroke="#0284c7" stroke-width="1.8" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
                     <g class="route-marker" data-route="domestic" fill="#0284c7">
@@ -670,7 +659,6 @@
                         </animateMotion>
                     </g>
 
-                    <!-- INTERNATIONAL ROUTES (Amber/Orange Color #d97706) -->
                     <path class="route-hit" data-route="international" d="M268 416 Q 200 320 140 250" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
                     <path id="ruteIntKlangChabang" class="route-line" data-route="international" d="M268 416 Q 200 320 140 250" stroke="#d97706" stroke-width="1.8" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
                     <g class="route-marker" data-route="international" fill="#d97706">
@@ -707,8 +695,6 @@
                         </animateMotion>
                     </g>
 
-                    <!-- Destination Port Markers -->
-                    <!-- <g class="dest-marker" data-route="domestic" tabindex="0" role="button" aria-label="View Domestic route details"><circle cx="220" cy="330" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="220" cy="330" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1" /></g> pontianak-->
                     <g class="dest-marker" data-route="domestic" tabindex="0" role="button" aria-label="View Domestic route details"><circle cx="170" cy="340" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="170" cy="340" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1" /></g>
                     <g class="dest-marker" data-route="domestic" tabindex="0" role="button" aria-label="View Domestic route details"><circle cx="90" cy="310" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="90" cy="310" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1" /></g>
                     <g class="dest-marker" data-route="domestic" tabindex="0" role="button" aria-label="View Domestic route details"><circle cx="390" cy="350" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="390" cy="350" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1" /></g>
@@ -728,8 +714,8 @@
                         <circle class="visible-dot" cx="268" cy="416" r="5.5" fill="#dc2626" stroke="#ffffff" stroke-width="1.5" />
                     </g>
                     <text x="20" y="446" fill="#1e293b" font-size="12" font-weight="800" letter-spacing="1">PATIMBAN PORT — SUBANG, WEST JAVA</text>
-                </svg>
-            </div>
+                </div>
+          </div>
         </div>
 
         <!-- Route Legends -->
@@ -775,7 +761,7 @@
 
 </section>
 <!-- ═══ 8. LOCATION & FACILITIES ═══ -->
-<section class="py-20 bg-slate-50">
+<section class="py-20 bg-slate-50" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="max-w-3xl mb-10">
             <p class="text-red-600 text-xs font-extrabold uppercase tracking-[0.22em] mb-3">Infrastructure Access</p>
@@ -787,7 +773,7 @@
             </div>
         </div>    
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
-        <div class="lg:col-span-3 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="lg:col-span-3 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-aos="fade-right">
             <div class="px-6 py-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                 <div>
                     <h3 class="text-lg font-extrabold text-slate-900">Key Facility Specifications</h3>
@@ -802,7 +788,7 @@
             </div>
         </div>
 
-        <div class="lg:col-span-2 grid sm:grid-cols-2 lg:grid-cols-1 gap-6">
+        <div class="lg:col-span-2 grid sm:grid-cols-2 lg:grid-cols-1 gap-6" data-aos="fade-left">
             <div class="rounded-2xl bg-blue-950 p-6 text-white shadow-sm">
                 <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-xl">&#128737;</div>
                 <h3 class="font-extrabold text-lg">Safety Security</h3>
@@ -820,22 +806,21 @@
 </section>
 
 <!-- ═══ 9. ACTION STRIP ═══ -->
-<section class="bg-red-600 py-14 relative overflow-hidden text-white">
+<section class="bg-red-600 py-14 relative overflow-hidden text-white" data-aos="fade-up">
     <div class="absolute inset-0 bg-red-700 transform skew-x-12 translate-x-1/3 z-0 pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-        <di>
+        <div>
             <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Ready to Partner with PICT?</h4>
             <p class="text-red-100 text-sm sm:text-base mt-1">Inquire about terminal tariffs, berthing schedules, and automotive handling solutions.</p>
-</di>
         </div>
     </div>
 </section>
 
 {{-- ═══ MAP + ADDRESS (LIGHT MODE) ═══ --}}
-<section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800">
+<section class="max-w-7xl mx-auto px-6 pt-10 pb-20 bg-white text-slate-800" data-aos="fade-up">
     <div class="grid lg:grid-cols-12 gap-14 items-start">
 
-        <div class="lg:col-span-5 location-reveal space-y-6" style="animation-delay:.15s">
+        <div class="lg:col-span-5 location-reveal space-y-6" style="animation-delay:.15s" data-aos="fade-right">
             <div>
                 <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Our Address</span>
                 <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -873,7 +858,7 @@
         </div>
 
         {{-- Google Maps Embed --}}
-        <div class="lg:col-span-7 location-reveal rounded-2xl overflow-hidden shadow-lg border border-slate-200 h-80 md:h-[420px] bg-slate-100" style="animation-delay:.3s">
+        <div class="lg:col-span-7 location-reveal rounded-2xl overflow-hidden shadow-lg border border-slate-200 h-80 md:h-[420px] bg-slate-100" style="animation-delay:.3s" data-aos="fade-left">
             <iframe
                 src="https://www.google.com/maps?q=Pelabuhan+Patimban,+Subang,+Jawa+Barat&output=embed"
                 class="w-full h-full"
@@ -890,6 +875,18 @@
 @endsection
 
 @push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({
+        duration: 900,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 120
+    });
+});
+</script>
+
 <!-- Three.js CDN for Hyperspeed Highway Perspective Animation -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
@@ -1119,70 +1116,6 @@ document.addEventListener('DOMContentLoaded', () => {
 @endpush
 
 @push('scripts')
-<!-- Auto-scroll for Terminal Service Flow Section (Smooth container-only scroll on mobile) -->
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const flowSection = [...document.querySelectorAll('section')]
-            .find(section => section.querySelector('h2')?.textContent.trim() === 'Terminal Service Flow');
-        const flowScroller = flowSection?.querySelector('.flow-step')?.parentElement;
-        
-        if (!flowSection || !flowScroller || !window.matchMedia('(max-width: 767px)').matches) return;
-
-        const flowSteps = flowScroller.querySelectorAll('.flow-step');
-        if (flowSteps.length < 2) return;
-
-        let currentStep = 0;
-        let autoScrollInterval = null;
-        let isInteracting = false;
-
-        function scrollToStep(index) {
-            const targetStep = flowSteps[index];
-            if (!targetStep) return;
-            
-            const scrollOffset = targetStep.offsetLeft - flowScroller.offsetLeft;
-            flowScroller.scrollTo({
-                left: scrollOffset,
-                behavior: 'smooth'
-            });
-        }
-
-        function startAutoScroll() {
-            if (autoScrollInterval) return;
-            autoScrollInterval = setInterval(() => {
-                if (isInteracting) return;
-                currentStep = (currentStep + 1) % flowSteps.length;
-                scrollToStep(currentStep);
-            }, 3500);
-        }
-
-        function stopAutoScroll() {
-            if (autoScrollInterval) {
-                clearInterval(autoScrollInterval);
-                autoScrollInterval = null;
-            }
-        }
-
-        flowScroller.addEventListener('touchstart', () => { isInteracting = true; }, { passive: true });
-        flowScroller.addEventListener('touchend', () => { 
-            setTimeout(() => { isInteracting = false; }, 2000); 
-        }, { passive: true });
-
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries) => {
-                const entry = entries[0];
-                if (entry.isIntersecting) {
-                    startAutoScroll();
-                } else {
-                    stopAutoScroll();
-                }
-            }, { threshold: 0.3 });
-
-            observer.observe(flowSection);
-        }
-    });
-</script>
-
-<!-- ═══ ANIME.JS V4 DYNAMIC LAYOUT ANIMATION ═══ -->
 <script type="module">
     import { createLayout, stagger } from 'https://esm.sh/animejs';
 

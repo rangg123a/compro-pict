@@ -3,6 +3,7 @@
 @section('title', 'Contact Us — PT Patimban International Car Terminal')
 
 @push('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 <style>
     .hero-bg-contact {
         background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('{{ asset("assets/images/patimban-yard-2.jpeg") }}');
@@ -15,7 +16,7 @@
 @section('content')
 
 {{-- ═══ HERO SECTION ═══ --}}
-<div class="hero-bg-contact min-h-[380px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-16 relative border-b border-slate-800 bg-slate-900 pt-[env(safe-area-inset-top)]">
+<div class="hero-bg-contact min-h-[380px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-16 relative border-b border-slate-800 bg-slate-900 pt-[env(safe-area-inset-top)]" data-aos="fade-down">
     <h2 class="text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
         Get in Touch with PICT
     </h2>
@@ -25,11 +26,11 @@
 </div>
 
 {{-- ═══ CONTACT INFO + FORM ═══ --}}
-<section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800">
+<section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800" data-aos="fade-up">
     <div class="grid lg:grid-cols-12 gap-14 items-start">
 
         {{-- Contact Info --}}
-        <div class="lg:col-span-5 space-y-6">
+        <div class="lg:col-span-5 space-y-6" data-aos="fade-right">
             <div>
                 <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Get in Touch</span>
                 <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -63,7 +64,7 @@
         </div>
 
         {{-- Contact Form yang Diubah Menjadi Mailto Handler --}}
-        <div class="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-2xl p-8 shadow-sm">
+        <div class="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-2xl p-8 shadow-sm" data-aos="fade-left">
             <h3 class="text-xl font-extrabold text-slate-900 mb-6">Send Us a Message</h3>
 
             <form id="contactForm" class="space-y-4">
@@ -104,6 +105,18 @@
 @endsection
 
 @push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({
+        duration: 900,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 120
+    });
+});
+</script>
+
 <script>
     document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault();

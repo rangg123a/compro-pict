@@ -3,6 +3,7 @@
 @section('title', 'About PICT — PT Patimban International Car Terminal')
 
 @push('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 <style>
     .hero-bg-about {
         background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('{{ asset("assets/images/background.jpeg") }}');
@@ -39,7 +40,7 @@
 @section('content')
 
 {{-- ═══ HERO SECTION ═══ --}}
-<div class="hero-bg-about min-h-[380px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-16 relative border-b border-slate-200 bg-slate-900 pt-[env(safe-area-inset-top)]">
+<div class="hero-bg-about min-h-[380px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-16 relative border-b border-slate-200 bg-slate-900 pt-[env(safe-area-inset-top)]" data-aos="fade-down">
   <br><br>
     <h2 class="text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
         A Modern Vehicle Terminal at the Heart of Indonesia's Automotive Industry
@@ -47,9 +48,9 @@
 </div>
 
 {{-- ═══ ABOUT / COMPANY PROFILE (LIGHT MODE) ═══ --}}
-<section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800">
+<section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800" data-aos="fade-up">
     <div class="grid lg:grid-cols-12 gap-14 items-start">
-        <div class="lg:col-span-6 space-y-6">
+        <div class="lg:col-span-6 space-y-6" data-aos="fade-right">
             <div>
                 <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Company Profile</span>
                 <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
@@ -67,7 +68,7 @@
             </p>
         </div>
 
-        <div class="lg:col-span-6 space-y-4">
+        <div class="lg:col-span-6 space-y-4" data-aos="fade-left">
             <div class="stat-card bg-slate-50 border border-slate-200 rounded-xl p-6 flex items-center justify-between shadow-sm">
                 <div>
                     <p class="text-slate-500 text-xs uppercase tracking-wider font-semibold">Current Handling Capacity</p>
@@ -101,7 +102,7 @@
 </section>
 
 {{-- ═══ SEJARAH / TIMELINE (LIGHT MODE) ═══ --}}
-<section class="bg-slate-100 py-20 border-t border-slate-200 text-slate-800">
+<section class="bg-slate-100 py-20 border-t border-slate-200 text-slate-800" data-aos="fade-up">
     <div class="max-w-5xl mx-auto px-6">
         <div class="text-center mb-14">
             <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Our Journey</span>
@@ -109,7 +110,7 @@
         </div>
 
         <div class="relative border-l-2 border-red-600 ml-4 md:ml-0 space-y-12">
-            <div class="relative pl-10 md:pl-14">
+            <div class="relative pl-10 md:pl-14" data-aos="fade-up" data-aos-delay="100">
                 <span class="absolute -left-[9px] top-1 w-4 h-4 bg-red-600 rounded-full border-4 border-slate-100 shadow"></span>
                 <p class="text-red-600 font-mono text-xs mb-1 font-bold">2018</p>
                 <h4 class="font-bold text-slate-900 text-lg mb-2">Construction of Patimban Port Begins</h4>
@@ -118,7 +119,7 @@
                 </p>
             </div>
 
-            <div class="relative pl-10 md:pl-14">
+            <div class="relative pl-10 md:pl-14" data-aos="fade-up" data-aos-delay="200">
                 <span class="absolute -left-[9px] top-1 w-4 h-4 bg-red-600 rounded-full border-4 border-slate-100 shadow"></span>
                 <p class="text-red-600 font-mono text-xs mb-1 font-bold">November 2021</p>
                 <h4 class="font-bold text-slate-900 text-lg mb-2">PT Patimban International Car Terminal Established</h4>
@@ -127,7 +128,7 @@
                 </p>
             </div>
 
-            <div class="relative pl-10 md:pl-14">
+            <div class="relative pl-10 md:pl-14" data-aos="fade-up" data-aos-delay="300">
                 <span class="absolute -left-[9px] top-1 w-4 h-4 bg-red-600 rounded-full border-4 border-slate-100 shadow"></span>
                 <p class="text-red-600 font-mono text-xs mb-1 font-bold">December 2021</p>
                 <h4 class="font-bold text-slate-900 text-lg mb-2">Operations Commence</h4>
@@ -136,7 +137,7 @@
                 </p>
             </div>
 
-            <div class="relative pl-10 md:pl-14">
+            <div class="relative pl-10 md:pl-14" data-aos="fade-up" data-aos-delay="400">
                 <span class="absolute -left-[9px] top-1 w-4 h-4 bg-red-600 rounded-full border-4 border-slate-100 shadow"></span>
                 <p class="text-red-600 font-mono text-xs mb-1 font-bold">June 30, 2023</p>
                 <h4 class="font-bold text-slate-900 text-lg mb-2">Shareholder Consortium Strengthened</h4>
@@ -145,7 +146,7 @@
                 </p>
             </div>
 
-            <div class="relative pl-10 md:pl-14">
+            <div class="relative pl-10 md:pl-14" data-aos="fade-up" data-aos-delay="500">
                 <span class="absolute -left-[9px] top-1 w-4 h-4 bg-red-600 rounded-full border-4 border-slate-100 shadow"></span>
                 <p class="text-red-600 font-mono text-xs mb-1 font-bold">Present Future</p>
                 <h4 class="font-bold text-slate-900 text-lg mb-2">Capacity Expansion to 600,000 Units per Year</h4>
@@ -158,7 +159,7 @@
 </section>
 
 {{-- ═══ SHAREHOLDERS (LIGHT MODE WITH LINKS) ═══ --}}
-<section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800 border-t border-slate-200">
+<section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800 border-t border-slate-200" data-aos="fade-up">
     <div class="text-center mb-12">
         <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Our Shareholders</span>
         <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Shareholder Consortium</h3>
@@ -169,47 +170,58 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         <!-- Toyota Tsusho Corporation -->
-        <a href="https://www.toyota-tsusho.com/" target="_blank" rel="noopener noreferrer" class="shareholder-card bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm block group">
+        <a href="https://www.toyota-tsusho.com/" target="_blank" rel="noopener noreferrer" class="shareholder-card bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm block group" data-aos="fade-up" data-aos-delay="100">
             <p class="text-3xl font-extrabold text-slate-900 mb-1 tracking-tight group-hover:text-red-600 transition-colors">34%</p>
             <p class="text-slate-600 text-xs font-medium">Toyota Tsusho Corporation Group</p>
-            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">Visit Website &rarr;</span>
+            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">Visit Website</span>
         </a>
 
         <!-- Toyofuji Shipping Co., Ltd. -->
-        <a href="https://www.toyofuji.co.jp/en/english/company/company.html" target="_blank" rel="noopener noreferrer" class="shareholder-card bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm block group">
+        <a href="https://www.toyofuji.co.jp/en/english/company/company.html" target="_blank" rel="noopener noreferrer" class="shareholder-card bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm block group" data-aos="fade-up" data-aos-delay="200">
             <p class="text-3xl font-extrabold text-slate-900 mb-1 tracking-tight group-hover:text-red-600 transition-colors">26%</p>
             <p class="text-slate-600 text-xs font-medium">Toyofuji Shipping Co., Ltd.</p>
-            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">Visit Website &rarr;</span>
+            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">Visit Website</span>
         </a>
 
         <!-- NYK Line -->
-        <a href="https://www.nyk.com/english/" target="_blank" rel="noopener noreferrer" class="shareholder-card bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm block group">
+        <a href="https://www.nyk.com/english/" target="_blank" rel="noopener noreferrer" class="shareholder-card bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm block group" data-aos="fade-up" data-aos-delay="300">
             <p class="text-3xl font-extrabold text-slate-900 mb-1 tracking-tight group-hover:text-red-600 transition-colors">25%</p>
             <p class="text-slate-600 text-xs font-medium">NYK Line</p>
-            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">Visit Website &rarr;</span>
+            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">Visit Website</span>
         </a>
 
         <!-- Kamigumi Co., Ltd. -->
-        <a href="https://www.kamigumi.co.jp/english/" target="_blank" rel="noopener noreferrer" class="shareholder-card bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm block group">
+        <a href="https://www.kamigumi.co.jp/english/" target="_blank" rel="noopener noreferrer" class="shareholder-card bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm block group" data-aos="fade-up" data-aos-delay="400">
             <p class="text-3xl font-extrabold text-slate-900 mb-1 tracking-tight group-hover:text-red-600 transition-colors">15%</p>
             <p class="text-slate-600 text-xs font-medium">Kamigumi Co., Ltd.</p>
-            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">Visit Website &rarr;</span>
+            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">Visit Website</span>
         </a>
     </div>
 </section>
 
 {{-- ═══ CTA STRIP ═══ --}}
-<section class="bg-red-600 py-14 relative overflow-hidden text-white">
+<section class="bg-red-600 py-14 relative overflow-hidden text-white" data-aos="fade-up">
     <div class="absolute inset-0 bg-red-700 transform skew-x-12 translate-x-1/3 z-0 pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
         <div>
             <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Would You Like to Learn More About Our Strategic Location?</h4>
             <p class="text-red-100 text-sm sm:text-base mt-1">Patimban Port, Pusakanagara, Subang, West Java, Indonesia</p>
         </div>
-        <a href="{{ url('/location') }}" class="px-6 py-3 rounded-xl bg-blue-950 hover:bg-blue-900 text-white font-bold text-xs uppercase tracking-wider transition shadow-xl shrink-0 whitespace-nowrap">
-            View Location Map
-        </a>
     </div>
 </section>
 
 @endsection
+
+@push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({
+        duration: 900,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 120
+    });
+});
+</script>
+@endpush

@@ -3,6 +3,7 @@
 @section('title', 'Operations — PT Patimban International Car Terminal')
 
 @push('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 <style>
     /* Animasi Staggered Slide & Zoom Bergantian (Selang-seling) khusus layar Desktop */
     @media (min-width: 1024px) {
@@ -43,7 +44,7 @@
 @section('content')
 
 <!-- ═══ 1. OPERATIONS HEADER SECTION ═══ -->
-<div class="relative bg-slate-950 py-24 border-b border-red-600/30 overflow-hidden">
+<div class="relative bg-slate-950 py-24 border-b border-red-600/30 overflow-hidden" data-aos="fade-down">
     <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image: url('{{ secure_asset("assets/images/background.jpeg") }}')"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent"></div>
     
@@ -59,7 +60,7 @@
 </div>
 
 <!-- ═══ 2. OVERVIEW OPERATIONS SECTION ═══ -->
-<section class="py-20 bg-white">
+<section class="py-20 bg-white" data-aos="fade-up">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 mb-4">
             OVERVIEW OPERATIONS
@@ -72,11 +73,11 @@
         </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 max-w-2xl mx-auto">
-            <div class="p-6 rounded-2xl bg-slate-50 border-t-4 border-blue-600 shadow-sm">
+            <div class="p-6 rounded-2xl bg-slate-50 border-t-4 border-blue-600 shadow-sm" data-aos="fade-right">
                 <p class="text-3xl font-extrabold text-blue-900">218k+</p>
                 <p class="text-xs text-slate-500 font-semibold uppercase tracking-wide mt-1">Kapasitas Lapangan / Tahun</p>
             </div>
-            <div class="p-6 rounded-2xl bg-slate-50 border-t-4 border-red-600 shadow-sm">
+            <div class="p-6 rounded-2xl bg-slate-50 border-t-4 border-red-600 shadow-sm" data-aos="fade-left">
                 <p class="text-3xl font-extrabold text-red-600">300 m</p>
                 <p class="text-xs text-slate-500 font-semibold uppercase tracking-wide mt-1">Panjang Dermaga Ro-Ro</p>
             </div>
@@ -85,7 +86,7 @@
 </section>
 
 <!-- ═══ 3. VEHICLE CARGO TYPE SECTION (WARNA BIRU & MERAH) ═══ -->
-<section class="py-20 bg-slate-50 border-t border-slate-200">
+<section class="py-20 bg-slate-50 border-t border-slate-200" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="text-center max-w-3xl mx-auto mb-16">
             <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-2">Kategori Layanan</span>
@@ -100,7 +101,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             
             <!-- Card 1: CBU (Aksen Merah) -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200 border-t-4 border-t-red-600 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 border-t-4 border-t-red-600 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="100">
                 <div>
                     <div class="w-16 h-16 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center mb-5 group-hover:bg-red-600 group-hover:text-white transition-colors">
                         <svg class="w-8 h-8 text-red-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -119,7 +120,7 @@
             </div>
 
             <!-- Card 2: Bus & Truck (Aksen Biru) -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200 border-t-4 border-t-blue-600 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 border-t-4 border-t-blue-600 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="200">
                 <div>
                     <div class="w-16 h-16 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-5 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                         <svg class="w-8 h-8 text-blue-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -139,7 +140,7 @@
             </div>
 
             <!-- Card 3: Heavy Equipment (Aksen Merah) -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200 border-t-4 border-t-red-600 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 border-t-4 border-t-red-600 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="300">
                 <div>
                     <div class="w-16 h-16 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center mb-5 group-hover:bg-red-600 group-hover:text-white transition-colors">
                         <svg class="w-8 h-8 text-red-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -159,7 +160,7 @@
             </div>
 
             <!-- Card 4: Static & General Cargo (Aksen Biru) -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200 border-t-4 border-t-blue-600 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 border-t-4 border-t-blue-600 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="400">
                 <div>
                     <div class="w-16 h-16 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-5 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                         <svg class="w-8 h-8 text-blue-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -182,7 +183,7 @@
 </section>
 
 <!-- ═══ 4. DOKUMENTASI OPERASIONAL ═══ -->
-<section class="py-24 bg-white border-t border-slate-200 overflow-hidden">
+<section class="py-24 bg-white border-t border-slate-200 overflow-hidden" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 mb-12 sm:mb-16">
         <div class="text-center max-w-2xl mx-auto">
             <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Field Activity</span>
@@ -310,3 +311,17 @@
 </section>
 
 @endsection
+
+@push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({
+        duration: 900,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 120
+    });
+});
+</script>
+@endpush

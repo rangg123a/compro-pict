@@ -3,6 +3,7 @@
 @section('title', 'Our Services — PT Patimban International Car Terminal')
 
 @push('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 <style>
     .hero-bg-services {
         background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('{{ secure_asset("assets/images/patimban-yard-3.jpeg") }}');
@@ -23,7 +24,7 @@
 @section('content')
 
 {{-- ═══ HERO SECTION ═══ -->
-<div class="hero-bg-services min-h-[380px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-16 relative border-b border-white/10 bg-slate-950 pt-[env(safe-area-inset-top)]">
+<div class="hero-bg-services min-h-[380px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-16 relative border-b border-white/10 bg-slate-950 pt-[env(safe-area-inset-top)]" data-aos="fade-down">
     <span class="text-red-500 font-bold tracking-widest text-xs uppercase block mb-2">Terminal Capabilities</span>
     <h1 class="text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
         Our Services
@@ -34,7 +35,7 @@
 </div>
 
 {{-- ═══ 1. MAIN SERVICES SECTION (Cargodoring, Stevedoring, Wharfage, Equipment Rental) ═══ --}}
-<section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800">
+<section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800" data-aos="fade-up">
     <div class="text-center mb-14">
         <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Core Offerings</span>
         <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Main Services</h2>
@@ -46,7 +47,7 @@
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
         <!-- Cargodoring -->
-        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between">
+        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
             <div>
                 <div class="w-12 h-12 rounded-lg bg-red-600/10 text-red-600 flex items-center justify-center mb-4">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
@@ -56,11 +57,10 @@
                     Pengaturan, pemindahan, dan penataan kargo dari apron dermaga menuju lapangan penumpukan (staging yard) secara sistematis menggunakan TOS digital.
                 </p>
             </div>
-            <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-slate-400">Main Service 01</div>
         </div>
 
         <!-- Stevedoring -->
-        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between">
+        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
             <div>
                 <div class="w-12 h-12 rounded-lg bg-blue-600/10 text-blue-600 flex items-center justify-center mb-4">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4M4 17h12m0 0l-4 4m4-4l-4-4"/></svg>
@@ -70,11 +70,10 @@
                     Kegiatan bongkar muat kendaraan dari dan ke kapal car carrier melalui ramp door kapal yang dikelola oleh pengemudi bersertifikasi profesional.
                 </p>
             </div>
-            <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-slate-400">Main Service 02</div>
         </div>
 
         <!-- Wharfage -->
-        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between">
+        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
             <div>
                 <div class="w-12 h-12 rounded-lg bg-emerald-600/10 text-emerald-600 flex items-center justify-center mb-4">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
@@ -84,11 +83,11 @@
                     Penyediaan fasilitas dermaga Ro-Ro sepanjang 300 meter dengan kedalaman kolam mumpuni untuk menjamin kelancaran sandar kapal ekapanjang.
                 </p>
             </div>
-            <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-slate-400">Main Service 03</div>
+
         </div>
 
         <!-- Equipment Rental -->
-        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between">
+        <div class="service-card bg-slate-50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="400">
             <div>
                 <div class="w-12 h-12 rounded-lg bg-amber-600/10 text-amber-600 flex items-center justify-center mb-4">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
@@ -98,14 +97,13 @@
                     Penyewaan alat-alat pendukung terminal dan logistik penunjang operasional bongkar muat kendaraan serta kargo khusus.
                 </p>
             </div>
-            <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-semibold text-slate-400">Main Service 04</div>
         </div>
 
     </div>
 </section>
 
 {{-- ═══ 2. SERVICES EXPORT & IMPORT SECTION ═══ --}}
-<section class="bg-slate-100 py-20 border-t border-slate-200 text-slate-800">
+<section class="bg-slate-100 py-20 border-t border-slate-200 text-slate-800" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-6">
 
         <div class="text-center mb-14">
@@ -119,7 +117,7 @@
         <div class="grid md:grid-cols-2 gap-8">
             
             <!-- Export Handling -->
-            <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm flex flex-col justify-between">
+            <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm flex flex-col justify-between" data-aos="fade-right">
                 <div>
                     <div class="w-14 h-14 rounded-xl bg-sky-600/10 text-sky-600 flex items-center justify-center mb-6">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
@@ -135,7 +133,7 @@
             </div>
 
             <!-- Import Handling -->
-            <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm flex flex-col justify-between">
+            <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm flex flex-col justify-between" data-aos="fade-left">
                 <div>
                     <div class="w-14 h-14 rounded-xl bg-purple-600/10 text-purple-600 flex items-center justify-center mb-6">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
@@ -156,7 +154,7 @@
 </section>
 
 {{-- ═══ CTA STRIP ═══ --}}
-<section class="bg-red-600 py-14 relative overflow-hidden text-white">
+<section class="bg-red-600 py-14 relative overflow-hidden text-white" data-aos="fade-up">
     <div class="absolute inset-0 bg-red-700 transform skew-x-12 translate-x-1/3 z-0 pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
         <div>
@@ -164,7 +162,7 @@
             <p class="text-red-100 text-sm sm:text-base mt-1">Cek struktur tarif layanan terminal kami atau hubungi tim komersial untuk konsultasi logistik.</p>
         </div>
         <div class="flex flex-wrap justify-center gap-3">
-            <a href="{{ url('/tariffs') }}" class="px-6 py-3 rounded-xl bg-blue-950 hover:bg-blue-900 text-white font-bold text-xs uppercase tracking-wider transition shadow-xl whitespace-nowrap">
+            <a href="{{ url('/our-tariffs') }}" class="px-6 py-3 rounded-xl bg-blue-950 hover:bg-blue-900 text-white font-bold text-xs uppercase tracking-wider transition shadow-xl whitespace-nowrap">
                 View Tariffs
             </a>
             <a href="{{ url('/contact') }}" class="px-6 py-3 rounded-xl bg-white text-red-600 hover:bg-slate-100 font-bold text-xs uppercase tracking-wider transition shadow-xl whitespace-nowrap">
@@ -175,3 +173,17 @@
 </section>
 
 @endsection
+
+@push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({
+        duration: 900,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 120
+    });
+});
+</script>
+@endpush

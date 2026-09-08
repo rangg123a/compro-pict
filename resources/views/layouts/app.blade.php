@@ -148,5 +148,6 @@
         document.addEventListener('DOMContentLoaded', initInteractions);
     </script>
     @stack('scripts')
+@include('layouts.ai-chat')
 </body>
 </html>

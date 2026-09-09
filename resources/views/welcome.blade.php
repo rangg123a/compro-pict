@@ -123,76 +123,6 @@
         box-shadow: 0 0 0 1px #1e3a8a;
     }
 
-    /* ═══ CSS GRID LAYOUT FOR ANIME.JS TRANSITIONS ═══ */
-    .layout-container {
-        display: grid;
-        width: 100%;
-        position: relative;
-        gap: 1.5rem;
-    }
-
-    .cargo-item {
-        border-top: 3px solid #cbd5e1;
-        background: #ffffff;
-        border-radius: 1rem;
-        padding: 1.75rem;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-        transition: border-color .3s ease, box-shadow .3s ease;
-        will-change: transform;
-    }
-    .cargo-item:hover { 
-        border-top-color: #dc2626; 
-        box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1);
-    }
-
-    @media (min-width: 768px) {
-        .layout-container[data-grid="1"] {
-            grid-template-columns: 1.35fr 1fr;
-            grid-template-rows: 1fr 1fr;
-        }
-        .layout-container[data-grid="1"] .cargo-item:nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
-        .layout-container[data-grid="1"] .cargo-item:nth-child(2) { grid-column: 2; grid-row: 1; }
-        .layout-container[data-grid="1"] .cargo-item:nth-child(3) { grid-column: 2; grid-row: 2; }
-
-        .layout-container[data-grid="2"] {
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: 1fr;
-        }
-        .layout-container[data-grid="2"] .cargo-item { grid-column: auto; grid-row: auto; }
-
-        .layout-container[data-grid="3"] {
-            grid-template-columns: 1fr 1.35fr;
-            grid-template-rows: 1fr 1fr;
-        }
-        .layout-container[data-grid="3"] .cargo-item:nth-child(2) { grid-column: 2; grid-row: 1 / 3; }
-        .layout-container[data-grid="3"] .cargo-item:nth-child(1) { grid-column: 1; grid-row: 1; }
-        .layout-container[data-grid="3"] .cargo-item:nth-child(3) { grid-column: 1; grid-row: 2; }
-
-        .layout-container[data-grid="4"] {
-            grid-template-columns: 1fr 1.35fr;
-            grid-template-rows: 1fr 1fr;
-        }
-        .layout-container[data-grid="4"] .cargo-item:nth-child(3) { grid-column: 2; grid-row: 1 / 3; }
-        .layout-container[data-grid="4"] .cargo-item:nth-child(1) { grid-column: 1; grid-row: 2; }
-        .layout-container[data-grid="4"] .cargo-item:nth-child(2) { grid-column: 1; grid-row: 1; }
-    }
-
-    @media (max-width: 767px) {
-        .layout-container {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    .service-item {
-        border-top: 3px solid #e2e8f0;
-        padding-top: 1.25rem;
-        transition: transform .3s ease, border-color .3s ease;
-    }
-    .service-item:hover { 
-        transform: translateY(-4px); 
-        border-top-color: #dc2626; 
-    }
-
     /* Moving Cargo Rows Animation */
     .cargo-row-bottom {
         animation: cargoMoveBottom 6s linear infinite;
@@ -220,22 +150,6 @@
         100% { transform: translateX(0); }
     }
 
-    @media (min-width: 1024px) {
-        .flow-step:not(:last-child)::after {
-            content: "";
-            position: absolute;
-            right: -10px;
-            top: 50%;
-            transform: translateY(-50%) rotate(45deg);
-            width: 18px;
-            height: 18px;
-            background: #ffffff;
-            border-right: 2px solid #e2e8f0;
-            border-top: 2px solid #e2e8f0;
-            z-index: 20;
-        }
-    }
-
     @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after {
             animation-duration: .01ms !important;
@@ -244,7 +158,7 @@
         }
     }
 
-     @keyframes locationFadeUp {
+    @keyframes locationFadeUp {
         from { opacity: 0; transform: translateY(24px); }
         to { opacity: 1; transform: translateY(0); }
     }
@@ -259,10 +173,6 @@
         animation: locationFadeUp .8s ease-out forwards;
     }
 
-    .location-hero-image {
-        animation: locationZoom 1.4s ease-out both;
-    }
-
     .location-card {
         transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
     }
@@ -271,11 +181,6 @@
         transform: translateY(-4px);
         border-color: #dc2626;
         box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.12);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .location-reveal, .location-hero-image { animation: none; opacity: 1; }
-        .location-card { transition: none; }
     }
 
     /* ═══ Route Map Interactivity ═══ */
@@ -309,64 +214,74 @@
 @endpush
 
 @section('content')
-
-<!-- ═══ 1. HERO SECTION (SEMI-TRANSPARENT GLASS & BALANCED ACCENTS) ═══ -->
-<div class="relative w-full min-h-[88vh] flex items-center overflow-hidden border-b border-white/10 bg-slate-950 pt-[env(safe-area-inset-top)]">
-    <div class="absolute inset-0 hero-banner z-0"></div>
-
+<!-- ═══ 1. HERO SECTION ═══ -->
+<div class="relative w-full min-h-[88vh] flex items-center overflow-hidden border-b border-white/10 bg-slate-900 pt-[env(safe-area-inset-top)]">
+    <!-- Gambar latar belakang dengan opasitas lebih terang -->
+    <div class="absolute inset-0 hero-banner z-0 opacity-80"></div>
     <div id="lights"></div>
-
-    <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/75 to-transparent z-2 pointer-events-none"></div>
-    <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950 to-transparent z-2 pointer-events-none"></div>
+    
+    <!-- Lapisan gradien dibuat lebih tipis/terang agar gambar background lebih terlihat -->
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-950/50 via-slate-950/35 to-transparent z-2 pointer-events-none"></div>
+    <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950/60 to-transparent z-2 pointer-events-none"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-24 lg:py-28 w-full mt-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             
             <div class="lg:col-span-7 hero-content space-y-6 text-left" data-aos="fade-right">
-
-                <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15]">
+                <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] drop-shadow-md">
                     PT PATIMBAN <br class="hidden sm:inline">INTERNATIONAL <br>
                     <span class="text-red-500">CAR TERMINAL</span>
                 </h1>
 
-                <p class="text-slate-200 max-w-xl leading-relaxed text-base sm:text-lg border-l-4 border-amber-500 pl-4 font-normal bg-white/5 backdrop-blur-sm py-2.5 rounded-r-xl border-y border-r border-white/10">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat non nobis, quos corrupti quae rerum architecto eligendi reprehenderit nisi perferendis illum, ea ut maiores, aspernatur dolore iste deserunt nam molestiae.
+                <p class="text-slate-100 max-w-xl leading-relaxed text-base sm:text-lg border-l-4 border-amber-500 pl-4 font-normal bg-slate-900/40 backdrop-blur-md py-2.5 rounded-r-xl border-y border-r border-white/15 shadow-sm">
+                    Providing professional Ro-Ro vehicle and cargo loading and unloading services at Patimban Port, featuring international safety standards, high efficiency, and integrated technology.
                 </p>
 
                 <div class="pt-2 flex flex-wrap gap-4">
                     <a href="{{ url('/about') }}" class="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold py-3 px-7 rounded-xl shadow-lg shadow-red-600/30 transition transform hover:-translate-y-0.5">
                         <span>About Us</span>
                     </a>
-                
                 </div>
             </div>
 
+            <!-- Bagian Kanan Hero (SVG Murni Tanpa Kotak Blur) -->
             <div class="lg:col-span-5 flex justify-center lg:justify-end items-center" data-aos="fade-left">
-                <div class="w-full max-w-md bg-white/10 backdrop-blur-xl p-6 rounded-3xl border border-white/20 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]">
-                    <svg class="w-full h-auto drop-shadow-[0_20px_35px_rgba(0,0,0,0.6)]" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <g id="heroCar1">
-                                <path d="M10 40H90V45H10V40Z" fill="#38bdf8"/>
-                                <circle cx="25" cy="45" r="7" fill="none" stroke="#f59e0b" stroke-width="4"/>
-                                <circle cx="75" cy="45" r="7" fill="none" stroke="#f59e0b" stroke-width="4"/>
-                                <path d="M20 40L30 20H70L80 40H20Z" fill="none" stroke="#dc2626" stroke-width="5" stroke-linejoin="round"/>
-                            </g>
-                            <g id="heroCar2">
-                                <path d="M10 42H90V46H10V42Z" fill="#38bdf8"/>
-                                <circle cx="25" cy="46" r="6" fill="none" stroke="#f59e0b" stroke-width="3"/>
-                                <circle cx="45" cy="46" r="6" fill="none" stroke="#f59e0b" stroke-width="3"/>
-                                <circle cx="80" cy="46" r="6" fill="none" stroke="#f59e0b" stroke-width="3"/>
-                                <path d="M15 42V25H55V42H15Z" fill="none" stroke="#dc2626" stroke-width="4"/>
-                                <path d="M55 30H75L85 42H55V30Z" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linejoin="round"/>
-                            </g>
-                            <g id="heroCar3">
-                                <path d="M15 42H85V46H15V42Z" fill="#38bdf8"/>
-                                <circle cx="30" cy="46" r="7" fill="none" stroke="#f59e0b" stroke-width="4"/>
-                                <circle cx="70" cy="46" r="7" fill="none" stroke="#f59e0b" stroke-width="4"/>
-                                <path d="M30 42L40 25H60L70 42H30Z" fill="none" stroke="#dc2626" stroke-width="4" stroke-linejoin="round"/>
-                                <path d="M45 25L35 15H50" fill="none" stroke="#fbbf24" stroke-width="4" stroke-linecap="round"/>
-                            </g>
-                        </defs>
+                <div class="w-full max-w-md p-6">
+                    <svg class="w-full h-auto drop-shadow-[0_20px_35px_rgba(0,0,0,0.4)]" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                       <defs>
+    <!-- Mobil Sedan (heroCar1) -->
+    <g id="heroCar1">
+        <path d="M10 40H90V45H10V40Z" fill="#38bdf8"/>
+        <circle cx="25" cy="45" r="7" fill="none" stroke="#f59e0b" stroke-width="4"/>
+        <circle cx="75" cy="45" r="7" fill="none" stroke="#f59e0b" stroke-width="4"/>
+        <path d="M20 40L30 20H70L80 40H20Z" fill="none" stroke="#dc2626" stroke-width="5" stroke-linejoin="round"/>
+    </g>
+
+    <!-- Truk / Angkutan (heroCar2) -->
+    <g id="heroCar2">
+        <path d="M10 42H90V46H10V42Z" fill="#38bdf8"/>
+        <circle cx="25" cy="46" r="6" fill="none" stroke="#f59e0b" stroke-width="3"/>
+        <circle cx="45" cy="46" r="6" fill="none" stroke="#f59e0b" stroke-width="3"/>
+        <circle cx="80" cy="46" r="6" fill="none" stroke="#f59e0b" stroke-width="3"/>
+        <path d="M15 42V25H55V42H15Z" fill="none" stroke="#dc2626" stroke-width="4"/>
+        <path d="M55 30H75L85 42H55V30Z" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linejoin="round"/>
+    </g>
+
+    <!-- Desain Buldoser / Alat Berat (heroCar3 yang diperbarui) -->
+    <g id="heroCar3">
+        <!-- Trek / Rantai Roda Buldoser -->
+        <rect x="15" y="40" width="70" height="8" rx="4" fill="#f59e0b" stroke="#0f172a" stroke-width="1.5"/>
+        <circle cx="28" cy="44" r="3" fill="#0f172a"/>
+        <circle cx="50" cy="44" r="3" fill="#0f172a"/>
+        <circle cx="72" cy="44" r="3" fill="#0f172a"/>
+        <!-- Bodi Kabin Buldoser -->
+        <path d="M30 40L35 22H65L70 40H30Z" fill="#dc2626" stroke="#0f172a" stroke-width="1.5" stroke-linejoin="round"/>
+        <!-- Knalpot Asap di atas kabin -->
+        <line x1="42" y1="22" x2="42" y2="14" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+        <!-- Blade / Pengeruk Pasir/Tanah di Depan -->
+        <path d="M82 18L88 22V44H84V20H82V18Z" fill="#38bdf8" stroke="#0f172a" stroke-width="1"/>
+    </g>
+</defs>
                         <rect x="0" y="230" width="420" height="8" rx="2" fill="#475569" />
                         <rect x="30" y="238" width="8" height="42" fill="#1e293b" />
                         <rect x="130" y="238" width="8" height="42" fill="#1e293b" />
@@ -403,7 +318,7 @@
                             <use href="#heroCar2" transform="translate(245 135) scale(.65)" />
                             <use href="#heroCar3" transform="translate(315 135) scale(.65)" />
                         </g>
-                    </div>
+                    </svg>
                 </div>
             </div>
 
@@ -411,7 +326,7 @@
     </div>
 </div>
 
-<!-- ═══ 2. STATS STRIP (RESPONSIVE MOBILE) ═══ -->
+<!-- ═══ 2. STATS STRIP ═══ -->
 <section class="stats-strip max-w-7xl mx-auto px-4 sm:px-6 mt-8 sm:mt-10 relative z-20" data-aos="fade-up">
     <div class="bg-white rounded-2xl shadow-xl p-5 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-y-6 sm:gap-y-0 divide-x-0 md:divide-x divide-slate-200 border-t-4 border-red-600">
         <div class="stat-item text-center px-2 sm:px-4">
@@ -473,93 +388,68 @@
     </div>
 </section>
 
-<!-- ═══ 4. VEHICLE & CARGO TYPES (ANIME.JS DYNAMIC GRID LAYOUT) ═══ -->
+<!-- ═══ 4. TERMINAL GALLERY (3 PHOTOS HIGHLIGHT) ═══ -->
 <section class="py-20 bg-slate-50 border-y border-slate-200 overflow-hidden" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-slate-200 gap-4">
             <div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Vehicle Cargo Types</h2>
+                <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Terminal Gallery</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Operational Excellence in Action</h2>
             </div>
-            <span class="text-slate-500 text-sm font-medium">Standardized handling protocols for Ro-Ro automotive cargo</span>
+            <p class="text-slate-600 text-sm max-w-md">Dokumentasi langsung aktivitas bongkar muat kendaraan, kapasitas lapangan penumpukan (staging yard), dan standar keamanan tinggi di PT Patimban International Car Terminal.</p>
         </div>
 
-        <div id="cargoLayout" class="layout-container" data-grid="1">
-            
-            <!-- Card 1: Passenger Vehicles -->
-            <div class="cargo-item item flex flex-col justify-between group">
-                <div>
-                    <div class="w-24 h-24 sm:w-28 sm:h-28 mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                        <svg class="w-full h-full drop-shadow-[0_12px_16px_rgba(15,23,42,0.14)]" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10 40H90V45H10V40Z" fill="#1e293b"/>
-                            <circle cx="25" cy="45" r="7" fill="none" stroke="#1e293b" stroke-width="4"/>
-                            <circle cx="75" cy="45" r="7" fill="none" stroke="#1e293b" stroke-width="4"/>
-                            <path d="M20 40L30 20H70L80 40H20Z" fill="none" stroke="#dc2626" stroke-width="5" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Passenger Vehicles (CBU)</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Handling Completely Built Up (CBU) units including sedans, SUVs, MPVs, and EVs from vessel ramp doors to the staging yard under strict zero scratch protocols.
-                    </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Foto 1: Kapal Ro-Ro / Vessel -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-md bg-white border border-slate-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="{{ asset('assets/images/vessel-1.jpeg') }}" alt="Ro-Ro Vessel at Patimban Port" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-90"></div>
+                    <span class="absolute top-4 left-4 bg-red-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Vessel Operations</span>
                 </div>
-                <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
-                    <span class="text-slate-400">Cargo Classification</span>
-                    <span class="text-red-600 font-bold tracking-wide">LIGHT VEHICLE</span>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">Deep-Sea Ro-Ro Handling</h3>
+                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                        Pelayanan sandar kapal pengangkut kendaraan internasional berteknologi tinggi dengan efisiensi tinggi di dermaga Patimban.
+                    </p>
                 </div>
             </div>
 
-            <!-- Card 2: Commercial Trucks & Buses -->
-            <div class="cargo-item item flex flex-col justify-between group">
-                <div>
-                    <div class="w-24 h-24 sm:w-28 sm:h-28 mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                        <svg class="w-full h-full drop-shadow-[0_12px_16px_rgba(15,23,42,0.14)]" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10 42H90V46H10V42Z" fill="#1e293b"/>
-                            <circle cx="25" cy="46" r="6" fill="none" stroke="#1e293b" stroke-width="3"/>
-                            <circle cx="45" cy="46" r="6" fill="none" stroke="#1e293b" stroke-width="3"/>
-                            <circle cx="80" cy="46" r="6" fill="none" stroke="#1e293b" stroke-width="3"/>
-                            <path d="M15 42V25H55V42H15Z" fill="none" stroke="#dc2626" stroke-width="4"/>
-                            <path d="M55 30H75L85 42H55V30Z" fill="none" stroke="#1e293b" stroke-width="4" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Commercial Trucks Buses</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Accommodating heavy duty commercial vehicles, coaches, prime movers, and industrial chassis via high load bearing vessel ramp access.
-                    </p>
+            <!-- Foto 2: Staging Yard / Lapangan Penumpukan -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-md bg-white border border-slate-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="{{ asset('assets/images/patimban-yard-1.jpeg') }}" alt="Patimban Staging Yard" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-90"></div>
+                    <span class="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Staging Yard</span>
                 </div>
-                <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
-                    <span class="text-slate-400">Cargo Classification</span>
-                    <span class="text-blue-900 font-bold tracking-wide">COMMERCIAL BUS</span>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">Wide Capacity Staging Yard</h3>
+                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                        Area lapangan penumpukan kendaraan CBU yang luas, tertata rapi, dan aman untuk menampung distribusi domestik maupun ekspor.
+                    </p>
                 </div>
             </div>
 
-            <!-- Card 3: Heavy Equipment & Project Cargo -->
-            <div class="cargo-item item flex flex-col justify-between group">
-                <div>
-                    <div class="w-24 h-24 sm:w-28 sm:h-28 mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                        <svg class="w-full h-full drop-shadow-[0_12px_16px_rgba(15,23,42,0.14)]" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 42H85V46H15V42Z" fill="#1e293b"/>
-                            <circle cx="30" cy="46" r="7" fill="none" stroke="#1e293b" stroke-width="4"/>
-                            <circle cx="70" cy="46" r="7" fill="none" stroke="#1e293b" stroke-width="4"/>
-                            <path d="M30 42L40 25H60L70 42H30Z" fill="none" stroke="#dc2626" stroke-width="4" stroke-linejoin="round"/>
-                            <path d="M45 25L35 15H50" fill="none" stroke="#dc2626" stroke-width="4" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Heavy Equipment Special Cargo</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Handling mining, agricultural, and construction machinery (excavators, wheel loaders, bulldozers) using certified self-propelled roll-on/roll-off and towing methods.
+            <!-- Foto 3: Proses Inspeksi / Pengecekan Kendaraan -->
+            <div class="group relative rounded-2xl overflow-hidden shadow-md bg-white border border-slate-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="{{ asset('assets/images/car-5.jpeg') }}" alt="Vehicle Inspection Process" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-90"></div>
+                    <span class="absolute top-4 left-4 bg-amber-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Quality Control</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">Strict Quality Inspection</h3>
+                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                        Prosedur pengecekan fisik dan mesin kendaraan secara teliti guna memastikan standar kualitas zero defect sebelum didistribusikan.
                     </p>
                 </div>
-                <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
-                    <span class="text-slate-400">Cargo Classification</span>
-                    <span class="text-red-600 font-bold tracking-wide">HEAVY EQUIPMENT</span>
-                </div>
             </div>
-
         </div>
     </div>
 </section>
 
-<!-- ═══ 7. INTERNATIONAL & DOMESTIC SHIPPING ROUTE NETWORK (EARTH GREEN MAP STYLE) ═══ -->
-<section class="py-20 bg-slate-50 relative overflow-hidden" data-aos="fade-up">
+ <!-- ═══ 7. INTERNATIONAL & DOMESTIC SHIPPING ROUTE NETWORK (EARTH GREEN MAP STYLE) ═══ -->
+<section class="py-20 bg-slate-50 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-slate-200 gap-4">
             <div>
@@ -592,6 +482,46 @@
                             <rect x="-4" y="-2" width="5" height="4" rx="0.8" fill="#ffffff" />
                             <rect x="-6" y="-1.2" width="1.5" height="2.4" fill="#0f172a" />
                         </g>
+
+                        <!-- FLAG DEFINITIONS FOR PORTS -->
+                        <clipPath id="flagClip"><rect width="20" height="14" rx="2" /></clipPath>
+                        
+                        <!-- Indonesia Flag -->
+                        <g id="flag-id">
+                            <rect width="20" height="14" rx="2" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.5" />
+                            <rect width="20" height="7" fill="#dc2626" rx="2" />
+                            <rect width="20" height="2" y="5" fill="#dc2626" />
+                        </g>
+                        <!-- Japan Flag -->
+                        <g id="flag-jp">
+                            <rect width="20" height="14" rx="2" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.5" />
+                            <circle cx="10" cy="7" r="4" fill="#dc2626" />
+                        </g>
+                        <!-- China / Hong Kong Flag -->
+                        <g id="flag-cn">
+                            <rect width="20" height="14" rx="2" fill="#dc2626" stroke="#cbd5e1" stroke-width="0.5" />
+                            <polygon points="4,2 5,4 3,3 5,3 3,4" fill="#facc15" />
+                            <polygon points="7,2 7.5,3 6.5,2.5 7.5,2.5 6.5,3" fill="#facc15" />
+                            <polygon points="8,4 8.5,5 7.5,4.5 8.5,4.5 7.5,5" fill="#facc15" />
+                            <polygon points="7,6 7.5,7 6.5,6.5 7.5,6.5 6.5,7" fill="#facc15" />
+                        </g>
+                        <!-- Thailand Flag -->
+                        <g id="flag-th">
+                            <rect width="20" height="14" rx="2" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.5" />
+                            <rect width="20" height="2.3" y="0" fill="#dc2626" />
+                            <rect width="20" height="2.3" y="11.7" fill="#dc2626" />
+                            <rect width="20" height="4.6" y="4.7" fill="#1e3a8a" />
+                        </g>
+
+                        
+                        <!-- Philippines Flag -->
+                        <g id="flag-ph">
+                            <rect width="20" height="14" rx="2" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.5" />
+                            <rect width="20" height="7" fill="#1d4ed8" />
+                            <rect width="20" height="7" y="7" fill="#dc2626" />
+                            <polygon points="0,0 10,7 0,14" fill="#ffffff" />
+                            <circle cx="3.5" cy="7" r="1.5" fill="#facc15" />
+                        </g>
                     </defs>
 
                     <rect x="0" y="0" width="900" height="460" rx="16" fill="url(#earthSeaGrad)" />
@@ -622,33 +552,42 @@
                         <path d="M 143.1 213.2 L 134.4 216.6 L 123.8 216.9 L 117.0 225.2 L 110.6 226.6 L 117.9 233.3 L 133.6 244.0 L 128.1 250.6 L 122.9 252.1 L 126.5 255.9 L 136.5 262.0 L 137.9 269.8 L 143.8 276.8 L 128.3 291.8 L 126.9 286.2 L 131.5 280.3 L 126.4 275.7 L 127.6 267.4 L 121.6 263.4 L 114.0 244.6 L 107.5 238.2 L 80.5 247.5 L 62.8 245.0 L 68.0 235.5 L 64.9 228.4 L 53.1 219.5 L 54.9 216.8 L 46.2 215.8 L 35.5 209.5 L 34.5 203.4 L 39.8 204.5 L 40.1 199.0 L 47.5 197.2 L 45.9 193.9 L 49.3 191.3 L 49.9 183.4 L 61.6 185.1 L 68.3 178.8 L 69.0 175.1 L 77.3 168.7 L 76.9 164.3 L 96.3 159.0 L 107.0 160.4 L 105.8 155.6 L 111.0 154.2 L 109.9 151.3 L 118.7 150.8 L 123.7 155.3 L 130.2 157.1 L 130.1 169.3 L 115.9 175.7 L 114.1 184.8 L 129.9 183.5 L 133.5 190.6 L 143.0 192.1 L 138.6 198.4 L 156.2 202.7 L 167.3 200.5 L 167.7 203.7 L 154.9 208.6 L 151.7 211.5 L 143.1 213.2 Z" fill="#dcfce7" stroke="#86efac" stroke-width="0.8" stroke-opacity="0.8" />
                         <path d="M -33.7 -9.9 L -17.9 -11.3 L 10.7 -17.9 L 33.5 -21.5 L 46.6 -19.1 L 62.2 -19.0 L 72.2 -15.4 L 87.2 -15.2 L 108.9 -13.2 L 123.5 -18.6 L 117.4 -23.1 L 132.9 -31.0 L 149.7 -27.9 L 181.0 -25.0 L 183.8 -19.2 L 205.1 -16.0 L 238.3 -18.4 L 253.3 -17.4 L 268.0 -13.8 L 277.1 -9.8 L 309.9 -8.7 L 343.5 -11.8 L 365.4 -17.2 L 374.4 -16.4 L 382.3 -13.8 L 400.2 -14.5 L 382.3 -1.0 L 386.1 2.1 L 394.6 1.1 L 409.4 2.3 L 421.0 -0.5 L 433.0 1.9 L 446.6 7.3 L 444.9 10.0 L 433.1 9.2 L 411.3 10.2 L 400.8 12.4 L 389.8 17.4 L 366.9 20.4 L 352.0 24.5 L 328.1 22.2 L 320.2 27.2 L 327.4 32.6 L 316.9 35.2 L 306.2 39.3 L 288.7 42.0 L 266.2 42.3 L 241.9 45.0 L 224.5 49.1 L 217.8 46.7 L 199.7 46.7 L 177.5 42.1 L 162.7 40.9 L 142.7 42.0 L 111.8 40.3 L 95.2 40.4 L 86.4 35.9 L 79.6 28.8 L 70.3 28.0 L 52.2 23.2 L 14.2 20.8 L 8.8 17.5 L 14.2 20.8 L 52.2 23.2 L 70.3 28.0 L 79.6 28.8 L 86.4 35.9 L 95.2 40.4 L 111.8 40.3 L 142.7 42.0 L 162.7 40.9 L 177.5 42.1 L 199.7 46.7 L 217.8 46.7 L 224.5 49.1 L 241.9 45.0 L 266.2 42.3 L 288.7 42.0 L 306.2 39.3 L 316.9 35.2 L 327.4 32.6 L 320.2 27.2 L 328.1 22.2 L 352.0 24.5 L 366.9 20.4 L 389.8 17.4 L 400.8 12.4 L 411.3 10.2 L 433.1 9.2 L 444.9 10.0 L 446.6 7.3 L 433.0 1.9 L 421.0 -0.5 L 409.4 2.3 L 394.6 1.1 L 386.1 2.1 L 382.3 -1.0 L 400.2 -14.5 L 418.2 -11.6 L 439.3 -16.4 L 439.2 -19.8 L 452.7 -27.9 L 461.1 -30.4 L 460.9 -34.6 L 452.7 -36.4 L 465.0 -40.3 L 503.6 -41.9 L 526.0 -39.6 L 539.2 -36.7 L 559.3 -21.0 L 564.9 -13.5 Z" fill="#dcfce7" stroke="#86efac" stroke-width="0.8" stroke-opacity="0.8" />
 
-                   <text x="90" y="325" fill="#0369a1" font-size="12" font-weight="800" letter-spacing="1.5">Belawan</text>
-               <text x="165" y="330" fill="#0369a1" font-size="12" font-weight="800" letter-spacing="1.5">Batam</text>
-                <text x="330" y="340" fill="#0369a1" font-size="12" font-weight="800" letter-spacing="1.5">Pontianak & Banjarmasin</text>
 
-                    <text x="330" y="430" fill="#a10303" font-size="12" font-weight="800" letter-spacing="1.5">INDONESIA</text>
-                    <text x="120" y="270" fill="#475569" font-size="10" font-weight="700" letter-spacing="1">THAILAND</text>
-                    <text x="470" y="120" fill="#475569" font-size="11" font-weight="700" letter-spacing="1">CHINA</text>
+                    <text x="330" y="430" fill="#0369a1" font-size="12" font-weight="800" letter-spacing="1.5">INDONESIA</text>
+                    <text x="70" y="240" fill="#475569" font-size="10" font-weight="700" letter-spacing="1">THAILAND</text>
+                    <text x="500" y="90" fill="#475569" font-size="11" font-weight="700" letter-spacing="1">CHINA</text>
                     <text x="700" y="70" fill="#475569" font-size="10" font-weight="700" letter-spacing="1">JAPAN</text>
-                    <text x="570" y="340" fill="#475569" font-size="10" font-weight="700" letter-spacing="1">ASIA</text>
 
-                    <path class="route-hit" data-route="domestic" d="M268 416 Q 210 390 170 340" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
-                    <path id="rutePatBatam" class="route-line" data-route="domestic" d="M268 416 Q 210 390 170 340" stroke="#0284c7" stroke-width="1.8" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
-                    <g class="route-marker" data-route="domestic" fill="#0284c7">
-                        <use href="#shipIcon" />
-                        <animateMotion dur="4.5s" repeatCount="indefinite" rotate="auto">
-                            <mpath href="#rutePatBatam"/>
-                        </animateMotion>
-                    </g>
+                  <!-- DOMESTIC ROUTE: Pontianak -->
+    <path class="route-hit" data-route="domestic" d="M268 416 Q 284 390 300 370" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
+    <path id="rutePatPontianak" class="route-line" data-route="domestic" d="M268 416 Q 284 390 300 370" stroke="#0284c7" stroke-width="1.8" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
+    <g class="route-marker" data-route="domestic" fill="#0284c7">
+        <use href="#shipIcon" />
+        <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#rutePatPontianak"/>
+        </animateMotion><!-- DOMESTIC ROUTE: Pontianak -->
+   
+    </g>
 
-                    <path class="route-hit" data-route="domestic" d="M268 416 Q 160 380 90 310" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
-                    <path id="rutePatBelawan" class="route-line" data-route="domestic" d="M268 416 Q 160 380 90 310" stroke="#0284c7" stroke-width="1.8" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
-                    <g class="route-marker" data-route="domestic" fill="#0284c7">
-                        <use href="#shipIcon" />
-                        <animateMotion dur="5.5s" repeatCount="indefinite" rotate="auto">
-                            <mpath href="#rutePatBelawan"/>
-                        </animateMotion>
-                    </g>
+                    <!-- DOMESTIC ROUTE: Batam -->
+    <path class="route-hit" data-route="domestic" d="M268 416 Q 224 383 180 350" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
+    <path id="rutePatBatam" class="route-line" data-route="domestic" d="M268 416 Q 224 383 180 350" stroke="#0284c7" stroke-width="1.8" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
+    <g class="route-marker" data-route="domestic" fill="#0284c7">
+        <use href="#shipIcon" />
+        <animateMotion dur="4.5s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#rutePatBatam"/>
+        </animateMotion>
+    </g>
+
+                  <!-- DOMESTIC ROUTE: Belawan -->
+    <path class="route-hit" data-route="domestic" d="M268 416 Q 189 368 110 320" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
+    <path id="rutePatBelawan" class="route-line" data-route="domestic" d="M268 416 Q 189 368 110 320" stroke="#0284c7" stroke-width="1.8" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
+    <g class="route-marker" data-route="domestic" fill="#0284c7">
+        <use href="#shipIcon" />
+        <animateMotion dur="5.5s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#rutePatBelawan"/>
+        </animateMotion>
+    </g>
 
                     <path class="route-hit" data-route="domestic" d="M268 416 Q 330 380 390 350" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
                     <path id="rutePatBanjarmasin" class="route-line" data-route="domestic" d="M268 416 Q 330 380 390 350" stroke="#0284c7" stroke-width="1.8" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
@@ -659,6 +598,7 @@
                         </animateMotion>
                     </g>
 
+                    <!-- INTERNATIONAL ROUTES (Amber/Orange Color #d97706) -->
                     <path class="route-hit" data-route="international" d="M268 416 Q 200 320 140 250" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
                     <path id="ruteIntKlangChabang" class="route-line" data-route="international" d="M268 416 Q 200 320 140 250" stroke="#d97706" stroke-width="1.8" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
                     <g class="route-marker" data-route="international" fill="#d97706">
@@ -695,16 +635,117 @@
                         </animateMotion>
                     </g>
 
-                    <g class="dest-marker" data-route="domestic" tabindex="0" role="button" aria-label="View Domestic route details"><circle cx="170" cy="340" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="170" cy="340" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1" /></g>
-                    <g class="dest-marker" data-route="domestic" tabindex="0" role="button" aria-label="View Domestic route details"><circle cx="90" cy="310" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="90" cy="310" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1" /></g>
-                    <g class="dest-marker" data-route="domestic" tabindex="0" role="button" aria-label="View Domestic route details"><circle cx="390" cy="350" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="390" cy="350" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1" /></g>
+                    <!-- Destination Port Markers -->
+                    <!-- Pontianak (Indonesia) -->
+                    <g class="dest-marker" data-route="domestic" tabindex="0" role="button" aria-label="View Domestic route details">
+                        <circle cx="300" cy="330" r="14" fill="transparent" pointer-events="all" />
+                        <circle class="visible-dot" cx="300" cy="370" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1" />
+                        <text x="300" y="360" fill="#006aff" font-size="10" font-weight="700" letter-spacing="1">Pontianak</text>
+                    </g>
 
-                    <g class="dest-marker" data-route="international" tabindex="0" role="button" aria-label="View International route details"><circle cx="140" cy="250" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="140" cy="250" r="4" fill="#d97706" stroke="#ffffff" stroke-width="1" /></g>
-                    <g class="dest-marker" data-route="international" tabindex="0" role="button" aria-label="View International route details"><circle cx="472" cy="129" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="472" cy="129" r="4" fill="#d97706" stroke="#ffffff" stroke-width="1" /></g>
-                    <g class="dest-marker" data-route="international" tabindex="0" role="button" aria-label="View International route details"><circle cx="745" cy="95" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="745" cy="95" r="4" fill="#d97706" stroke="#ffffff" stroke-width="1" /></g>
-                    <g class="dest-marker" data-route="international" tabindex="0" role="button" aria-label="View International route details"><circle cx="580" cy="320" r="14" fill="transparent" pointer-events="all" /><circle class="visible-dot" cx="580" cy="320" r="4" fill="#d97706" stroke="#ffffff" stroke-width="1" /></g>
+                    <!-- Batam (Indonesia) -->
+                    <g class="dest-marker" data-route="domestic" tabindex="0" role="button" aria-label="View Domestic route details">
+                        <circle cx="180" cy="350" r="14" fill="transparent" pointer-events="all" />
+                        <circle class="visible-dot" cx="180" cy="350" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1" />
+                    <text x="160" y="340" fill="#006aff" font-size="10" font-weight="700" letter-spacing="1">Batam</text>
+                    </g>
 
-                    <!-- Origin Port Marker: Patimban -->
+                    <!-- Belawan (Indonesia) -->
+                    <g class="dest-marker" data-route="domestic" tabindex="0" role="button" aria-label="View Domestic route details">
+                        <circle cx="110" cy="320" r="14" fill="transparent" pointer-events="all" />
+                        <circle class="visible-dot" cx="110" cy="320" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1" />
+                        <text x="80" y="310" fill="#006aff" font-size="10" font-weight="700" letter-spacing="1">Belawan</text>
+                    </g>
+
+                    <!-- Banjarmasin (Indonesia) -->
+                    <g class="dest-marker" data-route="domestic" tabindex="0" role="button" aria-label="View Domestic route details">
+                        <circle cx="390" cy="350" r="14" fill="transparent" pointer-events="all" />
+                        <circle class="visible-dot" cx="390" cy="350" r="4" fill="#0284c7" stroke="#ffffff" stroke-width="1" />
+                        <text x="400" y="340" fill="#006aff" font-size="10" font-weight="700" letter-spacing="1">Banjarmasin</text>
+                    </g>
+
+                    <!-- Port Klang / Laem Chabang (Thailand) -->
+                    <g class="dest-marker" data-route="international" tabindex="0" role="button" aria-label="View International route details">
+                        <circle cx="140" cy="250" r="14" fill="transparent" pointer-events="all" />
+                        <circle class="visible-dot" cx="140" cy="250" r="4" fill="#d97706" stroke="#ffffff" stroke-width="1" />
+                        <use href="#flag-th" x="130" y="230" />
+                    </g>
+<!-- 1. DESTINATION MARKER: MALAYSIA (Port Klang) -->
+<g class="dest-marker" data-route="international" tabindex="0" role="button" aria-label="View International route details">
+    <circle cx="150" cy="330" r="14" fill="transparent" pointer-events="all" />
+    <circle class="visible-dot" cx="150" cy="330" r="4" fill="#d97706" stroke="#ffffff" stroke-width="1" />
+    <use href="#flag-my" x="139" y="306" />
+</g>
+
+<!-- INTERNATIONAL ROUTE: Malaysia -->
+<path class="route-hit" data-route="international" d="M268 416 Q 209 373 150 330" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
+<path id="ruteIntMalaysia" class="route-line" data-route="international" d="M268 416 Q 209 373 150 330" stroke="#d97706" stroke-width="1.8" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
+<g class="route-marker" data-route="international" fill="#d97706">
+    <use href="#shipIcon" />
+    <animateMotion dur="5.5s" repeatCount="indefinite" rotate="auto">
+        <mpath href="#ruteIntMalaysia"/>
+    </animateMotion>
+</g>
+
+  <!-- 2. DESTINATION MARKER: SINGAPORE -->
+<g class="dest-marker" data-route="international" tabindex="0" role="button" aria-label="View International route details">
+    <circle cx="165" cy="305" r="14" fill="transparent" pointer-events="all" />
+    <circle class="visible-dot" cx="165" cy="305" r="4" fill="#d97706" stroke="#ffffff" stroke-width="1" />
+    <use href="#flag-sg" x="154" y="281" />
+</g>
+
+<!-- INTERNATIONAL ROUTE: Singapore -->
+<path class="route-hit" data-route="international" d="M268 416 Q 216 360 165 305" stroke="transparent" stroke-width="18" fill="none" pointer-events="stroke" />
+<path id="ruteIntSingapore" class="route-line" data-route="international" d="M268 416 Q 216 360 165 305" stroke="#d97706" stroke-width="1.8" stroke-dasharray="4 5" fill="none" opacity="0.85" pointer-events="none" />
+<g class="route-marker" data-route="international" fill="#d97706">
+    <use href="#shipIcon" />
+    <animateMotion dur="5s" repeatCount="indefinite" rotate="auto">
+        <mpath href="#ruteIntSingapore"/>
+    </animateMotion>
+</g>
+                    <!-- Hong Kong / Guangzhou (China) -->
+                    <g class="dest-marker" data-route="international" tabindex="0" role="button" aria-label="View International route details">
+                        <circle cx="472" cy="129" r="14" fill="transparent" pointer-events="all" />
+                        <circle class="visible-dot" cx="472" cy="129" r="4" fill="#d97706" stroke="#ffffff" stroke-width="1" />
+                        <use href="#flag-cn" x="462" y="109" />
+                    </g>
+
+                    XML
+<!-- Tambahkan definisi bendera ini di dalam tag <defs> peta SVG Anda -->
+
+    <!-- Flag Malaysia -->
+    <g id="flag-my">
+        <rect width="22" height="14" fill="#CC0000" rx="1"/>
+        <rect width="22" height="2" y="2" fill="#FFFFFF"/>
+        <rect width="22" height="2" y="6" fill="#FFFFFF"/>
+        <rect width="22" height="2" y="10" fill="#FFFFFF"/>
+        <rect width="11" height="8" fill="#003366"/>
+    </g>
+
+    <!-- Flag Singapore -->
+    <g id="flag-sg">
+        <rect width="22" height="14" fill="#EE1C25" rx="1"/>
+        <rect width="22" height="7" y="7" fill="#FFFFFF"/>
+        <circle cx="5" cy="3.5" r="2" fill="#FFFFFF"/>
+        <circle cx="5.8" cy="3.5" r="1.6" fill="#EE1C25"/>
+    </g>
+
+                    <!-- Japan -->
+                    <g class="dest-marker" data-route="international" tabindex="0" role="button" aria-label="View International route details">
+                        <circle cx="745" cy="95" r="14" fill="transparent" pointer-events="all" />
+                        <circle class="visible-dot" cx="745" cy="95" r="4" fill="#d97706" stroke="#ffffff" stroke-width="1" />
+                        <use href="#flag-jp" x="735" y="75" />
+                    </g>
+
+                    <!-- Regional / Philippines (Batangas) -->
+                    <g class="dest-marker" data-route="international" tabindex="0" role="button" aria-label="View International route details">
+                        <circle cx="580" cy="320" r="14" fill="transparent" pointer-events="all" />
+                        <circle class="visible-dot" cx="580" cy="320" r="4" fill="#d97706" stroke="#ffffff" stroke-width="1" />
+                        <use href="#flag-ph" x="570" y="300" />
+                        <text x="600" y="310" fill="#473f3a" font-size="10" font-weight="700" letter-spacing="1">Philippines (Batangas)</text>
+                    </g>
+
+                    <!-- Origin Port Marker: Patimban (Indonesia) -->
                     <g class="origin-marker" data-route="all" tabindex="0" role="button" aria-label="Show all routes from Patimban">
                         <circle cx="268" cy="416" r="20" fill="transparent" pointer-events="all" />
                         <circle cx="268" cy="416" r="18" fill="url(#patimbanGlow)">
@@ -712,10 +753,11 @@
                             <animate attributeName="opacity" values="0.7;0.1;0.7" dur="2.4s" repeatCount="indefinite" />
                         </circle>
                         <circle class="visible-dot" cx="268" cy="416" r="5.5" fill="#dc2626" stroke="#ffffff" stroke-width="1.5" />
+                        <use href="#flag-id" x="278" y="402" />
                     </g>
-                    <text x="20" y="446" fill="#1e293b" font-size="12" font-weight="800" letter-spacing="1">PATIMBAN PORT — SUBANG, WEST JAVA</text>
-                </div>
-          </div>
+                    <text x="150" y="446" fill="#1e293b" font-size="12" font-weight="800" letter-spacing="1">PATIMBAN PORT — SUBANG, WEST JAVA</text>
+                </svg>
+            </div>
         </div>
 
         <!-- Route Legends -->
@@ -760,58 +802,39 @@
 </div>
 
 </section>
-<!-- ═══ 8. LOCATION & FACILITIES ═══ -->
-<section class="py-20 bg-slate-50" data-aos="fade-up">
+
+
+<!-- ═══ 6. LOCATION & FACILITIES ═══ -->
+<section class="py-20 bg-white" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="max-w-3xl mb-10">
             <p class="text-red-600 text-xs font-extrabold uppercase tracking-[0.22em] mb-3">Infrastructure Access</p>
-            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
-                <div>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Port Location</h2>
-                    <p class="mt-3 text-slate-600 leading-relaxed">An integrated vehicle terminal facility engineered to streamline domestic and international automotive supply chains.</p>
-                </div>
-            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Port Location</h2>
+            <p class="mt-3 text-slate-600 leading-relaxed">An integrated vehicle terminal facility engineered to streamline domestic and international automotive supply chains.</p>
         </div>    
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
-        <div class="lg:col-span-3 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-aos="fade-right">
-            <div class="px-6 py-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                <div>
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+            <div class="lg:col-span-3 bg-slate-50 rounded-2xl border border-slate-200 shadow-sm overflow-hidden" data-aos="fade-right">
+                <div class="px-6 py-5 border-b border-slate-200">
                     <h3 class="text-lg font-extrabold text-slate-900">Key Facility Specifications</h3>
-                    <p class="text-xs text-slate-500 mt-1">PICT Terminal Operational Information</p>
+                </div>
+                <div class="divide-y divide-slate-100">
+                    <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Port Address</span><span class="text-sm font-semibold text-slate-900">Patimban Port, Pusakanagara, Subang Regency, West Java</span></div>
+                    <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Ro-Ro Berth</span><span class="text-sm font-semibold text-slate-900">300 meters</span></div>
+                    <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Basin Draft (Depth)</span><span class="text-sm font-semibold text-slate-900">-10.0 m LWS</span></div>
+                    <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Staging Yard Capacity</span><span class="text-sm font-semibold text-slate-900">218,000 CBU units / year</span></div>
                 </div>
             </div>
-            <div class="divide-y divide-slate-100">
-                <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Port Address</span><span class="text-sm font-semibold text-slate-900">Patimban Port, Pusakanagara, Subang Regency, West Java</span></div>
-                <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Ro-Ro Berth</span><span class="text-sm font-semibold text-slate-900">300 meters</span></div>
-                <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Basin Draft (Depth)</span><span class="text-sm font-semibold text-slate-900">-10.0 m LWS</span></div>
-                <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Staging Yard Capacity</span><span class="text-sm font-semibold text-slate-900">218,000 CBU units / year</span></div>
-            </div>
-        </div>
 
-        <div class="lg:col-span-2 grid sm:grid-cols-2 lg:grid-cols-1 gap-6" data-aos="fade-left">
-            <div class="rounded-2xl bg-blue-950 p-6 text-white shadow-sm">
-                <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-xl">&#128737;</div>
-                <h3 class="font-extrabold text-lg">Safety Security</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-300">Compliant with IMO ISPS Code standards and equipped with 24/7 CCTV surveillance across all terminal zones.</p>
+            <div class="lg:col-span-2 grid sm:grid-cols-2 lg:grid-cols-1 gap-6" data-aos="fade-left">
+                <div class="rounded-2xl bg-blue-950 p-6 text-white shadow-sm">
+                    <h3 class="font-extrabold text-lg">Safety Security</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-slate-300">Compliant with IMO ISPS Code standards and equipped with 24/7 CCTV surveillance across all terminal zones.</p>
+                </div>
+                <div class="rounded-2xl bg-slate-50 p-6 border border-slate-200 shadow-sm">
+                    <h3 class="font-extrabold text-lg text-slate-900">Green Port Initiative</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-slate-600">Energy efficiency and proactive marine waste management to champion sustainable terminal operations.</p>
+                </div>
             </div>
-            <div class="rounded-2xl bg-white p-6 border border-slate-200 shadow-sm">
-                <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-xl">&#127807;</div>
-                <h3 class="font-extrabold text-lg text-slate-900">Green Port Initiative</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-600">Energy efficiency and proactive marine waste management to champion sustainable terminal operations.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-</section>
-
-<!-- ═══ 9. ACTION STRIP ═══ -->
-<section class="bg-red-600 py-14 relative overflow-hidden text-white" data-aos="fade-up">
-    <div class="absolute inset-0 bg-red-700 transform skew-x-12 translate-x-1/3 z-0 pointer-events-none"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-        <div>
-            <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Ready to Partner with PICT?</h4>
-            <p class="text-red-100 text-sm sm:text-base mt-1">Inquire about terminal tariffs, berthing schedules, and automotive handling solutions.</p>
         </div>
     </div>
 </section>
@@ -819,18 +842,14 @@
 {{-- ═══ MAP + ADDRESS (LIGHT MODE) ═══ --}}
 <section class="max-w-7xl mx-auto px-6 pt-10 pb-20 bg-white text-slate-800" data-aos="fade-up">
     <div class="grid lg:grid-cols-12 gap-14 items-start">
-
         <div class="lg:col-span-5 location-reveal space-y-6" style="animation-delay:.15s" data-aos="fade-right">
             <div>
                 <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Our Address</span>
-                <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">
-                    Patimban Port Terminal
-                </h3>
+                <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">Patimban Port Terminal</h3>
             </div>
             <p class="text-slate-600 leading-relaxed text-sm">
                 Situated within the Patimban National Strategic Project zone in Subang Regency, offering optimized transit routes for automotive manufacturers across West Java.
             </p>
-
             <div class="space-y-4 pt-2">
                 <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200 shadow-sm">
                     <div class="w-10 h-10 rounded-lg bg-red-600/10 text-red-600 flex items-center justify-center shrink-0">
@@ -838,26 +857,12 @@
                     </div>
                     <div>
                         <h5 class="font-bold text-slate-900 mb-1 text-sm">Port Location</h5>
-                        <p class="text-slate-600 text-xs leading-relaxed">
-                            Patimban Port, Pusakanagara, Subang Regency, West Java, Indonesia
-                        </p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200 shadow-sm">
-                    <div class="w-10 h-10 rounded-lg bg-blue-600/10 text-blue-600 flex items-center justify-center shrink-0">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7l9-4 9 4M4 10v9a1 1 0 001 1h4v-6h6v6h4a1 1 0 001-1v-9"/></svg>
-                    </div>
-                    <div>
-                        <h5 class="font-bold text-slate-900 mb-1 text-sm">Accessibility Access</h5>
-                        <p class="text-slate-600 text-xs leading-relaxed">
-                            Direct connectivity to arterial highways and dedicated port access roads.
-                        </p>
+                        <p class="text-slate-600 text-xs leading-relaxed">Patimban Port, Pusakanagara, Subang Regency, West Java, Indonesia</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        {{-- Google Maps Embed --}}
         <div class="lg:col-span-7 location-reveal rounded-2xl overflow-hidden shadow-lg border border-slate-200 h-80 md:h-[420px] bg-slate-100" style="animation-delay:.3s" data-aos="fade-left">
             <iframe
                 src="https://www.google.com/maps?q=Pelabuhan+Patimban,+Subang,+Jawa+Barat&output=embed"
@@ -868,7 +873,14 @@
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>
         </div>
+    </div>
+</section>
 
+<!-- ═══ 7. ACTION STRIP ═══ -->
+<section class="bg-red-600 py-14 relative overflow-hidden text-white" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Ready to Partner with PICT?</h4>
+        <p class="text-red-100 text-sm sm:text-base mt-1">Inquire about terminal tariffs, berthing schedules, and automotive handling solutions.</p>
     </div>
 </section>
 
@@ -876,259 +888,82 @@
 
 @push('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    AOS.init({
-        duration: 900,
-        easing: 'ease-out-cubic',
-        once: true,
-        offset: 120
-    });
-});
-</script>
-
-<!-- Three.js CDN for Hyperspeed Highway Perspective Animation -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('lights');
-    if (!container || typeof THREE === 'undefined') return;
+    AOS.init({ duration: 900, easing: 'ease-out-cubic', once: true, offset: 120 });
 
-    const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x020617, 0.015);
-
-    const camera = new THREE.PerspectiveCamera(55, container.clientWidth / container.clientHeight, 0.1, 1000);
-    camera.position.set(4, 3, 20);
-    camera.lookAt(8, 2, -80);
-
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    container.appendChild(renderer.domElement);
-
-    const colorPalette = [
-        new THREE.Color('#ef4444'),
-        new THREE.Color('#f43f5e'),
-        new THREE.Color('#0284c7'),
-        new THREE.Color('#38bdf8'),
-        new THREE.Color('#e11d48')
-    ];
-
-    const count = 48;
-    const roadLength = 220;
-    const linesGroup = new THREE.Group();
-    scene.add(linesGroup);
-
-    const lineObjects = [];
-
-    for (let i = 0; i < count; i++) {
-        const isRightSide = i % 2 === 0;
-        const laneX = isRightSide 
-            ? 6 + (i % 6) * 1.8 + Math.random() * 0.5 
-            : -2 + (i % 4) * 1.5 + Math.random() * 0.5;
-
-        const color = isRightSide 
-            ? colorPalette[Math.floor(Math.random() * 2)]
-            : colorPalette[2 + Math.floor(Math.random() * 2)];
-
-        const length = 18 + Math.random() * 24;
-        const geometry = new THREE.CylinderGeometry(0.06, 0.06, length, 5);
-        geometry.rotateX(Math.PI / 2);
-
-        const material = new THREE.MeshBasicMaterial({
-            color: color,
-            transparent: true,
-            opacity: 0.75 + Math.random() * 0.25,
-            blending: THREE.AdditiveBlending
-        });
-
-        const line = new THREE.Mesh(geometry, material);
-        
-        const zPos = -Math.random() * roadLength;
-        const yPos = -0.5 + Math.sin(zPos * 0.02) * 0.4;
-        
-        line.position.set(laneX, yPos, zPos);
-        line.userData = {
-            speed: 0.85 + Math.random() * 0.95,
-            length: length,
-            originalX: laneX
+    // Shipping Route Interactivity Script
+    const svg = document.getElementById('routeMapSvg');
+    if (svg) {
+        const ROUTE_INFO = {
+            all: {
+                title: 'Patimban Port Comprehensive Network',
+                desc: 'Displaying all combined active international deep-sea lanes and domestic feeder channels connecting Patimban Port to global and regional markets.'
+            },
+            international: {
+                title: 'International Shipping Routes',
+                desc: 'Destinations: Port Klang (Malaysia), Laem Chabang (Thailand), Hong Kong, Guangzhou, Nagoya, Yokohama, Osaka (Japan).'
+            },
+            domestic: {
+                title: 'Domestic Feeder Network',
+                desc: 'Connecting major domestic maritime trade pathways across Indonesia: Pontianak, Batam, Belawan, and Banjarmasin.'
+            }
         };
 
-        linesGroup.add(line);
-        lineObjects.push(line);
-    }
+        const infoTitle = document.getElementById('routeInfoTitle');
+        const infoDesc = document.getElementById('routeInfoDesc');
+        const legendButtons = document.querySelectorAll('.route-legend-btn');
+        const routeLines = svg.querySelectorAll('.route-line');
+        const routeMarkers = svg.querySelectorAll('.route-marker');
+        const routeHits = svg.querySelectorAll('.route-hit');
+        const destMarkers = svg.querySelectorAll('.dest-marker');
+        const originMarker = svg.querySelector('.origin-marker');
 
-    const onResize = () => {
-        if (!container) return;
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(container.clientWidth, container.clientHeight);
-    };
-    window.addEventListener('resize', onResize);
-
-    const animate = () => {
-        lineObjects.forEach(line => {
-            line.position.z += line.userData.speed;
-            line.position.x = line.userData.originalX + Math.sin(line.position.z * 0.015) * 4;
-
-            if (line.position.z > 25) {
-                line.position.z = -roadLength;
+        function setActiveRoute(route) {
+            const target = route || 'all';
+            routeLines.forEach(el => {
+                const match = el.dataset.route === target;
+                el.classList.toggle('is-active', target !== 'all' && match);
+                el.classList.toggle('is-dim', target !== 'all' && !match);
+            });
+            routeMarkers.forEach(el => {
+                const match = el.dataset.route === target;
+                el.classList.toggle('is-dim', target !== 'all' && !match);
+            });
+            destMarkers.forEach(el => {
+                el.classList.toggle('is-active', target !== 'all' && el.dataset.route === target);
+            });
+            if (originMarker) {
+                originMarker.classList.toggle('is-active', target === 'all');
             }
-        });
-
-        renderer.render(scene, camera);
-        requestAnimationFrame(animate);
-    };
-    animate();
-});
-</script>
-@endpush
-
-@push('scripts')
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const statsStrip = document.querySelector('.stats-strip');
-    if (!statsStrip) return;
-
-    const numbers = statsStrip.querySelectorAll('.stat-number');
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const showStats = () => {
-        statsStrip.classList.add('is-visible');
-        numbers.forEach(number => {
-            number.textContent = Number(number.dataset.target);
-        });
-    };
-
-</script>
-@endpush
-
-@push('scripts')
-<!-- International Shipping Routes Interactivity -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const svg = document.getElementById('routeMapSvg');
-    if (!svg) return;
-
-    const ROUTE_INFO = {
-        all: {
-            title: 'Patimban Port Comprehensive Network',
-            desc: 'Displaying all combined active international deep-sea lanes and domestic feeder channels connecting Patimban Port to global and regional markets.'
-        },
-        international: {
-            title: 'International Shipping Routes (Kuning)',
-            desc: 'Destinations: Port Klang, Laem Chabang, Hong Kong, Guangzhou. Export: Nagoya, Yokohama, Osaka. Import: Tahara, Batangas, Muara, Singapore.'
-        },
-        domestic: {
-            title: 'Domestic Feeder Network (Biru)',
-            desc: 'Connecting major domestic maritime trade pathways across Indonesia: Pontianak, Batam, Belawan, and Banjarmasin.'
+            legendButtons.forEach(btn => {
+                const isActive = btn.dataset.route === target;
+                btn.classList.toggle('is-active', isActive);
+                btn.setAttribute('aria-pressed', String(isActive));
+            });
+            const info = ROUTE_INFO[target] || ROUTE_INFO.all;
+            if (infoTitle && infoDesc) {
+                infoTitle.textContent = info.title;
+                infoDesc.textContent = info.desc;
+            }
         }
-    };
 
-    const infoTitle = document.getElementById('routeInfoTitle');
-    const infoDesc = document.getElementById('routeInfoDesc');
-    const legendButtons = document.querySelectorAll('.route-legend-btn');
-    const routeLines = svg.querySelectorAll('.route-line');
-    const routeMarkers = svg.querySelectorAll('.route-marker');
-    const routeHits = svg.querySelectorAll('.route-hit');
-    const destMarkers = svg.querySelectorAll('.dest-marker');
-    const originMarker = svg.querySelector('.origin-marker');
-
-    function setActiveRoute(route) {
-        const target = route || 'all';
-
-        routeLines.forEach(el => {
-            const match = el.dataset.route === target;
-            el.classList.toggle('is-active', target !== 'all' && match);
-            el.classList.toggle('is-dim', target !== 'all' && !match);
-        });
-        routeMarkers.forEach(el => {
-            const match = el.dataset.route === target;
-            el.classList.toggle('is-dim', target !== 'all' && !match);
+        routeHits.forEach(el => {
+            el.style.cursor = 'pointer';
+            el.addEventListener('click', () => setActiveRoute(el.dataset.route));
         });
 
         destMarkers.forEach(el => {
-            el.classList.toggle('is-active', target !== 'all' && el.dataset.route === target);
+            el.addEventListener('click', () => setActiveRoute(el.dataset.route));
         });
-        if (originMarker) {
-            originMarker.classList.toggle('is-active', target === 'all');
-        }
 
         legendButtons.forEach(btn => {
-            const isActive = btn.dataset.route === target;
-            btn.classList.toggle('is-active', isActive);
-            btn.setAttribute('aria-pressed', String(isActive));
+            btn.addEventListener('click', () => setActiveRoute(btn.dataset.route));
         });
 
-        const info = ROUTE_INFO[target] || ROUTE_INFO.all;
-        if (infoTitle && infoDesc) {
-            infoTitle.textContent = info.title;
-            infoDesc.textContent = info.desc;
-        }
+        setActiveRoute('all');
     }
-
-    routeHits.forEach(el => {
-        el.style.cursor = 'pointer';
-        el.addEventListener('click', () => setActiveRoute(el.dataset.route));
-    });
-
-    destMarkers.forEach(el => {
-        el.addEventListener('click', () => setActiveRoute(el.dataset.route));
-        el.addEventListener('keydown', e => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                setActiveRoute(el.dataset.route);
-            }
-        });
-    });
-
-    if (originMarker) {
-        originMarker.addEventListener('click', () => setActiveRoute('all'));
-        originMarker.addEventListener('keydown', e => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                setActiveRoute('all');
-            }
-        });
-    }
-
-    legendButtons.forEach(btn => {
-        btn.addEventListener('click', () => setActiveRoute(btn.dataset.route));
-    });
-
-    setActiveRoute('all');
 });
-</script>
-@endpush
-
-@push('scripts')
-<script type="module">
-    import { createLayout, stagger } from 'https://esm.sh/animejs';
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const layoutEl = document.querySelector('#cargoLayout');
-        if (!layoutEl) return;
-
-        if (window.innerWidth < 768) return;
-
-        const layout = createLayout('#cargoLayout');
-        let i = 0;
-
-        function animateLayout() {
-            layout.update(({ root }) => {
-                root.dataset.grid = (++i % 4) + 1;
-            }, {
-                duration: 900,
-                ease: 'out(3)',
-                delay: stagger(100),
-                onComplete: () => {
-                    setTimeout(animateLayout, 3000);
-                }
-            });
-        }
-
-        setTimeout(animateLayout, 3000);
-    });
 </script>
 @endpush

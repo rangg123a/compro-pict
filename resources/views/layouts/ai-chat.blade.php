@@ -1,10 +1,11 @@
 <!-- ═══ FLOATING AI CHATBOT WIDGET ═══ -->
-<div id="ai-chat-widget" class="fixed bottom-20 right-4 sm:bottom-24 sm:right-6 z-50">
-    <button id="ai-chat-toggle" class="rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-105 focus:outline-none cursor-pointer overflow-hidden w-14 h-14 sm:w-20 sm:h-20">
+<!-- ═══ FLOATING AI CHATBOT WIDGET ═══ -->
+<div id="ai-chat-widget" class="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50 transition-all duration-300">    <button id="ai-chat-toggle" class="rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-105 focus:outline-none cursor-pointer overflow-hidden w-12 h-12 sm:w-14 sm:h-14 bg-white">
         <img src="{{ asset('assets/images/maskot-ai.png') }}" alt="PICT AI Assistant" class="w-full h-full object-cover">
     </button>
 
-<div id="ai-chat-box" class="hidden fixed sm:absolute bottom-0 sm:bottom-24 right-0 sm:right-0 left-0 sm:left-auto w-full sm:w-96 bg-white border border-slate-200 sm:rounded-2xl rounded-t-2xl shadow-2xl flex flex-col overflow-hidden h-[70vh] sm:h-[450px]">        <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between">
+    <div id="ai-chat-box" class="hidden absolute bottom-16 sm:bottom-20 right-0 w-80 sm:w-96 bg-white border border-slate-200 rounded-2xl shadow-2xl flex flex-col overflow-hidden h-[450px]">
+        <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between">
             <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 <h4 class="font-bold text-sm">PICT AI Assistant</h4>
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendBtn = document.getElementById('ai-chat-send');
     const inputField = document.getElementById('ai-chat-input');
     const messagesContainer = document.getElementById('ai-chat-messages');
+    const chatWidget = document.getElementById('ai-chat-widget');
 
     const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
 
@@ -43,6 +45,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     toggleBtn.addEventListener('click', () => chatBox.classList.toggle('hidden'));
     closeBtn.addEventListener('click', () => chatBox.classList.add('hidden'));
+
+    // Otomatis geser ke kiri dengan jarak yang pas jika tombol scroll-to-top muncul
+    function checkScrollTopButton() {
+        const allButtons = document.querySelectorAll('button, a');
+        let scrollBtnFound = false;
+
+        allButtons.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            const isBottomRight = rect.bottom > (window.innerHeight - 100) && rect.right > (window.innerWidth - 100);
+            if (isBottomRight && el !== toggleBtn && !chatWidget.contains(el)) {
+                if (window.getComputedStyle(el).display !== 'none' && !el.classList.contains('hidden') && !el.classList.contains('opacity-0')) {
+                    scrollBtnFound = true;
+                }
+            }
+        });
+
+        if (scrollBtnFound) {
+            chatWidget.classList.remove('right-4', 'sm:right-6');
+            chatWidget.classList.add('right-16', 'sm:right-20');
+        } else {
+            chatWidget.classList.remove('right-16', 'sm:right-20');
+            chatWidget.classList.add('right-4', 'sm:right-6');
+        }
+    }
+
+    window.addEventListener('scroll', checkScrollTopButton);
+    window.addEventListener('resize', checkScrollTopButton);
+    setTimeout(checkScrollTopButton, 500);
 
     async function handleSendMessage() {
         const text = inputField.value.trim();

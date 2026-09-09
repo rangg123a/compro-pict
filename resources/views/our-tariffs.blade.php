@@ -85,7 +85,6 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
-
                 </div>
             </div>
 
@@ -102,7 +101,7 @@
                                 <a href="{{ $pdfUrlDomestik }}" target="_blank" class="bg-red-600 hover:bg-red-500 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition inline-flex items-center gap-2">
                                     <span>Preview in New Tab</span>
                                 </a>
-                                <a href="{{ $pdfUrlDomestik }}" download class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition inline-flex items-center gap-2">
+                                <a href="{{ $pdfUrlDomestik }}" download="Domestic_Tariff_2026.pdf" onclick="downloadPdf(event, this)" class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition inline-flex items-center gap-2">
                                     <span>Download PDF</span>
                                 </a>
                             </div>
@@ -132,9 +131,7 @@
                         </svg>
                     </button>
 
-                    @if($fileExistsIntl)
-                       
-                    @else
+                    @if(!$fileExistsIntl)
                         <button type="button" onclick="showNotification('The International Tariff PDF document is not yet available on the server.')" class="bg-blue-950 hover:bg-blue-900 text-white px-4 py-2.5 text-sm font-semibold transition cursor-pointer">
                             Download PDF
                         </button>
@@ -152,10 +149,10 @@
                             <h3 class="text-base font-bold text-slate-900 mb-1">International_Tariff_2026.pdf</h3>
                             <p class="text-xs text-slate-500 mb-6">Official document detailing international port handling fees.</p>
                             <div class="flex justify-center gap-3">
-                                <a href="{{ $pdfUrlIntl }}" target="_blank" class="bg-red-600 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition inline-flex items-center gap-2">
+                                <a href="{{ $pdfUrlIntl }}" target="_blank" class="bg-red-600 hover:bg-red-500 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition inline-flex items-center gap-2">
                                     <span>Preview in New Tab</span>
                                 </a>
-                                <a href="{{ $pdfUrlIntl }}" download class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition inline-flex items-center gap-2">
+                                <a href="{{ $pdfUrlIntl }}" download="International_Tariff_2026.pdf" onclick="downloadPdf(event, this)" class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition inline-flex items-center gap-2">
                                     <span>Download PDF</span>
                                 </a>
                             </div>
@@ -214,7 +211,44 @@
             label.textContent = 'View Document';
         }
     }
+
+    // Fungsi download paksa agar langsung mengunduh file
+    async function downloadPdf(event, link) {
+        event.preventDefault();
+        const fileUrl = link.href;
+        const fileName = link.getAttribute('download') || 'Document.pdf';
+
+        try {
+            const response = await fetch(fileUrl);
+            const blob = await response.blob();
+            
+            // Paksa tipe MIME ke application/octet-stream agar browser memperlakukannya sebagai file unduhan
+            const forcedBlob = new Blob([blob], { type: 'application/octet-stream' });
+            const blobUrl = window.URL.createObjectURL(forcedBlob);
+            
+            const tempLink = document.createElement('a');
+            tempLink.style.display = 'none';
+            tempLink.href = blobUrl;
+            tempLink.download = fileName;
+            
+            document.body.appendChild(tempLink);
+            tempLink.click();
+            
+            // Bersihkan memori setelah diunduh
+            setTimeout(() => {
+                document.body.removeChild(tempLink);
+                window.URL.revokeObjectURL(blobUrl);
+            }, 200);
+        } catch (e) {
+            // Fallback jika fetch diblokir CORS
+            const fallbackLink = document.createElement('a');
+            fallbackLink.href = fileUrl;
+            fallbackLink.download = fileName;
+            fallbackLink.target = '_blank';
+            document.body.appendChild(fallbackLink);
+            fallbackLink.click();
+            fallbackLink.remove();
+        }
+    }
 </script>
 @endpush
-
-@endsection

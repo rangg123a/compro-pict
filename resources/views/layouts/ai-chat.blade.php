@@ -1,10 +1,11 @@
 <!-- ═══ FLOATING AI CHATBOT WIDGET ═══ -->
-<!-- ═══ FLOATING AI CHATBOT WIDGET ═══ -->
-<div id="ai-chat-widget" class="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50 transition-all duration-300">    <button id="ai-chat-toggle" class="rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-105 focus:outline-none cursor-pointer overflow-hidden w-12 h-12 sm:w-14 sm:h-14 bg-white">
+<div id="ai-chat-widget" class="fixed bottom-5 left-4 sm:left-auto sm:right-4 sm:bottom-6 sm:right-6 z-50 transition-all duration-300">
+    <button id="ai-chat-toggle" class="rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-105 focus:outline-none cursor-pointer overflow-hidden w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-slate-100">
         <img src="{{ asset('assets/images/maskot-ai.png') }}" alt="PICT AI Assistant" class="w-full h-full object-cover">
     </button>
 
-    <div id="ai-chat-box" class="hidden absolute bottom-16 sm:bottom-20 right-0 w-80 sm:w-96 bg-white border border-slate-200 rounded-2xl shadow-2xl flex flex-col overflow-hidden h-[450px]">
+    <!-- Di mobile kotak chat terbuka ke arah kanan agar tidak terpotong dari sisi kiri layar -->
+    <div id="ai-chat-box" class="hidden absolute bottom-16 sm:bottom-20 left-0 sm:left-auto sm:right-0 w-[calc(100vw-2rem)] sm:w-96 max-w-sm bg-white border border-slate-200 rounded-2xl shadow-2xl flex flex-col overflow-hidden h-[450px]">
         <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between">
             <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -46,8 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleBtn.addEventListener('click', () => chatBox.classList.toggle('hidden'));
     closeBtn.addEventListener('click', () => chatBox.classList.add('hidden'));
 
-    // Otomatis geser ke kiri dengan jarak yang pas jika tombol scroll-to-top muncul
+    // Deteksi tombol scroll HANYA untuk layar desktop (lebar di atas 1024px)
     function checkScrollTopButton() {
+        if (window.innerWidth < 1024) {
+            // Di mobile, pastikan posisinya terkunci aman di kiri bawah
+            chatWidget.classList.remove('right-20', 'sm:right-24', 'sm:right-4', 'sm:right-6');
+            chatWidget.classList.add('left-4', 'sm:left-auto');
+            return;
+        }
+
         const allButtons = document.querySelectorAll('button, a');
         let scrollBtnFound = false;
 
@@ -62,11 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (scrollBtnFound) {
-            chatWidget.classList.remove('right-4', 'sm:right-6');
-            chatWidget.classList.add('right-16', 'sm:right-20');
+            chatWidget.classList.remove('sm:right-4', 'sm:right-6', 'left-4');
+            chatWidget.classList.add('sm:right-24');
         } else {
-            chatWidget.classList.remove('right-16', 'sm:right-20');
-            chatWidget.classList.add('right-4', 'sm:right-6');
+            chatWidget.classList.remove('sm:right-24', 'left-4');
+            chatWidget.classList.add('sm:right-6');
         }
     }
 

@@ -2,23 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AiChatController;
+use App\Http\Controllers\Tariffcontroller;
 
-// Halaman utama (landing page)
 Route::view('/', 'welcome')->name('home');
 
-// Halaman sesuai menu Navbar
 Route::view('/our-tariffs', 'our-tariffs')->name('our-tariffs');
 Route::view('/operations', 'operations')->name('operations');
 Route::view('/services', 'services')->name('services');
 Route::view('/sustainability', 'sustainability')->name('sustainability');
 
-// Halaman pendukung lainnya
 Route::view('/about', 'about')->name('about');
 Route::post('/api/chat', [AiChatController::class, 'send'])->name('ai.chat');
 
-// Contact
-// Ubah rute /contact menjadi seperti ini:
 Route::view('/contact', 'contact')->name('contact');
+
+// Download Tariff PDF
+Route::get('/tarif/download/domestik', [Tariffcontroller::class, 'downloadDomestik'])->name('tarif.download.domestik');
+Route::get('/tarif/download/internasional', [Tariffcontroller::class, 'downloadInternasional'])->name('tarif.download.internasional');
 
 // Fallback rute untuk menangkap halaman yang belum dibuat
 Route::fallback(function () {

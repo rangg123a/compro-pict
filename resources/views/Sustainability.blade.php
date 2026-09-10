@@ -24,11 +24,11 @@
 @section('content')
 
 {{-- ═══ HERO SECTION ═══ --}}
-<div class="hero-bg-sustainability min-h-[320px] md:min-h-[380px] flex flex-col items-start justify-center text-left px-6 md:px-16 py-12 md:py-16 relative border-b border-slate-200 bg-slate-900 pt-[calc(env(safe-area-inset-top)+4rem)] md:pt-16" data-aos="fade-down">
+<div class="hero-bg-sustainability min-h-[380px] md:min-h-[420px] flex flex-col items-start justify-center text-left px-6 md:px-16 pt-32 pb-16 md:py-20 relative border-b border-slate-200 bg-slate-900" data-aos="fade-down">
     <h2 class="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
         Committed to Responsible Operations
     </h2>
-    <p class="text-slate-200 max-w-2xl mt-4 leading-relaxed text-sm">
+    <p class="text-slate-200 max-w-2xl mt-4 leading-relaxed text-sm sm:text-base">
         PICT manages terminal operations with strict adherence to environmental stewardship, occupational safety, and active community engagement.
     </p>
 </div>
@@ -82,7 +82,7 @@
         <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 tracking-tight">
             Supporting Sustainable Industry Growth
         </h3>
-        <p class="text-slate-600 leading-relaxed text-sm">
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
             As an integral part of the national automotive logistics ecosystem, PICT is dedicated to balancing commercial growth with environmental and social responsibilities, aligning with the comprehensive development of Patimban Port as Indonesia's premier automotive gateway.
         </p>
     </div>

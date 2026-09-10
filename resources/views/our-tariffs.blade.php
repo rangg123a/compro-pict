@@ -3,13 +3,13 @@
 @section('title', 'Terminal Service Tariffs — PT Patimban International Car Terminal')
 
 @php
-    $filePathDomestik = public_path('assets/pdf/contoh.pdf');
+    $filePathDomestik = public_path('assets/pdf/Domestic_Tariff_2026.pdf');
     $fileExistsDomestik = file_exists($filePathDomestik);
-    $pdfUrlDomestik = $fileExistsDomestik ? asset('assets/pdf/contoh.pdf') : '#';
+    $pdfUrlDomestik = $fileExistsDomestik ? asset('assets/pdf/Domestic_Tariff_2026.pdf') : '#';
 
-    $filePathIntl = public_path('assets/pdf/contoh.pdf');
+    $filePathIntl = public_path('assets/pdf/International_Tariff_2026.pdf');
     $fileExistsIntl = file_exists($filePathIntl);
-    $pdfUrlIntl = $fileExistsIntl ? asset('assets/pdf/contoh.pdf') : '#';
+    $pdfUrlIntl = $fileExistsIntl ? asset('assets/pdf/International_Tariff_2026.pdf') : '#';
 @endphp
 
 @push('styles')
@@ -54,7 +54,7 @@
     <!-- HERO SECTION -->
     <div class="relative w-full min-h-[400px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-20 pt-40 border-b border-white/10 bg-slate-950 overflow-hidden">
         <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('{{ asset("assets/images/background.jpeg") }}');"></div>
-        
+
         <div class="relative z-10 max-w-7xl mx-w-full w-full" data-aos="fade-down">
             <span class="text-red-500 font-bold tracking-widest text-xs uppercase block mb-2">Terminal Capabilities</span>
             <h1 class="text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
@@ -79,34 +79,38 @@
                 </div>
 
                 <div class="flex gap-2">
-                    <button type="button" onclick="togglePreview('preview-domestik', this)" class="border border-slate-400 text-slate-700 hover:bg-slate-100 px-4 py-2.5 text-sm font-semibold transition inline-flex items-center gap-2 cursor-pointer">
+                    <button type="button" onclick="togglePreview('preview-domestik', 'embed-domestik', '{{ $pdfUrlDomestik }}', this)" class="border border-slate-400 text-slate-700 hover:bg-slate-100 px-4 py-2.5 text-sm font-semibold transition inline-flex items-center gap-2 cursor-pointer">
                         <span class="preview-label">View Document</span>
                         <svg class="w-3.5 h-3.5 transition-transform preview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
+
+                    @if($fileExistsDomestik)
+                        <button type="button" onclick="window.location.href='{{ route('tarif.download.domestik') }}'" class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2.5 text-sm font-semibold transition inline-flex items-center gap-2 cursor-pointer">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                            Download PDF
+                        </button>
+                    @endif
                 </div>
             </div>
 
             <div id="preview-domestik" class="hidden border-t border-slate-300 transition-all duration-300">
-                <div class="p-6 bg-slate-100 flex flex-col items-center justify-center">
-                    <div class="w-full max-w-2xl bg-white border border-slate-300 p-8 rounded-2xl shadow-sm text-center">
+                <div class="p-4 sm:p-6 bg-slate-100 flex flex-col items-center justify-center">
+                    <div class="w-full max-w-4xl bg-white border border-slate-300 p-4 rounded-2xl shadow-sm text-center">
                         @if($fileExistsDomestik)
-                            <div class="w-16 h-16 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            <div class="flex items-center justify-between px-4 py-2 mb-3 bg-slate-50 border border-slate-200 rounded-xl text-left">
+                                <div>
+                                    <h3 class="text-xs sm:text-sm font-bold text-slate-900">Domestic_Tariff_2026.pdf</h3>
+                                    <p class="text-[10px] text-slate-500">Official document detailing domestic port handling fees.</p>
+                                </div>
+            
                             </div>
-                            <h3 class="text-base font-bold text-slate-900 mb-1">Domestic_Tariff_2026.pdf</h3>
-                            <p class="text-xs text-slate-500 mb-6">Official document detailing domestic port handling fees.</p>
-                            <div class="flex justify-center gap-3">
-                                <a href="{{ $pdfUrlDomestik }}" target="_blank" class="bg-red-600 hover:bg-red-500 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition inline-flex items-center gap-2">
-                                    <span>Preview in New Tab</span>
-                                </a>
-                                <a href="{{ $pdfUrlDomestik }}" download="Domestic_Tariff_2026.pdf" onclick="downloadPdf(event, this)" class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition inline-flex items-center gap-2">
-                                    <span>Download PDF</span>
-                                </a>
+                            <div class="w-full h-[600px] border border-slate-200 rounded-xl overflow-hidden bg-white">
+                                <iframe id="embed-domestik" src="" width="100%" height="100%" class="w-full h-full border-0"></iframe>
                             </div>
                         @else
-                            <p class="text-slate-400 text-sm">Document preview is not available yet.</p>
+                            <p class="text-slate-400 text-sm py-8">Document preview is not available yet.</p>
                         @endif
                     </div>
                 </div>
@@ -124,14 +128,19 @@
                 </div>
 
                 <div class="flex gap-2">
-                    <button type="button" onclick="togglePreview('preview-internasional', this)" class="border border-slate-400 text-slate-700 hover:bg-slate-100 px-4 py-2.5 text-sm font-semibold transition inline-flex items-center gap-2 cursor-pointer">
+                    <button type="button" onclick="togglePreview('preview-internasional', 'embed-internasional', '{{ $pdfUrlIntl }}', this)" class="border border-slate-400 text-slate-700 hover:bg-slate-100 px-4 py-2.5 text-sm font-semibold transition inline-flex items-center gap-2 cursor-pointer">
                         <span class="preview-label">View Document</span>
                         <svg class="w-3.5 h-3.5 transition-transform preview-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
 
-                    @if(!$fileExistsIntl)
+                    @if($fileExistsIntl)
+                        <button type="button" onclick="window.location.href='{{ route('tarif.download.internasional') }}'" class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2.5 text-sm font-semibold transition inline-flex items-center gap-2 cursor-pointer">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                            Download PDF
+                        </button>
+                    @else
                         <button type="button" onclick="showNotification('The International Tariff PDF document is not yet available on the server.')" class="bg-blue-950 hover:bg-blue-900 text-white px-4 py-2.5 text-sm font-semibold transition cursor-pointer">
                             Download PDF
                         </button>
@@ -140,24 +149,20 @@
             </div>
 
             <div id="preview-internasional" class="hidden border-t border-slate-300 transition-all duration-300">
-                <div class="p-6 bg-slate-100 flex flex-col items-center justify-center">
-                    <div class="w-full max-w-2xl bg-white border border-slate-300 p-8 rounded-2xl shadow-sm text-center">
+                <div class="p-4 sm:p-6 bg-slate-100 flex flex-col items-center justify-center">
+                    <div class="w-full max-w-4xl bg-white border border-slate-300 p-4 rounded-2xl shadow-sm text-center">
                         @if($fileExistsIntl)
-                            <div class="w-16 h-16 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            <div class="flex items-center justify-between px-4 py-2 mb-3 bg-slate-50 border border-slate-200 rounded-xl text-left">
+                                <div>
+                                    <h3 class="text-xs sm:text-sm font-bold text-slate-900">International_Tariff_2026.pdf</h3>
+                                    <p class="text-[10px] text-slate-500">Official document detailing international port handling fees.</p>
+                                </div>
                             </div>
-                            <h3 class="text-base font-bold text-slate-900 mb-1">International_Tariff_2026.pdf</h3>
-                            <p class="text-xs text-slate-500 mb-6">Official document detailing international port handling fees.</p>
-                            <div class="flex justify-center gap-3">
-                                <a href="{{ $pdfUrlIntl }}" target="_blank" class="bg-red-600 hover:bg-red-500 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition inline-flex items-center gap-2">
-                                    <span>Preview in New Tab</span>
-                                </a>
-                                <a href="{{ $pdfUrlIntl }}" download="International_Tariff_2026.pdf" onclick="downloadPdf(event, this)" class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition inline-flex items-center gap-2">
-                                    <span>Download PDF</span>
-                                </a>
+                            <div class="w-full h-[600px] border border-slate-200 rounded-xl overflow-hidden bg-white">
+                                <iframe id="embed-internasional" src="" width="100%" height="100%" class="w-full h-full border-0"></iframe>
                             </div>
                         @else
-                            <p class="text-slate-400 text-sm">Document preview is not available yet.</p>
+                            <p class="text-slate-400 text-sm py-8">Document preview is not available yet.</p>
                         @endif
                     </div>
                 </div>
@@ -195,8 +200,9 @@
         document.getElementById('pdfNotification').classList.add('translate-y-32', 'opacity-0');
     }
 
-    function togglePreview(previewId, btn) {
+    function togglePreview(previewId, embedId, pdfUrl, btn) {
         const preview = document.getElementById(previewId);
+        const embed = document.getElementById(embedId);
         const icon = btn.querySelector('.preview-icon');
         const label = btn.querySelector('.preview-label');
         const isHidden = preview.classList.contains('hidden');
@@ -205,49 +211,14 @@
             preview.classList.remove('hidden');
             icon.classList.add('rotate-180');
             label.textContent = 'Close Document';
+
+            if (embed && !embed.src) {
+                embed.src = pdfUrl + '#view=FitH';
+            }
         } else {
             preview.classList.add('hidden');
             icon.classList.remove('rotate-180');
             label.textContent = 'View Document';
-        }
-    }
-
-    // Fungsi download paksa agar langsung mengunduh file
-    async function downloadPdf(event, link) {
-        event.preventDefault();
-        const fileUrl = link.href;
-        const fileName = link.getAttribute('download') || 'Document.pdf';
-
-        try {
-            const response = await fetch(fileUrl);
-            const blob = await response.blob();
-            
-            // Paksa tipe MIME ke application/octet-stream agar browser memperlakukannya sebagai file unduhan
-            const forcedBlob = new Blob([blob], { type: 'application/octet-stream' });
-            const blobUrl = window.URL.createObjectURL(forcedBlob);
-            
-            const tempLink = document.createElement('a');
-            tempLink.style.display = 'none';
-            tempLink.href = blobUrl;
-            tempLink.download = fileName;
-            
-            document.body.appendChild(tempLink);
-            tempLink.click();
-            
-            // Bersihkan memori setelah diunduh
-            setTimeout(() => {
-                document.body.removeChild(tempLink);
-                window.URL.revokeObjectURL(blobUrl);
-            }, 200);
-        } catch (e) {
-            // Fallback jika fetch diblokir CORS
-            const fallbackLink = document.createElement('a');
-            fallbackLink.href = fileUrl;
-            fallbackLink.download = fileName;
-            fallbackLink.target = '_blank';
-            document.body.appendChild(fallbackLink);
-            fallbackLink.click();
-            fallbackLink.remove();
         }
     }
 </script>

@@ -36,7 +36,7 @@
                 <h4 class="text-base sm:text-lg font-bold mb-3 md:mb-6 text-white border-b border-blue-800 pb-2 inline-block">Quick Links</h4>
                 <ul class="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-blue-200">
                     <li><a href="{{ url('/about') }}" class="hover:text-red-400 transition flex items-center gap-2"><span class="text-red-500">&rsaquo;</span> About PICT</a></li>
-                    <li><a href="{{ url('/Operations') }}" class="hover:text-red-400 transition flex items-center gap-2"><span class="text-red-500">&rsaquo;</span> Operations</a></li>
+                    <li><a href="{{ url('/operations') }}" class="hover:text-red-400 transition flex items-center gap-2"><span class="text-red-500">&rsaquo;</span> Operations</a></li>
                     <li><a href="{{ url('/services') }}" class="hover:text-red-400 transition flex items-center gap-2"><span class="text-red-500">&rsaquo;</span> Our Services</a></li>
                 </ul>
             </div>
@@ -45,7 +45,7 @@
 <div class="min-w-0">
     <h4 class="text-base sm:text-lg font-bold mb-3 md:mb-6 text-white border-b border-blue-800 pb-2 inline-block">Company</h4>
     <ul class="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-blue-200">
-        <li><a href="{{ url('/tariffs') }}" class="hover:text-red-400 transition flex items-center gap-2"><span class="text-red-500">&rsaquo;</span> Our Tariffs</a></li>
+        <li><a href="{{ url('/our-tariffs') }}" class="hover:text-red-400 transition flex items-center gap-2"><span class="text-red-500">&rsaquo;</span> Our Tariffs</a></li>
         <li><a href="{{ url('/sustainability') }}" class="hover:text-red-400 transition flex items-center gap-2"><span class="text-red-500">&rsaquo;</span> Sustainability</a></li>
         <li>
             <a href="https://www.linkedin.com/company/patimban-international-car-terminal/posts/?feedView=all" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 transition flex items-center gap-2 mt-1">

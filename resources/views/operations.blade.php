@@ -87,8 +87,8 @@
 
 <!-- ═══ 1. OPERATIONS HEADER SECTION ═══ -->
 <div class="relative bg-slate-950 py-24 border-b border-red-600/30 overflow-hidden" data-aos="fade-down">
-    <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image: url('{{ secure_asset("assets/images/background.jpeg") }}')"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent"></div>
+    <div class="absolute inset-0 opacity-40 bg-cover bg-center" style="background-image: url('{{ secure_asset("assets/images/background.jpeg") }}')"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-950/30 via-slate-950/10 to-transparent"></div>
 
     <div class="relative max-w-7xl mx-auto px-6 text-center lg:text-left">
         <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
@@ -306,7 +306,7 @@
 </section>
 
 
-<!-- ═══ 4. DOKUMENTASI OPERASIONAL ═══ -->
+<!-- ═══ 5. DOKUMENTASI OPERASIONAL (Hanya 4 Foto) ═══ -->
 <section class="py-24 bg-white border-t border-slate-200 overflow-hidden" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 mb-12 sm:mb-16">
         <div class="text-center max-w-2xl mx-auto">
@@ -318,16 +318,16 @@
         </div>
     </div>
 
-    <!-- TAMPILAN HP (MOBILE): INFINITE MARQUEE SLIDER -->
+    <!-- TAMPILAN HP (MOBILE): INFINITE MARQUEE SLIDER (4 Foto) -->
     <div class="block lg:hidden relative w-full overflow-hidden py-4">
         <div class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
         <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
         <div class="animate-marquee-mobile flex items-center gap-6">
-            <!-- Set 1 -->
+            <!-- Set 1 (4 Items) -->
             <div class="flex items-center gap-6 shrink-0">
                 <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
-                    <img src="{{ secure_asset('assets/images/background.jpeg') }}" alt="Dermaga" class="w-full h-full object-cover">
+                    <img src="{{ secure_asset('assets/images/background.jpeg') }}" alt="Terminal Area" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
                         <div>
                             <span class="text-[10px] font-semibold uppercase tracking-wider text-blue-400">Terminal Area</span>
@@ -336,7 +336,7 @@
                     </div>
                 </div>
                 <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
-                    <img src="{{ secure_asset('assets/images/patimban-yard-1.jpeg') }}" alt="Yard 1" class="w-full h-full object-cover">
+                    <img src="{{ secure_asset('assets/images/patimban-yard-1.jpeg') }}" alt="Storage Yard" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
                         <div>
                             <span class="text-[10px] font-semibold uppercase tracking-wider text-red-400">Storage Yard</span>
@@ -345,7 +345,7 @@
                     </div>
                 </div>
                 <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
-                    <img src="{{ secure_asset('assets/images/patimban-yard-2.jpeg') }}" alt="Yard 2" class="w-full h-full object-cover">
+                    <img src="{{ secure_asset('assets/images/patimban-yard-2.jpeg') }}" alt="Yard Capacity" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
                         <div>
                             <span class="text-[10px] font-semibold uppercase tracking-wider text-blue-400">Yard Capacity</span>
@@ -354,7 +354,7 @@
                     </div>
                 </div>
                 <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
-                    <img src="{{ secure_asset('assets/images/patimban-yard-3.jpeg') }}" alt="Logistik" class="w-full h-full object-cover">
+                    <img src="{{ secure_asset('assets/images/patimban-yard-3.jpeg') }}" alt="Supply Chain" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
                         <div>
                             <span class="text-[10px] font-semibold uppercase tracking-wider text-red-400">Supply Chain</span>
@@ -364,10 +364,10 @@
                 </div>
             </div>
 
-            <!-- Set 2 (Duplikat untuk efek infinite loop halus) -->
+            <!-- Set 2 (Duplikat 4 Items untuk efek infinite loop halus) -->
             <div class="flex items-center gap-6 shrink-0" aria-hidden="true">
                 <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
-                    <img src="{{ secure_asset('assets/images/background.jpeg') }}" alt="Dermaga" class="w-full h-full object-cover">
+                    <img src="{{ secure_asset('assets/images/background.jpeg') }}" alt="Terminal Area" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
                         <div>
                             <span class="text-[10px] font-semibold uppercase tracking-wider text-blue-400">Terminal Area</span>
@@ -376,7 +376,7 @@
                     </div>
                 </div>
                 <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
-                    <img src="{{ secure_asset('assets/images/patimban-yard-1.jpeg') }}" alt="Yard 1" class="w-full h-full object-cover">
+                    <img src="{{ secure_asset('assets/images/patimban-yard-1.jpeg') }}" alt="Storage Yard" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
                         <div>
                             <span class="text-[10px] font-semibold uppercase tracking-wider text-red-400">Storage Yard</span>
@@ -385,7 +385,7 @@
                     </div>
                 </div>
                 <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
-                    <img src="{{ secure_asset('assets/images/patimban-yard-2.jpeg') }}" alt="Yard 2" class="w-full h-full object-cover">
+                    <img src="{{ secure_asset('assets/images/patimban-yard-2.jpeg') }}" alt="Yard Capacity" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
                         <div>
                             <span class="text-[10px] font-semibold uppercase tracking-wider text-blue-400">Yard Capacity</span>
@@ -394,7 +394,7 @@
                     </div>
                 </div>
                 <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
-                    <img src="{{ secure_asset('assets/images/patimban-yard-3.jpeg') }}" alt="Logistik" class="w-full h-full object-cover">
+                    <img src="{{ secure_asset('assets/images/patimban-yard-3.jpeg') }}" alt="Supply Chain" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
                         <div>
                             <span class="text-[10px] font-semibold uppercase tracking-wider text-red-400">Supply Chain</span>
@@ -406,7 +406,7 @@
         </div>
     </div>
 
-    <!-- TAMPILAN DESKTOP: INTERACTIVE EXPANDING CARDS ON HOVER -->
+    <!-- TAMPILAN DESKTOP: INTERACTIVE EXPANDING CARDS ON HOVER (Hanya 4 Kartu) -->
     <div class="hidden lg:block max-w-7xl mx-auto px-4 sm:px-6 py-6">
         <div class="flex flex-row gap-4 h-[500px] w-full">
             
@@ -458,6 +458,109 @@
                     <h4 class="text-white font-bold text-2xl mt-1">Logistics</h4>
                     <p class="text-slate-200 text-sm mt-2 max-w-xs opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
                         Integrasi rantai pasok otomotif nasional dan internasional secara mulus dan aman.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══ 6. GALERI FOTO TAMBAHAN (SECTION BARU UNTUK SISA FOTO) ═══ -->
+<section class="py-24 bg-slate-50 border-t border-slate-200" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 mb-12 sm:mb-16">
+        <div class="text-center max-w-2xl mx-auto">
+            <span class="text-blue-600 font-bold tracking-widest text-xs uppercase block mb-1">Port Gallery</span>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Galeri Foto & Aktivitas Kapal</h2>
+            <p class="text-slate-500 mt-2 text-sm">
+                Dokumentasi tambahan armada kapal Ro-Ro, proses inspeksi kendaraan, serta kesiapan fasilitas terminal PICT.
+            </p>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Foto 1 -->
+            <div class="group bg-white rounded-3xl overflow-hidden shadow-md border border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="{{ secure_asset('assets/images/car-1.jpeg') }}" alt="Quality Check" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="p-6">
+   <span class="text-[10px] font-semibold uppercase tracking-wider text-red-600">Staging</span>
+                    <h4 class="text-slate-900 font-bold text-lg mt-1">Ready for Export</h4>
+                    <p class="text-slate-500 text-xs sm:text-sm mt-2 leading-relaxed">
+                        Tahap penyiapan unit kendaraan sebelum proses pemuatan ke kapal ekspor.
+                    </p>                </div>
+            </div>
+
+            <!-- Foto 2 -->
+            <div class="group bg-white rounded-3xl overflow-hidden shadow-md border border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="{{ secure_asset('assets/images/car-3.jpeg') }}" alt="Vehicle Lineup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="p-6">
+                    <span class="text-[10px] font-semibold uppercase tracking-wider text-blue-600">CBU Units</span>
+                    <h4 class="text-slate-900 font-bold text-lg mt-1">Vehicle Lineup</h4>
+                    <p class="text-slate-500 text-xs sm:text-sm mt-2 leading-relaxed">
+                        Deretan unit CBU yang tersusun rapi di area lapangan penumpukan.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Foto 3 -->
+            <div class="group bg-white rounded-3xl overflow-hidden shadow-md border border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="{{ secure_asset('assets/images/car-5.jpeg') }}" alt="Ready for Export" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="p-6">
+                                   <span class="text-[10px] font-semibold uppercase tracking-wider text-red-600">Inspection</span>
+                    <h4 class="text-slate-900 font-bold text-lg mt-1">Quality Check Kendaraan</h4>
+                    <p class="text-slate-500 text-xs sm:text-sm mt-2 leading-relaxed">
+                        Inspeksi fisik secara cermat demi memastikan kualitas kendaraan tetap terjaga sempurna.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Foto 4 -->
+            <div class="group bg-white rounded-3xl overflow-hidden shadow-md border border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="{{ secure_asset('assets/images/vessel-1.jpeg') }}" alt="Dock Activities" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="p-6">
+                    <span class="text-[10px] font-semibold uppercase tracking-wider text-blue-600">Terminal Area</span>
+                    <h4 class="text-slate-900 font-bold text-lg mt-1">Aktivitas Dermaga</h4>
+                    <p class="text-slate-500 text-xs sm:text-sm mt-2 leading-relaxed">
+                        Pelayanan sandar kapal Ro-Ro internasional di dermaga utama Patimban.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Foto 5 -->
+            <div class="group bg-white rounded-3xl overflow-hidden shadow-md border border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="{{ secure_asset('assets/images/vessel-2.jpeg') }}" alt="Berthing Process" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="p-6">
+                    <span class="text-[10px] font-semibold uppercase tracking-wider text-red-600">Ro-Ro Ship</span>
+                    <h4 class="text-slate-900 font-bold text-lg mt-1">Proses Penyandaran Kapal</h4>
+                    <p class="text-slate-500 text-xs sm:text-sm mt-2 leading-relaxed">
+                        Panduan operasional kapal pengangkut kendaraan dengan standar keselamatan tinggi.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Foto 6 -->
+            <div class="group bg-white rounded-3xl overflow-hidden shadow-md border border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="{{ secure_asset('assets/images/vessel-3.jpeg') }}" alt="Ramp Loading" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="p-6">
+                    <span class="text-[10px] font-semibold uppercase tracking-wider text-blue-600">Logistics</span>
+                    <h4 class="text-slate-900 font-bold text-lg mt-1">Ramp Loading Operations</h4>
+                    <p class="text-slate-500 text-xs sm:text-sm mt-2 leading-relaxed">
+                        Akses keluar masuk kendaraan melalui pintu rampa roro secara lancar.
                     </p>
                 </div>
             </div>

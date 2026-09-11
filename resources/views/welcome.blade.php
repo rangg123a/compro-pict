@@ -9,15 +9,10 @@
     .pict-hero { 
         position: relative; 
         overflow: hidden; 
-        background-color: ;
+        background-color: #0b1329;
     }
     
-    .hero-banner {
-        background-size: cover;
-        background-position: center right;
-    }
-
-    .hero-video-bg {
+    .hero-bg-img {
         position: absolute;
         top: 0;
         left: 0;
@@ -25,42 +20,58 @@
         height: 100%;
         object-fit: cover;
         z-index: 0;
-        opacity: 1;
+        /* filter: brightness(1) contrast(1); */
     }
 
-    /* ═══ LUMINOUS THREADS BACKGROUND (Pure CSS/SVG) ═══ */
-    .hero-threads-bg {
+    /* ═══ LIGHT RAIN BACKGROUND EFFECT ═══ */
+    .hero-light-rain {
         position: absolute;
         inset: 0;
         z-index: 1;
         pointer-events: none;
         overflow: hidden;
+        /* background: radial-gradient(circle at 50% 30%, rgba(14, 116, 144, 0.2), rgba(11, 19, 41, 0.85) 60%); */
     }
 
-    .luminous-wave {
-        fill: none;
-        stroke-width: 2;
+    .rain-streak {
         stroke-linecap: round;
-        opacity: 0.6;
-        filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.8));
-        animation: threadMove 8s ease-in-out infinite alternate;
+        filter: drop-shadow(0 0 8px currentColor);
+        animation: rainFall linear infinite;
+        opacity: 0.7;
     }
 
-    .luminous-wave:nth-child(2) {
-        animation-duration: 12s;
-        animation-direction: alternate-reverse;
-        opacity: 0.4;
+    @keyframes rainFall {
+        0% {
+            transform: translateY(-150px);
+            opacity: 0;
+        }
+        20% {
+            opacity: 0.8;
+        }
+        80% {
+            opacity: 0.8;
+        }
+        100% {
+            transform: translateY(1100px);
+            opacity: 0;
+        }
     }
 
-    .luminous-wave:nth-child(3) {
-        animation-duration: 10s;
-        opacity: 0.5;
-    }
+    .rain-streak:nth-child(1)  { animation-duration: 2.1s; animation-delay: 0.2s; stroke: #38bdf8; color: #38bdf8; }
+    .rain-streak:nth-child(2)  { animation-duration: 3.4s; animation-delay: 1.1s; stroke: #ff3b4e; color: #ff3b4e; }
+    .rain-streak:nth-child(3)  { animation-duration: 2.6s; animation-delay: 0.5s; stroke: #ffffff; color: #ffffff; }
+    .rain-streak:nth-child(4)  { animation-duration: 3.0s; animation-delay: 1.8s; stroke: #38bdf8; color: #38bdf8; }
+    .rain-streak:nth-child(5)  { animation-duration: 2.3s; animation-delay: 0.8s; stroke: #facc15; color: #facc15; }
+    .rain-streak:nth-child(6)  { animation-duration: 3.5s; animation-delay: 0.1s; stroke: #ffffff; color: #ffffff; }
+    .rain-streak:nth-child(7)  { animation-duration: 2.8s; animation-delay: 1.4s; stroke: #ff3b4e; color: #ff3b4e; }
+    .rain-streak:nth-child(8)  { animation-duration: 3.2s; animation-delay: 0.6s; stroke: #38bdf8; color: #38bdf8; }
+    .rain-streak:nth-child(9)  { animation-duration: 2.5s; animation-delay: 2.1s; stroke: #ffffff; color: #ffffff; }
+    .rain-streak:nth-child(10) { animation-duration: 3.8s; animation-delay: 1.0s; stroke: #38bdf8; color: #38bdf8; }
+    .rain-streak:nth-child(11) { animation-duration: 2.7s; animation-delay: 0.3s; stroke: #ff3b4e; color: #ff3b4e; }
+    .rain-streak:nth-child(12) { animation-duration: 3.1s; animation-delay: 1.6s; stroke: #ffffff; color: #ffffff; }
 
-    @keyframes threadMove {
-        0% { transform: translateY(-20px) scaleY(0.9); }
-        50% { transform: translateY(20px) scaleY(1.1); }
-        100% { transform: translateY(-10px) scaleY(1); }
+    @media (prefers-reduced-motion: reduce) {
+        .rain-streak { animation: none !important; }
     }
 
     /* ═══ 2. VESSEL SCENE ANIMATION STYLES ═══ */
@@ -70,9 +81,10 @@
         max-width: 650px;
         aspect-ratio: 16/10;
         margin: 0 auto;
-        background: transparent;
+        background: rgba(11, 19, 41, 0.5);
+        /* backdrop-filter: blur(10px); */
+        border-radius: 1rem;
         overflow: hidden;
-        font-family: "Segoe UI", Arial, sans-serif;
     }
 
     .pict-vessel-scene svg {
@@ -83,57 +95,49 @@
         display: block;
     }
 
-    /* subtle floating on the whole ship, like it's on water */
-    .pv-ship-float{
+    .pv-ship-float {
         animation: pv-bob 5.5s ease-in-out infinite;
         transform-origin: 620px 430px;
     }
-    @keyframes pv-bob{
+    @keyframes pv-bob {
         0%,100%{ transform:translateY(0px); }
         50%{ transform:translateY(4px); }
     }
 
-    /* radar sweep rotation */
-    .pv-radar-sweep{
+    .pv-radar-sweep {
         transform-origin: 0 0;
         animation: pv-spin 4s linear infinite;
     }
-    @keyframes pv-spin{ to{ transform:rotate(360deg); } }
+    @keyframes pv-spin { to{ transform:rotate(360deg); } }
 
-    .pv-radar-blip{
+    .pv-radar-blip {
         animation: pv-blip 2.6s ease-in-out infinite;
     }
-    @keyframes pv-blip{
+    @keyframes pv-blip {
         0%,100%{ opacity:.25; }
         50%{ opacity:1; }
     }
 
-    /* mast light pulse */
-    .pv-mast-light{
+    .pv-mast-light {
         animation: pv-pulse 1.6s ease-in-out infinite;
     }
-    @keyframes pv-pulse{
+    @keyframes pv-pulse {
         0%,100%{ opacity:.3; }
         50%{ opacity:1; }
     }
 
-    /* gentle water shimmer */
-    .pv-wave{
+    .pv-wave {
         animation: pv-drift 9s ease-in-out infinite;
     }
-    .pv-wave.pv-wave-2{ animation-duration: 13s; animation-direction: reverse; }
-    @keyframes pv-drift{
+    .pv-wave.pv-wave-2 { animation-duration: 13s; animation-direction: reverse; }
+    @keyframes pv-drift {
         0%,100%{ transform:translateX(0); }
         50%{ transform:translateX(14px); }
     }
 
-    .pict-vessel-scene text{
-        fill:#eaf6fb;
-        user-select:none;
-    }
-
-    @media (prefers-reduced-motion: reduce){
-        .pict-vessel-scene *{ animation:none !important; }
+    .pict-vessel-scene text {
+        fill: #eaf6fb;
+        user-select: none;
     }
 
     /* ═══ 3. CARD & COMPONENT STYLES ═══ */
@@ -154,21 +158,6 @@
     .about-section {
         position: relative;
         overflow: hidden;
-    }
-    .about-section::before {
-        content: "";
-        position: absolute;
-        top: 5rem;
-        right: -8rem;
-        width: 24rem;
-        height: 24rem;
-        border-radius: 9999px;
-        background: radial-gradient(circle, rgba(219, 39, 39, .08), transparent 68%);
-        pointer-events: none;
-    }
-    .about-section .section-inner {
-        position: relative;
-        z-index: 1;
     }
     .about-copy {
         border-left: 3px solid #ec2029;
@@ -206,10 +195,6 @@
         background: #ec2029;
         box-shadow: 0 0 0 1px #ec2029;
     }
-    .about-value-item:last-child::before {
-        background: #26347a;
-        box-shadow: 0 0 0 1px #26347a;
-    }
 
     @keyframes fadeUp {
         from { opacity: 0; transform: translateY(24px); }
@@ -224,69 +209,38 @@
         from { opacity: 0; transform: translateY(24px); }
         to { opacity: 1; transform: translateY(0); }
     }
-
-    /* Route Map Interactivity Styles */
-    #routeMapSvg { touch-action: manipulation; }
-    #routeMapSvg .route-line { transition: opacity .3s ease, stroke-width .3s ease; }
-    #routeMapSvg .route-line.is-dim { opacity: .12 !important; }
-    #routeMapSvg .route-line.is-active { opacity: 1 !important; }
-    #routeMapSvg path.route-line.is-active { stroke-width: 3; }
-    #routeMapSvg .route-marker.is-dim { opacity: .12; }
-    #routeMapSvg .dest-marker, #routeMapSvg .origin-marker {
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
-    }
-    #routeMapSvg .dest-marker .visible-dot,
-    #routeMapSvg .origin-marker .visible-dot {
-        transition: transform .25s ease;
-        transform-box: fill-box;
-        transform-origin: center;
-    }
-    #routeMapSvg .dest-marker.is-active .visible-dot,
-    #routeMapSvg .origin-marker.is-active .visible-dot {
-        transform: scale(1.7);
-    }
-    .route-legend-btn { -webkit-tap-highlight-color: transparent; min-height: 40px; }
-    .route-legend-btn.is-active { background: rgba(255,255,255,.14); color: #ec2029; }
-    #routeInfoPanel { min-height: 3.25rem; }
-
-    .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
-    .no-scrollbar::-webkit-scrollbar { display: none; }
 </style>
 @endpush
 
 @section('content')
-<!-- ═══ 1. HERO SECTION DENGAN ANIMASI LUMINOUS THREADS, KAPAL & MOBIL DI KANAN ═══ -->
+<!-- ═══ 1. HERO SECTION ═══ -->
 <div class="pict-hero relative w-full min-h-[88vh] flex items-center overflow-hidden border-b border-white/10 pt-[env(safe-area-inset-top)]">
     
-    <img src="{{ asset('assets/images/background.jpeg') }}" alt="" class="hero-video-bg">
+    <img src="{{ asset('assets/images/background.jpeg') }}" alt="Background" class="hero-bg-img">
     
-    <!-- Luminous Threads Glowing Waves Background (Pure CSS/SVG) -->
-    <div class="hero-threads-bg">
-        <svg class="w-full h-full" viewBox="0 0 1440 800" preserveAspectRatio="none">
-            <defs>
-                <linearGradient id="threadGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#7c3aed" stop-opacity="0" />
-                    <stop offset="50%" stop-color="#c084fc" stop-opacity="0.8" />
-                    <stop offset="100%" stop-color="#7c3aed" stop-opacity="0" />
-                </linearGradient>
-                <linearGradient id="threadGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#4f46e5" stop-opacity="0" />
-                    <stop offset="50%" stop-color="#818cf8" stop-opacity="0.7" />
-                    <stop offset="100%" stop-color="#9333ea" stop-opacity="0" />
-                </linearGradient>
-            </defs>
-            <path class="luminous-wave" d="M -100,200 Q 360,450 720,300 T 1540,400" stroke="url(#threadGrad1)" stroke-width="2.5" />
-            <path class="luminous-wave" d="M -100,450 Q 400,150 800,500 T 1540,250" stroke="url(#threadGrad2)" stroke-width="2" />
-            <path class="luminous-wave" d="M -100,600 Q 450,300 900,450 T 1540,550" stroke="url(#threadGrad1)" stroke-width="1.8" />
+    <!-- Light Rain Background Effect -->
+    <div class="hero-light-rain">
+        <svg class="w-full h-full" viewBox="0 0 1440 900" preserveAspectRatio="none">
+            <line class="rain-streak" x1="120" y1="-100" x2="120" y2="40" stroke-width="2" />
+            <line class="rain-streak" x1="240" y1="-100" x2="240" y2="60" stroke-width="1.5" />
+            <line class="rain-streak" x1="380" y1="-100" x2="380" y2="50" stroke-width="2.5" />
+            <line class="rain-streak" x1="520" y1="-100" x2="520" y2="70" stroke-width="2" />
+            <line class="rain-streak" x1="660" y1="-100" x2="660" y2="45" stroke-width="1.8" />
+            <line class="rain-streak" x1="800" y1="-100" x2="800" y2="65" stroke-width="2.2" />
+            <line class="rain-streak" x1="940" y1="-100" x2="940" y2="55" stroke-width="1.5" />
+            <line class="rain-streak" x1="1080" y1="-100" x2="1080" y2="75" stroke-width="2.5" />
+            <line class="rain-streak" x1="1220" y1="-100" x2="1220" y2="40" stroke-width="2" />
+            <line class="rain-streak" x1="1350" y1="-100" x2="1350" y2="60" stroke-width="1.8" />
+            <line class="rain-streak" x1="70" y1="-100" x2="70" y2="50" stroke-width="2" />
+            <line class="rain-streak" x1="1300" y1="-100" x2="1300" y2="70" stroke-width="2.2" />
         </svg>
     </div>
     
-    <!-- Konten Teks & Card Utama Hero -->
+    <!-- Konten Utama Hero -->
     <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-20 lg:py-24 w-full mt-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            <!-- Kolom Kiri: Judul & Deskripsi Utama -->
+            <!-- Kolom Kiri: Teks -->
             <div class="lg:col-span-6 hero-content space-y-6 text-left" data-aos="fade-right">
                 <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] drop-shadow-md">
                     PT PATIMBAN <br class="hidden sm:inline">INTERNATIONAL <br>
@@ -304,37 +258,32 @@
                 </div>
             </div>
 
-            <!-- Kolom Kanan: Animasi SVG Kapal & Mobil Turun Ramp (Versi Terbaru) -->
+            <!-- Kolom Kanan: Animasi Kapal & Titik Garis Alur Keluar Masuk -->
             <div class="lg:col-span-6 flex justify-center lg:justify-end items-center" data-aos="fade-left">
-<div class="pict-vessel-scene bg-slate-950/25 rounded-2xl p-2 border border-white/15 shadow-xl">                    <svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
+                <div class="pict-vessel-scene border border-white/15 shadow-2xl">                
+                    <svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
                         <defs>
                             <filter id="pvGlow" x="-40%" y="-40%" width="180%" height="180%">
-                                <feGaussianBlur stdDeviation="1.6" result="blur"/>
+                                <feGaussianBlur stdDeviation="2" result="blur"/>
                                 <feMerge>
                                     <feMergeNode in="blur"/>
                                     <feMergeNode in="SourceGraphic"/>
                                 </feMerge>
                             </filter>
 
-                            <!-- route the cars follow: from inside the ship, down the ramp, onto the yard -->
-                            <path id="pvCarRoute" d="M 335,392 L 232,458 Q 165,503 65,545 Q -35,586 -150,624" fill="none"/>
+                            <path id="pvRouteOut" d="M 335,392 L 232,458 Q 165,503 65,545 Q -35,586 -150,624" fill="none"/>
+                            <path id="pvRouteIn" d="M -150,600 Q -35,562 65,521 Q 165,479 232,434 L 335,368" fill="none"/>
 
-                            <!-- reusable car silhouettes (local origin = car center, facing +x) -->
-                            <g id="pvCarSedan">
-                                <path d="M 30,10 L 26,-3 L 13,-12 L -11,-12 L -22,-3 L -30,-3 L -30,10 Z"/>
-                                <path d="M 26,-3 L -22,-3"/>
-                                <circle cx="15" cy="10" r="6.2"/>
-                                <circle cx="-16" cy="10" r="6.2"/>
-                            </g>
-                            <g id="pvCarSuv">
-                                <path d="M 34,12 L 30,-6 L 19,-17 L -20,-17 L -29,-6 L -34,-6 L -34,12 Z"/>
-                                <path d="M 30,-6 L -29,-6"/>
-                                <circle cx="19" cy="12" r="7.2"/>
-                                <circle cx="-19" cy="12" r="7.2"/>
-                            </g>
+                            <circle id="dotBlue" r="4.5" fill="#38bdf8" filter="url(#pvGlow)"/>
+                            <circle id="dotRed" r="4.5" fill="#ef4444" filter="url(#pvGlow)"/>
+
+                            <linearGradient id="pvSweepGrad" x1="0" y1="0" x2="1" y2="0">
+                                <stop offset="0%" stop-color="#ec2029" stop-opacity="0.55"/>
+                                <stop offset="100%" stop-color="#ec2029" stop-opacity="0"/>
+                            </linearGradient>
                         </defs>
 
-                        <!-- ============ RADAR (top-right) ============ -->
+                        <!-- RADAR -->
                         <g transform="translate(1150,108)" fill="none" stroke="#26347a">
                             <circle r="95" stroke-width="1" opacity="0.45"/>
                             <circle r="63" stroke-width="1" opacity="0.45"/>
@@ -346,120 +295,40 @@
                             <circle class="pv-radar-blip" cx="34" cy="-52" r="2.6" fill="#ec2029" stroke="none"/>
                             <circle class="pv-radar-blip" cx="-18" cy="-70" r="2.2" fill="#ec2029" stroke="none" style="animation-delay:.8s"/>
                         </g>
-                        <defs>
-                            <linearGradient id="pvSweepGrad" x1="0" y1="0" x2="1" y2="0">
-                                <stop offset="0%" stop-color="#ec2029" stop-opacity="0.55"/>
-                                <stop offset="100%" stop-color="#ec2029" stop-opacity="0"/>
-                            </linearGradient>
-                        </defs>
 
-                        <!-- ============ LABELS ============ -->
-                        <g font-weight="700">
-                            <text x="300" y="228" font-size="34" letter-spacing="1">PICT - 01</text>
-                            <path d="M 300 253 L 545 253 L 580 288" fill="none" stroke="#7fd8f2" stroke-width="1.4"/>
-                            <text x="305" y="278" font-size="17" font-weight="600">PATIMBAN PORT</text>
-                            <text x="700" y="473" font-size="19" letter-spacing="0.5">PATIMBAN PORT</text>
-                        </g>
-
-                        <!-- ============ SHIP GROUP (hull, deckhouse, bridge, cranes) ============ -->
+                        <!-- SHIP GROUP -->
                         <g class="pv-ship-float" filter="url(#pvGlow)">
                             <g fill="none" stroke="#7fd8f2" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
-
-                                <!-- hull + deck outline -->
-                                <path d="M 300 470
-                                       L 330 440
-                                       L 330 400
-                                       L 300 400
-                                       L 300 380
-                                       L 420 380
-                                       L 420 355
-                                       L 640 355
-                                       L 640 395
-                                       L 760 395
-                                       L 795 355
-                                       L 870 355
-                                       L 895 320
-                                       L 960 320
-                                       L 960 280
-                                       L 985 280
-                                       L 985 320
-                                       L 1010 320
-                                       L 1010 460
-                                       L 700 492
-                                       L 420 502
-                                       Z"/>
-
-                                <!-- forward mast -->
+                                <path d="M 300 470 L 330 440 L 330 400 L 300 400 L 300 380 L 420 380 L 420 355 L 640 355 L 640 395 L 760 395 L 795 355 L 870 355 L 895 320 L 960 320 L 960 280 L 985 280 L 985 320 L 1010 320 L 1010 460 L 700 492 L 420 502 Z"/>
                                 <path d="M 315 400 L 315 360 M 305 365 L 325 365"/>
-
-                                <!-- midship deckhouse grid -->
                                 <path d="M 420 380 L 420 355 M 460 380 L 460 355 M 500 380 L 500 355 M 540 380 L 540 355 M 580 380 L 580 355 M 620 380 L 620 355"/>
                                 <path d="M 420 367 L 640 367"/>
-
-                                <!-- cargo cranes -->
                                 <path d="M 460 355 L 480 305 L 500 355 M 480 305 L 480 280"/>
                                 <path d="M 570 355 L 590 300 L 610 355 M 590 300 L 590 270 L 630 270 L 630 300"/>
-
-                                <!-- bridge tower window tiers -->
-                                <path d="M 795 355 L 795 395 M 820 355 L 820 395 M 845 355 L 845 395 M 870 355 L 870 395"/>
-                                <path d="M 895 320 L 895 355 M 920 320 L 920 355 M 945 320 L 945 355"/>
+                                <path d="M 795 355 L 795 395 L 820 355 L 820 395 L 845 355 L 845 395 L 870 355 L 870 395"/>
+                                <path d="M 895 320 L 895 355 L 920 320 L 920 355 L 945 320 L 945 355"/>
                                 <path d="M 960 280 L 960 320 M 975 280 L 975 320"/>
-
-                                <!-- mast + antenna array -->
                                 <path d="M 995 280 L 995 210 M 985 220 L 1005 220 M 985 235 L 1005 235 M 995 210 L 995 195"/>
-
-                                <!-- ramp door (open, bow) -->
                                 <path d="M 300 400 L 190 470 L 190 500 L 300 470 Z"/>
                                 <path d="M 300 400 L 200 460 M 300 420 L 200 480 M 300 440 L 210 494"/>
-
-                                <!-- name plate -->
                                 <rect x="345" y="440" width="55" height="14" rx="2"/>
                             </g>
-
                             <circle class="pv-mast-light" cx="995" cy="192" r="3" fill="#7fd8f2" stroke="none"/>
-
-                            <!-- waterline -->
                             <g stroke="#7fd8f2" fill="none">
                                 <path class="pv-wave" d="M 140 505 Q 240 495 320 502 T 480 500 T 640 504 T 800 498 T 1040 495" stroke-width="1.6" opacity="0.85"/>
                                 <path class="pv-wave pv-wave-2" d="M 120 522 Q 260 512 400 520 T 660 518 T 900 514 T 1060 512" stroke-width="1.2" opacity="0.5"/>
                             </g>
                         </g>
 
-                        <!-- ============ CARS DRIVING DOWN THE RAMP (loop dengan rotate="15") ============ -->
-                        <g stroke="#bfeaf7" stroke-width="1.8" fill="none" stroke-linejoin="round" stroke-linecap="round" filter="url(#pvGlow)">
+                        <!-- GARIS ALUR & TITIK KELUAR MASUK KAPAL -->
+                        <g>
+                            <path d="M 335,392 L 232,458 Q 165,503 65,545 Q -35,586 -150,624" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.4"/>
+                            <path d="M -150,600 Q -35,562 65,521 Q 165,479 232,434 L 335,368" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.4"/>
 
-                            <g opacity="0">
-                                <use href="#pvCarSedan"/>
-                                <animateMotion dur="7s" begin="0s" repeatCount="indefinite" rotate="15">
-                                    <mpath href="#pvCarRoute"/>
-                                </animateMotion>
-                                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.06;0.88;1" dur="7s" begin="0s" repeatCount="indefinite"/>
-                            </g>
-
-                            <g opacity="0">
-                                <use href="#pvCarSuv"/>
-                                <animateMotion dur="7s" begin="1.6s" repeatCount="indefinite" rotate="15">
-                                    <mpath href="#pvCarRoute"/>
-                                </animateMotion>
-                                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.06;0.88;1" dur="7s" begin="1.6s" repeatCount="indefinite"/>
-                            </g>
-
-                            <g opacity="0">
-                                <use href="#pvCarSedan"/>
-                                <animateMotion dur="7s" begin="3.2s" repeatCount="indefinite" rotate="15">
-                                    <mpath href="#pvCarRoute"/>
-                                </animateMotion>
-                                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.06;0.88;1" dur="7s" begin="3.2s" repeatCount="indefinite"/>
-                            </g>
-
-                            <g opacity="0">
-                                <use href="#pvCarSuv"/>
-                                <animateMotion dur="7s" begin="4.8s" repeatCount="indefinite" rotate="15">
-                                    <mpath href="#pvCarRoute"/>
-                                </animateMotion>
-                                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.06;0.88;1" dur="7s" begin="4.8s" repeatCount="indefinite"/>
-                            </g>
-
+                            <g><use href="#dotBlue"/><animateMotion dur="5s" begin="0s" repeatCount="indefinite"><mpath href="#pvRouteOut"/></animateMotion></g>
+                            <g><use href="#dotBlue"/><animateMotion dur="5s" begin="2.5s" repeatCount="indefinite"><mpath href="#pvRouteOut"/></animateMotion></g>
+                            <g><use href="#dotRed"/><animateMotion dur="5s" begin="1.2s" repeatCount="indefinite"><mpath href="#pvRouteIn"/></animateMotion></g>
+                            <g><use href="#dotRed"/><animateMotion dur="5s" begin="3.7s" repeatCount="indefinite"><mpath href="#pvRouteIn"/></animateMotion></g>
                         </g>
                     </svg>
                 </div>
@@ -468,6 +337,8 @@
         </div>
     </div>
 </div>
+
+
 
 <!-- ═══ 2. STATS STRIP ═══ -->
 <section class="stats-strip max-w-7xl mx-auto px-4 sm:px-6 mt-8 sm:mt-10 relative z-20" data-aos="fade-up">
@@ -490,6 +361,110 @@
         </div>
     </div>
 </section>
+
+{{-- ═══ LIVE WEATHER & MARINE CONDITIONS WIDGET WITH CLOCK ═══ --}}
+<section class="py-12 bg-slate-900 text-white relative overflow-hidden" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+            <div>
+                <span class="text-red-500 font-bold tracking-widest text-xs uppercase block mb-1">Safety & Operations</span>
+                <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Patimban Port Marine & Weather Conditions</h3>
+            </div>
+            
+            <!-- Indikator Live & Jam Dinamis -->
+            <div class="flex items-center gap-3 bg-slate-800/80 px-4 py-2.5 rounded-xl border border-slate-700 text-xs text-slate-300">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span id="live-clock" class="font-mono font-medium text-slate-200">Loading time...</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Suhu Udara -->
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 backdrop-blur-md">
+                <div class="flex items-center justify-between text-slate-400 mb-4">
+                    <span class="text-sm font-semibold uppercase tracking-wider">Temperature</span>
+                    <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                </div>
+                <p id="weather-temp" class="text-3xl font-extrabold text-white">-- °C</p>
+                <p class="text-slate-400 text-xs mt-1">Patimban Harbor Area</p>
+            </div>
+
+            <!-- Kecepatan Angin -->
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 backdrop-blur-md">
+                <div class="flex items-center justify-between text-slate-400 mb-4">
+                    <span class="text-sm font-semibold uppercase tracking-wider">Wind Speed</span>
+                    <svg class="w-6 h-6 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </div>
+                <p id="weather-wind" class="text-3xl font-extrabold text-white">-- km/h</p>
+                <p class="text-slate-400 text-xs mt-1">Safe for Berthing Operations</p>
+            </div>
+
+            <!-- Kelembapan -->
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 backdrop-blur-md">
+                <div class="flex items-center justify-between text-slate-400 mb-4">
+                    <span class="text-sm font-semibold uppercase tracking-wider">Humidity</span>
+                    <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                </div>
+                <p id="weather-humidity" class="text-3xl font-extrabold text-white">-- %</p>
+                <p class="text-slate-400 text-xs mt-1">Atmospheric Moisture</p>
+            </div>
+
+            <!-- Status Laut / Keamanan Sandar -->
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 backdrop-blur-md">
+                <div class="flex items-center justify-between text-slate-400 mb-4">
+                    <span class="text-sm font-semibold uppercase tracking-wider">Berth Status</span>
+                    <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                <p class="text-2xl font-extrabold text-emerald-400">OPTIMAL</p>
+                <p class="text-slate-400 text-xs mt-1">Normal Ro-Ro Handling Condition</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+@push('scripts')
+<script>
+// Fungsi Jam Real-Time (Hari, Tanggal, Bulan, Tahun, Jam)
+function updateRealTimeClock() {
+    const now = new Date();
+    const options = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric', 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit',
+        timeZoneName: 'short'
+    };
+    
+    // Format bahasa Indonesia (id-ID)
+    document.getElementById('live-clock').innerText = now.toLocaleDateString('id-ID', options);
+}
+
+// Jalankan jam setiap detik
+setInterval(updateRealTimeClock, 1000);
+updateRealTimeClock();
+
+// Fungsi Fetch Cuaca Patimban
+async function fetchPatimbanWeather() {
+    try {
+        let response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-6.23&longitude=107.85&current=temperature_2m,relative_humidity_2m,wind_speed_10m');
+        let data = await response.json();
+        
+        if(data && data.current) {
+            document.getElementById('weather-temp').innerText = data.current.temperature_2m + ' °C';
+            document.getElementById('weather-wind').innerText = data.current.wind_speed_10m + ' km/h';
+            document.getElementById('weather-humidity').innerText = data.current.relative_humidity_2m + ' %';
+        }
+    } catch (error) {
+        console.error('Gagal memuat data cuaca:', error);
+    }
+}
+
+fetchPatimbanWeather();
+</script>
+@endpush
 
 <!-- ═══ 3. ABOUT US ═══ -->
 <section class="about-section py-20 bg-white" data-aos="fade-up">

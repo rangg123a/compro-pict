@@ -132,18 +132,11 @@ return [
         Str::slug((string) env('APP_NAME', 'laravel')).'-session'
     ),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Session Cookie Path
-    |--------------------------------------------------------------------------
-    |
-    | The session cookie path determines the path for which the cookie will
-    | be regarded as available. Typically, this will be the root path of
-    | your application, but you're free to change this when necessary.
-    |
-    */
+    'secure' => env('SESSION_SECURE_COOKIE', true), // Set true jika menggunakan HTTPS
+    'http_only' => true, // Mencegah JavaScript mengakses cookie (mencegah XSS)
+    'same_site' => 'lax', // Mencegah serangan CSRF ('lax' atau 'strict')
 
-    'path' => env('SESSION_PATH', '/'),
+        'path' => env('SESSION_PATH', '/'),
 
     /*
     |--------------------------------------------------------------------------

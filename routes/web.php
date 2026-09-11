@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AiChatController;
 use App\Http\Controllers\Tariffcontroller;
 
+Route::get('/set-cookie', function () {
+    return response('Cookie set')->withCookie(
+        cookie('secure_cookie', 'true', 60, '/', null, true, true)
+    );
+});
+
 Route::view('/', 'welcome')->name('home');
 
 Route::view('/our-tariffs', 'our-tariffs')->name('our-tariffs');

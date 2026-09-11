@@ -18,7 +18,6 @@
     .page-transition {
         animation: pageMorphIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-
     @keyframes pageMorphIn {
         from {
             opacity: 0;

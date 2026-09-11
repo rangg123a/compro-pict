@@ -4,6 +4,8 @@
 
 @push('styles')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+{{-- Script Google reCAPTCHA --}}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <style>
     .hero-bg-contact {
         background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('{{ asset("assets/images/patimban-yard-2.jpeg") }}');
@@ -63,7 +65,7 @@
             </div>
         </div>
 
-        {{-- Contact Form yang Diubah Menjadi Mailto Handler --}}
+        {{-- Contact Form --}}
         <div class="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-2xl p-8 shadow-sm" data-aos="fade-left">
             <h3 class="text-xl font-extrabold text-slate-900 mb-6">Send Us a Message</h3>
 
@@ -92,9 +94,16 @@
                         class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-red-600 text-sm"></textarea>
                 </div>
 
-                <button type="submit"
-                    class="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-3.5 px-6 rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-red-600/20">
-                    Send via Email App
+                {{-- Google reCAPTCHA Widget dengan callback untuk membuka tombol --}}
+                <div class="pt-2">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Security Verification</label>
+                    <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY', '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI') }}" data-callback="enableSubmitButton"></div>
+                </div>
+
+                {{-- Tombol Kirim (Secara default dinonaktifkan/disabled & transparan) --}}
+                <button type="submit" id="submitBtn" disabled
+                    class="w-full bg-slate-300 text-slate-500 font-bold py-3.5 px-6 rounded-xl text-xs uppercase tracking-wider transition cursor-not-allowed">
+                    Complete Verification to Send
                 </button>
             </form>
         </div>
@@ -115,25 +124,36 @@ document.addEventListener('DOMContentLoaded', () => {
         offset: 120
     });
 });
-</script>
 
-<script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+// Fungsi yang otomatis dipanggil oleh Google reCAPTCHA saat verifikasi sukses
+function enableSubmitButton() {
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.removeAttribute('disabled');
+    submitBtn.classList.remove('bg-slate-300', 'text-slate-500', 'cursor-not-allowed');
+    submitBtn.classList.add('bg-red-600', 'hover:bg-red-500', 'text-white', 'shadow-lg', 'shadow-red-600/20', 'cursor-pointer');
+    submitBtn.innerText = 'Send via Email App';
+}
 
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const subject = document.getElementById('subject').value || 'Inquiry from Website';
-        const message = document.getElementById('message').value;
+// Handler Submit Form
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-        // Email tujuan Anda
-        const targetEmail = "info@pict.co.id";
+    // Pastikan reCAPTCHA sudah dicentang
+    const recaptchaResponse = grecaptcha.getResponse();
+    if (recaptchaResponse.length === 0) {
+        alert('Please complete the security verification (reCAPTCHA) first.');
+        return;
+    }
 
-        // Format isi email
-        const bodyText = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value || 'Inquiry from Website';
+    const message = document.getElementById('message').value;
 
-        // Membuka aplikasi email otomatis dengan data terisi
-        window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${bodyText}`;
-    });
+    const targetEmail = "info@pict.co.id";
+    const bodyText = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+
+    window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${bodyText}`;
+});
 </script>
 @endpush

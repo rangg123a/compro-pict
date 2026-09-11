@@ -19,8 +19,15 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    
+    <!-- Cookie Consent CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.css">
+    
     <link rel="preload" as="image" href="{{ asset('assets/images/background.jpeg') }}">
+
+    <!-- Google reCAPTCHA API -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <style>
         body { 
             font-family: 'DM Sans', sans-serif; 
@@ -75,16 +82,15 @@
         @yield('content')
     </main>
 
-    <!-- Tombol Back to Top dengan aksen Merah Tua & Gold -->
+    <!-- Tombol Back to Top -->
     <button id="backToTop" aria-label="Back to top" class="fixed bottom-6 right-4 md:bottom-6 md:right-6 w-11 h-11 md:w-12 md:h-12 rounded-full bg-red-900 text-amber-400 border border-amber-500/30 shadow-xl hover:bg-red-800 transition duration-300 hidden z-50 items-center justify-center text-lg md:text-xl font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-900 active:scale-90" style="margin-bottom: env(safe-area-inset-bottom);">
         &uarr;
     </button>
 
     @include('layouts.footer')
 
+    <!-- Global Scripts -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.umd.js"></script>
-    <script src="{{ asset('assets/js/cookie-consent.js') }}"></script>
     <script src="https://unpkg.com/swup@4"></script>
     
     <script>
@@ -148,6 +154,15 @@
         document.addEventListener('DOMContentLoaded', initInteractions);
     </script>
     @stack('scripts')
-@include('layouts.ai-chat')
+
+    <!-- AI Chatbot Widget -->
+    @include('layouts.ai-chat')
+
+    <!-- Custom Cookie Consent Banner -->
+    @include('layouts.cookie-banner')
+
+    <!-- Cookie Consent Script & Inisialisasi -->
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.umd.js"></script>
+    <script src="{{ asset('assets/js/cookie-consent.js') }}"></script>
 </body>
 </html>

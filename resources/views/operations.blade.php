@@ -4,570 +4,472 @@
 
 @push('styles')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
 <style>
-    /* Infinite Marquee Slider khusus untuk Tampilan Mobile */
-    @keyframes marqueeMobile {
-        0% { transform: translateX(0%); }
-        100% { transform: translateX(-50%); }
+    /* ═══ DESIGN SYSTEM OVERRIDES (PICT LIGHT LUXURY CORPORATE) ═══ */
+    :root {
+        --color-navy: #071E3D;
+        --color-ocean: #0F4C81;
+        --color-steel: #2563EB;
+        --color-accent-red: #D62828;
+        --color-light-gray: #F8FAFC;
     }
 
-    .animate-marquee-mobile {
-        display: flex;
-        width: max-content;
-        animation: marqueeMobile 25s linear infinite;
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--color-light-gray);
+        color: #0f172a;
+        overflow-x: hidden;
     }
 
-    .animate-marquee-mobile:hover {
-        animation-play-state: paused;
+    h1, h2, h3, h4, h5, h6, .font-heading {
+        font-family: 'Manrope', sans-serif;
     }
 
-    /* ═══ CSS GRID LAYOUT FOR ANIME.JS TRANSITIONS ═══ */
-    .layout-container {
-        display: grid;
-        width: 100%;
+    /* Light Glass / Clean Card Effects */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
+    }
+
+    .glass-card-dark {
+        background: #071E3D;
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Mouse Light Effect / Glow */
+    .glow-effect {
         position: relative;
-        gap: 1.5rem;
+        overflow: hidden;
+    }
+    .glow-effect::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        pointer-events: none;
+    }
+    .glow-effect:hover::before {
+        opacity: 1;
     }
 
-    .cargo-item {
-        border-top: 3px solid #cbd5e1;
-        background: #ffffff;
-        border-radius: 1rem;
-        padding: 1.75rem;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-        transition: border-color .3s ease, box-shadow .3s ease;
-        will-change: transform;
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
     }
-    .cargo-item:hover { 
-        border-top-color: #dc2626; 
-        box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1);
+    ::-webkit-scrollbar-track {
+        background: #F8FAFC;
     }
-
-    @media (min-width: 768px) {
-        .layout-container[data-grid="1"] {
-            grid-template-columns: 1.35fr 1fr;
-            grid-template-rows: 1fr 1fr;
-        }
-        .layout-container[data-grid="1"] .cargo-item:nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
-        .layout-container[data-grid="1"] .cargo-item:nth-child(2) { grid-column: 2; grid-row: 1; }
-        .layout-container[data-grid="1"] .cargo-item:nth-child(3) { grid-column: 2; grid-row: 2; }
-
-        .layout-container[data-grid="2"] {
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: 1fr;
-        }
-        .layout-container[data-grid="2"] .cargo-item { grid-column: auto; grid-row: auto; }
-
-        .layout-container[data-grid="3"] {
-            grid-template-columns: 1fr 1.35fr;
-            grid-template-rows: 1fr 1fr;
-        }
-        .layout-container[data-grid="3"] .cargo-item:nth-child(2) { grid-column: 2; grid-row: 1 / 3; }
-        .layout-container[data-grid="3"] .cargo-item:nth-child(1) { grid-column: 1; grid-row: 1; }
-        .layout-container[data-grid="3"] .cargo-item:nth-child(3) { grid-column: 1; grid-row: 2; }
-
-        .layout-container[data-grid="4"] {
-            grid-template-columns: 1fr 1.35fr;
-            grid-template-rows: 1fr 1fr;
-        }
-        .layout-container[data-grid="4"] .cargo-item:nth-child(3) { grid-column: 2; grid-row: 1 / 3; }
-        .layout-container[data-grid="4"] .cargo-item:nth-child(1) { grid-column: 1; grid-row: 2; }
-        .layout-container[data-grid="4"] .cargo-item:nth-child(2) { grid-column: 1; grid-row: 1; }
+    ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
     }
-
-    @media (max-width: 767px) {
-        .layout-container {
-            grid-template-columns: 1fr;
-        }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
     }
 </style>
 @endpush
 
 @section('content')
 
-<!-- ═══ 1. OPERATIONS HEADER SECTION ═══ -->
-<div class="relative bg-slate-950 py-24 border-b border-red-600/30 overflow-hidden" data-aos="fade-down">
-    <div class="absolute inset-0 opacity-40 bg-cover bg-center" style="background-image: url('{{ secure_asset("assets/images/background.jpeg") }}')"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-slate-950/30 via-slate-950/10 to-transparent"></div>
-
-    <div class="relative max-w-7xl mx-auto px-6 text-center lg:text-left">
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Terminal Operations
-        </h1>
-        <p class="mt-4 text-slate-300 max-w-2xl text-base sm:text-lg leading-relaxed">
-            Providing professional Ro-Ro vehicle and cargo loading and unloading services at Patimban Port, featuring international safety standards, high efficiency, and integrated technology.
-        </p>
+<!-- ═══ 1. FULLSCREEN CINEMATIC HERO (LIGHT THEME) ═══ -->
+<section class="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-slate-900 pt-32 pb-16">
+    <!-- Background Image with Parallax & Soft Overlay -->
+        <div class="absolute inset-0 bg-cover bg-center transform scale-105 transition-transform duration-1000 ease-out" 
+         style="background-image: url('{{ secure_asset("assets/images/background.jpeg") }}');"
+         data-aos="zoom-out" data-aos-duration="1500">
     </div>
-</div>
 
-<!-- ═══ 2. OVERVIEW OPERATIONS SECTION ═══ -->
-<section class="py-20 bg-white" data-aos="fade-up">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Integrated Ro-Ro Cargo Handling System
-        </h2>
-        <p class="text-slate-600 leading-relaxed text-sm sm:text-base mt-4 max-w-3xl mx-auto">
-            PT Patimban International Car Terminal (PICT) manages the operational flow of vehicles from the vessel ramp to the staging yard under a strict “zero scratch” safety protocol. Supported by a digital terminal management system, each vehicle is tracked in real time to ensure fast loading and unloading, accurate inventory data, and a smooth national automotive supply chain as well as import and export operations.
-        </p>
+    <div class="relative max-w-7xl mx-auto px-6 z-10 w-full my-auto">
+          
+        <div class="max-w-4xl">
+            <h1 class="text-5xl sm:text-7xl font-extrabold text-white tracking-tight font-heading leading-none mb-6" data-aos="fade-up" data-aos-delay="300">
+                Terminal Operations
+            </h1>
+            <p class="text-lg sm:text-2xl text-slate-200 font-light leading-relaxed max-w-3xl mb-10" data-aos="fade-up" data-aos-delay="400">
+                World-Class Ro-Ro Automotive Terminal Connecting Indonesia to the Global Automotive Supply Chain.
+            </p>
+        </div>
+    </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 max-w-2xl mx-auto">
-            <div class="p-6 rounded-2xl bg-slate-50 border-t-4 border-blue-600 shadow-sm" data-aos="fade-right">
-                <p class="text-3xl font-extrabold text-blue-900">218k+</p>
-                <p class="text-xs text-slate-500 font-semibold uppercase tracking-wide mt-1">Kapasitas Lapangan / Tahun</p>
+    <!-- Badges Footer of Hero -->
+    <div class="relative max-w-7xl mx-auto px-6 w-full z-10 pt-8 border-t border-white/30 mt-12" data-aos="fade-up" data-aos-delay="600">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-blue-500/35 flex items-center justify-center text-blue-300 font-bold text-xs shadow-lg">✓</div>
+                <span class="text-xs font-semibold text-white">Smart Terminal</span>
             </div>
-            <div class="p-6 rounded-2xl bg-slate-50 border-t-4 border-red-600 shadow-sm" data-aos="fade-left">
-                <p class="text-3xl font-extrabold text-red-600">300 m</p>
-                <p class="text-xs text-slate-500 font-semibold uppercase tracking-wide mt-1">Panjang Dermaga Ro-Ro</p>
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-blue-500/35 flex items-center justify-center text-blue-300 font-bold text-xs shadow-lg">✓</div>
+                <span class="text-xs font-semibold text-white">ISO Standards</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-red-500/35 flex items-center justify-center text-red-300 font-bold text-xs shadow-lg">✓</div>
+                <span class="text-xs font-semibold text-white">Zero Scratch</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-blue-500/35 flex items-center justify-center text-blue-300 font-bold text-xs shadow-lg">✓</div>
+                <span class="text-xs font-semibold text-white">Real-Time Monitoring</span>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══ 3. VEHICLE CARGO TYPE SECTION (WARNA BIRU & MERAH) ═══ -->
-<section class="py-20 bg-slate-50 border-t border-slate-200" data-aos="fade-up">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-2">Kategori Layanan</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-                Vehicle Cargo Type
+<!-- ═══ 2. FLOATING GLASS STATISTICS (CLEAN LIGHT STYLE) ═══ -->
+<section class="relative z-20 max-w-7xl mx-auto px-6 -mt-8 sm:-mt-12 mb-28" data-aos="fade-up">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Stat 1 -->
+        <div class="glass-card rounded-3xl p-8 text-center relative overflow-hidden group hover:border-blue-400 transition-all duration-500 shadow-xl">
+            <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-blue-50 rounded-full blur-xl group-hover:bg-blue-100 transition-all"></div>
+            <div class="text-4xl sm:text-5xl font-extrabold text-[#071E3D] font-heading tracking-tight mb-2 counter" data-target="218">0</div>
+            <div class="text-xs font-semibold uppercase tracking-widest text-slate-500">Annual Capacity</div>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="glass-card rounded-3xl p-8 text-center relative overflow-hidden group hover:border-blue-400 transition-all duration-500 shadow-xl">
+            <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-blue-50 rounded-full blur-xl group-hover:bg-blue-100 transition-all"></div>
+            <div class="text-4xl sm:text-5xl font-extrabold text-[#071E3D] font-heading tracking-tight mb-2 counter" data-target="300">0</div>
+            <div class="text-xs font-semibold uppercase tracking-widest text-slate-500">Ro-Ro Berth (Meters)</div>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="glass-card rounded-3xl p-8 text-center relative overflow-hidden group hover:border-blue-400 transition-all duration-500 shadow-xl">
+            <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-blue-50 rounded-full blur-xl group-hover:bg-blue-100 transition-all"></div>
+            <div class="text-4xl sm:text-5xl font-extrabold text-[#071E3D] font-heading tracking-tight mb-2">24/7</div>
+            <div class="text-xs font-semibold uppercase tracking-widest text-slate-500">Operations</div>
+        </div>
+
+        <!-- Stat 4 -->
+        <div class="glass-card rounded-3xl p-8 text-center relative overflow-hidden group hover:border-red-400 transition-all duration-500 shadow-xl">
+            <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-red-50 rounded-full blur-xl group-hover:bg-red-100 transition-all"></div>
+            <div class="text-4xl sm:text-5xl font-extrabold text-[#D62828] font-heading tracking-tight mb-2">ZERO</div>
+            <div class="text-xs font-semibold uppercase tracking-widest text-slate-500">Scratch Policy</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 3. WHY PICT (LIGHT THEME) ═══ -->
+<section class="py-24 bg-white relative overflow-hidden border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+            <span class="text-[#D62828] font-bold tracking-widest text-xs uppercase block mb-3">Excellence in Port Management</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-[#071E3D] tracking-tight font-heading">
+                Why PT Patimban International Car Terminal
             </h2>
-            <p class="mt-3 text-slate-600 text-sm sm:text-base">
-                Specialized handling tailored to the specifications and dimensions of various types of vehicles and heavy cargo.
+            <p class="mt-4 text-slate-600 text-base sm:text-lg">
+                Setting the benchmark for automotive maritime logistics through digital integration, uncompromising safety, and unmatched operational efficiency.
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            
-            <!-- Card 1: CBU (Aksen Merah) -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200 border-t-4 border-t-red-600 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="100">
-                <div>
-                    <div class="w-16 h-16 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center mb-5 group-hover:bg-red-600 group-hover:text-white transition-colors">
-                        <svg class="w-8 h-8 text-red-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 15h18M5 15l2-5h10l2 5M5 15v2a1 1 0 001 1h1a1 1 0 001-1v-1m10 1v-1a1 1 0 00-1-1h-1a1 1 0 00-1 1v1M7 11l1-3h8l1 3M7 16a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Passenger Vehicles (CBU)</h3>
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        Handling of Completely Built-Up (CBU) vehicles—such as sedans, SUVs, MPVs, and electric vehicles (EVs)—using a scratch-free procedure.
-                    </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div class="bg-slate-50 rounded-3xl p-8 relative glow-effect group hover:-translate-y-2 transition-all duration-500 border border-slate-200/80 shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-16 h-16 rounded-2xl bg-blue-100 border border-blue-200 flex items-center justify-center mb-8 text-[#2563EB] group-hover:bg-[#2563EB] group-hover:text-white transition-all duration-300">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                 </div>
-                <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-400">
-                    <span>Classification</span>
-                    <span class="text-red-600 font-bold">Light Vehicle</span>
-                </div>
+                <h3 class="text-2xl font-bold text-[#071E3D] mb-4 font-heading">Smart Terminal Technology</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Powered by state-of-the-art Terminal Management Systems (TMS), automated gate controls, and RFID tracking for instant vessel and yard visibility.
+                </p>
             </div>
 
-            <!-- Card 2: Bus & Truck (Aksen Biru) -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200 border-t-4 border-t-blue-600 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="200">
-                <div>
-                    <div class="w-16 h-16 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-5 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                        <svg class="w-8 h-8 text-blue-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Bus & Truck</h3>
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        Accommodation for heavy commercial vehicles, tourist buses, logistics trucks, and industrial chassis through robust ramp pathways.
-                    </p>
+            <!-- Feature 2 -->
+            <div class="bg-slate-50 rounded-3xl p-8 relative glow-effect group hover:-translate-y-2 transition-all duration-500 border border-slate-200/80 shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-16 h-16 rounded-2xl bg-red-100 border border-red-200 flex items-center justify-center mb-8 text-[#D62828] group-hover:bg-[#D62828] group-hover:text-white transition-all duration-300">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                 </div>
-                <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-400">
-                    <span>Classification</span>
-                    <span class="text-blue-900 font-bold">Commercial</span>
-                </div>
+                <h3 class="text-2xl font-bold text-[#071E3D] mb-4 font-heading">International Safety Standard</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Adhering strictly to ISPS Code, ISO certifications, and rigorous safety protocols ensuring complete protection for all personnel and valuable vehicle cargo.
+                </p>
             </div>
 
-            <!-- Card 3: Heavy Equipment (Aksen Merah) -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200 border-t-4 border-t-red-600 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="300">
-                <div>
-                    <div class="w-16 h-16 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center mb-5 group-hover:bg-red-600 group-hover:text-white transition-colors">
-                        <svg class="w-8 h-8 text-red-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 10.5a3 3 0 100-6 3 3 0 000 6z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Heavy Equipment</h3>
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        Management of heavy machinery in the mining, plantation, and construction sectors such as excavators, wheel loaders, and bulldozers.
-                    </p>
+            <!-- Feature 3 -->
+            <div class="bg-slate-50 rounded-3xl p-8 relative glow-effect group hover:-translate-y-2 transition-all duration-500 border border-slate-200/80 shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
+                <div class="w-16 h-16 rounded-2xl bg-blue-100 border border-blue-200 flex items-center justify-center mb-8 text-[#2563EB] group-hover:bg-[#2563EB] group-hover:text-white transition-all duration-300">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 </div>
-                <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-400">
-                    <span>Classification</span>
-                    <span class="text-red-600 font-bold">Project Cargo</span>
-                </div>
+                <h3 class="text-2xl font-bold text-[#071E3D] mb-4 font-heading">Efficient Automotive Logistics</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Strategic location on the northern coast of West Java connecting manufacturing hubs directly to international shipping routes with minimal turnaround time.
+                </p>
             </div>
-
-            <!-- Card 4: Static & General Cargo (Aksen Biru) -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200 border-t-4 border-t-blue-600 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="400">
-                <div>
-                    <div class="w-16 h-16 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-5 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                        <svg class="w-8 h-8 text-blue-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Static & General Cargo</h3>
-                    <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        Facilities for storage and handling of general non-vehicle cargo and static loads with integrated area management.
-                    </p>
-                </div>
-                <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-400">
-                    <span>Classification</span>
-                    <span class="text-blue-900 font-bold">General Cargo</span>
-                </div>
-            </div>
-
         </div>
     </div>
 </section>
 
-<!-- ═══ 4. VEHICLE & CARGO TYPES (ANIME.JS DYNAMIC GRID LAYOUT) ═══ -->
-<section class="py-20 bg-slate-50 border-y border-slate-200 overflow-hidden" data-aos="fade-up">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 pb-4 border-b border-slate-200 gap-4">
-            <div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Vehicle Cargo Types</h2>
-            </div>
-            <span class="text-slate-500 text-sm font-medium">Standardized handling protocols for Ro-Ro automotive cargo</span>
+<!-- ═══ 4. INTERACTIVE TERMINAL OPERATION FLOW ═══ -->
+<section id="operations-flow" class="py-24 bg-[#F8FAFC] relative overflow-hidden border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+            <span class="text-[#2563EB] font-bold tracking-widest text-xs uppercase block mb-3">Seamless Workflow</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-[#071E3D] tracking-tight font-heading">
+                Interactive Terminal Operation Flow
+            </h2>
+            <p class="mt-4 text-slate-600 text-base">
+                Hover or click each milestone to inspect operational parameters, equipment deployed, and safety standards.
+            </p>
         </div>
 
-        <div id="cargoLayout" class="layout-container" data-grid="1">
-            
-            <!-- Card 1: Passenger Vehicles -->
-            <div class="cargo-item item flex flex-col justify-between group">
-                <div>
-                    <div class="w-24 h-24 sm:w-28 sm:h-28 mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                        <svg class="w-full h-full drop-shadow-[0_12px_16px_rgba(15,23,42,0.14)]" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10 40H90V45H10V40Z" fill="#1e293b"/>
-                            <circle cx="25" cy="45" r="7" fill="none" stroke="#1e293b" stroke-width="4"/>
-                            <circle cx="75" cy="45" r="7" fill="none" stroke="#1e293b" stroke-width="4"/>
-                            <path d="M20 40L30 20H70L80 40H20Z" fill="none" stroke="#dc2626" stroke-width="5" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Passenger Vehicles (CBU)</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Handling Completely Built Up (CBU) units including sedans, SUVs, MPVs, and EVs from vessel ramp doors to the staging yard under strict zero scratch protocols.
-                    </p>
+        <div class="grid grid-cols-1 md:grid-cols-7 gap-4 relative">
+            @php
+                $steps = [
+                    ['title' => 'Ship Arrival', 'time' => '1-2 Hours Prior', 'equip' => 'Vessel Traffic Services (VTS)', 'safety' => 'ISPS Code Compliance', 'div' => 'Marine Operations'],
+                    ['title' => 'Berthing', 'time' => '45 - 60 Minutes', 'equip' => 'Tugboats & Mooring Lines', 'safety' => 'Port Safety Clearance', 'div' => 'Harbor Master Team'],
+                    ['title' => 'Vehicle Inspection', 'time' => '10 Min / Unit', 'equip' => 'Digital Handheld Scanners', 'safety' => 'Zero-Scratch Protocol', 'div' => 'Quality Assurance'],
+                    ['title' => 'Ro-Ro Discharge', 'time' => '2-4 Hours Total', 'equip' => 'Hydraulic Ramps & Lashing', 'safety' => 'PPE & Traffic Control', 'div' => 'Stevedoring Division'],
+                    ['title' => 'Yard Management', 'time' => 'Immediate Staging', 'equip' => 'Automated Yard Locator (TMS)', 'safety' => 'Speed Limit 20 km/h', 'div' => 'Yard Control Center'],
+                    ['title' => 'Quality Check', 'time' => 'Final Audit', 'equip' => 'High-Resolution Cameras', 'safety' => 'Pre-Delivery Inspection', 'div' => 'Inspection Team'],
+                    ['title' => 'Distribution', 'time' => 'On-Demand Gate Out', 'equip' => 'Car Carriers / Transporters', 'safety' => 'Gate Security Check', 'div' => 'Logistics & Delivery']
+                ];
+            @endphp
+
+            @foreach($steps as $index => $step)
+            <div class="bg-white rounded-2xl p-5 border border-slate-200 hover:border-blue-500 shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer relative" 
+                 data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}"
+                 onclick="setActiveStep(this.dataset.step)" data-step="{{ $index }}">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-xs font-bold text-[#2563EB]">0{{ $index + 1 }}</span>
+                    <div class="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-[#D62828] transition-colors"></div>
                 </div>
-                <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
-                    <span class="text-slate-400">Cargo Classification</span>
-                    <span class="text-red-600 font-bold tracking-wide">LIGHT VEHICLE</span>
+                <h3 class="text-[#071E3D] font-bold text-base mb-2 font-heading">{{ $step['title'] }}</h3>
+                <div class="space-y-1 text-xs text-slate-500 pt-3 border-t border-slate-100">
+                    <p><strong class="text-slate-700">Time:</strong> {{ $step['time'] }}</p>
+                    <p><strong class="text-slate-700">Equip:</strong> {{ $step['equip'] }}</p>
+                    <p><strong class="text-slate-700">Safety:</strong> {{ $step['safety'] }}</p>
+                    <p><strong class="text-slate-700">Team:</strong> {{ $step['div'] }}</p>
                 </div>
             </div>
-
-            <!-- Card 2: Commercial Trucks & Buses -->
-            <div class="cargo-item item flex flex-col justify-between group">
-                <div>
-                    <div class="w-24 h-24 sm:w-28 sm:h-28 mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                        <svg class="w-full h-full drop-shadow-[0_12px_16px_rgba(15,23,42,0.14)]" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10 42H90V46H10V42Z" fill="#1e293b"/>
-                            <circle cx="25" cy="46" r="6" fill="none" stroke="#1e293b" stroke-width="3"/>
-                            <circle cx="45" cy="46" r="6" fill="none" stroke="#1e293b" stroke-width="3"/>
-                            <circle cx="80" cy="46" r="6" fill="none" stroke="#1e293b" stroke-width="3"/>
-                            <path d="M15 42V25H55V42H15Z" fill="none" stroke="#dc2626" stroke-width="4"/>
-                            <path d="M55 30H75L85 42H55V30Z" fill="none" stroke="#1e293b" stroke-width="4" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Commercial Trucks Buses</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Accommodating heavy duty commercial vehicles, coaches, prime movers, and industrial chassis via high load bearing vessel ramp access.
-                    </p>
-                </div>
-                <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
-                    <span class="text-slate-400">Cargo Classification</span>
-                    <span class="text-blue-900 font-bold tracking-wide">COMMERCIAL BUS</span>
-                </div>
-            </div>
-
-            <!-- Card 3: Heavy Equipment & Project Cargo -->
-            <div class="cargo-item item flex flex-col justify-between group">
-                <div>
-                    <div class="w-24 h-24 sm:w-28 sm:h-28 mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                        <svg class="w-full h-full drop-shadow-[0_12px_16px_rgba(15,23,42,0.14)]" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 42H85V46H15V42Z" fill="#1e293b"/>
-                            <circle cx="30" cy="46" r="7" fill="none" stroke="#1e293b" stroke-width="4"/>
-                            <circle cx="70" cy="46" r="7" fill="none" stroke="#1e293b" stroke-width="4"/>
-                            <path d="M30 42L40 25H60L70 42H30Z" fill="none" stroke="#dc2626" stroke-width="4" stroke-linejoin="round"/>
-                            <path d="M45 25L35 15H50" fill="none" stroke="#dc2626" stroke-width="4" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Heavy Equipment Special Cargo</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        Handling mining, agricultural, and construction machinery (excavators, wheel loaders, bulldozers) using certified self-propelled roll-on/roll-off and towing methods.
-                    </p>
-                </div>
-                <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
-                    <span class="text-slate-400">Cargo Classification</span>
-                    <span class="text-red-600 font-bold tracking-wide">HEAVY EQUIPMENT</span>
-                </div>
-            </div>
-
+            @endforeach
         </div>
     </div>
 </section>
 
 
-<!-- ═══ 5. DOKUMENTASI OPERASIONAL (Hanya 4 Foto) ═══ -->
-<section class="py-24 bg-white border-t border-slate-200 overflow-hidden" data-aos="fade-up">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 mb-12 sm:mb-16">
-        <div class="text-center max-w-2xl mx-auto">
-            <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Field Activity</span>
-            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Dokumentasi Operasional</h2>
-            <p class="text-slate-500 mt-2 text-sm">
-                A firsthand look at cargo handling operations, the vehicle staging area, and the dock facilities at Patimban Port.
+<!-- ═══ 6. WORLD CLASS SERVICES ═══ -->
+<section class="py-24 bg-[#F8FAFC] relative overflow-hidden border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+            <span class="text-[#D62828] font-bold tracking-widest text-xs uppercase block mb-3">Enterprise Capabilities</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-[#071E3D] tracking-tight font-heading">
+                World-Class Services
+            </h2>
+            <p class="mt-4 text-slate-600 text-base">
+                Comprehensive terminal solutions designed for global automotive manufacturers.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="group relative h-[420px] rounded-3xl overflow-hidden bg-slate-900 border border-slate-200 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                <div class="absolute inset-0 bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700" style="background-image: url('{{ secure_asset("assets/images/background.jpeg") }}')"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent"></div>
+                <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-400 mb-2">Maritime Solutions</span>
+                    <h3 class="text-2xl font-bold text-white mb-3 font-heading">Ro-Ro Vessel Handling</h3>
+                    <p class="text-slate-200 text-sm mb-6 line-clamp-2">
+                        State-of-the-art berth facilities and expert mooring teams ensuring rapid, safe vessel turnaround.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-white font-semibold text-sm group-hover:text-blue-400 transition-colors">
+                        <span>Learn More</span>
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="group relative h-[420px] rounded-3xl overflow-hidden bg-slate-900 border border-slate-200 shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                <div class="absolute inset-0 bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700" style="background-image: url('{{ secure_asset("assets/images/patimban-yard-1.jpeg") }}')"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent"></div>
+                <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-red-400 mb-2">Storage Facility</span>
+                    <h3 class="text-2xl font-bold text-white mb-3 font-heading">Advanced Yard Management</h3>
+                    <p class="text-slate-200 text-sm mb-6 line-clamp-2">
+                        High-capacity staging yards with automated tracking, security surveillance, and weather protection.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-white font-semibold text-sm group-hover:text-red-400 transition-colors">
+                        <span>Learn More</span>
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 7. VEHICLE CARGO TYPES ═══ -->
+<section class="py-24 bg-white relative overflow-hidden border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+            <span class="text-[#2563EB] font-bold tracking-widest text-xs uppercase block mb-3">Cargo Specifications</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-[#071E3D] tracking-tight font-heading">
+                Vehicle Cargo Types
+            </h2>
+            <p class="mt-4 text-slate-600 text-base">
+                Specialized handling protocols tailored to diverse automotive and heavy machinery dimensions.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 hover:border-red-400 transition-all duration-300 group shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-14 h-14 rounded-2xl bg-red-100 border border-red-200 flex items-center justify-center mb-6 text-[#D62828] group-hover:bg-[#D62828] group-hover:text-white transition-all">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15h18M5 15l2-5h10l2 5M5 15v2a1 1 0 001 1h1a1 1 0 001-1v-1m10 1v-1a1 1 0 00-1-1h-1a1 1 0 00-1 1v1M7 11l1-3h8l1 3M7 16a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-[#071E3D] mb-2 font-heading">Passenger Vehicle</h3>
+                <p class="text-slate-600 text-xs leading-relaxed mb-6">
+                    Sedans, SUVs, MPVs, and electric vehicles handled with precision scratch-free procedures.
+                </p>
+                <span class="text-xs font-semibold text-[#D62828] tracking-wider uppercase">Light Vehicle</span>
+            </div>
+
+            <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 hover:border-blue-400 transition-all duration-300 group shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-14 h-14 rounded-2xl bg-blue-100 border border-blue-200 flex items-center justify-center mb-6 text-[#2563EB] group-hover:bg-[#2563EB] group-hover:text-white transition-all">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-[#071E3D] mb-2 font-heading">Bus & Truck</h3>
+                <p class="text-slate-600 text-xs leading-relaxed mb-6">
+                    Heavy logistics trucks, industrial chassis, and transport vehicles with robust ramp pathways.
+                </p>
+                <span class="text-xs font-semibold text-[#2563EB] tracking-wider uppercase">Commercial</span>
+            </div>
+
+            <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 hover:border-red-400 transition-all duration-300 group shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
+                <div class="w-14 h-14 rounded-2xl bg-red-100 border border-red-200 flex items-center justify-center mb-6 text-[#D62828] group-hover:bg-[#D62828] group-hover:text-white transition-all">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 10.5a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-[#071E3D] mb-2 font-heading">Heavy Equipment</h3>
+                <p class="text-slate-600 text-xs leading-relaxed mb-6">
+                    Excavators, wheel loaders, and bulldozers for mining and agricultural developments.
+                </p>
+                <span class="text-xs font-semibold text-[#D62828] tracking-wider uppercase">Project Cargo</span>
+            </div>
+
+            <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 hover:border-blue-400 transition-all duration-300 group shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="400">
+                <div class="w-14 h-14 rounded-2xl bg-blue-100 border border-blue-200 flex items-center justify-center mb-6 text-[#2563EB] group-hover:bg-[#2563EB] group-hover:text-white transition-all">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-[#071E3D] mb-2 font-heading">General Cargo</h3>
+                <p class="text-slate-600 text-xs leading-relaxed mb-6">
+                    Static cargo and non-vehicle shipments managed under rigorous warehousing standards.
+                </p>
+                <span class="text-xs font-semibold text-[#2563EB] tracking-wider uppercase">General Cargo</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 8. PREMIUM OPERATION GALLERY ═══ -->
+<section id="gallery" class="py-24 bg-[#F8FAFC] relative overflow-hidden border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+            <span class="text-[#2563EB] font-bold tracking-widest text-xs uppercase block mb-3">Visual Showcase</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-[#071E3D] tracking-tight font-heading">
+                Premium Operation Gallery
+            </h2>
+            <p class="mt-4 text-slate-600 text-base">
+                A glimpse into our state-of-the-art terminal infrastructure and vessel operations.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            @php
+                $gallery = [
+                    ['img' => 'car-1.jpeg', 'title' => 'Ready for Export', 'tag' => 'Staging'],
+                    ['img' => 'car-3.jpeg', 'title' => 'Vehicle Lineup', 'tag' => 'CBU Units'],
+                    ['img' => 'car-5.jpeg', 'title' => 'Quality Check Kendaraan', 'tag' => 'Inspection'],
+                    ['img' => 'vessel-1.jpeg', 'title' => 'Aktivitas Dermaga', 'tag' => 'Terminal Area'],
+                    ['img' => 'vessel-2.jpeg', 'title' => 'Proses Penyandaran Kapal', 'tag' => 'Ro-Ro Ship'],
+                    ['img' => 'vessel-3.jpeg', 'title' => 'Ramp Loading Operations', 'tag' => 'Logistics']
+                ];
+            @endphp
+
+            @foreach($gallery as $item)
+            <div class="group relative h-80 rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" data-aos="fade-up">
+                <img src="{{ secure_asset('assets/images/' . $item['img']) }}" alt="{{ $item['title'] }}" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+                <div class="absolute inset-0 p-6 flex flex-col justify-end">
+                    <span class="text-[10px] font-semibold uppercase tracking-wider text-blue-400 mb-1">{{ $item['tag'] }}</span>
+                    <h3 class="text-xl font-bold text-white font-heading">{{ $item['title'] }}</h3>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 9. GLOBAL CONNECTION ═══ -->
+<section class="py-24 bg-white relative overflow-hidden border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+            <span class="text-[#D62828] font-bold tracking-widest text-xs uppercase block mb-3">Global Maritime Network</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-[#071E3D] tracking-tight font-heading">
+                Connecting Indonesia to the World
+            </h2>
+            <p class="mt-4 text-slate-600 text-base">
+                Strategic shipping corridors linking Patimban Port to major automotive manufacturing nations.
+            </p>
+        </div>
+
+        <div class="bg-slate-50 rounded-3xl p-10 border border-slate-200 text-center relative overflow-hidden shadow-sm" data-aos="fade-up">
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-6 mb-12">
+                <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                    <p class="text-[#071E3D] font-bold font-heading text-lg">Japan</p>
+                    <span class="text-xs text-[#2563EB] font-medium">Primary Hub</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                    <p class="text-[#071E3D] font-bold font-heading text-lg">Thailand</p>
+                    <span class="text-xs text-[#2563EB] font-medium">Regional Route</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                    <p class="text-[#071E3D] font-bold font-heading text-lg">China</p>
+                    <span class="text-xs text-[#2563EB] font-medium">Strategic Corridor</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                    <p class="text-[#071E3D] font-bold font-heading text-lg">Asia</p>
+                    <span class="text-xs text-[#2563EB] font-medium">Export Market</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm col-span-2 sm:col-span-1">
+                    <p class="text-[#071E3D] font-bold font-heading text-lg">Indonesia</p>
+                    <span class="text-xs text-[#D62828] font-medium">Patimban Hub</span>
+                </div>
+            </div>
+            <p class="text-slate-600 text-sm max-w-2xl mx-auto">
+                Our advanced deep-water berths accommodate the largest global car carriers, ensuring seamless international trade and supply chain continuity.
             </p>
         </div>
     </div>
+</section>
 
-    <!-- TAMPILAN HP (MOBILE): INFINITE MARQUEE SLIDER (4 Foto) -->
-    <div class="block lg:hidden relative w-full overflow-hidden py-4">
-        <div class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-        <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
-
-        <div class="animate-marquee-mobile flex items-center gap-6">
-            <!-- Set 1 (4 Items) -->
-            <div class="flex items-center gap-6 shrink-0">
-                <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
-                    <img src="{{ secure_asset('assets/images/background.jpeg') }}" alt="Terminal Area" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
-                        <div>
-                            <span class="text-[10px] font-semibold uppercase tracking-wider text-blue-400">Terminal Area</span>
-                            <h4 class="text-white font-bold text-lg mt-0.5">Dock Activities</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
-                    <img src="{{ secure_asset('assets/images/patimban-yard-1.jpeg') }}" alt="Storage Yard" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
-                        <div>
-                            <span class="text-[10px] font-semibold uppercase tracking-wider text-red-400">Storage Yard</span>
-                            <h4 class="text-white font-bold text-lg mt-0.5">Staging Yard Utama</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
-                    <img src="{{ secure_asset('assets/images/patimban-yard-2.jpeg') }}" alt="Yard Capacity" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
-                        <div>
-                            <span class="text-[10px] font-semibold uppercase tracking-wider text-blue-400">Yard Capacity</span>
-                            <h4 class="text-white font-bold text-lg mt-0.5">Staging Area</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
-                    <img src="{{ secure_asset('assets/images/patimban-yard-3.jpeg') }}" alt="Supply Chain" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
-                        <div>
-                            <span class="text-[10px] font-semibold uppercase tracking-wider text-red-400">Supply Chain</span>
-                            <h4 class="text-white font-bold text-lg mt-0.5">Logistics</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Set 2 (Duplikat 4 Items untuk efek infinite loop halus) -->
-            <div class="flex items-center gap-6 shrink-0" aria-hidden="true">
-                <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
-                    <img src="{{ secure_asset('assets/images/background.jpeg') }}" alt="Terminal Area" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
-                        <div>
-                            <span class="text-[10px] font-semibold uppercase tracking-wider text-blue-400">Terminal Area</span>
-                            <h4 class="text-white font-bold text-lg mt-0.5">Dock Activities</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
-                    <img src="{{ secure_asset('assets/images/patimban-yard-1.jpeg') }}" alt="Storage Yard" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
-                        <div>
-                            <span class="text-[10px] font-semibold uppercase tracking-wider text-red-400">Storage Yard</span>
-                            <h4 class="text-white font-bold text-lg mt-0.5">Staging Yard Utama</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
-                    <img src="{{ secure_asset('assets/images/patimban-yard-2.jpeg') }}" alt="Yard Capacity" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
-                        <div>
-                            <span class="text-[10px] font-semibold uppercase tracking-wider text-blue-400">Yard Capacity</span>
-                            <h4 class="text-white font-bold text-lg mt-0.5">Staging Area</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100 h-[360px] w-[260px] relative shrink-0">
-                    <img src="{{ secure_asset('assets/images/patimban-yard-3.jpeg') }}" alt="Supply Chain" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
-                        <div>
-                            <span class="text-[10px] font-semibold uppercase tracking-wider text-red-400">Supply Chain</span>
-                            <h4 class="text-white font-bold text-lg mt-0.5">Logistics</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- TAMPILAN DESKTOP: INTERACTIVE EXPANDING CARDS ON HOVER (Hanya 4 Kartu) -->
-    <div class="hidden lg:block max-w-7xl mx-auto px-4 sm:px-6 py-6">
-        <div class="flex flex-row gap-4 h-[500px] w-full">
-            
-            <!-- Kartu 1 -->
-            <div class="group relative overflow-hidden rounded-3xl bg-slate-900 flex-1 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] hover:flex-[2.5_1_0%] shadow-xl">
-                <img src="{{ secure_asset('assets/images/background.jpeg') }}" alt="Dock Activities" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 w-full p-8 flex flex-col justify-end h-full">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-400 opacity-80 group-hover:opacity-100 transition-opacity">Terminal Area</span>
-                    <h4 class="text-white font-bold text-2xl mt-1">Dock Activities</h4>
-                    <p class="text-slate-200 text-sm mt-2 max-w-xs opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
-                        Sistem bongkar muat kapal Ro-Ro dengan standar keamanan internasional yang efisien.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Kartu 2 -->
-            <div class="group relative overflow-hidden rounded-3xl bg-slate-900 flex-1 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] hover:flex-[2.5_1_0%] shadow-xl">
-                <img src="{{ secure_asset('assets/images/patimban-yard-1.jpeg') }}" alt="Staging Yard Utama" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 w-full p-8 flex flex-col justify-end h-full">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-red-400 opacity-80 group-hover:opacity-100 transition-opacity">Storage Yard</span>
-                    <h4 class="text-white font-bold text-2xl mt-1">Staging Yard Utama</h4>
-                    <p class="text-slate-200 text-sm mt-2 max-w-xs opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
-                        Area penumpukan kendaraan CBU berkapasitas tinggi dengan pengawasan digital 24 jam.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Kartu 3 -->
-            <div class="group relative overflow-hidden rounded-3xl bg-slate-900 flex-1 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] hover:flex-[2.5_1_0%] shadow-xl">
-                <img src="{{ secure_asset('assets/images/patimban-yard-2.jpeg') }}" alt="Staging Area" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 w-full p-8 flex flex-col justify-end h-full">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-400 opacity-80 group-hover:opacity-100 transition-opacity">Yard Capacity</span>
-                    <h4 class="text-white font-bold text-2xl mt-1">Staging Area</h4>
-                    <p class="text-slate-200 text-sm mt-2 max-w-xs opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
-                        Pengaturan alur kendaraan yang terstruktur untuk mempercepat proses distribusi logistik.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Kartu 4 -->
-            <div class="group relative overflow-hidden rounded-3xl bg-slate-900 flex-1 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] hover:flex-[2.5_1_0%] shadow-xl">
-                <img src="{{ secure_asset('assets/images/patimban-yard-3.jpeg') }}" alt="Logistics" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 w-full p-8 flex flex-col justify-end h-full">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-red-400 opacity-80 group-hover:opacity-100 transition-opacity">Supply Chain</span>
-                    <h4 class="text-white font-bold text-2xl mt-1">Logistics</h4>
-                    <p class="text-slate-200 text-sm mt-2 max-w-xs opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-4 group-hover:translate-y-0">
-                        Integrasi rantai pasok otomotif nasional dan internasional secara mulus dan aman.
-                    </p>
-                </div>
-            </div>
-
+<!-- ═══ 10. CALL TO ACTION ═══ -->
+<section id="contact" class="py-24 relative overflow-hidden bg-cover bg-center" style="background-image: url('{{ secure_asset("assets/images/background.jpeg") }}')">
+    <div class="absolute inset-0 bg-[#071E3D]/90"></div>
+    <div class="max-w-5xl mx-auto px-6 text-center relative z-10" data-aos="fade-up">
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-heading mb-6">
+            Ready to Partner with Indonesia's Leading Automotive Terminal?
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-10">
+            Connect with our commercial and operations team to discuss berth reservation, cargo handling, and long-term partnership opportunities.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+            <a href="{{ url('/contact') }}" class="px-8 py-4 rounded-full bg-[#D62828] text-white font-semibold tracking-wide text-sm hover:bg-red-700 transition-all shadow-lg shadow-red-600/30">
+                Contact Us
+            </a>
+            <a href="{{ url('/services') }}" class="px-8 py-4 rounded-full bg-white/10 backdrop-blur-md text-white font-semibold tracking-wide text-sm hover:bg-white/20 transition-all border border-white/25">
+                View Services
+            </a>
         </div>
     </div>
 </section>
 
-
-<!-- ═══ 6. GALERI FOTO TAMBAHAN (SECTION BARU UNTUK SISA FOTO) ═══ -->
-<section class="py-24 bg-slate-50 border-t border-slate-200" data-aos="fade-up">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 mb-12 sm:mb-16">
-        <div class="text-center max-w-2xl mx-auto">
-            <span class="text-blue-600 font-bold tracking-widest text-xs uppercase block mb-1">Port Gallery</span>
-            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Galeri Foto & Aktivitas Kapal</h2>
-            <p class="text-slate-500 mt-2 text-sm">
-                Dokumentasi tambahan armada kapal Ro-Ro, proses inspeksi kendaraan, serta kesiapan fasilitas terminal PICT.
-            </p>
-        </div>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <!-- Foto 1 -->
-            <div class="group bg-white rounded-3xl overflow-hidden shadow-md border border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="{{ secure_asset('assets/images/car-1.jpeg') }}" alt="Quality Check" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                </div>
-                <div class="p-6">
-   <span class="text-[10px] font-semibold uppercase tracking-wider text-red-600">Staging</span>
-                    <h4 class="text-slate-900 font-bold text-lg mt-1">Ready for Export</h4>
-                    <p class="text-slate-500 text-xs sm:text-sm mt-2 leading-relaxed">
-                        Tahap penyiapan unit kendaraan sebelum proses pemuatan ke kapal ekspor.
-                    </p>                </div>
-            </div>
-
-            <!-- Foto 2 -->
-            <div class="group bg-white rounded-3xl overflow-hidden shadow-md border border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="{{ secure_asset('assets/images/car-3.jpeg') }}" alt="Vehicle Lineup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                </div>
-                <div class="p-6">
-                    <span class="text-[10px] font-semibold uppercase tracking-wider text-blue-600">CBU Units</span>
-                    <h4 class="text-slate-900 font-bold text-lg mt-1">Vehicle Lineup</h4>
-                    <p class="text-slate-500 text-xs sm:text-sm mt-2 leading-relaxed">
-                        Deretan unit CBU yang tersusun rapi di area lapangan penumpukan.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Foto 3 -->
-            <div class="group bg-white rounded-3xl overflow-hidden shadow-md border border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="{{ secure_asset('assets/images/car-5.jpeg') }}" alt="Ready for Export" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                </div>
-                <div class="p-6">
-                                   <span class="text-[10px] font-semibold uppercase tracking-wider text-red-600">Inspection</span>
-                    <h4 class="text-slate-900 font-bold text-lg mt-1">Quality Check Kendaraan</h4>
-                    <p class="text-slate-500 text-xs sm:text-sm mt-2 leading-relaxed">
-                        Inspeksi fisik secara cermat demi memastikan kualitas kendaraan tetap terjaga sempurna.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Foto 4 -->
-            <div class="group bg-white rounded-3xl overflow-hidden shadow-md border border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="{{ secure_asset('assets/images/vessel-1.jpeg') }}" alt="Dock Activities" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                </div>
-                <div class="p-6">
-                    <span class="text-[10px] font-semibold uppercase tracking-wider text-blue-600">Terminal Area</span>
-                    <h4 class="text-slate-900 font-bold text-lg mt-1">Aktivitas Dermaga</h4>
-                    <p class="text-slate-500 text-xs sm:text-sm mt-2 leading-relaxed">
-                        Pelayanan sandar kapal Ro-Ro internasional di dermaga utama Patimban.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Foto 5 -->
-            <div class="group bg-white rounded-3xl overflow-hidden shadow-md border border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="{{ secure_asset('assets/images/vessel-2.jpeg') }}" alt="Berthing Process" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                </div>
-                <div class="p-6">
-                    <span class="text-[10px] font-semibold uppercase tracking-wider text-red-600">Ro-Ro Ship</span>
-                    <h4 class="text-slate-900 font-bold text-lg mt-1">Proses Penyandaran Kapal</h4>
-                    <p class="text-slate-500 text-xs sm:text-sm mt-2 leading-relaxed">
-                        Panduan operasional kapal pengangkut kendaraan dengan standar keselamatan tinggi.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Foto 6 -->
-            <div class="group bg-white rounded-3xl overflow-hidden shadow-md border border-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="{{ secure_asset('assets/images/vessel-3.jpeg') }}" alt="Ramp Loading" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                </div>
-                <div class="p-6">
-                    <span class="text-[10px] font-semibold uppercase tracking-wider text-blue-600">Logistics</span>
-                    <h4 class="text-slate-900 font-bold text-lg mt-1">Ramp Loading Operations</h4>
-                    <p class="text-slate-500 text-xs sm:text-sm mt-2 leading-relaxed">
-                        Akses keluar masuk kendaraan melalui pintu rampa roro secara lancar.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
 
 @endsection
 
@@ -579,38 +481,41 @@ document.addEventListener('DOMContentLoaded', function () {
         duration: 900,
         easing: 'ease-out-cubic',
         once: true,
-        offset: 120
+        offset: 100
     });
-});
-</script>
 
-<script type="module">
-    import { createLayout, stagger } from 'https://esm.sh/animejs';
+    const counters = document.querySelectorAll('.counter');
+    const speed = 200;
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const layoutEl = document.querySelector('#cargoLayout');
-        if (!layoutEl) return;
+    counters.forEach(counter => {
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText.replace(/,/g, '');
+            const inc = target / speed;
 
-        // Nonaktifkan animasi grid otomatis pada perangkat mobile agar performa tetap ringan
-        if (window.innerWidth < 768) return;
+            if (count < target) {
+                counter.innerText = Math.ceil(count + inc).toLocaleString();
+                setTimeout(updateCount, 15);
+            } else {
+                counter.innerText = target.toLocaleString();
+            }
+        };
 
-        const layout = createLayout('#cargoLayout');
-        let i = 0;
-
-        function animateLayout() {
-            layout.update(({ root }) => {
-                root.dataset.grid = (++i % 4) + 1;
-            }, {
-                duration: 900,
-                ease: 'out(3)',
-                delay: stagger(100),
-                onComplete: () => {
-                    setTimeout(animateLayout, 3000);
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    updateCount();
+                    observer.unobserve(entry.target);
                 }
             });
-        }
+        }, { threshold: 0.5 });
 
-        setTimeout(animateLayout, 3000);
+        observer.observe(counter);
     });
+});
+
+function setActiveStep(index) {
+    console.log('Selected step:', index);
+}
 </script>
 @endpush

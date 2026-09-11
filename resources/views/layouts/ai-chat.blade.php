@@ -1,11 +1,10 @@
-<!-- ═══ FLOATING AI CHATBOT WIDGET ═══ -->
+{{-- ═══ GLOBAL FLOATING AI CHATBOT WIDGET ═══ --}}
 <div id="ai-chat-widget" class="fixed bottom-5 left-4 sm:left-auto sm:right-4 sm:bottom-6 sm:right-6 z-50 transition-all duration-300">
-    <button id="ai-chat-toggle" class="rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-105 focus:outline-none cursor-pointer overflow-hidden w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-slate-100">
+    <button id="ai-chat-toggle" aria-label="Open AI Assistant" class="rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-105 focus:outline-none cursor-pointer overflow-hidden w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-slate-100">
         <img src="{{ asset('assets/images/maskot-ai.png') }}" alt="PICT AI Assistant" class="w-full h-full object-cover">
     </button>
 
-    <!-- Di mobile kotak chat terbuka ke arah kanan agar tidak terpotong dari sisi kiri layar -->
-    <div id="ai-chat-box" class="hidden absolute bottom-16 sm:bottom-20 left-0 sm:left-auto sm:right-0 w-[calc(100vw-2rem)] sm:w-96 max-w-sm bg-white border border-slate-200 rounded-2xl shadow-2xl flex flex-col overflow-hidden h-[450px]">
+    <div id="ai-chat-box" class="hidden absolute bottom-16 sm:bottom-20 left-0 sm:left-auto sm:right-0 w-[calc(100vw-2rem)] sm:w-96 max-w-sm bg-white border border-slate-200 rounded-2xl shadow-2xl flex flex-col overflow-hidden h-[500px]">
         <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between">
             <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -16,9 +15,17 @@
 
         <div id="ai-chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs bg-slate-50">
             <div class="flex justify-start">
-                <div class="bg-white border border-slate-200 text-slate-800 p-3 rounded-2xl rounded-tl-none shadow-sm max-w-[80%]">
-                    Hello! How can I help you with terminal services or information about Patimban International Car Terminal?
+                <div class="bg-white border border-slate-200 text-slate-800 p-3 rounded-2xl rounded-tl-none shadow-sm max-w-[85%] leading-relaxed">
+                    Hello! How can I help you with terminal services or information about Patimban International Car Terminal? You can select a topic below or type your question:
                 </div>
+            </div>
+            
+            <!-- Suggested Quick Questions -->
+            <div id="suggested-questions" class="flex flex-wrap gap-1.5 pt-1">
+                <button type="button" class="quick-question-btn bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 px-3 py-1.5 rounded-full text-[11px] font-medium transition cursor-pointer">What are your main services?</button>
+                <button type="button" class="quick-question-btn bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 px-3 py-1.5 rounded-full text-[11px] font-medium transition cursor-pointer">What is the annual capacity?</button>
+                <button type="button" class="quick-question-btn bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 px-3 py-1.5 rounded-full text-[11px] font-medium transition cursor-pointer">How to book a berth?</button>
+                <button type="button" class="quick-question-btn bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 px-3 py-1.5 rounded-full text-[11px] font-medium transition cursor-pointer">Contact commercial team</button>
             </div>
         </div>
 
@@ -38,57 +45,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputField = document.getElementById('ai-chat-input');
     const messagesContainer = document.getElementById('ai-chat-messages');
     const chatWidget = document.getElementById('ai-chat-widget');
+    const suggestedContainer = document.getElementById('suggested-questions');
 
     const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
 
     let conversationHistory = [];
     let messageCounter = 0;
 
-    toggleBtn.addEventListener('click', () => chatBox.classList.toggle('hidden'));
-    closeBtn.addEventListener('click', () => chatBox.classList.add('hidden'));
-
-    // Deteksi tombol scroll HANYA untuk layar desktop (lebar di atas 1024px)
-    function checkScrollTopButton() {
-        if (window.innerWidth < 1024) {
-            // Di mobile, pastikan posisinya terkunci aman di kiri bawah
-            chatWidget.classList.remove('right-20', 'sm:right-24', 'sm:right-4', 'sm:right-6');
-            chatWidget.classList.add('left-4', 'sm:left-auto');
-            return;
-        }
-
-        const allButtons = document.querySelectorAll('button, a');
-        let scrollBtnFound = false;
-
-        allButtons.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            const isBottomRight = rect.bottom > (window.innerHeight - 100) && rect.right > (window.innerWidth - 100);
-            if (isBottomRight && el !== toggleBtn && !chatWidget.contains(el)) {
-                if (window.getComputedStyle(el).display !== 'none' && !el.classList.contains('hidden') && !el.classList.contains('opacity-0')) {
-                    scrollBtnFound = true;
-                }
-            }
-        });
-
-        if (scrollBtnFound) {
-            chatWidget.classList.remove('sm:right-4', 'sm:right-6', 'left-4');
-            chatWidget.classList.add('sm:right-24');
-        } else {
-            chatWidget.classList.remove('sm:right-24', 'left-4');
-            chatWidget.classList.add('sm:right-6');
-        }
+    if (toggleBtn && chatBox) {
+        toggleBtn.addEventListener('click', () => chatBox.classList.toggle('hidden'));
+    }
+    if (closeBtn && chatBox) {
+        closeBtn.addEventListener('click', () => chatBox.classList.add('hidden'));
     }
 
-    window.addEventListener('scroll', checkScrollTopButton);
-    window.addEventListener('resize', checkScrollTopButton);
-    setTimeout(checkScrollTopButton, 500);
+    // Handle Quick Question Clicks
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.classList.contains('quick-question-btn')) {
+            const questionText = e.target.textContent;
+            if (inputField) {
+                inputField.value = questionText;
+            }
+            if (suggestedContainer) {
+                suggestedContainer.style.display = 'none';
+            }
+            handleSendMessage();
+        }
+    });
 
     async function handleSendMessage() {
+        if (!inputField) return;
         const text = inputField.value.trim();
         if (!text) return;
 
+        if (suggestedContainer) {
+            suggestedContainer.style.display = 'none';
+        }
+
         appendMessage(text, 'user');
         inputField.value = '';
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        if (messagesContainer) {
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
 
         const loadingId = appendMessage('Typing...', 'bot', true);
 
@@ -125,13 +123,19 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById(loadingId)?.remove();
             appendMessage("Failed to connect to the server. Please check your connection.", 'bot');
         }
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        if (messagesContainer) {
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
     }
 
-    sendBtn.addEventListener('click', handleSendMessage);
-    inputField.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleSendMessage();
-    });
+    if (sendBtn) {
+        sendBtn.addEventListener('click', handleSendMessage);
+    }
+    if (inputField) {
+        inputField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSendMessage();
+        });
+    }
 
     function escapeHtml(str) {
         const div = document.createElement('div');
@@ -148,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function appendMessage(text, sender, isLoading = false) {
+        if (!messagesContainer) return '';
         const msgDiv = document.createElement('div');
         messageCounter++;
         const uniqueId = 'msg-' + Date.now() + '-' + messageCounter + '-' + Math.random().toString(36).slice(2, 7);
@@ -156,8 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const bubble = document.createElement('div');
         bubble.className = sender === 'user' 
-            ? 'bg-red-600 text-white p-3 rounded-2xl rounded-tr-none shadow-sm max-w-[80%] leading-relaxed' 
-            : 'bg-white border border-slate-200 text-slate-800 p-3 rounded-2xl rounded-tl-none shadow-sm max-w-[80%] leading-relaxed';
+            ? 'bg-red-600 text-white p-3 rounded-2xl rounded-tr-none shadow-sm max-w-[85%] leading-relaxed' 
+            : 'bg-white border border-slate-200 text-slate-800 p-3 rounded-2xl rounded-tl-none shadow-sm max-w-[85%] leading-relaxed';
         
         if (isLoading) {
             bubble.classList.add('italic', 'text-slate-400');

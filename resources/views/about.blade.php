@@ -158,7 +158,7 @@
     </div>
 </section>
 
-{{-- ═══ SHAREHOLDERS (LIGHT MODE WITH LINKS) ═══ --}}
+{{-- ═══ SHAREHOLDERS (LIGHT MODE WITH LARGE LOGOS & PERCENTAGE BELOW) ═══ --}}
 <section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800 border-t border-slate-200" data-aos="fade-up">
     <div class="text-center mb-12">
         <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Our Shareholders</span>
@@ -168,33 +168,51 @@
         </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+{{-- ═══ SHAREHOLDERS (CLEAN LOGOS WITHOUT CARDS) ═══ --}}
+<section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800 border-t border-slate-200" data-aos="fade-up">
+    <div class="text-center mb-16">
+        <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Our Shareholders</span>
+        <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Shareholder Consortium</h3>
+        <p class="text-slate-500 max-w-2xl mx-auto mt-3 text-sm">
+            PICT is supported by a consortium of leading Japanese automotive logistics and shipping companies. Click a logo to visit their official site.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-16 items-center justify-center max-w-5xl mx-auto">
         <!-- Toyota Tsusho Corporation -->
-        <a href="https://www.toyota-tsusho.com/" target="_blank" rel="noopener noreferrer" class="shareholder-card bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm block group" data-aos="fade-up" data-aos-delay="100">
-            <p class="text-3xl font-extrabold text-slate-900 mb-1 tracking-tight group-hover:text-red-600 transition-colors">34%</p>
-            <p class="text-slate-600 text-xs font-medium">Toyota Tsusho Corporation Group</p>
-            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">Visit Website</span>
+        <a href="https://www.toyota-tsusho.com/" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center text-center transition transform hover:-translate-y-1.5" data-aos="fade-up" data-aos-delay="100">
+            <div class="h-16 flex items-center justify-center mb-3">
+                <img src="{{ asset('assets/images/logo-toyota.png') }}" alt="Toyota Tsusho Corporation" class="max-h-12 max-w-[160px] object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            </div>
+            <p class="text-xl font-extrabold text-slate-900 tracking-tight group-hover:text-red-600 transition-colors">34%</p>
+            <p class="text-slate-500 text-xs font-medium mt-0.5">Toyota Tsusho Corporation Group</p>
         </a>
 
         <!-- Toyofuji Shipping Co., Ltd. -->
-        <a href="https://www.toyofuji.co.jp/en/english/company/company.html" target="_blank" rel="noopener noreferrer" class="shareholder-card bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm block group" data-aos="fade-up" data-aos-delay="200">
-            <p class="text-3xl font-extrabold text-slate-900 mb-1 tracking-tight group-hover:text-red-600 transition-colors">26%</p>
-            <p class="text-slate-600 text-xs font-medium">Toyofuji Shipping Co., Ltd.</p>
-            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">Visit Website</span>
+        <a href="https://www.toyofuji.co.jp/en/english/company/company.html" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center text-center transition transform hover:-translate-y-1.5" data-aos="fade-up" data-aos-delay="200">
+            <div class="h-16 flex items-center justify-center mb-3">
+                <span class="text-base font-extrabold text-blue-900 tracking-wide uppercase opacity-80 group-hover:opacity-100 transition-opacity">Toyofuji Shipping</span>
+            </div>
+            <p class="text-xl font-extrabold text-slate-900 tracking-tight group-hover:text-red-600 transition-colors">26%</p>
+            <p class="text-slate-500 text-xs font-medium mt-0.5">Toyofuji Shipping Co., Ltd.</p>
         </a>
 
         <!-- NYK Line -->
-        <a href="https://www.nyk.com/english/" target="_blank" rel="noopener noreferrer" class="shareholder-card bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm block group" data-aos="fade-up" data-aos-delay="300">
-            <p class="text-3xl font-extrabold text-slate-900 mb-1 tracking-tight group-hover:text-red-600 transition-colors">25%</p>
-            <p class="text-slate-600 text-xs font-medium">NYK Line</p>
-            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">Visit Website</span>
+        <a href="https://www.nyk.com/english/" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center text-center transition transform hover:-translate-y-1.5" data-aos="fade-up" data-aos-delay="300">
+            <div class="h-16 flex items-center justify-center mb-3">
+                <span class="text-xl font-black text-slate-900 tracking-widest uppercase opacity-80 group-hover:opacity-100 transition-opacity">NYK LINE</span>
+            </div>
+            <p class="text-xl font-extrabold text-slate-900 tracking-tight group-hover:text-red-600 transition-colors">25%</p>
+            <p class="text-slate-500 text-xs font-medium mt-0.5">NYK Line</p>
         </a>
 
         <!-- Kamigumi Co., Ltd. -->
-        <a href="https://www.kamigumi.co.jp/english/" target="_blank" rel="noopener noreferrer" class="shareholder-card bg-slate-50 border border-slate-200 rounded-xl p-6 text-center shadow-sm block group" data-aos="fade-up" data-aos-delay="400">
-            <p class="text-3xl font-extrabold text-slate-900 mb-1 tracking-tight group-hover:text-red-600 transition-colors">15%</p>
-            <p class="text-slate-600 text-xs font-medium">Kamigumi Co., Ltd.</p>
-            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-red-600 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">Visit Website</span>
+        <a href="https://www.kamigumi.co.jp/english/" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center text-center transition transform hover:-translate-y-1.5" data-aos="fade-up" data-aos-delay="400">
+            <div class="h-16 flex items-center justify-center mb-3">
+                <img src="{{ asset('assets/images/logo-kamigumi.png') }}" alt="Kamigumi Co., Ltd." class="max-h-20 max-w-[260px] object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            </div>
+            <p class="text-xl font-extrabold text-slate-900 tracking-tight group-hover:text-red-600 transition-colors">15%</p>
+            <p class="text-slate-500 text-xs font-medium mt-0.5">Kamigumi Co., Ltd.</p>
         </a>
     </div>
 </section>

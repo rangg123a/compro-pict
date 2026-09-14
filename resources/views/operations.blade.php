@@ -8,19 +8,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
 <style>
-    /* ═══ DESIGN SYSTEM OVERRIDES (PICT LIGHT LUXURY CORPORATE) ═══ */
+    /* ═══ DESIGN SYSTEM — PICT TERMINAL DOSSIER ═══ */
     :root {
-        --color-navy: #071E3D;
-        --color-ocean: #0F4C81;
-        --color-steel: #2563EB;
-        --color-accent-red: #D62828;
-        --color-light-gray: #F8FAFC;
+        --color-navy: #0A2540;
+        --color-steel: #1D4E74;
+        --color-signal: #B4232A;
+        --color-paper: #F5F3EE;
+        --color-ink: #16232E;
+        --color-muted: #5B6672;
+        --color-line: #D8D4C8;
     }
 
     body {
         font-family: 'Inter', sans-serif;
-        background-color: var(--color-light-gray);
-        color: #0f172a;
+        background-color: var(--color-paper);
+        color: var(--color-ink);
         overflow-x: hidden;
     }
 
@@ -28,285 +30,503 @@
         font-family: 'Manrope', sans-serif;
     }
 
-    /* Light Glass / Clean Card Effects */
-    .glass-card {
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
+    /* Spec-plate: quiet document card, no blur/glass gimmick */
+    .plate {
+        background: #FFFFFF;
+        border: 1px solid var(--color-line);
     }
-
-    .glass-card-dark {
-        background: #071E3D;
+    .plate-dark {
+        background: var(--color-navy);
         color: #ffffff;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    /* Mouse Light Effect / Glow */
-    .glow-effect {
+    /* Blueprint corner-bracket icon frame */
+    .spec-frame {
         position: relative;
-        overflow: hidden;
+        width: 4.25rem;
+        height: 4.25rem;
+        flex-shrink: 0;
     }
-    .glow-effect::before {
-        content: '';
+    .spec-frame svg.frame {
         position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%);
-        opacity: 0;
-        transition: opacity 0.5s ease;
-        pointer-events: none;
+        inset: 0;
+        width: 100%;
+        height: 100%;
     }
-    .glow-effect:hover::before {
-        opacity: 1;
+    .spec-frame .icon-wrap {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.9rem;
     }
 
-    /* Clean Crossfade Hero Slide (No Zoom/Alay Effects) */
+    /* Section index label */
+    .index-label {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    .index-label .num {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 700;
+        color: var(--color-signal);
+        font-size: 0.9rem;
+    }
+    .index-label .rule {
+        height: 1px;
+        width: 2.5rem;
+        background: var(--color-line);
+        flex-shrink: 0;
+    }
+    .index-label .lbl {
+        color: var(--color-muted);
+        font-size: 0.9rem;
+    }
+
+    /* Subtle drafting-grid texture, used once, deliberately */
+    .grid-texture {
+        background-image:
+            linear-gradient(rgba(10,37,64,0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(10,37,64,0.05) 1px, transparent 1px);
+        background-size: 48px 48px;
+    }
+
+    /* Clean crossfade hero slide */
     .hero-slide {
         position: absolute;
         inset: 0;
         background-size: cover;
         background-position: center;
         opacity: 0;
-        transition: opacity 1s ease-in-out;
+        transition: opacity 1.2s ease-in-out;
     }
     .hero-slide.active {
         opacity: 1;
     }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-        width: 8px;
+    /* Process line connecting operation steps */
+    .process-line {
+        position: absolute;
+        top: 1.4rem;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--color-line);
     }
-    ::-webkit-scrollbar-track {
-        background: #F8FAFC;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8;
-    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--color-paper); }
+    ::-webkit-scrollbar-thumb { background: #c3bda9; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #a89f84; }
 </style>
 @endpush
 
 @section('content')
 
-<!-- ═══ 1. FULLSCREEN CINEMATIC HERO (LIGHT THEME) ═══ -->
-<section class="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-slate-900 pt-32 pb-16">
-    <!-- Background Slideshow Container -->
-    <div id="hero-slideshow" 
+<!-- ═══ 1. HERO ═══ -->
+<section class="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-slate-900 pt-32 pb-0">
+    <div id="hero-slideshow"
          data-images='{{ json_encode([
              secure_asset("assets/images/background.jpeg"),
              secure_asset("assets/images/patimban-yard-1.jpeg"),
              secure_asset("assets/images/vessel-5.jpeg"),
              secure_asset("assets/images/car-4.jpeg")
-         ]) }}' 
+         ]) }}'
          class="absolute inset-0 z-0">
     </div>
 
-    <!-- Dark Overlay for Readability -->
-    <div class="absolute inset-0 bg-slate-950/50 z-[1] pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/40 to-slate-950/80 z-[1] pointer-events-none"></div>
 
     <div class="relative max-w-7xl mx-auto px-6 z-10 w-full my-auto">
-        <div class="max-w-4xl">
-            <h1 class="text-5xl sm:text-7xl font-extrabold text-white tracking-tight font-heading leading-none mb-6" data-aos="fade-up" data-aos-delay="300">
-                Terminal Operations
+        <div class="max-w-3xl" data-aos="fade-up" data-aos-duration="900">
+            
+            <h1 class="text-5xl sm:text-6xl font-extrabold text-white tracking-tight font-heading leading-[1.05] mb-6">
+                A Ro-Ro terminal built to move vehicles, not just words.
             </h1>
-            <p class="text-lg sm:text-2xl text-slate-200 font-light leading-relaxed max-w-3xl mb-10" data-aos="fade-up" data-aos-delay="400">
-                World-Class Ro-Ro Automotive Terminal Connecting Indonesia to the Global Automotive Supply Chain.
+            <p class="text-base sm:text-xl text-slate-200 font-light leading-relaxed max-w-2xl">
+                From vessel arrival to gate-out, every unit that crosses our berth is tracked, inspected, and handled to a zero-scratch standard.
             </p>
         </div>
     </div>
 
-    <!-- Badges Footer of Hero -->
-    <div class="relative max-w-7xl mx-auto px-6 w-full z-10 pt-8 border-t border-white/30 mt-12" data-aos="fade-up" data-aos-delay="600">
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-blue-500/35 flex items-center justify-center text-blue-300 font-bold text-xs shadow-lg">✓</div>
-                <span class="text-xs font-semibold text-white">Smart Terminal</span>
-            </div>
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-blue-500/35 flex items-center justify-center text-blue-300 font-bold text-xs shadow-lg">✓</div>
-                <span class="text-xs font-semibold text-white">ISO Standards</span>
-            </div>
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-red-500/35 flex items-center justify-center text-red-300 font-bold text-xs shadow-lg">✓</div>
-                <span class="text-xs font-semibold text-white">Zero Scratch</span>
-            </div>
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-blue-500/35 flex items-center justify-center text-blue-300 font-bold text-xs shadow-lg">✓</div>
-                <span class="text-xs font-semibold text-white">Real-Time Monitoring</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══ 2. FLOATING GLASS STATISTICS (CLEAN LIGHT STYLE) ═══ -->
-<section class="relative z-20 max-w-7xl mx-auto px-6 -mt-8 sm:-mt-12 mb-28" data-aos="fade-up">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Stat 1 -->
-        <div class="glass-card rounded-3xl p-8 text-center relative overflow-hidden group hover:border-blue-400 transition-all duration-500 shadow-xl">
-            <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-blue-50 rounded-full blur-xl group-hover:bg-blue-100 transition-all"></div>
-            <div class="text-4xl sm:text-5xl font-extrabold text-[#071E3D] font-heading tracking-tight mb-2 counter" data-target="218">0</div>
-            <div class="text-xs font-semibold uppercase tracking-widest text-slate-500">Annual Capacity</div>
-        </div>
-
-        <!-- Stat 2 -->
-        <div class="glass-card rounded-3xl p-8 text-center relative overflow-hidden group hover:border-blue-400 transition-all duration-500 shadow-xl">
-            <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-blue-50 rounded-full blur-xl group-hover:bg-blue-100 transition-all"></div>
-            <div class="text-4xl sm:text-5xl font-extrabold text-[#071E3D] font-heading tracking-tight mb-2 counter" data-target="300">0</div>
-            <div class="text-xs font-semibold uppercase tracking-widest text-slate-500">Ro-Ro Berth (Meters)</div>
-        </div>
-
-        <!-- Stat 3 -->
-        <div class="glass-card rounded-3xl p-8 text-center relative overflow-hidden group hover:border-blue-400 transition-all duration-500 shadow-xl">
-            <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-blue-50 rounded-full blur-xl group-hover:bg-blue-100 transition-all"></div>
-            <div class="text-4xl sm:text-5xl font-extrabold text-[#071E3D] font-heading tracking-tight mb-2">24/7</div>
-            <div class="text-xs font-semibold uppercase tracking-widest text-slate-500">Operations</div>
-        </div>
-
-        <!-- Stat 4 -->
-        <div class="glass-card rounded-3xl p-8 text-center relative overflow-hidden group hover:border-red-400 transition-all duration-500 shadow-xl">
-            <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-red-50 rounded-full blur-xl group-hover:bg-red-100 transition-all"></div>
-            <div class="text-4xl sm:text-5xl font-extrabold text-[#D62828] font-heading tracking-tight mb-2">ZERO</div>
-            <div class="text-xs font-semibold uppercase tracking-widest text-slate-500">Scratch Policy</div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══ 3. WHY PICT (LIGHT THEME) ═══ -->
-<section class="py-24 bg-white relative overflow-hidden border-t border-slate-100">
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
-            <span class="text-[#D62828] font-bold tracking-widest text-xs uppercase block mb-3">Excellence in Port Management</span>
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-[#071E3D] tracking-tight font-heading">
-                Why PT Patimban International Car Terminal
-            </h2>
-            <p class="mt-4 text-slate-600 text-base sm:text-lg">
-                Setting the benchmark for automotive maritime logistics through digital integration, uncompromising safety, and unmatched operational efficiency.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Feature 1 -->
-            <div class="bg-slate-50 rounded-3xl p-8 relative glow-effect group hover:-translate-y-2 transition-all duration-500 border border-slate-200/80 shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
-                <div class="w-16 h-16 rounded-2xl bg-blue-100 border border-blue-200 flex items-center justify-center mb-8 text-[#2563EB] group-hover:bg-[#2563EB] group-hover:text-white transition-all duration-300">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                </div>
-                <h3 class="text-2xl font-bold text-[#071E3D] mb-4 font-heading">Smart Terminal Technology</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">
-                    Powered by state-of-the-art Terminal Management Systems (TMS), automated gate controls, and RFID tracking for instant vessel and yard visibility.
-                </p>
-            </div>
-
-            <!-- Feature 2 -->
-            <div class="bg-slate-50 rounded-3xl p-8 relative glow-effect group hover:-translate-y-2 transition-all duration-500 border border-slate-200/80 shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
-                <div class="w-16 h-16 rounded-2xl bg-red-100 border border-red-200 flex items-center justify-center mb-8 text-[#D62828] group-hover:bg-[#D62828] group-hover:text-white transition-all duration-300">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                </div>
-                <h3 class="text-2xl font-bold text-[#071E3D] mb-4 font-heading">International Safety Standard</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">
-                    Adhering strictly to ISPS Code, ISO certifications, and rigorous safety protocols ensuring complete protection for all personnel and valuable vehicle cargo.
-                </p>
-            </div>
-
-            <!-- Feature 3 -->
-            <div class="bg-slate-50 rounded-3xl p-8 relative glow-effect group hover:-translate-y-2 transition-all duration-500 border border-slate-200/80 shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
-                <div class="w-16 h-16 rounded-2xl bg-blue-100 border border-blue-200 flex items-center justify-center mb-8 text-[#2563EB] group-hover:bg-[#2563EB] group-hover:text-white transition-all duration-300">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                </div>
-                <h3 class="text-2xl font-bold text-[#071E3D] mb-4 font-heading">Efficient Automotive Logistics</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">
-                    Strategic location on the northern coast of West Java connecting manufacturing hubs directly to international shipping routes with minimal turnaround time.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══ 4. INTERACTIVE TERMINAL OPERATION FLOW ═══ -->
-<section id="operations-flow" class="py-24 bg-[#F8FAFC] relative overflow-hidden border-t border-slate-200">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
-            <span class="text-[#2563EB] font-bold tracking-widest text-xs uppercase block mb-3">Seamless Workflow</span>
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-[#071E3D] tracking-tight font-heading">
-                Interactive Terminal Operation Flow
-            </h2>
-            <p class="mt-4 text-slate-600 text-base">
-                Hover or click each milestone to inspect operational parameters, equipment deployed, and safety standards.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-7 gap-4 relative">
+    <!-- Credential strip — plain dividers, no icon badges -->
+    <div class="relative max-w-7xl mx-auto px-6 w-full z-10 border-t border-white/15">
+        <div class="grid grid-cols-2 sm:grid-cols-4">
             @php
-                $steps = [
-                    ['title' => 'Ship Arrival', 'time' => '1-2 Hours Prior', 'equip' => 'Vessel Traffic Services (VTS)', 'safety' => 'ISPS Code Compliance', 'div' => 'Marine Operations'],
-                    ['title' => 'Berthing', 'time' => '45 - 60 Minutes', 'equip' => 'Tugboats & Mooring Lines', 'safety' => 'Port Safety Clearance', 'div' => 'Harbor Master Team'],
-                    ['title' => 'Vehicle Inspection', 'time' => '10 Min / Unit', 'equip' => 'Digital Handheld Scanners', 'safety' => 'Zero-Scratch Protocol', 'div' => 'Quality Assurance'],
-                    ['title' => 'Ro-Ro Discharge', 'time' => '2-4 Hours Total', 'equip' => 'Hydraulic Ramps & Lashing', 'safety' => 'PPE & Traffic Control', 'div' => 'Stevedoring Division'],
-                    ['title' => 'Yard Management', 'time' => 'Immediate Staging', 'equip' => 'Automated Yard Locator (TMS)', 'safety' => 'Speed Limit 20 km/h', 'div' => 'Yard Control Center'],
-                    ['title' => 'Quality Check', 'time' => 'Final Audit', 'equip' => 'High-Resolution Cameras', 'safety' => 'Pre-Delivery Inspection', 'div' => 'Inspection Team'],
-                    ['title' => 'Distribution', 'time' => 'On-Demand Gate Out', 'equip' => 'Car Carriers / Transporters', 'safety' => 'Gate Security Check', 'div' => 'Logistics & Delivery']
-                ];
+                $credentials = ['Smart Terminal', 'ISO Standards', 'Zero Scratch Policy', 'Real-Time Monitoring'];
             @endphp
-
-            @foreach($steps as $index => $step)
-            <div class="bg-white rounded-2xl p-5 border border-slate-200 hover:border-blue-500 shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer relative" 
-                 data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}"
-                 onclick="setActiveStep(this.dataset.step)" data-step="{{ $index }}">
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-xs font-bold text-[#2563EB]">0{{ $index + 1 }}</span>
-                    <div class="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-[#D62828] transition-colors"></div>
-                </div>
-                <h3 class="text-[#071E3D] font-bold text-base mb-2 font-heading">{{ $step['title'] }}</h3>
-                <div class="space-y-1 text-xs text-slate-500 pt-3 border-t border-slate-100">
-                    <p><strong class="text-slate-700">Time:</strong> {{ $step['time'] }}</p>
-                    <p><strong class="text-slate-700">Equip:</strong> {{ $step['equip'] }}</p>
-                    <p><strong class="text-slate-700">Safety:</strong> {{ $step['safety'] }}</p>
-                    <p><strong class="text-slate-700">Team:</strong> {{ $step['div'] }}</p>
-                </div>
+            @foreach($credentials as $i => $cred)
+            <div class="flex items-center gap-2.5 py-5 px-2 sm:px-6 {{ $i > 0 ? 'border-l border-white/15' : '' }}">
+                <svg viewBox="0 0 16 16" class="w-3.5 h-3.5 text-white/70 flex-shrink-0"><path d="M2 8.5L6 12L14 3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="text-xs sm:text-sm font-medium text-white/90">{{ $cred }}</span>
             </div>
             @endforeach
         </div>
     </div>
 </section>
 
-<!-- ═══ 6. WORLD CLASS SERVICES ═══ -->
-<section class="py-24 bg-[#F8FAFC] relative overflow-hidden border-t border-slate-200">
+<!-- ═══ 2. TERMINAL AT A GLANCE — data strip, not floating cards ═══ -->
+<section class="relative z-20 bg-white border-b border-[var(--color-line)]">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
-            <span class="text-[#D62828] font-bold tracking-widest text-xs uppercase block mb-3">Enterprise Capabilities</span>
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-[#071E3D] tracking-tight font-heading">
-                World-Class Services
+        <div class="grid grid-cols-2 lg:grid-cols-4">
+            <div class="py-10 pr-6 lg:border-r border-[var(--color-line)]">
+                <div class="text-4xl sm:text-5xl font-extrabold text-[#0A2540] font-heading tracking-tight mb-1 counter" data-target="218">0</div>
+                <div class="text-sm text-[var(--color-muted)]">Thousand units, annual capacity</div>
+            </div>
+            <div class="py-10 pl-6 lg:pl-8 lg:pr-6 lg:border-r border-[var(--color-line)]">
+                <div class="text-4xl sm:text-5xl font-extrabold text-[#0A2540] font-heading tracking-tight mb-1 counter" data-target="300">0</div>
+                <div class="text-sm text-[var(--color-muted)]">Metres of Ro-Ro berth</div>
+            </div>
+            <div class="py-10 pr-6 pl-6 lg:pl-8 lg:border-r border-[var(--color-line)] border-t lg:border-t-0">
+                <div class="text-4xl sm:text-5xl font-extrabold text-[#0A2540] font-heading tracking-tight mb-1">24/7</div>
+                <div class="text-sm text-[var(--color-muted)]">Continuous operations</div>
+            </div>
+            <div class="py-10 pl-6 lg:pl-8 border-t lg:border-t-0">
+                <div class="text-4xl sm:text-5xl font-extrabold text-[#B4232A] font-heading tracking-tight mb-1">Zero</div>
+                <div class="text-sm text-[var(--color-muted)]">Scratch tolerance policy</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{{-- ═══ LIVE WEATHER & MARINE CONDITIONS WIDGET (COMPACT 2-COL MOBILE) ═══ --}}
+<section class="py-12 bg-slate-900 text-white relative overflow-hidden" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+            <div>
+                <span class="text-red-500 font-bold tracking-widest text-xs uppercase block mb-1">Safety & Operations</span>
+                <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Patimban Port Marine & Weather Conditions</h3>
+            </div>
+
+            <!-- Live Indicator & Dynamic Clock -->
+            <div class="flex items-center gap-3 bg-slate-800/80 px-4 py-2.5 rounded-xl border border-slate-700 text-xs text-slate-300">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span id="live-clock" class="font-mono font-medium text-slate-200">Loading time...</span>
+            </div>
+        </div>
+
+        <!-- 4 Kartu Metrik Utama: Diubah jadi grid-cols-2 agar di HP jadi 1 baris 2 kolom -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10">
+            <!-- Air Temperature -->
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-4 sm:p-6 backdrop-blur-md">
+                <div class="flex items-center justify-between text-slate-400 mb-2 sm:mb-4">
+                    <span class="text-xs sm:text-sm font-semibold uppercase tracking-wider">Temperature</span>
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                </div>
+                <p id="weather-temp" class="text-2xl sm:text-3xl font-extrabold text-white">-- °C</p>
+                <p class="text-slate-400 text-[11px] sm:text-xs mt-1">Patimban Harbor Area</p>
+            </div>
+
+            <!-- Wind Speed -->
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-4 sm:p-6 backdrop-blur-md">
+                <div class="flex items-center justify-between text-slate-400 mb-2 sm:mb-4">
+                    <span class="text-xs sm:text-sm font-semibold uppercase tracking-wider">Wind Speed</span>
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </div>
+                <p id="weather-wind" class="text-2xl sm:text-3xl font-extrabold text-white">-- km/h</p>
+                <p class="text-slate-400 text-[11px] sm:text-xs mt-1">Safe for Berthing</p>
+            </div>
+
+            <!-- Humidity -->
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-4 sm:p-6 backdrop-blur-md">
+                <div class="flex items-center justify-between text-slate-400 mb-2 sm:mb-4">
+                    <span class="text-xs sm:text-sm font-semibold uppercase tracking-wider">Humidity</span>
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                </div>
+                <p id="weather-humidity" class="text-2xl sm:text-3xl font-extrabold text-white">-- %</p>
+                <p class="text-slate-400 text-[11px] sm:text-xs mt-1">Atmospheric Moisture</p>
+            </div>
+
+            <!-- Sea Status / Berth Safety -->
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-4 sm:p-6 backdrop-blur-md">
+                <div class="flex items-center justify-between text-slate-400 mb-2 sm:mb-4">
+                    <span class="text-xs sm:text-sm font-semibold uppercase tracking-wider">Berth Status</span>
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                <p class="text-xl sm:text-2xl font-extrabold text-emerald-400">OPTIMAL</p>
+                <p class="text-slate-400 text-[11px] sm:text-xs mt-1">Normal Ro-Ro Condition</p>
+            </div>
+        </div>
+
+        <!-- Bagian Judul & Petunjuk Geser Prakiraan 7 Hari -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+            <h4 class="text-lg font-bold text-slate-200 tracking-tight">7-Day Weather Forecast</h4>
+        </div>
+
+        <!-- Container Prakiraan Cuaca (Geser Samping) -->
+        <div id="weather-forecast-container" class="flex items-stretch gap-4 overflow-x-auto pb-4 pt-1 snap-x scrollbar-thin scrollbar-thumb-slate-700">
+            <div class="text-center py-6 text-slate-400 text-xs w-full">
+                Loading forecast data...
+            </div>
+        </div>
+    </div>
+</section>
+
+@push('scripts')
+<script>
+function updateRealTimeClock() {
+    const now = new Date();
+    const options = {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+        hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short'
+    };
+    document.getElementById('live-clock').innerText = now.toLocaleDateString('en-US', options);
+}
+setInterval(updateRealTimeClock, 1000);
+updateRealTimeClock();
+
+function fnGetWeatherDetails(code) {
+    if (code === 0) return { icon: '☀️', desc: 'Sunny' };
+    if ([1, 2, 3].includes(code)) return { icon: '⛅', desc: 'Partly Cloudy' };
+    if ([45, 48].includes(code)) return { icon: '🌫️', desc: 'Foggy' };
+    if ([51, 53, 55, 56, 57].includes(code)) return { icon: '🌧️', desc: 'Drizzle' };
+    if ([61, 63, 65, 66, 67].includes(code)) return { icon: '🌧️', desc: 'Rain' };
+    if ([71, 73, 75, 77].includes(code)) return { icon: '❄️', desc: 'Snow' };
+    if ([95, 96, 99].includes(code)) return { icon: '⛈️', desc: 'Thunderstorm' };
+    return { icon: '🌤️', desc: 'Fair' };
+}
+
+async function fetchPatimbanWeatherAll() {
+    try {
+        let response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-6.23&longitude=107.85&current=temperature_2m,relative_humidity_2m,wind_speed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,wind_speed_10m_max&timezone=auto');
+        let data = await response.json();
+
+        if (data && data.current) {
+            document.getElementById('weather-temp').innerText = data.current.temperature_2m + ' °C';
+            document.getElementById('weather-wind').innerText = data.current.wind_speed_10m + ' km/h';
+            document.getElementById('weather-humidity').innerText = data.current.relative_humidity_2m + ' %';
+        }
+
+        if (data && data.daily) {
+            let container = document.getElementById('weather-forecast-container');
+            container.innerHTML = '';
+
+            const days = data.daily.time;
+            
+            days.forEach((dateStr, index) => {
+                let dateObj = new Date(dateStr);
+                let dayName = index === 0 ? 'Today' : dateObj.toLocaleDateString('en-US', { weekday: 'short' });
+                let formattedDate = dateObj.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' });
+                
+                let maxTemp = Math.round(data.daily.temperature_2m_max[index]);
+                let minTemp = Math.round(data.daily.temperature_2m_min[index]);
+                let maxWind = Math.round(data.daily.wind_speed_10m_max[index]);
+                let wCode = data.daily.weathercode[index];
+                
+                let weather = fnGetWeatherDetails(wCode);
+
+                let cardHTML = `
+                    <div class="bg-slate-800/70 border ${index === 0 ? 'border-red-500 ring-2 ring-red-500/20' : 'border-slate-700/80'} rounded-2xl p-4 flex flex-col items-center justify-between text-center backdrop-blur-md min-w-[150px] sm:min-w-[160px] shrink-0 snap-start transition hover:border-slate-500">
+                        <div class="w-full pb-3 border-b border-slate-700/60">
+                            <p class="text-xs font-bold uppercase tracking-wider text-slate-300">${dayName}</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">${formattedDate}</p>
+                        </div>
+
+                        <div class="py-4">
+                            <span class="text-3xl block mb-2">${weather.icon}</span>
+                            <span class="text-[11px] text-slate-300 font-medium block">${weather.desc}</span>
+                        </div>
+
+                        <div class="w-full space-y-2 pt-2 border-t border-slate-700/60 text-xs">
+                            <div class="bg-red-500/20 text-red-300 font-bold py-1 px-2 rounded-lg border border-red-500/30">
+                                Max: ${maxTemp} °C
+                            </div>
+                            <div class="bg-amber-500/20 text-amber-300 font-bold py-1 px-2 rounded-lg border border-amber-500/30">
+                                Min: ${minTemp} °C
+                            </div>
+                            <div class="text-slate-400 text-[11px] pt-1 flex items-center justify-center gap-1">
+                                <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                                <span>${maxWind} km/h</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cardHTML;
+            });
+        }
+    } catch (error) {
+        console.error('Failed to load weather data:', error);
+    }
+}
+
+fetchPatimbanWeatherAll();
+</script>
+@endpush
+
+
+<!-- ═══ 3. WHY PICT ═══ -->
+<section class="py-24 bg-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="max-w-2xl mb-16" data-aos="fade-up">
+            <div class="index-label mb-5">
+                <span class="lbl">Why PICT</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0A2540] tracking-tight font-heading leading-tight">
+                Three things a shipping line checks before choosing a terminal
             </h2>
-            <p class="mt-4 text-slate-600 text-base">
-                Comprehensive terminal solutions designed for global automotive manufacturers.
+            <p class="mt-4 text-[var(--color-muted)] text-base leading-relaxed">
+                Digital visibility, certified safety, and a location that shortens the distance between the factory and the ship.
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="group relative h-[420px] rounded-3xl overflow-hidden bg-slate-900 border border-slate-200 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-[var(--color-line)]">
+            <!-- Feature 1 -->
+            <div class="py-10 md:pr-10 md:border-r border-[var(--color-line)]">
+                <div class="spec-frame mb-6">
+                    <svg class="frame" viewBox="0 0 68 68" fill="none">
+                        <path d="M2 15V2H15" stroke="#0A2540" stroke-width="1.4"/>
+                        <path d="M53 2H66V15" stroke="#0A2540" stroke-width="1.4"/>
+                        <path d="M66 53V66H53" stroke="#0A2540" stroke-width="1.4"/>
+                        <path d="M15 66H2V53" stroke="#0A2540" stroke-width="1.4"/>
+                    </svg>
+                    <div class="icon-wrap">
+                        <svg viewBox="0 0 40 40" fill="none" class="w-full h-full">
+                            <circle cx="20" cy="20" r="2.4" fill="#0A2540"/>
+                            <path d="M20 20V6" stroke="#0A2540" stroke-width="1.3"/>
+                            <path d="M12.5 20a7.5 7.5 0 0115 0" stroke="#0A2540" stroke-width="1.3" fill="none"/>
+                            <path d="M6.5 20a13.5 13.5 0 0127 0" stroke="#0A2540" stroke-width="1" stroke-dasharray="1.5 3" fill="none"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-[#0A2540] mb-3 font-heading">Smart terminal technology</h3>
+                <p class="text-[var(--color-muted)] text-sm leading-relaxed">
+                    A Terminal Management System, automated gate controls, and RFID tracking give operators instant visibility of every vessel and yard position.
+                </p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="py-10 md:px-10 md:border-r border-[var(--color-line)] border-t md:border-t-0">
+                <div class="spec-frame mb-6">
+                    <svg class="frame" viewBox="0 0 68 68" fill="none">
+                        <path d="M2 15V2H15" stroke="#0A2540" stroke-width="1.4"/>
+                        <path d="M53 2H66V15" stroke="#0A2540" stroke-width="1.4"/>
+                        <path d="M66 53V66H53" stroke="#0A2540" stroke-width="1.4"/>
+                        <path d="M15 66H2V53" stroke="#0A2540" stroke-width="1.4"/>
+                    </svg>
+                    <div class="icon-wrap">
+                        <svg viewBox="0 0 40 40" fill="none" class="w-full h-full">
+                            <circle cx="20" cy="20" r="13" stroke="#B4232A" stroke-width="1.3"/>
+                            <path d="M20 9 L22.6 20 L20 31 L17.4 20 Z" stroke="#B4232A" stroke-width="1.1" fill="none"/>
+                            <path d="M20 6.5V10M20 30V33.5M7.5 20H11M29 20H32.5" stroke="#B4232A" stroke-width="1.1"/>
+                            <circle cx="20" cy="20" r="1.4" fill="#B4232A"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-[#0A2540] mb-3 font-heading">International safety standard</h3>
+                <p class="text-[var(--color-muted)] text-sm leading-relaxed">
+                    We hold to the ISPS Code and relevant ISO certifications, with safety protocols that protect personnel and cargo on every shift.
+                </p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="py-10 md:pl-10 border-t md:border-t-0">
+                <div class="spec-frame mb-6">
+                    <svg class="frame" viewBox="0 0 68 68" fill="none">
+                        <path d="M2 15V2H15" stroke="#0A2540" stroke-width="1.4"/>
+                        <path d="M53 2H66V15" stroke="#0A2540" stroke-width="1.4"/>
+                        <path d="M66 53V66H53" stroke="#0A2540" stroke-width="1.4"/>
+                        <path d="M15 66H2V53" stroke="#0A2540" stroke-width="1.4"/>
+                    </svg>
+                    <div class="icon-wrap">
+                        <svg viewBox="0 0 40 40" fill="none" class="w-full h-full">
+                            <path d="M6 33H33" stroke="#0A2540" stroke-width="1.3"/>
+                            <path d="M10 33V13L25 7" stroke="#0A2540" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                            <path d="M17.5 10.5L29 14.5" stroke="#0A2540" stroke-width="1.3"/>
+                            <path d="M25 14.5V23.5" stroke="#0A2540" stroke-width="1" stroke-dasharray="1.4 2.2"/>
+                            <rect x="21.5" y="23.5" width="7" height="5.5" stroke="#0A2540" stroke-width="1.1"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-[#0A2540] mb-3 font-heading">Efficient automotive logistics</h3>
+                <p class="text-[var(--color-muted)] text-sm leading-relaxed">
+                    Positioned on the north coast of West Java, close to manufacturing hubs and on direct international shipping routes, cutting turnaround time.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 4. TERMINAL OPERATION FLOW ═══ -->
+<section id="operations-flow" class="py-24 bg-[var(--color-paper)] relative overflow-hidden border-t border-[var(--color-line)]">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-2xl mb-16" data-aos="fade-up">
+            <div class="index-label mb-5">
+                <span class="lbl">Operation flow</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0A2540] tracking-tight font-heading leading-tight">
+                Seven stages, from ship arrival to gate-out
+            </h2>
+            <p class="mt-4 text-[var(--color-muted)] text-base">
+                Select a stage to see its timing, equipment, and the safety standard applied.
+            </p>
+        </div>
+
+        <div class="relative">
+            <div class="process-line hidden md:block"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-7 gap-x-4 gap-y-8 relative">
+                @php
+                    $steps = [
+                        ['title' => 'Ship Arrival', 'time' => '1–2 Hours Prior', 'equip' => 'Vessel Traffic Services (VTS)', 'safety' => 'ISPS Code Compliance', 'div' => 'Marine Operations'],
+                        ['title' => 'Berthing', 'time' => '45–60 Minutes', 'equip' => 'Tugboats & Mooring Lines', 'safety' => 'Port Safety Clearance', 'div' => 'Harbor Master Team'],
+                        ['title' => 'Vehicle Inspection', 'time' => '10 Min / Unit', 'equip' => 'Digital Handheld Scanners', 'safety' => 'Zero-Scratch Protocol', 'div' => 'Quality Assurance'],
+                        ['title' => 'Ro-Ro Discharge', 'time' => '2–4 Hours Total', 'equip' => 'Hydraulic Ramps & Lashing', 'safety' => 'PPE & Traffic Control', 'div' => 'Stevedoring Division'],
+                        ['title' => 'Yard Management', 'time' => 'Immediate Staging', 'equip' => 'Automated Yard Locator (TMS)', 'safety' => 'Speed Limit 20 km/h', 'div' => 'Yard Control Center'],
+                        ['title' => 'Quality Check', 'time' => 'Final Audit', 'equip' => 'High-Resolution Cameras', 'safety' => 'Pre-Delivery Inspection', 'div' => 'Inspection Team'],
+                        ['title' => 'Distribution', 'time' => 'On-Demand Gate Out', 'equip' => 'Car Carriers / Transporters', 'safety' => 'Gate Security Check', 'div' => 'Logistics & Delivery'],
+                    ];
+                @endphp
+
+                @foreach($steps as $index => $step)
+                <div class="relative group cursor-pointer" onclick="setActiveStep(this.dataset.step)" data-step="{{ $index }}">
+                    <div class="hidden md:flex w-3.5 h-3.5 rounded-full bg-white border-2 border-[#0A2540] mb-4 group-hover:bg-[#B4232A] group-hover:border-[#B4232A] transition-colors"></div>
+                    <span class="text-xs font-bold text-[#B4232A]">0{{ $index + 1 }}</span>
+                    <h3 class="text-[#0A2540] font-bold text-sm mt-1 mb-3 font-heading">{{ $step['title'] }}</h3>
+                    <div class="space-y-1.5 text-xs text-[var(--color-muted)] pt-3 border-t border-[var(--color-line)]">
+                        <p><span class="text-[#0A2540] font-medium">Time</span> {{ $step['time'] }}</p>
+                        <p><span class="text-[#0A2540] font-medium">Equip</span> {{ $step['equip'] }}</p>
+                        <p><span class="text-[#0A2540] font-medium">Safety</span> {{ $step['safety'] }}</p>
+                        <p><span class="text-[#0A2540] font-medium">Team</span> {{ $step['div'] }}</p>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 5. WORLD-CLASS SERVICES ═══ -->
+<section class="py-24 bg-white relative overflow-hidden border-t border-[var(--color-line)]">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-2xl mb-16" data-aos="fade-up">
+            <div class="index-label mb-5">
+                <span class="lbl">Services</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0A2540] tracking-tight font-heading leading-tight">
+                Two capabilities, one terminal
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="group relative h-[420px] rounded-xl overflow-hidden bg-slate-900">
                 <div class="absolute inset-0 bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700" style="background-image: url('{{ secure_asset("assets/images/background.jpeg") }}')"></div>
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/35 to-transparent"></div>
                 <div class="absolute inset-0 p-8 flex flex-col justify-end">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-400 mb-2">Maritime Solutions</span>
-                    <h3 class="text-2xl font-bold text-white mb-3 font-heading">Ro-Ro Vessel Handling</h3>
-                    <p class="text-slate-200 text-sm mb-6 line-clamp-2">
-                        State-of-the-art berth facilities and expert mooring teams ensuring rapid, safe vessel turnaround.
+                    <span class="text-xs font-medium text-white/60 mb-2">Maritime solutions</span>
+                    <h3 class="text-2xl font-bold text-white mb-3 font-heading">Ro-Ro vessel handling</h3>
+                    <p class="text-slate-200 text-sm mb-6 max-w-md">
+                        Deep-water berth facilities and experienced mooring teams for a fast, safe vessel turnaround.
                     </p>
-                    <a href="#contact" class="inline-flex items-center gap-2 text-white font-semibold text-sm group-hover:text-blue-400 transition-colors">
-                        <span>Learn More</span>
-                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-white font-semibold text-sm w-fit border-b border-white/40 pb-0.5 group-hover:border-white transition-colors">
+                        Learn more
                     </a>
                 </div>
             </div>
 
-            <div class="group relative h-[420px] rounded-3xl overflow-hidden bg-slate-900 border border-slate-200 shadow-xl" data-aos="fade-up" data-aos-delay="200">
+            <div class="group relative h-[420px] rounded-xl overflow-hidden bg-slate-900">
                 <div
                     class="absolute inset-0 bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700"
                     id="yard-slideshow"
@@ -318,16 +538,15 @@
                     ]) }}"
                     style="background-image: url('{{ secure_asset('assets/images/patimban-yard-1.jpeg') }}');">
                 </div>
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/35 to-transparent"></div>
                 <div class="absolute inset-0 p-8 flex flex-col justify-end">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-red-400 mb-2">Storage Facility</span>
-                    <h3 class="text-2xl font-bold text-white mb-3 font-heading">Advanced Yard Management</h3>
-                    <p class="text-slate-200 text-sm mb-6 line-clamp-2">
-                        High-capacity staging yards with automated tracking, security surveillance, and weather protection.
+                    <span class="text-xs font-medium text-white/60 mb-2">Storage facility</span>
+                    <h3 class="text-2xl font-bold text-white mb-3 font-heading">Advanced yard management</h3>
+                    <p class="text-slate-200 text-sm mb-6 max-w-md">
+                        High-capacity staging yards with automated tracking, surveillance, and weather protection.
                     </p>
-                    <a href="#contact" class="inline-flex items-center gap-2 text-white font-semibold text-sm group-hover:text-red-400 transition-colors">
-                        <span>Learn More</span>
-                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-white font-semibold text-sm w-fit border-b border-white/40 pb-0.5 group-hover:border-white transition-colors">
+                        Learn more
                     </a>
                 </div>
             </div>
@@ -335,99 +554,114 @@
     </div>
 </section>
 
-<!-- ═══ 7. VEHICLE CARGO TYPES ═══ -->
-<section class="py-24 bg-white relative overflow-hidden border-t border-slate-200">
+<!-- ═══ 6. VEHICLE CARGO TYPES ═══ -->
+<section class="py-24 bg-[var(--color-paper)] relative overflow-hidden border-t border-[var(--color-line)]">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
-            <span class="text-[#2563EB] font-bold tracking-widest text-xs uppercase block mb-3">Cargo Specifications</span>
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-[#071E3D] tracking-tight font-heading">
-                Vehicle Cargo Types
+        <div class="max-w-2xl mb-16" data-aos="fade-up">
+            <div class="index-label mb-5">
+                          <span class="lbl">Cargo specifications</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0A2540] tracking-tight font-heading leading-tight">
+                Handling protocols by vehicle class
             </h2>
-            <p class="mt-4 text-slate-600 text-base">
-                Specialized handling protocols tailored to diverse automotive and heavy machinery dimensions.
-            </p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 hover:border-red-400 transition-all duration-300 group shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
-                <div class="w-14 h-14 rounded-2xl bg-red-100 border border-red-200 flex items-center justify-center mb-6 text-[#D62828] group-hover:bg-[#D62828] group-hover:text-white transition-all">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15h18M5 15l2-5h10l2 5M5 15v2a1 1 0 001 1h1a1 1 0 001-1v-1m10 1v-1a1 1 0 00-1-1h-1a1 1 0 00-1 1v1M7 11l1-3h8l1 3M7 16a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z"/></svg>
-                </div>
-                <h3 class="text-xl font-bold text-[#071E3D] mb-2 font-heading">Passenger Vehicle</h3>
-                <p class="text-slate-600 text-xs leading-relaxed mb-6">
-                    Sedans, SUVs, MPVs, and electric vehicles handled with precision scratch-free procedures.
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--color-line)] border border-[var(--color-line)]">
+            <div class="bg-white p-8">
+                <svg viewBox="0 0 48 28" class="w-14 h-auto mb-6" fill="none">
+                    <path d="M4 20 Q4 14 10 13 L14 8 Q16 6 20 6 H30 Q34 6 36 9 L40 13 Q44 14 44 20" stroke="#0A2540" stroke-width="1.4" fill="none"/>
+                    <path d="M4 20 H44" stroke="#0A2540" stroke-width="1.4"/>
+                    <circle cx="13" cy="21" r="3.4" stroke="#0A2540" stroke-width="1.4" fill="#F5F3EE"/>
+                    <circle cx="35" cy="21" r="3.4" stroke="#0A2540" stroke-width="1.4" fill="#F5F3EE"/>
+                    <path d="M17 8 V13 M31 8 V13" stroke="#0A2540" stroke-width="1"/>
+                </svg>
+                <h3 class="text-lg font-bold text-[#0A2540] mb-2 font-heading">Passenger vehicle</h3>
+                <p class="text-[var(--color-muted)] text-xs leading-relaxed mb-5">
+                    Sedans, SUVs, MPVs, and electric vehicles handled under scratch-free procedures.
                 </p>
-                <span class="text-xs font-semibold text-[#D62828] tracking-wider uppercase">Light Vehicle</span>
+                <span class="text-xs font-medium text-[#B4232A]">Light vehicle</span>
             </div>
 
-            <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 hover:border-blue-400 transition-all duration-300 group shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
-                <div class="w-14 h-14 rounded-2xl bg-blue-100 border border-blue-200 flex items-center justify-center mb-6 text-[#2563EB] group-hover:bg-[#2563EB] group-hover:text-white transition-all">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1"/></svg>
-                </div>
-                <h3 class="text-xl font-bold text-[#071E3D] mb-2 font-heading">Bus & Truck</h3>
-                <p class="text-slate-600 text-xs leading-relaxed mb-6">
-                    Heavy logistics trucks, industrial chassis, and transport vehicles with robust ramp pathways.
+            <div class="bg-white p-8">
+                <svg viewBox="0 0 48 28" class="w-14 h-auto mb-6" fill="none">
+                    <path d="M4 20 V10 H30 L44 16 V20" stroke="#0A2540" stroke-width="1.4" fill="none"/>
+                    <path d="M4 20 H44" stroke="#0A2540" stroke-width="1.4"/>
+                    <path d="M30 10 V20" stroke="#0A2540" stroke-width="1"/>
+                    <circle cx="13" cy="21" r="3.2" stroke="#0A2540" stroke-width="1.4" fill="#F5F3EE"/>
+                    <circle cx="37" cy="21" r="3.2" stroke="#0A2540" stroke-width="1.4" fill="#F5F3EE"/>
+                </svg>
+                <h3 class="text-lg font-bold text-[#0A2540] mb-2 font-heading">Bus &amp; truck</h3>
+                <p class="text-[var(--color-muted)] text-xs leading-relaxed mb-5">
+                    Heavy logistics trucks, industrial chassis, and transport vehicles with reinforced ramp pathways.
                 </p>
-                <span class="text-xs font-semibold text-[#2563EB] tracking-wider uppercase">Commercial</span>
+                <span class="text-xs font-medium text-[#1D4E74]">Commercial</span>
             </div>
 
-            <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 hover:border-red-400 transition-all duration-300 group shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
-                <div class="w-14 h-14 rounded-2xl bg-red-100 border border-red-200 flex items-center justify-center mb-6 text-[#D62828] group-hover:bg-[#D62828] group-hover:text-white transition-all">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 10.5a3 3 0 100-6 3 3 0 000 6z"/></svg>
-                </div>
-                <h3 class="text-xl font-bold text-[#071E3D] mb-2 font-heading">Heavy Equipment</h3>
-                <p class="text-slate-600 text-xs leading-relaxed mb-6">
-                    Excavators, wheel loaders, and bulldozers for mining and agricultural developments.
+            <div class="bg-white p-8">
+                <svg viewBox="0 0 48 28" class="w-14 h-auto mb-6" fill="none">
+                    <rect x="6" y="16" width="16" height="8" rx="1" stroke="#0A2540" stroke-width="1.4"/>
+                    <path d="M18 16 L30 6 L34 10 L26 16" stroke="#0A2540" stroke-width="1.4" fill="none"/>
+                    <path d="M34 10 L40 14 L36 18" stroke="#0A2540" stroke-width="1.4" fill="none"/>
+                    <path d="M4 24 H24" stroke="#0A2540" stroke-width="1.4"/>
+                    <circle cx="9" cy="24" r="2.4" stroke="#0A2540" stroke-width="1.2"/>
+                    <circle cx="19" cy="24" r="2.4" stroke="#0A2540" stroke-width="1.2"/>
+                </svg>
+                <h3 class="text-lg font-bold text-[#0A2540] mb-2 font-heading">Heavy equipment</h3>
+                <p class="text-[var(--color-muted)] text-xs leading-relaxed mb-5">
+                    Excavators, wheel loaders, and bulldozers destined for mining and agricultural projects.
                 </p>
-                <span class="text-xs font-semibold text-[#D62828] tracking-wider uppercase">Project Cargo</span>
+                <span class="text-xs font-medium text-[#B4232A]">Project cargo</span>
             </div>
 
-            <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 hover:border-blue-400 transition-all duration-300 group shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="400">
-                <div class="w-14 h-14 rounded-2xl bg-blue-100 border border-blue-200 flex items-center justify-center mb-6 text-[#2563EB] group-hover:bg-[#2563EB] group-hover:text-white transition-all">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-                </div>
-                <h3 class="text-xl font-bold text-[#071E3D] mb-2 font-heading">General Cargo</h3>
-                <p class="text-slate-600 text-xs leading-relaxed mb-6">
-                    Static cargo and non-vehicle shipments managed under rigorous warehousing standards.
+            <div class="bg-white p-8">
+                <svg viewBox="0 0 40 40" class="w-12 h-auto mb-6" fill="none">
+                    <path d="M6 14 L20 8 L34 14 L20 20 Z" stroke="#0A2540" stroke-width="1.4" fill="none"/>
+                    <path d="M6 14 V26 L20 32 V20" stroke="#0A2540" stroke-width="1.4" fill="none"/>
+                    <path d="M34 14 V26 L20 32" stroke="#0A2540" stroke-width="1.4" fill="none"/>
+                    <path d="M13 11 L27 17" stroke="#0A2540" stroke-width="1"/>
+                </svg>
+                <h3 class="text-lg font-bold text-[#0A2540] mb-2 font-heading">General cargo</h3>
+                <p class="text-[var(--color-muted)] text-xs leading-relaxed mb-5">
+                    Static cargo and non-vehicle shipments managed under standard warehousing procedures.
                 </p>
-                <span class="text-xs font-semibold text-[#2563EB] tracking-wider uppercase">General Cargo</span>
+                <span class="text-xs font-medium text-[#1D4E74]">General cargo</span>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══ 8. PREMIUM OPERATION GALLERY ═══ -->
-<section id="gallery" class="py-24 bg-[#F8FAFC] relative overflow-hidden border-t border-slate-200">
+<!-- ═══ 7. OPERATION GALLERY ═══ -->
+<section id="gallery" class="py-24 bg-white relative overflow-hidden border-t border-[var(--color-line)]">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
-            <span class="text-[#2563EB] font-bold tracking-widest text-xs uppercase block mb-3">Visual Showcase</span>
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-[#071E3D] tracking-tight font-heading">
-                Premium Operation Gallery
+        <div class="max-w-2xl mb-16" data-aos="fade-up">
+            <div class="index-label mb-5">
+       
+                <span class="lbl">Visual record</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0A2540] tracking-tight font-heading leading-tight">
+                Inside the terminal
             </h2>
-            <p class="mt-4 text-slate-600 text-base">
-                A glimpse into our state-of-the-art terminal infrastructure and vessel operations.
-            </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             @php
                 $gallery = [
                     ['img' => 'car-1.jpeg', 'title' => 'Ready for Export', 'tag' => 'Staging'],
                     ['img' => 'car-3.jpeg', 'title' => 'Vehicle Lineup', 'tag' => 'CBU Units'],
-                    ['img' => 'car-5.jpeg', 'title' => 'Quality Check Kendaraan', 'tag' => 'Inspection'],
-                    ['img' => 'vessel-1.jpeg', 'title' => 'Aktivitas Dermaga', 'tag' => 'Terminal Area'],
-                    ['img' => 'vessel-2.jpeg', 'title' => 'Proses Penyandaran Kapal', 'tag' => 'Ro-Ro Ship'],
-                    ['img' => 'vessel-3.jpeg', 'title' => 'Ramp Loading Operations', 'tag' => 'Logistics']
+                    ['img' => 'car-5.jpeg', 'title' => 'Quality Check', 'tag' => 'Inspection'],
+                    ['img' => 'vessel-1.jpeg', 'title' => 'Dermaga Activity', 'tag' => 'Terminal Area'],
+                    ['img' => 'vessel-2.jpeg', 'title' => 'Vessel Berthing', 'tag' => 'Ro-Ro Ship'],
+                    ['img' => 'vessel-3.jpeg', 'title' => 'Ramp Loading', 'tag' => 'Logistics'],
                 ];
             @endphp
 
             @foreach($gallery as $item)
-            <div class="group relative h-80 rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" data-aos="fade-up">
-                <img src="{{ secure_asset('assets/images/' . $item['img']) }}" alt="{{ $item['title'] }}" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
-                <div class="absolute inset-0 p-6 flex flex-col justify-end">
-                    <span class="text-[10px] font-semibold uppercase tracking-wider text-blue-400 mb-1">{{ $item['tag'] }}</span>
-                    <h3 class="text-xl font-bold text-white font-heading">{{ $item['title'] }}</h3>
+            <div class="group relative h-72 rounded-xl overflow-hidden bg-slate-900 cursor-pointer">
+                <img src="{{ secure_asset('assets/images/' . $item['img']) }}" alt="{{ $item['title'] }}" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent"></div>
+                <div class="absolute inset-0 p-5 flex flex-col justify-end">
+                    <span class="text-[11px] font-medium text-white/60 mb-1">{{ $item['tag'] }}</span>
+                    <h3 class="text-lg font-bold text-white font-heading">{{ $item['title'] }}</h3>
                 </div>
             </div>
             @endforeach
@@ -435,121 +669,76 @@
     </div>
 </section>
 
-<!-- ═══ 9. GLOBAL CONNECTION ═══ -->
-<section class="py-24 bg-white relative overflow-hidden border-t border-slate-200">
+<!-- ═══ 8. GLOBAL CONNECTION ═══ -->
+<section class="py-24 bg-[var(--color-paper)] relative overflow-hidden border-t border-[var(--color-line)]">
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
-            <span class="text-[#D62828] font-bold tracking-widest text-xs uppercase block mb-3">Global Maritime Network</span>
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-[#071E3D] tracking-tight font-heading">
-                Connecting Indonesia to the World
+        <div class="max-w-2xl mb-16" data-aos="fade-up">
+            <div class="index-label mb-5">
+         
+                <span class="lbl">Shipping network</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0A2540] tracking-tight font-heading leading-tight">
+                Routes from Patimban
             </h2>
-            <p class="mt-4 text-slate-600 text-base">
-                Strategic shipping corridors linking Patimban Port to major automotive manufacturing nations.
-            </p>
         </div>
 
-        <div class="bg-slate-50 rounded-3xl p-10 border border-slate-200 text-center relative overflow-hidden shadow-sm" data-aos="fade-up">
-            <div class="grid grid-cols-2 sm:grid-cols-5 gap-6 mb-12">
-                <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                    <p class="text-[#071E3D] font-bold font-heading text-lg">Japan</p>
-                    <span class="text-xs text-[#2563EB] font-medium">Primary Hub</span>
+        <div class="plate rounded-xl overflow-hidden">
+            @php
+                $routes = [
+                    ['country' => 'Japan', 'note' => 'Primary hub'],
+                    ['country' => 'Thailand', 'note' => 'Regional route'],
+                    ['country' => 'China', 'note' => 'Strategic corridor'],
+                    ['country' => 'Asia (regional)', 'note' => 'Export market'],
+                ];
+            @endphp
+            @foreach($routes as $i => $r)
+            <div class="flex items-center justify-between px-8 py-5 {{ $i > 0 ? 'border-t border-[var(--color-line)]' : '' }}">
+                <div class="flex items-center gap-4">
+                    <span class="text-xs text-[var(--color-muted)] w-6">0{{ $i + 1 }}</span>
+                    <span class="text-[#0A2540] font-bold font-heading text-lg">{{ $r['country'] }}</span>
                 </div>
-                <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                    <p class="text-[#071E3D] font-bold font-heading text-lg">Thailand</p>
-                    <span class="text-xs text-[#2563EB] font-medium">Regional Route</span>
-                </div>
-                <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                    <p class="text-[#071E3D] font-bold font-heading text-lg">China</p>
-                    <span class="text-xs text-[#2563EB] font-medium">Strategic Corridor</span>
-                </div>
-                <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                    <p class="text-[#071E3D] font-bold font-heading text-lg">Asia</p>
-                    <span class="text-xs text-[#2563EB] font-medium">Export Market</span>
-                </div>
-                <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm col-span-2 sm:col-span-1">
-                    <p class="text-[#071E3D] font-bold font-heading text-lg">Indonesia</p>
-                    <span class="text-xs text-[#D62828] font-medium">Patimban Hub</span>
-                </div>
+                <span class="text-sm text-[#1D4E74] font-medium">{{ $r['note'] }}</span>
             </div>
-            <p class="text-slate-600 text-sm max-w-2xl mx-auto">
-                Our advanced deep-water berths accommodate the largest global car carriers, ensuring seamless international trade and supply chain continuity.
-            </p>
+            @endforeach
+            <div class="flex items-center justify-between px-8 py-5 border-t border-[var(--color-line)] bg-[#0A2540]">
+                <div class="flex items-center gap-4">
+                    <span class="text-xs text-white/50 w-6">05</span>
+                    <span class="text-white font-bold font-heading text-lg">Indonesia</span>
+                </div>
+                <span class="text-sm text-[#F5C6C6] font-medium">Patimban hub point of origin</span>
+            </div>
         </div>
+        <p class="text-[var(--color-muted)] text-sm max-w-2xl mt-8">
+            Deep-water berths accommodate the largest global car carriers, keeping international trade and the supply chain moving without interruption.
+        </p>
     </div>
 </section>
 
-<!-- ═══ 10. CALL TO ACTION ═══ -->
-<section id="contact" class="py-24 relative overflow-hidden bg-cover bg-center" style="background-image: url('{{ secure_asset("assets/images/background.jpeg") }}')">
-    <div class="absolute inset-0 bg-[#071E3D]/90"></div>
-    <div class="max-w-5xl mx-auto px-6 text-center relative z-10" data-aos="fade-up">
-        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-heading mb-6">
-            Ready to Partner with Indonesia's Leading Automotive Terminal?
+<!-- ═══ 9. CALL TO ACTION ═══ -->
+<section id="contact" class="py-28 relative overflow-hidden bg-[#0A2540]">
+    <div class="absolute inset-0 grid-texture opacity-40"></div>
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10" data-aos="fade-up">
+        <div class="index-label justify-center mb-6">
+          
+            <span class="lbl text-white/50">Get in touch</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight font-heading mb-6 leading-tight">
+            Ready to move your cargo through Patimban?
         </h2>
-        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-10">
-            Connect with our commercial and operations team to discuss berth reservation, cargo handling, and long-term partnership opportunities.
+        <p class="text-slate-300 text-base sm:text-lg max-w-xl mx-auto mb-10">
+            Talk to our commercial and operations team about berth reservation, cargo handling, and long-term partnership.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4">
-            <a href="{{ url('/contact') }}" class="px-8 py-4 rounded-full bg-[#D62828] text-white font-semibold tracking-wide text-sm hover:bg-red-700 transition-all shadow-lg shadow-red-600/30">
-                Contact Us
+            <a href="{{ url('/contact') }}" class="px-8 py-3.5 rounded-md bg-[#B4232A] text-white font-semibold tracking-wide text-sm hover:bg-[#961c22] transition-colors">
+                Contact us
             </a>
-            <a href="{{ url('/services') }}" class="px-8 py-4 rounded-full bg-white/10 backdrop-blur-md text-white font-semibold tracking-wide text-sm hover:bg-white/20 transition-all border border-white/25">
-                View Services
+            <a href="{{ url('/services') }}" class="px-8 py-3.5 rounded-md text-white font-semibold tracking-wide text-sm border border-white/25 hover:border-white/50 transition-colors">
+                View services
             </a>
         </div>
     </div>
 </section>
 
-{{-- ═══ GLOBAL FLOATING CORPORATE ASSISTANT WIDGET (COLLAPSIBLE TO LEFT EDGE) ═══ --}}
-<div id="ai-chat-widget" class="fixed left-0 bottom-24 z-50 flex items-center transition-transform duration-300 -translate-x-[calc(100%-24px)]" data-minimized="true">
-    
-    <!-- Chat Box Container -->
-    <div id="ai-chat-box" class="w-[calc(100vw-2rem)] sm:w-96 max-w-sm bg-white border border-slate-200 rounded-r-2xl shadow-2xl flex flex-col overflow-hidden h-[500px]">
-        <div class="bg-[#071E3D] text-white px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <h4 class="font-bold text-sm tracking-wide">PICT Support Assistant</h4>
-            </div>
-            <button id="ai-chat-close" class="text-slate-300 hover:text-white text-sm font-bold cursor-pointer">&times;</button>
-        </div>
-
-        <div id="ai-chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs bg-slate-50">
-            <div class="flex justify-start">
-                <div class="bg-white border border-slate-200 text-slate-800 p-3 rounded-2xl rounded-tl-none shadow-sm max-w-[85%] leading-relaxed">
-                    Hello! Welcome to PT Patimban International Car Terminal. How can we assist you with terminal services, schedules, or operations today?
-                </div>
-            </div>
-            
-            <!-- Suggested Quick Questions -->
-            <div id="suggested-questions" class="flex flex-wrap gap-1.5 pt-1">
-                <button type="button" class="quick-question-btn bg-blue-50 hover:bg-blue-100 text-[#0F4C81] border border-blue-200 px-3 py-1.5 rounded-full text-[11px] font-medium transition cursor-pointer">What are your main services?</button>
-                <button type="button" class="quick-question-btn bg-blue-50 hover:bg-blue-100 text-[#0F4C81] border border-blue-200 px-3 py-1.5 rounded-full text-[11px] font-medium transition cursor-pointer">What is the annual capacity?</button>
-                <button type="button" class="quick-question-btn bg-blue-50 hover:bg-blue-100 text-[#0F4C81] border border-blue-200 px-3 py-1.5 rounded-full text-[11px] font-medium transition cursor-pointer">How to book a berth?</button>
-                <button type="button" class="quick-question-btn bg-blue-50 hover:bg-blue-100 text-[#0F4C81] border border-blue-200 px-3 py-1.5 rounded-full text-[11px] font-medium transition cursor-pointer">Contact commercial team</button>
-            </div>
-        </div>
-
-        <div class="p-3 bg-white border-t border-slate-200 flex gap-2">
-            <input type="text" id="ai-chat-input" placeholder="Type an inquiry..." class="flex-1 px-3 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F4C81] bg-slate-50">
-            <button id="ai-chat-send" class="bg-[#071E3D] hover:bg-[#0F4C81] text-white px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer">Send</button>
-        </div>
-    </div>
-
-    <!-- Toggle Button / Tab di Samping dengan Ikon Corporate Minimalis -->
-    <button id="ai-chat-toggle" aria-label="Open Assistant" class="relative -ml-3 rounded-r-full shadow-lg flex items-center justify-center transition-all bg-[#071E3D] text-white border border-l-0 border-slate-700 w-12 h-14 hover:w-14 cursor-pointer group">
-        <div class="flex items-center">
-            <!-- Icon Korporat Minimalis (Chat / Support) -->
-            <div class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-colors">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                </svg>
-            </div>
-            <!-- Panah Kecil -->
-            <svg id="toggle-arrow" class="w-4 h-4 text-slate-300 group-hover:text-white transition-transform duration-300 ml-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-        </div>
-    </button>
-</div>
 
 @endsection
 
@@ -558,13 +747,13 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     AOS.init({
-        duration: 900,
+        duration: 800,
         easing: 'ease-out-cubic',
         once: true,
-        offset: 100
+        offset: 80
     });
 
-    // ═══ HERO BACKGROUND SLIDESHOW (Clean Fade) ═══
+    // ═══ HERO BACKGROUND SLIDESHOW ═══
     const heroSlideshow = document.getElementById('hero-slideshow');
     if (heroSlideshow) {
         const images = JSON.parse(heroSlideshow.dataset.images);
@@ -630,7 +819,7 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(counter);
     });
 
-    // ═══ CORPORATE ASSISTANT WIDGET LOGIC ═══
+    // ═══ TERMINAL ASSISTANT WIDGET LOGIC ═══
     const toggleBtn = document.getElementById('ai-chat-toggle');
     const closeBtn = document.getElementById('ai-chat-close');
     const chatWidget = document.getElementById('ai-chat-widget');
@@ -647,7 +836,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function toggleChatWidget() {
         const isMinimized = chatWidget.getAttribute('data-minimized') === 'true';
-        
+
         if (isMinimized) {
             chatWidget.classList.remove('-translate-x-[calc(100%-24px)]');
             chatWidget.classList.add('translate-x-0');
@@ -755,7 +944,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const emailRegex = /info@pict\.co\.id/gi;
         return safeHtml.replace(
             emailRegex,
-            '<a href="/contact" class="underline font-semibold text-[#0F4C81] hover:text-[#071E3D]">info@pict.co.id</a>'
+            '<a href="/contact" class="underline font-semibold text-[#1D4E74] hover:text-[#0A2540]">info@pict.co.id</a>'
         );
     }
 
@@ -768,10 +957,10 @@ document.addEventListener('DOMContentLoaded', function () {
         msgDiv.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
 
         const bubble = document.createElement('div');
-        bubble.className = sender === 'user' 
-            ? 'bg-[#071E3D] text-white p-3 rounded-2xl rounded-tr-none shadow-sm max-w-[85%] leading-relaxed' 
-            : 'bg-white border border-slate-200 text-slate-800 p-3 rounded-2xl rounded-tl-none shadow-sm max-w-[85%] leading-relaxed';
-        
+        bubble.className = sender === 'user'
+            ? 'bg-[#0A2540] text-white p-3 rounded-xl rounded-tr-none max-w-[85%] leading-relaxed'
+            : 'bg-white border border-[var(--color-line)] text-slate-800 p-3 rounded-xl rounded-tl-none max-w-[85%] leading-relaxed';
+
         if (isLoading) {
             bubble.classList.add('italic', 'text-slate-400');
         }

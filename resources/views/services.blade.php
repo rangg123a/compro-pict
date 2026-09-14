@@ -93,15 +93,7 @@
                 Specialized marine, stevedoring, and multi-modal logistics solutions engineered for global automotive manufacturers.
             </p>
 
-            <!-- <div class="flex flex-wrap items-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="500">
-                <a href="#commercial-matrix" class="px-8 py-4 rounded-full bg-[#2563EB] text-white font-semibold tracking-wide text-sm hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-600/30 flex items-center gap-3 group">
-                    <span>Service Matrix</span>
-                    <svg class="w-4 h-4 transform group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
-                </a>
-                <a href="{{ url('/contact') }}" class="px-8 py-4 rounded-full bg-white/10 backdrop-blur-md text-white font-semibold tracking-wide text-sm hover:bg-white/20 transition-all duration-300 border border-white/25 flex items-center gap-3">
-                    <span>Commercial Inquiry</span>
-                </a>
-            </div> -->
+          
         </div>
     </div>
 

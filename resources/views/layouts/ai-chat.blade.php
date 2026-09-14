@@ -1,10 +1,8 @@
-{{-- ═══ GLOBAL FLOATING AI CHATBOT WIDGET ═══ --}}
-<div id="ai-chat-widget" class="fixed bottom-5 left-4 sm:left-auto sm:right-4 sm:bottom-6 sm:right-6 z-50 transition-all duration-300">
-    <button id="ai-chat-toggle" aria-label="Open AI Assistant" class="rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-105 focus:outline-none cursor-pointer overflow-hidden w-12 h-12 sm:w-14 sm:h-14 bg-white border-2 border-slate-100">
-        <img src="{{ asset('assets/images/maskot-ai.png') }}" alt="PICT AI Assistant" class="w-full h-full object-cover">
-    </button>
-
-    <div id="ai-chat-box" class="hidden absolute bottom-16 sm:bottom-20 left-0 sm:left-auto sm:right-0 w-[calc(100vw-2rem)] sm:w-96 max-w-sm bg-white border border-slate-200 rounded-2xl shadow-2xl flex flex-col overflow-hidden h-[500px]">
+{{-- ═══ GLOBAL FLOATING AI CHATBOT WIDGET (COLLAPSIBLE TO EDGE) ═══ --}}
+<div id="ai-chat-widget" class="fixed left-0 bottom-24 z-50 flex items-center transition-transform duration-300 -translate-x-[calc(100%-24px)]" data-minimized="true">
+    
+    <!-- Chat Box Container -->
+    <div id="ai-chat-box" class="w-[calc(100vw-2rem)] sm:w-96 max-w-sm bg-white border border-slate-200 rounded-r-2xl shadow-2xl flex flex-col overflow-hidden h-[500px]">
         <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between">
             <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -34,17 +32,31 @@
             <button id="ai-chat-send" class="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer">Send</button>
         </div>
     </div>
+
+    <!-- Toggle Button / Tab di Samping yang Ada Panahnya -->
+    <button id="ai-chat-toggle" aria-label="Open AI Assistant" class="relative -ml-3 rounded-r-full shadow-lg flex items-center justify-center transition-all bg-white border border-l-0 border-slate-200 w-12 h-14 hover:w-14 cursor-pointer group">
+        <div class="flex items-center">
+            <!-- Icon Maskot (Muncul saat terbuka/hover) -->
+            <div class="w-9 h-9 rounded-full overflow-hidden border border-slate-200 flex-shrink-0">
+                <img src="{{ asset('assets/images/maskot-ai.png') }}" alt="PICT AI" class="w-full h-full object-cover">
+            </div>
+            <!-- Panah Kecil -->
+            <svg id="toggle-arrow" class="w-4 h-4 text-slate-600 group-hover:text-red-600 transition-transform duration-300 ml-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+        </div>
+    </button>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const toggleBtn = document.getElementById('ai-chat-toggle');
     const closeBtn = document.getElementById('ai-chat-close');
-    const chatBox = document.getElementById('ai-chat-box');
+    const chatWidget = document.getElementById('ai-chat-widget');
+    const toggleArrow = document.getElementById('toggle-arrow');
     const sendBtn = document.getElementById('ai-chat-send');
     const inputField = document.getElementById('ai-chat-input');
     const messagesContainer = document.getElementById('ai-chat-messages');
-    const chatWidget = document.getElementById('ai-chat-widget');
     const suggestedContainer = document.getElementById('suggested-questions');
 
     const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
@@ -52,11 +64,30 @@ document.addEventListener('DOMContentLoaded', () => {
     let conversationHistory = [];
     let messageCounter = 0;
 
-    if (toggleBtn && chatBox) {
-        toggleBtn.addEventListener('click', () => chatBox.classList.toggle('hidden'));
+    // Fungsi Buka/Tutup Widget ke Samping Layar
+    function toggleChatWidget() {
+        const isMinimized = chatWidget.getAttribute('data-minimized') === 'true';
+        
+        if (isMinimized) {
+            // Buka Chat
+            chatWidget.classList.remove('-translate-x-[calc(100%-24px)]');
+            chatWidget.classList.add('translate-x-0');
+            chatWidget.setAttribute('data-minimized', 'false');
+            toggleArrow.style.transform = 'rotate(180deg)'; // Panah berbalik arah
+        } else {
+            // Tutup / Sembunyikan ke Pinggir
+            chatWidget.classList.remove('translate-x-0');
+            chatWidget.classList.add('-translate-x-[calc(100%-24px)]');
+            chatWidget.setAttribute('data-minimized', 'true');
+            toggleArrow.style.transform = 'rotate(0deg)';
+        }
     }
-    if (closeBtn && chatBox) {
-        closeBtn.addEventListener('click', () => chatBox.classList.add('hidden'));
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', toggleChatWidget);
+    }
+    if (closeBtn) {
+        closeBtn.addEventListener('click', toggleChatWidget);
     }
 
     // Handle Quick Question Clicks

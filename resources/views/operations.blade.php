@@ -64,6 +64,19 @@
         opacity: 1;
     }
 
+    /* Clean Crossfade Hero Slide (No Zoom/Alay Effects) */
+    .hero-slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    .hero-slide.active {
+        opacity: 1;
+    }
+
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
         width: 8px;
@@ -85,14 +98,21 @@
 
 <!-- ═══ 1. FULLSCREEN CINEMATIC HERO (LIGHT THEME) ═══ -->
 <section class="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-slate-900 pt-32 pb-16">
-    <!-- Background Image with Parallax & Soft Overlay -->
-        <div class="absolute inset-0 bg-cover bg-center transform scale-105 transition-transform duration-1000 ease-out" 
-         style="background-image: url('{{ secure_asset("assets/images/background.jpeg") }}');"
-         data-aos="zoom-out" data-aos-duration="1500">
+    <!-- Background Slideshow Container -->
+    <div id="hero-slideshow" 
+         data-images='{{ json_encode([
+             secure_asset("assets/images/background.jpeg"),
+             secure_asset("assets/images/patimban-yard-1.jpeg"),
+             secure_asset("assets/images/vessel-5.jpeg"),
+             secure_asset("assets/images/car-4.jpeg")
+         ]) }}' 
+         class="absolute inset-0 z-0">
     </div>
 
+    <!-- Dark Overlay for Readability -->
+    <div class="absolute inset-0 bg-slate-950/50 z-[1] pointer-events-none"></div>
+
     <div class="relative max-w-7xl mx-auto px-6 z-10 w-full my-auto">
-          
         <div class="max-w-4xl">
             <h1 class="text-5xl sm:text-7xl font-extrabold text-white tracking-tight font-heading leading-none mb-6" data-aos="fade-up" data-aos-delay="300">
                 Terminal Operations
@@ -256,7 +276,6 @@
     </div>
 </section>
 
-
 <!-- ═══ 6. WORLD CLASS SERVICES ═══ -->
 <section class="py-24 bg-[#F8FAFC] relative overflow-hidden border-t border-slate-200">
     <div class="max-w-7xl mx-auto px-6">
@@ -288,7 +307,17 @@
             </div>
 
             <div class="group relative h-[420px] rounded-3xl overflow-hidden bg-slate-900 border border-slate-200 shadow-xl" data-aos="fade-up" data-aos-delay="200">
-                <div class="absolute inset-0 bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700" style="background-image: url('{{ secure_asset("assets/images/patimban-yard-1.jpeg") }}')"></div>
+                <div
+                    class="absolute inset-0 bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700"
+                    id="yard-slideshow"
+                    data-images="{{ json_encode([
+                        secure_asset('assets/images/patimban-yard-1.jpeg'),
+                        secure_asset('assets/images/car.jpeg'),
+                        secure_asset('assets/images/vessel-5.jpeg'),
+                        secure_asset('assets/images/car-4.jpeg')
+                    ]) }}"
+                    style="background-image: url('{{ secure_asset('assets/images/patimban-yard-1.jpeg') }}');">
+                </div>
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent"></div>
                 <div class="absolute inset-0 p-8 flex flex-col justify-end">
                     <span class="text-xs font-semibold uppercase tracking-wider text-red-400 mb-2">Storage Facility</span>
@@ -470,6 +499,57 @@
     </div>
 </section>
 
+{{-- ═══ GLOBAL FLOATING CORPORATE ASSISTANT WIDGET (COLLAPSIBLE TO LEFT EDGE) ═══ --}}
+<div id="ai-chat-widget" class="fixed left-0 bottom-24 z-50 flex items-center transition-transform duration-300 -translate-x-[calc(100%-24px)]" data-minimized="true">
+    
+    <!-- Chat Box Container -->
+    <div id="ai-chat-box" class="w-[calc(100vw-2rem)] sm:w-96 max-w-sm bg-white border border-slate-200 rounded-r-2xl shadow-2xl flex flex-col overflow-hidden h-[500px]">
+        <div class="bg-[#071E3D] text-white px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <h4 class="font-bold text-sm tracking-wide">PICT Support Assistant</h4>
+            </div>
+            <button id="ai-chat-close" class="text-slate-300 hover:text-white text-sm font-bold cursor-pointer">&times;</button>
+        </div>
+
+        <div id="ai-chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs bg-slate-50">
+            <div class="flex justify-start">
+                <div class="bg-white border border-slate-200 text-slate-800 p-3 rounded-2xl rounded-tl-none shadow-sm max-w-[85%] leading-relaxed">
+                    Hello! Welcome to PT Patimban International Car Terminal. How can we assist you with terminal services, schedules, or operations today?
+                </div>
+            </div>
+            
+            <!-- Suggested Quick Questions -->
+            <div id="suggested-questions" class="flex flex-wrap gap-1.5 pt-1">
+                <button type="button" class="quick-question-btn bg-blue-50 hover:bg-blue-100 text-[#0F4C81] border border-blue-200 px-3 py-1.5 rounded-full text-[11px] font-medium transition cursor-pointer">What are your main services?</button>
+                <button type="button" class="quick-question-btn bg-blue-50 hover:bg-blue-100 text-[#0F4C81] border border-blue-200 px-3 py-1.5 rounded-full text-[11px] font-medium transition cursor-pointer">What is the annual capacity?</button>
+                <button type="button" class="quick-question-btn bg-blue-50 hover:bg-blue-100 text-[#0F4C81] border border-blue-200 px-3 py-1.5 rounded-full text-[11px] font-medium transition cursor-pointer">How to book a berth?</button>
+                <button type="button" class="quick-question-btn bg-blue-50 hover:bg-blue-100 text-[#0F4C81] border border-blue-200 px-3 py-1.5 rounded-full text-[11px] font-medium transition cursor-pointer">Contact commercial team</button>
+            </div>
+        </div>
+
+        <div class="p-3 bg-white border-t border-slate-200 flex gap-2">
+            <input type="text" id="ai-chat-input" placeholder="Type an inquiry..." class="flex-1 px-3 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#0F4C81] bg-slate-50">
+            <button id="ai-chat-send" class="bg-[#071E3D] hover:bg-[#0F4C81] text-white px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer">Send</button>
+        </div>
+    </div>
+
+    <!-- Toggle Button / Tab di Samping dengan Ikon Corporate Minimalis -->
+    <button id="ai-chat-toggle" aria-label="Open Assistant" class="relative -ml-3 rounded-r-full shadow-lg flex items-center justify-center transition-all bg-[#071E3D] text-white border border-l-0 border-slate-700 w-12 h-14 hover:w-14 cursor-pointer group">
+        <div class="flex items-center">
+            <!-- Icon Korporat Minimalis (Chat / Support) -->
+            <div class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-colors">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                </svg>
+            </div>
+            <!-- Panah Kecil -->
+            <svg id="toggle-arrow" class="w-4 h-4 text-slate-300 group-hover:text-white transition-transform duration-300 ml-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+        </div>
+    </button>
+</div>
 
 @endsection
 
@@ -484,6 +564,43 @@ document.addEventListener('DOMContentLoaded', function () {
         offset: 100
     });
 
+    // ═══ HERO BACKGROUND SLIDESHOW (Clean Fade) ═══
+    const heroSlideshow = document.getElementById('hero-slideshow');
+    if (heroSlideshow) {
+        const images = JSON.parse(heroSlideshow.dataset.images);
+        let currentIndex = 0;
+
+        images.forEach((imgUrl, index) => {
+            const slide = document.createElement('div');
+            slide.className = `hero-slide ${index === 0 ? 'active' : ''}`;
+            slide.style.backgroundImage = `url('${imgUrl}')`;
+            heroSlideshow.appendChild(slide);
+        });
+
+        const slides = heroSlideshow.querySelectorAll('.hero-slide');
+
+        if (slides.length > 1) {
+            setInterval(() => {
+                slides[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % slides.length;
+                slides[currentIndex].classList.add('active');
+            }, 5000);
+        }
+    }
+
+    // ═══ YARD SLIDESHOW ═══
+    const yardSlideshow = document.getElementById('yard-slideshow');
+    if (yardSlideshow) {
+        const images = JSON.parse(yardSlideshow.dataset.images);
+        let currentImage = 0;
+
+        setInterval(() => {
+            currentImage = (currentImage + 1) % images.length;
+            yardSlideshow.style.backgroundImage = `url('${images[currentImage]}')`;
+        }, 4000);
+    }
+
+    // ═══ COUNTERS ANIMATION ═══
     const counters = document.querySelectorAll('.counter');
     const speed = 200;
 
@@ -512,6 +629,164 @@ document.addEventListener('DOMContentLoaded', function () {
 
         observer.observe(counter);
     });
+
+    // ═══ CORPORATE ASSISTANT WIDGET LOGIC ═══
+    const toggleBtn = document.getElementById('ai-chat-toggle');
+    const closeBtn = document.getElementById('ai-chat-close');
+    const chatWidget = document.getElementById('ai-chat-widget');
+    const toggleArrow = document.getElementById('toggle-arrow');
+    const sendBtn = document.getElementById('ai-chat-send');
+    const inputField = document.getElementById('ai-chat-input');
+    const messagesContainer = document.getElementById('ai-chat-messages');
+    const suggestedContainer = document.getElementById('suggested-questions');
+
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
+
+    let conversationHistory = [];
+    let messageCounter = 0;
+
+    function toggleChatWidget() {
+        const isMinimized = chatWidget.getAttribute('data-minimized') === 'true';
+        
+        if (isMinimized) {
+            chatWidget.classList.remove('-translate-x-[calc(100%-24px)]');
+            chatWidget.classList.add('translate-x-0');
+            chatWidget.setAttribute('data-minimized', 'false');
+            toggleArrow.style.transform = 'rotate(180deg)';
+        } else {
+            chatWidget.classList.remove('translate-x-0');
+            chatWidget.classList.add('-translate-x-[calc(100%-24px)]');
+            chatWidget.setAttribute('data-minimized', 'true');
+            toggleArrow.style.transform = 'rotate(0deg)';
+        }
+    }
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', toggleChatWidget);
+    }
+    if (closeBtn) {
+        closeBtn.addEventListener('click', toggleChatWidget);
+    }
+
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.classList.contains('quick-question-btn')) {
+            const questionText = e.target.textContent;
+            if (inputField) {
+                inputField.value = questionText;
+            }
+            if (suggestedContainer) {
+                suggestedContainer.style.display = 'none';
+            }
+            handleSendMessage();
+        }
+    });
+
+    async function handleSendMessage() {
+        if (!inputField) return;
+        const text = inputField.value.trim();
+        if (!text) return;
+
+        if (suggestedContainer) {
+            suggestedContainer.style.display = 'none';
+        }
+
+        appendMessage(text, 'user');
+        inputField.value = '';
+        if (messagesContainer) {
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        const loadingId = appendMessage('Processing request...', 'bot', true);
+
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: text,
+                    history: conversationHistory
+                })
+            });
+
+            const data = await response.json();
+            document.getElementById(loadingId)?.remove();
+
+            if (data.reply) {
+                appendMessage(data.reply, 'bot');
+                conversationHistory.push({ role: 'user', content: text });
+                conversationHistory.push({ role: 'assistant', content: data.reply });
+                if (conversationHistory.length > 20) {
+                    conversationHistory = conversationHistory.slice(-20);
+                }
+            } else if (data.error) {
+                appendMessage("System Notice: " + data.error, 'bot');
+            } else {
+                appendMessage("Sorry, there was an error processing your request.", 'bot');
+            }
+        } catch (error) {
+            document.getElementById(loadingId)?.remove();
+            appendMessage("Failed to connect to the server. Please check your network connection.", 'bot');
+        }
+        if (messagesContainer) {
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+    }
+
+    if (sendBtn) {
+        sendBtn.addEventListener('click', handleSendMessage);
+    }
+    if (inputField) {
+        inputField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSendMessage();
+        });
+    }
+
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    function linkifyContactEmail(safeHtml) {
+        const emailRegex = /info@pict\.co\.id/gi;
+        return safeHtml.replace(
+            emailRegex,
+            '<a href="/contact" class="underline font-semibold text-[#0F4C81] hover:text-[#071E3D]">info@pict.co.id</a>'
+        );
+    }
+
+    function appendMessage(text, sender, isLoading = false) {
+        if (!messagesContainer) return '';
+        const msgDiv = document.createElement('div');
+        messageCounter++;
+        const uniqueId = 'msg-' + Date.now() + '-' + messageCounter + '-' + Math.random().toString(36).slice(2, 7);
+        msgDiv.id = uniqueId;
+        msgDiv.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+
+        const bubble = document.createElement('div');
+        bubble.className = sender === 'user' 
+            ? 'bg-[#071E3D] text-white p-3 rounded-2xl rounded-tr-none shadow-sm max-w-[85%] leading-relaxed' 
+            : 'bg-white border border-slate-200 text-slate-800 p-3 rounded-2xl rounded-tl-none shadow-sm max-w-[85%] leading-relaxed';
+        
+        if (isLoading) {
+            bubble.classList.add('italic', 'text-slate-400');
+        }
+
+        if (sender === 'bot' && !isLoading) {
+            const safe = escapeHtml(text);
+            bubble.innerHTML = linkifyContactEmail(safe).replace(/\n/g, '<br>');
+        } else {
+            bubble.textContent = text;
+        }
+
+        msgDiv.appendChild(bubble);
+        messagesContainer.appendChild(msgDiv);
+        return uniqueId;
+    }
 });
 
 function setActiveStep(index) {

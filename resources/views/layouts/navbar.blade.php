@@ -70,7 +70,7 @@
             
             <div class="leading-none">
                 <div class="flex items-center gap-1.5">
-                    <span class="text-white font-extrabold text-xs sm:text-sm tracking-wider">Patimban International <br> Car Terminal</span>
+                    <span class="text-white font-extrabold text-xs sm:text-sm tracking-wider">Patimban International Car Terminal</span>
                 </div>
             </div>
         </a>

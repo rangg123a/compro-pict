@@ -370,8 +370,8 @@
                 <span class="text-red-500 font-bold tracking-widest text-xs uppercase block mb-1">Safety & Operations</span>
                 <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Patimban Port Marine & Weather Conditions</h3>
             </div>
-            
-            <!-- Indikator Live & Jam Dinamis -->
+
+            <!-- Live Indicator & Dynamic Clock -->
             <div class="flex items-center gap-3 bg-slate-800/80 px-4 py-2.5 rounded-xl border border-slate-700 text-xs text-slate-300">
                 <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span id="live-clock" class="font-mono font-medium text-slate-200">Loading time...</span>
@@ -379,7 +379,7 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Suhu Udara -->
+            <!-- Air Temperature -->
             <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 backdrop-blur-md">
                 <div class="flex items-center justify-between text-slate-400 mb-4">
                     <span class="text-sm font-semibold uppercase tracking-wider">Temperature</span>
@@ -389,7 +389,7 @@
                 <p class="text-slate-400 text-xs mt-1">Patimban Harbor Area</p>
             </div>
 
-            <!-- Kecepatan Angin -->
+            <!-- Wind Speed -->
             <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 backdrop-blur-md">
                 <div class="flex items-center justify-between text-slate-400 mb-4">
                     <span class="text-sm font-semibold uppercase tracking-wider">Wind Speed</span>
@@ -399,7 +399,7 @@
                 <p class="text-slate-400 text-xs mt-1">Safe for Berthing Operations</p>
             </div>
 
-            <!-- Kelembapan -->
+            <!-- Humidity -->
             <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 backdrop-blur-md">
                 <div class="flex items-center justify-between text-slate-400 mb-4">
                     <span class="text-sm font-semibold uppercase tracking-wider">Humidity</span>
@@ -409,7 +409,7 @@
                 <p class="text-slate-400 text-xs mt-1">Atmospheric Moisture</p>
             </div>
 
-            <!-- Status Laut / Keamanan Sandar -->
+            <!-- Sea Status / Berth Safety -->
             <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 backdrop-blur-md">
                 <div class="flex items-center justify-between text-slate-400 mb-4">
                     <span class="text-sm font-semibold uppercase tracking-wider">Berth Status</span>
@@ -424,41 +424,41 @@
 
 @push('scripts')
 <script>
-// Fungsi Jam Real-Time (Hari, Tanggal, Bulan, Tahun, Jam)
+// Real-Time Clock Function (Day, Date, Month, Year, Time)
 function updateRealTimeClock() {
     const now = new Date();
-    const options = { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric', 
-        hour: '2-digit', 
-        minute: '2-digit', 
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
         second: '2-digit',
         timeZoneName: 'short'
     };
-    
-    // Format bahasa Indonesia (id-ID)
-    document.getElementById('live-clock').innerText = now.toLocaleDateString('id-ID', options);
+
+    // English locale format (en-US)
+    document.getElementById('live-clock').innerText = now.toLocaleDateString('en-US', options);
 }
 
-// Jalankan jam setiap detik
+// Run the clock every second
 setInterval(updateRealTimeClock, 1000);
 updateRealTimeClock();
 
-// Fungsi Fetch Cuaca Patimban
+// Patimban Weather Fetch Function
 async function fetchPatimbanWeather() {
     try {
         let response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-6.23&longitude=107.85&current=temperature_2m,relative_humidity_2m,wind_speed_10m');
         let data = await response.json();
-        
-        if(data && data.current) {
+
+        if (data && data.current) {
             document.getElementById('weather-temp').innerText = data.current.temperature_2m + ' °C';
             document.getElementById('weather-wind').innerText = data.current.wind_speed_10m + ' km/h';
             document.getElementById('weather-humidity').innerText = data.current.relative_humidity_2m + ' %';
         }
     } catch (error) {
-        console.error('Gagal memuat data cuaca:', error);
+        console.error('Failed to load weather data:', error);
     }
 }
 
@@ -473,17 +473,17 @@ fetchPatimbanWeather();
             <div>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">About PICT</h2>
             </div>
-            <p class="text-slate-500 text-sm max-w-md">Solusi pengelolaan terminal kendaraan internasional yang efisien, andal, dan aman sebagai penggerak logistik otomotif Indonesia.</p>
+            <p class="text-slate-500 text-sm max-w-md">Efficient, reliable, and secure international vehicle terminal management solutions driving Indonesia's automotive logistics.</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <div class="about-copy lg:col-span-6 space-y-6" data-aos="fade-right">
-                <h3 class="text-2xl font-bold text-blue-950">Indonesia's Strategic Gateway for Automotive Export Import</h3>
+                <h3 class="text-2xl font-bold text-blue-950">Indonesia's Strategic Gateway for Automotive Export and Import</h3>
                 <p class="text-slate-600 leading-relaxed">
-                    PT Patimban International Car Terminal (PICT) mengelola fasilitas terminal mobil seluas standar dunia yang terintegrasi secara strategis dengan koridor industri manufaktur Jawa Barat.
+                    PT Patimban International Car Terminal (PICT) manages a world-class vehicle terminal facility that is strategically integrated with West Java's manufacturing industrial corridor.
                 </p>
                 <p class="text-slate-600 leading-relaxed">
-                    Dengan dukungan teknologi mutakhir dan infrastruktur dermaga yang dirancang khusus untuk kapal ekspor/impor Ro-Ro, kami memastikan seluruh alur bongkar muat kendaraan berlangsung secara tepat waktu dan aman.
+                    With advanced technology and a dock infrastructure designed specifically for export/import Ro-Ro vessels, we ensure the entire vehicle loading and unloading process runs on time and safely.
                 </p>
             </div>
 
@@ -491,15 +491,15 @@ fetchPatimbanWeather();
                 <div class="about-value-item">
                     <h4 class="text-lg font-bold text-blue-950 mb-2">Vision</h4>
                     <p class="text-slate-600 text-sm leading-relaxed">
-                        Menjadi pelabuhan pengangkut kendaraan bertaraf internasional utama di Asia Tenggara yang mengedepankan efisiensi, keandalan, dan keselamatan operasional.
+                        To become the leading international vehicle transport port in Southeast Asia, prioritizing efficiency, reliability, and operational safety.
                     </p>
                 </div>
 
                 <div class="about-value-item">
                     <h4 class="text-lg font-bold text-blue-950 mb-2">Mission</h4>
                     <ul class="text-slate-600 text-sm space-y-2 list-disc list-inside">
-                        <li>Menyediakan layanan logistik otomotif kelas dunia bagi produsen kendaraan domestik maupun global.</li>
-                        <li>Mengoptimalkan rantai pasok ekspor-impor CBU melalui teknologi terminal terintegrasi.</li>
+                        <li>Provide world-class automotive logistics services for both domestic and global vehicle manufacturers.</li>
+                        <li>Optimize the CBU export-import supply chain through integrated terminal technology.</li>
                     </ul>
                 </div>
             </div>
@@ -516,7 +516,7 @@ fetchPatimbanWeather();
                 <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Terminal Gallery</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Operational Excellence in Action</h2>
             </div>
-            <p class="text-slate-600 text-sm max-w-md">Dokumentasi langsung aktivitas bongkar muat kendaraan, kapasitas lapangan penumpukan (staging yard), dan standar keamanan tinggi di PT Patimban International Car Terminal.</p>
+            <p class="text-slate-600 text-sm max-w-md">Direct documentation of vehicle loading and unloading activities, staging yard capacity, and high safety standards at PT Patimban International Car Terminal.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -528,7 +528,7 @@ fetchPatimbanWeather();
                 <div class="p-6">
                     <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">Deep-Sea Ro-Ro Handling</h3>
                     <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        Pelayanan sandar kapal pengangkut kendaraan internasional berteknologi tinggi dengan efisiensi tinggi di dermaga Patimban.
+                        International vehicle carrier berthing services with high technology and efficiency at Patimban terminal.
                     </p>
                 </div>
             </div>
@@ -541,7 +541,7 @@ fetchPatimbanWeather();
                 <div class="p-6">
                     <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">Wide Capacity Staging Yard</h3>
                     <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        Area lapangan penumpukan kendaraan CBU yang luas, tertata rapi, dan aman untuk menampung distribusi domestik maupun ekspor.
+                        A spacious, neatly organized, and secure CBU vehicle stacking area designed to support both domestic distribution and exports.
                     </p>
                 </div>
             </div>
@@ -554,7 +554,7 @@ fetchPatimbanWeather();
                 <div class="p-6">
                     <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-red-600 transition-colors">Strict Quality Inspection</h3>
                     <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                        Prosedur pengecekan fisik dan mesin kendaraan secara teliti guna memastikan standar kualitas zero defect sebelum didistribusikan.
+                        A thorough physical and engine inspection process to ensure zero-defect quality standards before vehicles are distributed.
                     </p>
                 </div>
             </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    
+
     <!-- Meta tags untuk Native App-like Experience -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -12,17 +12,17 @@
 
     <title>@yield('title', 'PT Patimban International Car Terminal — PICT')</title>
     <meta name="description" content="PT Patimban International Car Terminal (PICT) — Indonesia's premier automotive gateway and modern roll-on/roll-off (Ro-Ro) terminal at Patimban Port, West Java.">
-    
+
     <link rel="icon" type="image/png" href="{{ asset('assets/images/pict.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('assets/images/pict.png') }}">
-    
+
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    
+
     <!-- Cookie Consent CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.0.1/dist/cookieconsent.css">
-    
+
     <link rel="preload" as="image" href="{{ asset('assets/images/background.jpeg') }}">
 
     <!-- Google reCAPTCHA API -->
@@ -92,7 +92,7 @@
     <!-- Global Scripts -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="https://unpkg.com/swup@4"></script>
-    
+
     <script>
         function initInteractions() {
             const mobileBtn = document.getElementById('mobileMenuBtn');
@@ -110,12 +110,12 @@
                     }
                 };
             }
-            
+
             document.onclick = (e) => {
                 if (mobileMenu && !mobileMenu.classList.contains('is-closed') && mobileBtn && !mobileBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
                     mobileMenu.classList.add('is-closed');
                     setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-                }
+                }  
             };
 
             document.querySelectorAll('#mobileMenu a').forEach(item => {

@@ -158,16 +158,6 @@
     </div>
 </section>
 
-{{-- ═══ SHAREHOLDERS (LIGHT MODE WITH LARGE LOGOS & PERCENTAGE BELOW) ═══ --}}
-<section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800 border-t border-slate-200" data-aos="fade-up">
-    <div class="text-center mb-12">
-        <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Our Shareholders</span>
-        <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Shareholder Consortium</h3>
-        <p class="text-slate-500 max-w-2xl mx-auto mt-3 text-sm">
-            PICT is supported by a consortium of leading Japanese automotive logistics and shipping companies. Click a card to visit their official site.
-        </p>
-    </div>
-
 {{-- ═══ SHAREHOLDERS (CLEAN LOGOS WITHOUT CARDS) ═══ --}}
 <section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800 border-t border-slate-200" data-aos="fade-up">
     <div class="text-center mb-16">
@@ -191,20 +181,19 @@
         <!-- Toyofuji Shipping Co., Ltd. -->
         <a href="https://www.toyofuji.co.jp/en/english/company/company.html" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center text-center transition transform hover:-translate-y-1.5" data-aos="fade-up" data-aos-delay="200">
             <div class="h-16 flex items-center justify-center mb-3">
-                <span class="text-base font-extrabold text-blue-900 tracking-wide uppercase opacity-80 group-hover:opacity-100 transition-opacity">Toyofuji Shipping</span>
+        <img src="{{ asset('assets/images/toyofuji-logo.jpg') }}" alt="Toyofuji Shipping Co., Ltd." class="max-h-14 max-w-[180px] object-contain opacity-80 group-hover:opacity-100 transition-opacity">
             </div>
             <p class="text-xl font-extrabold text-slate-900 tracking-tight group-hover:text-red-600 transition-colors">26%</p>
             <p class="text-slate-500 text-xs font-medium mt-0.5">Toyofuji Shipping Co., Ltd.</p>
         </a>
-
-        <!-- NYK Line -->
-        <a href="https://www.nyk.com/english/" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center text-center transition transform hover:-translate-y-1.5" data-aos="fade-up" data-aos-delay="300">
-            <div class="h-16 flex items-center justify-center mb-3">
-                <span class="text-xl font-black text-slate-900 tracking-widest uppercase opacity-80 group-hover:opacity-100 transition-opacity">NYK LINE</span>
-            </div>
-            <p class="text-xl font-extrabold text-slate-900 tracking-tight group-hover:text-red-600 transition-colors">25%</p>
-            <p class="text-slate-500 text-xs font-medium mt-0.5">NYK Line</p>
-        </a>
+<!-- NYK Line -->
+<a href="https://www.nyk.com/english/" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center text-center transition transform hover:-translate-y-1.5" data-aos="fade-up" data-aos-delay="300">
+    <div class="h-16 flex items-center justify-center mb-3">
+        <img src="{{ asset('assets/images/nyk-logo.jpg') }}" alt="NYK Line" class="max-h-12 max-w-[160px] object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+    </div>
+    <p class="text-xl font-extrabold text-slate-900 tracking-tight group-hover:text-red-600 transition-colors">25%</p>
+    <p class="text-slate-500 text-xs font-medium mt-0.5">NYK Line</p>
+</a>
 
         <!-- Kamigumi Co., Ltd. -->
         <a href="https://www.kamigumi.co.jp/english/" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center text-center transition transform hover:-translate-y-1.5" data-aos="fade-up" data-aos-delay="400">

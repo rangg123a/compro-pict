@@ -1,6 +1,7 @@
 @php
     $navLinks = [
         'home'           => ['label' => 'Home', 'url' => '/'],
+        'about'          => ['label' => 'About Us', 'url' => '/about'],
         'our-tariffs'    => ['label' => 'Our Tariffs', 'url' => '/our-tariffs'],
         'operations'     => ['label' => 'Operations', 'url' => '/operations'],
         'services'       => ['label' => 'Our Services', 'url' => '/services'],
@@ -11,36 +12,6 @@
 @endphp
 
 <style>
-    .pict-logo-shell {
-        box-shadow: 0 0 0 1px rgba(239, 68, 68, .25), 0 0 16px rgba(239, 68, 68, .45), 0 0 30px rgba(220, 38, 38, .25);
-        animation: pictLogoGlow 3.6s ease-in-out infinite;
-    }
-    .pict-logo-shell::after {
-        content: "";
-        position: absolute;
-        inset: -45% 35%;
-        background: linear-gradient(105deg, transparent 35%, rgba(254, 202, 202, .9) 50%, transparent 65%);
-        transform: translateX(-170%) rotate(12deg);
-        animation: pictLogoShine 5s ease-in-out infinite;
-        pointer-events: none;
-    }
-    .group:hover .pict-logo-shell {
-        animation-duration: 1.8s;
-        box-shadow: 0 0 0 1px rgba(239, 68, 68, .4), 0 0 22px rgba(239, 68, 68, .65), 0 0 40px rgba(220, 38, 38, .35);
-    }
-    @keyframes pictLogoGlow {
-        0%, 100% { box-shadow: 0 0 0 1px rgba(239, 68, 68, .25), 0 0 16px rgba(239, 68, 68, .45), 0 0 30px rgba(220, 38, 38, .25); }
-        50% { box-shadow: 0 0 0 1px rgba(239, 68, 68, .45), 0 0 26px rgba(239, 68, 68, .7), 0 0 45px rgba(220, 38, 38, .4); }
-    }
-    @keyframes pictLogoShine {
-        0%, 35% { transform: translateX(-170%) rotate(12deg); opacity: 0; }
-        45% { opacity: .95; }
-        58%, 100% { transform: translateX(170%) rotate(12deg); opacity: 0; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-        .pict-logo-shell, .pict-logo-shell::after { animation: none; }
-    }
-    
     #mobileMenu {
         transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         transform-origin: top center;
@@ -58,18 +29,12 @@
         
         <!-- Brand Logo -->
         <a href="{{ url('/') }}" class="flex items-center gap-2 sm:gap-3 shrink-0 group">
-            <div class="pict-logo-shell relative flex items-center justify-center p-1.5 rounded-full bg-slate-100 border border-slate-200 overflow-hidden shrink-0">
-                <img src="{{ asset('assets/images/pict.png') }}" alt="PICT Logo" class="relative z-10 h-6 sm:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
-                <span class="absolute -bottom-0.5 -right-0.5 flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
-                </span>
-            </div>
+            <img src="{{ asset('assets/images/pict.png') }}" alt="PICT Logo" class="relative z-10 h-7 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105 shrink-0 pl-1">
             
             <!-- Teks Nama Perusahaan (Dibagi 2 baris di HP, 1 baris di Laptop) -->
             <div class="leading-tight">
-                <span class="text-slate-900 font-extrabold text-[11px] sm:text-sm tracking-tight sm:tracking-wider block">
-                    Patimban International Car<br class="sm:hidden"> Terminal
+                <span class="text-slate-900 font-extrabold text-[14px] sm:text-sm tracking-tight sm:tracking-wider block">
+                    Patimban International Car <br class="sm:hidden"> Terminal
                 </span>
             </div>
         </a>

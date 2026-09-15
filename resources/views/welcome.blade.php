@@ -219,7 +219,7 @@
     <img src="{{ asset('assets/images/background.jpeg') }}" alt="Background" class="hero-bg-img">
     
     <!-- Light Rain Background Effect -->
-    <div class="hero-light-rain">
+    <!-- <div class="hero-light-rain">
         <svg class="w-full h-full" viewBox="0 0 1440 900" preserveAspectRatio="none">
             <line class="rain-streak" x1="120" y1="-100" x2="120" y2="40" stroke-width="2" />
             <line class="rain-streak" x1="240" y1="-100" x2="240" y2="60" stroke-width="1.5" />
@@ -234,32 +234,34 @@
             <line class="rain-streak" x1="70" y1="-100" x2="70" y2="50" stroke-width="2" />
             <line class="rain-streak" x1="1300" y1="-100" x2="1300" y2="70" stroke-width="2.2" />
         </svg>
-    </div>
+    </div> -->
     
     <!-- Konten Utama Hero -->
-    <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-20 lg:py-24 w-full mt-6">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+   <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-20 lg:py-24 w-full mt-6">
+    <!-- Mengubah grid menjadi flex container yang terpusat -->
+    <div class="flex flex-col items-center justify-center">
+        
+        <!-- Mengubah text-left menjadi text-center dan menyesuaikan animasi (opsional) -->
+        <div class="hero-content space-y-6 flex flex-col items-center text-center w-full" data-aos="fade-up">
             
-            <!-- Kolom Kiri: Teks -->
-            <div class="lg:col-span-6 hero-content space-y-6 text-left" data-aos="fade-right">
-                <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] drop-shadow-md">
-                    PT PATIMBAN <br class="hidden sm:inline">INTERNATIONAL <br>
-                    <span class="text-red-500">CAR TERMINAL</span>
-                </h1>
+            <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] drop-shadow-md">
+                PATIMBAN <br class="hidden sm:inline">INTERNATIONAL <br>
+                <span class="text-red-500">CAR TERMINAL</span>
+            </h1>
 
-                <p class="text-slate-100 max-w-xl leading-relaxed text-base sm:text-lg border-l-4 border-amber-500 pl-4 font-normal bg-slate-900/60 backdrop-blur-md py-3 rounded-r-xl border-y border-r border-white/15 shadow-sm">
-                    Providing professional Ro-Ro vehicle and cargo loading and unloading services at Patimban Port, featuring international safety standards, high efficiency, and integrated technology.
-                </p>
+            <!-- Menambahkan mx-auto agar kotak paragraf ini ada di tengah -->
+            <p class="mx-auto text-slate-100 max-w-xl leading-relaxed text-base sm:text-lg border-l-4 border-amber-500 pl-4 font-normal bg-slate-900/60 backdrop-blur-md py-3 rounded-r-xl border-y border-r border-white/15 shadow-sm text-left sm:text-center">
+                Providing professional Cargo Handling services at Patimban Port
+            </p>
 
-                <div class="pt-2 flex flex-wrap gap-4">
-                    <a href="{{ url('/about') }}" class="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold py-3.5 px-8 rounded-xl shadow-lg shadow-red-600/30 transition transform hover:-translate-y-0.5">
-                        <span>About Us</span>
-                    </a>
-                </div>
-            </div>
+        
+            
+        </div>
+    </div>
+</div>
 
             <!-- Kolom Kanan: Animasi Kapal & Titik Garis Alur Keluar Masuk -->
-            <div class="lg:col-span-6 flex justify-center lg:justify-end items-center" data-aos="fade-left">
+            <!-- <div class="lg:col-span-6 flex justify-center lg:justify-end items-center" data-aos="fade-left">
                 <div class="pict-vessel-scene border border-white/15 shadow-2xl">                
                     <svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
                         <defs>
@@ -281,10 +283,10 @@
                                 <stop offset="0%" stop-color="#ec2029" stop-opacity="0.55"/>
                                 <stop offset="100%" stop-color="#ec2029" stop-opacity="0"/>
                             </linearGradient>
-                        </defs>
+                        </defs> -->
 
                         <!-- RADAR -->
-                        <g transform="translate(1150,108)" fill="none" stroke="#26347a">
+                        <!-- <g transform="translate(1150,108)" fill="none" stroke="#26347a">
                             <circle r="95" stroke-width="1" opacity="0.45"/>
                             <circle r="63" stroke-width="1" opacity="0.45"/>
                             <circle r="31" stroke-width="1" opacity="0.45"/>
@@ -294,10 +296,10 @@
                             </g>
                             <circle class="pv-radar-blip" cx="34" cy="-52" r="2.6" fill="#ec2029" stroke="none"/>
                             <circle class="pv-radar-blip" cx="-18" cy="-70" r="2.2" fill="#ec2029" stroke="none" style="animation-delay:.8s"/>
-                        </g>
+                        </g> -->
 
                         <!-- SHIP GROUP -->
-                        <g class="pv-ship-float" filter="url(#pvGlow)">
+                        <!-- <g class="pv-ship-float" filter="url(#pvGlow)">
                             <g fill="none" stroke="#7fd8f2" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
                                 <path d="M 300 470 L 330 440 L 330 400 L 300 400 L 300 380 L 420 380 L 420 355 L 640 355 L 640 395 L 760 395 L 795 355 L 870 355 L 895 320 L 960 320 L 960 280 L 985 280 L 985 320 L 1010 320 L 1010 460 L 700 492 L 420 502 Z"/>
                                 <path d="M 315 400 L 315 360 M 305 365 L 325 365"/>
@@ -318,10 +320,10 @@
                                 <path class="pv-wave" d="M 140 505 Q 240 495 320 502 T 480 500 T 640 504 T 800 498 T 1040 495" stroke-width="1.6" opacity="0.85"/>
                                 <path class="pv-wave pv-wave-2" d="M 120 522 Q 260 512 400 520 T 660 518 T 900 514 T 1060 512" stroke-width="1.2" opacity="0.5"/>
                             </g>
-                        </g>
+                        </g> -->
 
                         <!-- GARIS ALUR & TITIK KELUAR MASUK KAPAL -->
-                        <g>
+                        <!-- <g>
                             <path d="M 335,392 L 232,458 Q 165,503 65,545 Q -35,586 -150,624" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.4"/>
                             <path d="M -150,600 Q -35,562 65,521 Q 165,479 232,434 L 335,368" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.4"/>
 
@@ -330,7 +332,7 @@
                             <g><use href="#dotRed"/><animateMotion dur="5s" begin="1.2s" repeatCount="indefinite"><mpath href="#pvRouteIn"/></animateMotion></g>
                             <g><use href="#dotRed"/><animateMotion dur="5s" begin="3.7s" repeatCount="indefinite"><mpath href="#pvRouteIn"/></animateMotion></g>
                         </g>
-                    </svg>
+                    </svg> -->
                 </div>
             </div>
 
@@ -344,7 +346,7 @@
 <section class="stats-strip max-w-7xl mx-auto px-4 sm:px-6 mt-8 sm:mt-10 relative z-20" data-aos="fade-up">
     <div class="bg-white rounded-2xl shadow-xl p-5 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-y-6 sm:gap-y-0 divide-x-0 md:divide-x divide-slate-200 border-t-4 border-red-600">
         <div class="stat-item text-center px-2 sm:px-4">
-            <p class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-1"><span class="stat-number" data-target="400">400</span><span class="text-red-600 text-xl sm:text-2xl">k</span></p>
+            <p class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-1"><span class="stat-number" data-target="400">200</span><span class="text-red-600 text-xl sm:text-2xl">k</span></p>
             <p class="text-slate-500 text-[10px] sm:text-sm font-medium uppercase tracking-wide">Annual Capacity</p>
         </div>
         <div class="stat-item text-center px-2 sm:px-4 border-l border-slate-200 md:border-l-0">
@@ -376,10 +378,9 @@
             <div class="about-copy lg:col-span-6 space-y-6" data-aos="fade-right">
                 <h3 class="text-2xl font-bold text-blue-950">Indonesia's Strategic Gateway for Automotive Export and Import</h3>
                 <p class="text-slate-600 leading-relaxed">
-                    PT Patimban International Car Terminal (PICT) manages a world-class vehicle terminal facility that is strategically integrated with West Java's manufacturing industrial corridor.
-                </p>
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi itaque eos, aspernatur voluptatum aperiam error explicabo tempore temporibus distinctio cum. Ipsum commodi libero assumenda esse nobis vitae, distinctio in unde.                </p>
                 <p class="text-slate-600 leading-relaxed">
-                    With advanced technology and a dock infrastructure designed specifically for export/import Ro-Ro vessels, we ensure the entire vehicle loading and unloading process runs on time and safely.
+lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
             </div>
 
@@ -387,15 +388,14 @@
                 <div class="about-value-item">
                     <h4 class="text-lg font-bold text-blue-950 mb-2">Vision</h4>
                     <p class="text-slate-600 text-sm leading-relaxed">
-                        To become the leading international vehicle transport port in Southeast Asia, prioritizing efficiency, reliability, and operational safety.
-                    </p>
+                    Becoming the Best Vehicle Port in Asia                    </p>
                 </div>
 
                 <div class="about-value-item">
                     <h4 class="text-lg font-bold text-blue-950 mb-2">Mission</h4>
                     <ul class="text-slate-600 text-sm space-y-2 list-disc list-inside">
-                        <li>Provide world-class automotive logistics services for both domestic and global vehicle manufacturers.</li>
-                        <li>Optimize the CBU export-import supply chain through integrated terminal technology.</li>
+                      Delivering customers’ vehicles to end users with the highest quality and to their satisfaction
+                  
                     </ul>
                 </div>
             </div>
@@ -412,8 +412,8 @@
                 <span class="text-red-600 font-bold tracking-widest text-xs uppercase block mb-1">Terminal Gallery</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Operational Excellence in Action</h2>
             </div>
-            <p class="text-slate-600 text-sm max-w-md">Direct documentation of vehicle loading and unloading activities, staging yard capacity, and high safety standards at PT Patimban International Car Terminal.</p>
         </div>
+            <p class="text-slate-600 text-sm max-w-md">Direct documentation of vehicle loading and unloading activities, staging yard capacity, and high safety standards at PT Patimban International Car Terminal.</p>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="group relative rounded-2xl overflow-hidden shadow-md bg-white border border-slate-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
@@ -548,7 +548,7 @@
                             <path d="M -182.4 95.9 L -166.3 104.9 L -167.8 111.1 L -161.9 115.0 L -162.4 119.0 L -173.1 117.9 L -168.9 126.4 L -133.3 136.6 L -142.8 140.1 L -148.7 147.2 L -100.4 158.2 L -79.9 159.2 L -71.2 163.1 L -41.6 165.6 L -29.1 165.5 L -27.4 162.5 L -29.4 157.6 L -28.2 154.3 L -19.0 152.7 L -17.5 160.2 L -3.8 163.2 L 5.6 162.0 L 30.5 162.2 L 31.6 157.5 L 25.4 155.1 L 37.5 154.1 L 51.2 148.4 L 68.5 143.5 L 81.1 145.4 L 91.8 142.2 L 98.8 147.0 L 93.7 150.2 L 109.9 151.3 L 111.0 154.2 L 105.8 155.6 L 107.0 160.4 L 96.3 159.0 L 76.9 164.3 L 77.3 168.7 L 69.0 175.1 L 68.3 178.8 L 61.6 185.1 L 49.9 183.4 L 49.3 191.3 L 45.9 193.9 L 47.5 197.2 L 40.1 199.0 L 32.2 186.9 L 28.0 186.9 L 25.6 191.8 L 17.4 187.8 L 22.0 183.4 L 28.7 183.0 L 35.6 176.5 L 27.0 175.2 L -1.2 174.3 L -2.5 168.9 L -9.7 168.6 L -21.6 165.2 L -26.9 170.4 L -16.0 174.5 L -25.4 177.4 L -28.7 180.2 L -19.5 182.2 L -22.1 186.8 L -16.9 192.6 L -14.5 198.9 L -16.7 201.7 L -26.9 201.6 L -45.4 203.2 L -44.5 209.0 L -52.5 213.5 L -74.1 218.7 L -90.9 227.7 L -117.1 237.5 L -117.1 241.1 L -138.1 245.7 L -145.1 246.1 L -149.6 252.0 L -145.7 268.3 L -152.1 275.6 L -152.1 288.6 L -159.9 289.0 L -166.7 294.8 L -162.2 297.3 L -175.8 299.5 L -180.9 304.7 L -186.9 306.9 L -201.1 299.8 L -213.8 281.3 L -227.0 270.3 L -233.3 255.9 L -247.0 245.4 L -257.7 220.7 L -257.6 211.5 L -260.5 204.3 L -282.4 208.9 L -292.9 207.9 L -312.5 198.6 L -305.3 195.9 L -309.8 192.9 L -327.4 186.4 L -317.4 181.2 L -284.4 181.3 L -287.3 174.7 L -295.8 170.8 L -297.5 164.9 L -307.3 161.5 L -290.8 153.4 L -273.3 154.0 L -257.6 146.0 L -248.2 138.2 L -233.7 130.5 L -233.9 125.0 L -221.1 120.6 L -233.2 116.8 L -243.8 104.9 L -236.4 101.6 L -213.6 103.5 L -196.9 102.3 L -182.4 95.9 Z" fill="#dcfce7" stroke="#86efac" stroke-width="0.8" stroke-opacity="0.8" />
                             <text x="330" y="430" fill="#0369a1" font-size="12" font-weight="800" letter-spacing="1.5">INDONESIA</text>
                             <text x="70" y="240" fill="#475569" font-size="10" font-weight="700" letter-spacing="1">THAILAND</text>
-                            <text x="500" y="90" fill="#475569" font-size="11" font-weight="700" letter-spacing="1">CHINA</text>
+                            <text x="490" y="120" fill="#475569" font-size="11" font-weight="700" letter-spacing="1">CHINA</text>
                             <text x="700" y="70" fill="#475569" font-size="10" font-weight="700" letter-spacing="1">JAPAN</text>
 
                             <!-- Domestic Routes -->
@@ -625,7 +625,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="max-w-3xl mb-10">
             <p class="text-red-600 text-xs font-extrabold uppercase tracking-[0.22em] mb-3">Infrastructure Access</p>
-            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Port Location</h2>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Terminal Specifications</h2>
             <p class="mt-3 text-slate-600 leading-relaxed">An integrated vehicle terminal facility engineered to streamline domestic and international automotive supply chains.</p>
         </div>   
     
@@ -635,10 +635,9 @@
                     <h3 class="text-lg font-extrabold text-slate-900">Key Facility Specifications</h3>
                 </div>
                 <div class="divide-y divide-slate-100">
-                    <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Port Address</span><span class="text-sm font-semibold text-slate-900">Patimban Port, Pusakanagara, Subang Regency, West Java</span></div>
                     <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Ro-Ro Berth</span><span class="text-sm font-semibold text-slate-900">300 meters</span></div>
-                    <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Basin Draft (Depth)</span><span class="text-sm font-semibold text-slate-900">-10.0 m LWS</span></div>
-                    <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Staging Yard Capacity</span><span class="text-sm font-semibold text-slate-900">218,000 CBU units / year</span></div>
+                    <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Water Depth</span><span class="text-sm font-semibold text-slate-900">-14.0 m</span></div>
+                    <div class="grid sm:grid-cols-2 gap-2 px-6 py-4"><span class="text-sm font-semibold text-slate-500">Staging Yard Capacity</span><span class="text-sm font-semibold text-slate-900">200,000 CBU units / year</span></div>
                 </div>
             </div>
 
@@ -647,9 +646,9 @@
                     <h3 class="font-extrabold text-lg">Safety Security</h3>
                     <p class="mt-2 text-sm leading-relaxed text-slate-300">Compliant with IMO ISPS Code standards and equipped with 24/7 CCTV surveillance across all terminal zones.</p>
                 </div>
-                <div class="rounded-2xl bg-slate-50 p-6 border border-slate-200 shadow-sm">
-                    <h3 class="font-extrabold text-lg text-slate-900">Green Port Initiative</h3>
-                    <p class="mt-2 text-sm leading-relaxed text-slate-600">Energy efficiency and proactive marine waste management to champion sustainable terminal operations.</p>
+                <div class="rounded-2xl bg-blue-950 p-6 text-white shadow-sm">
+                    <h3 class="font-extrabold text-lg">ISO</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-slate-300">Energy efficiency and proactive marine waste management to champion sustainable terminal operations.</p>
                 </div>
             </div>
         </div>
@@ -665,7 +664,7 @@
                 <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">Patimban Port Terminal</h3>
             </div>
             <p class="text-slate-600 leading-relaxed text-sm">
-                Situated within the Patimban National Strategic Project zone in Subang Regency, offering optimized transit routes for automotive manufacturers across West Java.
+                Situated within the Patimban National Strategic Project zone in Subang Regency, offering optimized transit routes for automotive manufacturers.
             </p>
             <div class="space-y-4 pt-2">
                 <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200 shadow-sm">

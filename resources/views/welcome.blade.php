@@ -3,13 +3,22 @@
 @section('title', 'PT Patimban International Car Terminal — PICT')
 
 @push('styles')
+<!-- Fallback for Century Gothic (not a Google Font, so we pair it with Poppins for browsers/OS without it installed) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 <style>
+    /* ═══ GLOBAL FONT ═══ */
+    body, .pict-hero, .pict-hero *, h1, h2, h3, h4, h5, p, span, div, a {
+        font-family: 'Century Gothic', 'CenturyGothic', 'Poppins', sans-serif !important;
+    }
+
     /* ═══ 1. HERO BANNER BASE ═══ */
     .pict-hero { 
         position: relative; 
         overflow: hidden; 
-        background-color: #0b1329;
+        background-color: #26347a;
     }
     
     .hero-bg-img {
@@ -20,7 +29,35 @@
         height: 100%;
         object-fit: cover;
         z-index: 0;
-        /* filter: brightness(1) contrast(1); */
+    }
+
+    /* ═══ SHINY TEXT EFFECT (ADAPTED FROM REACT FRAMER MOTION) ═══ */
+    .shiny-text {
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shiny-animation 3s linear infinite;
+        display: inline-block;
+    }
+
+    .shiny-text:hover {
+        animation-play-state: paused;
+    }
+
+    /* Varian Shiny untuk teks putih/abu */
+    .shiny-text-light {
+        background-image: linear-gradient(120deg, #cbd5e1 0%, #cbd5e1 35%, #ffffff 50%, #cbd5e1 65%, #cbd5e1 100%);
+    }
+
+    /* Varian Shiny untuk teks merah */
+    .shiny-text-brand {
+        background-image: linear-gradient(120deg, #ec2029 0%, #ec2029 35%, #ffb3b3 50%, #ec2029 65%, #ec2029 100%);
+    }
+
+    @keyframes shiny-animation {
+        0% { background-position: 150% center; }
+        100% { background-position: -50% center; }
     }
 
     /* ═══ LIGHT RAIN BACKGROUND EFFECT ═══ */
@@ -30,7 +67,6 @@
         z-index: 1;
         pointer-events: none;
         overflow: hidden;
-        /* background: radial-gradient(circle at 50% 30%, rgba(14, 116, 144, 0.2), rgba(11, 19, 41, 0.85) 60%); */
     }
 
     .rain-streak {
@@ -41,37 +77,28 @@
     }
 
     @keyframes rainFall {
-        0% {
-            transform: translateY(-150px);
-            opacity: 0;
-        }
-        20% {
-            opacity: 0.8;
-        }
-        80% {
-            opacity: 0.8;
-        }
-        100% {
-            transform: translateY(1100px);
-            opacity: 0;
-        }
+        0% { transform: translateY(-150px); opacity: 0; }
+        20% { opacity: 0.8; }
+        80% { opacity: 0.8; }
+        100% { transform: translateY(1100px); opacity: 0; }
     }
 
     .rain-streak:nth-child(1)  { animation-duration: 2.1s; animation-delay: 0.2s; stroke: #38bdf8; color: #38bdf8; }
-    .rain-streak:nth-child(2)  { animation-duration: 3.4s; animation-delay: 1.1s; stroke: #ff3b4e; color: #ff3b4e; }
+    .rain-streak:nth-child(2)  { animation-duration: 3.4s; animation-delay: 1.1s; stroke: #ec2029; color: #ec2029; }
     .rain-streak:nth-child(3)  { animation-duration: 2.6s; animation-delay: 0.5s; stroke: #ffffff; color: #ffffff; }
     .rain-streak:nth-child(4)  { animation-duration: 3.0s; animation-delay: 1.8s; stroke: #38bdf8; color: #38bdf8; }
     .rain-streak:nth-child(5)  { animation-duration: 2.3s; animation-delay: 0.8s; stroke: #facc15; color: #facc15; }
     .rain-streak:nth-child(6)  { animation-duration: 3.5s; animation-delay: 0.1s; stroke: #ffffff; color: #ffffff; }
-    .rain-streak:nth-child(7)  { animation-duration: 2.8s; animation-delay: 1.4s; stroke: #ff3b4e; color: #ff3b4e; }
+    .rain-streak:nth-child(7)  { animation-duration: 2.8s; animation-delay: 1.4s; stroke: #ec2029; color: #ec2029; }
     .rain-streak:nth-child(8)  { animation-duration: 3.2s; animation-delay: 0.6s; stroke: #38bdf8; color: #38bdf8; }
     .rain-streak:nth-child(9)  { animation-duration: 2.5s; animation-delay: 2.1s; stroke: #ffffff; color: #ffffff; }
     .rain-streak:nth-child(10) { animation-duration: 3.8s; animation-delay: 1.0s; stroke: #38bdf8; color: #38bdf8; }
-    .rain-streak:nth-child(11) { animation-duration: 2.7s; animation-delay: 0.3s; stroke: #ff3b4e; color: #ff3b4e; }
+    .rain-streak:nth-child(11) { animation-duration: 2.7s; animation-delay: 0.3s; stroke: #ec2029; color: #ec2029; }
     .rain-streak:nth-child(12) { animation-duration: 3.1s; animation-delay: 1.6s; stroke: #ffffff; color: #ffffff; }
 
     @media (prefers-reduced-motion: reduce) {
         .rain-streak { animation: none !important; }
+        .shiny-text { animation: none !important; }
     }
 
     /* ═══ 2. VESSEL SCENE ANIMATION STYLES ═══ */
@@ -81,8 +108,7 @@
         max-width: 650px;
         aspect-ratio: 16/10;
         margin: 0 auto;
-        background: rgba(11, 19, 41, 0.5);
-        /* backdrop-filter: blur(10px); */
+        background: rgba(38, 52, 122, 0.5);
         border-radius: 1rem;
         overflow: hidden;
     }
@@ -95,50 +121,23 @@
         display: block;
     }
 
-    .pv-ship-float {
-        animation: pv-bob 5.5s ease-in-out infinite;
-        transform-origin: 620px 430px;
-    }
-    @keyframes pv-bob {
-        0%,100%{ transform:translateY(0px); }
-        50%{ transform:translateY(4px); }
-    }
+    .pv-ship-float { animation: pv-bob 5.5s ease-in-out infinite; transform-origin: 620px 430px; }
+    @keyframes pv-bob { 0%,100%{ transform:translateY(0px); } 50%{ transform:translateY(4px); } }
 
-    .pv-radar-sweep {
-        transform-origin: 0 0;
-        animation: pv-spin 4s linear infinite;
-    }
+    .pv-radar-sweep { transform-origin: 0 0; animation: pv-spin 4s linear infinite; }
     @keyframes pv-spin { to{ transform:rotate(360deg); } }
 
-    .pv-radar-blip {
-        animation: pv-blip 2.6s ease-in-out infinite;
-    }
-    @keyframes pv-blip {
-        0%,100%{ opacity:.25; }
-        50%{ opacity:1; }
-    }
+    .pv-radar-blip { animation: pv-blip 2.6s ease-in-out infinite; }
+    @keyframes pv-blip { 0%,100%{ opacity:.25; } 50%{ opacity:1; } }
 
-    .pv-mast-light {
-        animation: pv-pulse 1.6s ease-in-out infinite;
-    }
-    @keyframes pv-pulse {
-        0%,100%{ opacity:.3; }
-        50%{ opacity:1; }
-    }
+    .pv-mast-light { animation: pv-pulse 1.6s ease-in-out infinite; }
+    @keyframes pv-pulse { 0%,100%{ opacity:.3; } 50%{ opacity:1; } }
 
-    .pv-wave {
-        animation: pv-drift 9s ease-in-out infinite;
-    }
+    .pv-wave { animation: pv-drift 9s ease-in-out infinite; }
     .pv-wave.pv-wave-2 { animation-duration: 13s; animation-direction: reverse; }
-    @keyframes pv-drift {
-        0%,100%{ transform:translateX(0); }
-        50%{ transform:translateX(14px); }
-    }
+    @keyframes pv-drift { 0%,100%{ transform:translateX(0); } 50%{ transform:translateX(14px); } }
 
-    .pict-vessel-scene text {
-        fill: #eaf6fb;
-        user-select: none;
-    }
+    .pict-vessel-scene text { fill: #eaf6fb; user-select: none; }
 
     /* ═══ 3. CARD & COMPONENT STYLES ═══ */
     .hero-content {
@@ -155,45 +154,18 @@
         transform: translateY(-4px);
     }
 
-    .about-section {
-        position: relative;
-        overflow: hidden;
-    }
-    .about-copy {
-        border-left: 3px solid #ec2029;
-        padding-left: 1.25rem;
-    }
-    .about-values {
-        position: relative;
-        padding-left: 1.75rem;
-    }
+    .about-section { position: relative; overflow: hidden; }
+    .about-copy { border-left: 3px solid #ec2029; padding-left: 1.25rem; }
+    .about-values { position: relative; padding-left: 1.75rem; }
     .about-values::before {
-        content: "";
-        position: absolute;
-        left: .35rem;
-        top: .8rem;
-        bottom: .8rem;
-        width: 1px;
+        content: ""; position: absolute; left: .35rem; top: .8rem; bottom: .8rem; width: 1px;
         background: linear-gradient(to bottom, #ec2029, #26347a);
     }
-    .about-value-item {
-        position: relative;
-        padding-bottom: 1.5rem;
-    }
-    .about-value-item:last-child {
-        padding-bottom: 0;
-    }
+    .about-value-item { position: relative; padding-bottom: 1.5rem; }
+    .about-value-item:last-child { padding-bottom: 0; }
     .about-value-item::before {
-        content: "";
-        position: absolute;
-        left: -1.75rem;
-        top: .35rem;
-        width: .75rem;
-        height: .75rem;
-        border: 3px solid #ffffff;
-        border-radius: 9999px;
-        background: #ec2029;
-        box-shadow: 0 0 0 1px #ec2029;
+        content: ""; position: absolute; left: -1.75rem; top: .35rem; width: .75rem; height: .75rem;
+        border: 3px solid #ffffff; border-radius: 9999px; background: #ec2029; box-shadow: 0 0 0 1px #ec2029;
     }
 
     @keyframes fadeUp {
@@ -208,6 +180,27 @@
     @keyframes locationFadeUp {
         from { opacity: 0; transform: translateY(24px); }
         to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* CTA BUTTON HERO */
+    .btn-contact-hero {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.85rem 2.5rem;
+        background-color: #ec2029;
+        color: #ffffff;
+        font-weight: 700;
+        border: 2px solid #ec2029;
+        border-radius: 9999px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    .btn-contact-hero:hover {
+        background-color: transparent;
+        color: #ffffff;
+        border-color: #ffffff;
+        transform: translateY(-2px);
     }
 </style>
 @endpush
@@ -238,23 +231,19 @@
     
     <!-- Konten Utama Hero -->
    <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-20 lg:py-24 w-full mt-6">
-    <!-- Mengubah grid menjadi flex container yang terpusat -->
     <div class="flex flex-col items-center justify-center">
         
-        <!-- Mengubah text-left menjadi text-center dan menyesuaikan animasi (opsional) -->
         <div class="hero-content space-y-6 flex flex-col items-center text-center w-full" data-aos="fade-up">
             
-            <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] drop-shadow-md">
-                PATIMBAN <br class="hidden sm:inline">INTERNATIONAL <br>
-                <span class="text-red-500">CAR TERMINAL</span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] drop-shadow-md">
+                <span class="shiny-text shiny-text-light">PATIMBAN <br class="hidden sm:inline">INTERNATIONAL</span> <br>
+                <span class="shiny-text shiny-text-brand">CAR TERMINAL</span>
             </h1>
 
-            <!-- Menambahkan mx-auto agar kotak paragraf ini ada di tengah -->
-            <p class="mx-auto text-slate-100 max-w-xl leading-relaxed text-base sm:text-lg border-l-4 border-amber-500 pl-4 font-normal bg-slate-900/60 backdrop-blur-md py-3 rounded-r-xl border-y border-r border-white/15 shadow-sm text-left sm:text-center">
+            <p class="mx-auto text-slate-100 max-w-xl leading-relaxed text-base sm:text-lg border-l-4 border-[#ec2029] pl-4 font-normal bg-[#26347a]/60 backdrop-blur-md py-3 rounded-r-xl border-y border-r border-white/15 shadow-sm text-left sm:text-center">
                 Providing professional Cargo Handling services at Patimban Port
             </p>
 
-        
             
         </div>
     </div>
@@ -277,7 +266,7 @@
                             <path id="pvRouteIn" d="M -150,600 Q -35,562 65,521 Q 165,479 232,434 L 335,368" fill="none"/>
 
                             <circle id="dotBlue" r="4.5" fill="#38bdf8" filter="url(#pvGlow)"/>
-                            <circle id="dotRed" r="4.5" fill="#ef4444" filter="url(#pvGlow)"/>
+                            <circle id="dotRed" r="4.5" fill="#ec2029" filter="url(#pvGlow)"/>
 
                             <linearGradient id="pvSweepGrad" x1="0" y1="0" x2="1" y2="0">
                                 <stop offset="0%" stop-color="#ec2029" stop-opacity="0.55"/>
@@ -325,7 +314,7 @@
                         <!-- GARIS ALUR & TITIK KELUAR MASUK KAPAL -->
                         <!-- <g>
                             <path d="M 335,392 L 232,458 Q 165,503 65,545 Q -35,586 -150,624" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.4"/>
-                            <path d="M -150,600 Q -35,562 65,521 Q 165,479 232,434 L 335,368" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.4"/>
+                            <path d="M -150,600 Q -35,562 65,521 Q 165,479 232,434 L 335,368" fill="none" stroke="#ec2029" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.4"/>
 
                             <g><use href="#dotBlue"/><animateMotion dur="5s" begin="0s" repeatCount="indefinite"><mpath href="#pvRouteOut"/></animateMotion></g>
                             <g><use href="#dotBlue"/><animateMotion dur="5s" begin="2.5s" repeatCount="indefinite"><mpath href="#pvRouteOut"/></animateMotion></g>
@@ -333,11 +322,9 @@
                             <g><use href="#dotRed"/><animateMotion dur="5s" begin="3.7s" repeatCount="indefinite"><mpath href="#pvRouteIn"/></animateMotion></g>
                         </g>
                     </svg> -->
-                </div>
-            </div>
+                <!-- </div>
+            </div> -->
 
-        </div>
-    </div>
 </div>
 
 
@@ -693,10 +680,18 @@ lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor i
 </section>
 
 <!-- ═══ 7. ACTION STRIP ═══ -->
-<section class="bg-red-600 py-14 relative overflow-hidden text-white" data-aos="fade-up">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Ready to Partner with PICT?</h4>
-        <p class="text-red-100 text-sm sm:text-base mt-1">Inquire about terminal tariffs, berthing schedules, and automotive handling solutions.</p>
+<section class="bg-[#ec2029] py-14 relative overflow-hidden text-white" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+            <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Ready to Partner with PICT?</h4>
+            <p class="text-red-100 text-sm sm:text-base mt-1">Inquire about terminal tariffs, berthing schedules, and automotive handling solutions.</p>
+        </div>
+        
+        <div class="shrink-0">
+            <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 bg-[#26347a] text-white font-bold rounded-full border-2 border-[#26347a] hover:bg-transparent hover:border-white transition-all duration-300 shadow-md">
+                Contact Us
+            </a>
+        </div>
     </div>
 </section>
 

@@ -12,6 +12,11 @@
 @endphp
 
 <style>
+    /* ═══ FONT CENTURY GOTHIC UNTUK NAVBAR ═══ */
+    #mobileMenu, #mobileMenu *, header, header * {
+        font-family: 'Century Gothic', 'CenturyGothic', 'Poppins', sans-serif !important;
+    }
+
     #mobileMenu {
         transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         transform-origin: top center;
@@ -31,7 +36,7 @@
         <a href="{{ url('/') }}" class="flex items-center gap-2 sm:gap-3 shrink-0 group">
             <img src="{{ asset('assets/images/pict.png') }}" alt="PICT Logo" class="relative z-10 h-7 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105 shrink-0 pl-1">
             
-            <!-- Teks Nama Perusahaan (Dibagi 2 baris di HP, 1 baris di Laptop) -->
+            <!-- Teks Nama Perusahaan -->
             <div class="leading-tight">
                 <span class="text-slate-900 font-extrabold text-[14px] sm:text-sm tracking-tight sm:tracking-wider block">
                     Patimban International Car <br class="sm:hidden"> Terminal
@@ -188,7 +193,26 @@
         };
     }
 
-    document.addEventListener('DOMContentLoaded', setupSlidingPill);
+    // Toggle Mobile Menu Script
+    document.addEventListener('DOMContentLoaded', () => {
+        setupSlidingPill();
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileMenu.classList.toggle('is-closed');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    mobileMenu.classList.add('is-closed');
+                }
+            });
+        }
+    });
 
     if (window.swup) {
         window.swup.hooks.on('page:view', () => {

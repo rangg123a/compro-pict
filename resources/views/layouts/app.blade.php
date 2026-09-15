@@ -16,7 +16,11 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/images/pict.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('assets/images/pict.png') }}">
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts Fallback untuk Century Gothic & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
@@ -29,12 +33,11 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <style>
-        body { 
-            font-family: 'DM Sans', sans-serif; 
-            overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent;
+        /* ═══ GLOBAL FONT: CENTURY GOTHIC ═══ */
+        body, body *, h1, h2, h3, h4, h5, h6, p, span, a, button { 
+            font-family: 'Century Gothic', 'CenturyGothic', 'Poppins', sans-serif !important; 
         }
-        .font-serif { font-family: 'Playfair Display', serif; }
+        
         .tap-highlight-transparent { -webkit-tap-highlight-color: transparent; }
         
         /* Aksen Gold/Brown Kustom */

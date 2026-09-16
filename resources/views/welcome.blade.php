@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('title', 'PT Patimban International Car Terminal — PICT')
-
 @push('styles')
 <!-- Fallback for Century Gothic (not a Google Font, so we pair it with Poppins for browsers/OS without it installed) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,9 +28,44 @@
         height: 100%;
         object-fit: cover;
         z-index: 0;
+        transform: scale(1);
+        transition: transform 12s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* ═══ SHINY TEXT EFFECT (ADAPTED FROM REACT FRAMER MOTION) ═══ */
+    .pict-hero:hover .hero-bg-img {
+        transform: scale(1.06);
+    }
+
+    /* Sophisticated dark navy gradient overlay with sunlight glow & horizon atmospheric effect */
+    .hero-overlay-gradient {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: 
+            radial-gradient(circle at 80% 65%, rgba(255, 180, 100, 0.15) 0%, transparent 45%),
+            linear-gradient(90deg, rgba(15, 23, 60, 0.92) 0%, rgba(26, 38, 96, 0.65) 50%, rgba(15, 23, 60, 0.2) 100%),
+            linear-gradient(180deg, rgba(10, 15, 35, 0.5) 0%, transparent 60%, rgba(10, 15, 35, 0.8) 100%);
+    }
+
+    /* Subtle light dust/particle effect */
+    .hero-particles {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+        background-size: 50px 50px;
+        opacity: 0.35;
+        animation: floatParticles 25s linear infinite;
+    }
+
+    @keyframes floatParticles {
+        0% { background-position: 0 0; }
+        100% { background-position: 100px 100px; }
+    }
+
+    /* ═══ SHINY TEXT EFFECT ═══ */
     .shiny-text {
         background-size: 200% auto;
         -webkit-background-clip: text;
@@ -45,14 +79,12 @@
         animation-play-state: paused;
     }
 
-    /* Varian Shiny untuk teks putih/abu */
     .shiny-text-light {
         background-image: linear-gradient(120deg, #cbd5e1 0%, #cbd5e1 35%, #ffffff 50%, #cbd5e1 65%, #cbd5e1 100%);
     }
 
-    /* Varian Shiny untuk teks merah */
     .shiny-text-brand {
-        background-image: linear-gradient(120deg, #ec2029 0%, #ec2029 35%, #ffb3b3 50%, #ec2029 65%, #ec2029 100%);
+        background-image: linear-gradient(120deg, #ec2029 0%, #ec2029 35%, #ff858a 50%, #ec2029 65%, #ec2029 100%);
     }
 
     @keyframes shiny-animation {
@@ -60,98 +92,109 @@
         100% { background-position: -50% center; }
     }
 
-    /* ═══ LIGHT RAIN BACKGROUND EFFECT ═══ */
-    .hero-light-rain {
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        pointer-events: none;
-        overflow: hidden;
-    }
-
-    .rain-streak {
-        stroke-linecap: round;
-        filter: drop-shadow(0 0 8px currentColor);
-        animation: rainFall linear infinite;
-        opacity: 0.7;
-    }
-
-    @keyframes rainFall {
-        0% { transform: translateY(-150px); opacity: 0; }
-        20% { opacity: 0.8; }
-        80% { opacity: 0.8; }
-        100% { transform: translateY(1100px); opacity: 0; }
-    }
-
-    .rain-streak:nth-child(1)  { animation-duration: 2.1s; animation-delay: 0.2s; stroke: #38bdf8; color: #38bdf8; }
-    .rain-streak:nth-child(2)  { animation-duration: 3.4s; animation-delay: 1.1s; stroke: #ec2029; color: #ec2029; }
-    .rain-streak:nth-child(3)  { animation-duration: 2.6s; animation-delay: 0.5s; stroke: #ffffff; color: #ffffff; }
-    .rain-streak:nth-child(4)  { animation-duration: 3.0s; animation-delay: 1.8s; stroke: #38bdf8; color: #38bdf8; }
-    .rain-streak:nth-child(5)  { animation-duration: 2.3s; animation-delay: 0.8s; stroke: #facc15; color: #facc15; }
-    .rain-streak:nth-child(6)  { animation-duration: 3.5s; animation-delay: 0.1s; stroke: #ffffff; color: #ffffff; }
-    .rain-streak:nth-child(7)  { animation-duration: 2.8s; animation-delay: 1.4s; stroke: #ec2029; color: #ec2029; }
-    .rain-streak:nth-child(8)  { animation-duration: 3.2s; animation-delay: 0.6s; stroke: #38bdf8; color: #38bdf8; }
-    .rain-streak:nth-child(9)  { animation-duration: 2.5s; animation-delay: 2.1s; stroke: #ffffff; color: #ffffff; }
-    .rain-streak:nth-child(10) { animation-duration: 3.8s; animation-delay: 1.0s; stroke: #38bdf8; color: #38bdf8; }
-    .rain-streak:nth-child(11) { animation-duration: 2.7s; animation-delay: 0.3s; stroke: #ec2029; color: #ec2029; }
-    .rain-streak:nth-child(12) { animation-duration: 3.1s; animation-delay: 1.6s; stroke: #ffffff; color: #ffffff; }
-
     @media (prefers-reduced-motion: reduce) {
-        .rain-streak { animation: none !important; }
         .shiny-text { animation: none !important; }
+        .hero-bg-img { transform: none !important; }
     }
-
-    /* ═══ 2. VESSEL SCENE ANIMATION STYLES ═══ */
-    .pict-vessel-scene {
-        position: relative;
-        width: 100%;
-        max-width: 650px;
-        aspect-ratio: 16/10;
-        margin: 0 auto;
-        background: rgba(38, 52, 122, 0.5);
-        border-radius: 1rem;
-        overflow: hidden;
-    }
-
-    .pict-vessel-scene svg {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        display: block;
-    }
-
-    .pv-ship-float { animation: pv-bob 5.5s ease-in-out infinite; transform-origin: 620px 430px; }
-    @keyframes pv-bob { 0%,100%{ transform:translateY(0px); } 50%{ transform:translateY(4px); } }
-
-    .pv-radar-sweep { transform-origin: 0 0; animation: pv-spin 4s linear infinite; }
-    @keyframes pv-spin { to{ transform:rotate(360deg); } }
-
-    .pv-radar-blip { animation: pv-blip 2.6s ease-in-out infinite; }
-    @keyframes pv-blip { 0%,100%{ opacity:.25; } 50%{ opacity:1; } }
-
-    .pv-mast-light { animation: pv-pulse 1.6s ease-in-out infinite; }
-    @keyframes pv-pulse { 0%,100%{ opacity:.3; } 50%{ opacity:1; } }
-
-    .pv-wave { animation: pv-drift 9s ease-in-out infinite; }
-    .pv-wave.pv-wave-2 { animation-duration: 13s; animation-direction: reverse; }
-    @keyframes pv-drift { 0%,100%{ transform:translateX(0); } 50%{ transform:translateX(14px); } }
-
-    .pict-vessel-scene text { fill: #eaf6fb; user-select: none; }
 
     /* ═══ 3. CARD & COMPONENT STYLES ═══ */
     .hero-content {
-        animation: fadeUp .8s cubic-bezier(.22, 1, .36, 1) both;
+        animation: fadeUp 1s cubic-bezier(.22, 1, .36, 1) both;
     }
 
-    .stats-strip .stat-item {
-        opacity: 1;
-        transform: translateY(0);
-        transition: opacity .6s ease, transform .6s cubic-bezier(.22, 1, .36, 1), background-color .3s ease;
+    /* Premium Glassmorphism Description Card */
+    .glass-description-card {
+        background: rgba(20, 35, 90, 0.35);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        border-radius: 1.25rem;
+    }
+
+    /* CTA Buttons styling & sweep animation */
+    .btn-primary-pict {
+        position: relative;
+        overflow: hidden;
+        background-color: #ec2029;
+        color: #ffffff;
+        border: 2px solid #ec2029;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 4px 15px rgba(236, 32, 41, 0.4);
+    }
+    .btn-primary-pict::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -60%;
+        width: 50%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.25);
+        transform: rotate(30deg);
+        transition: transform 0.7s ease-in-out;
+    }
+    .btn-primary-pict:hover::after {
+        transform: translate(350%, 0) rotate(30deg);
+    }
+    .btn-primary-pict:hover {
+        background-color: #d11922;
+        border-color: #d11922;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(236, 32, 41, 0.6);
+    }
+
+    .btn-secondary-pict {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: #ffffff;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-secondary-pict:hover {
+        background: rgba(255, 255, 255, 0.18);
+        border-color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
+    }
+
+    /* Statistics Card Redesign (Overlapping Hero) */
+    .stats-strip-container {
+        margin-top: -80px;
+        position: relative;
+        z-index: 30;
+    }
+    .stats-card-main {
+        background: linear-gradient(135deg, #ffffff 0%, #fcfdfd 100%);
+        border-radius: 1.5rem;
+        box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.12), 0 0 1px 1px rgba(255, 255, 255, 0.8) inset;
+        position: relative;
+        overflow: hidden;
+    }
+    .stats-card-main::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #ec2029 0%, #26347a 100%);
+    }
+    .stat-item {
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+        border-radius: 1rem;
+        padding: 1rem 0.5rem;
     }
     .stats-strip.is-visible .stat-item:hover {
-        background-color: #f8fafc;
-        transform: translateY(-4px);
+        background-color: rgba(38, 52, 122, 0.03);
+        transform: translateY(-6px);
+    }
+    .stat-divider {
+        background: linear-gradient(to bottom, transparent, rgba(203, 213, 225, 0.8), transparent);
+    }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(28px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     .about-section { position: relative; overflow: hidden; }
@@ -168,11 +211,6 @@
         border: 3px solid #ffffff; border-radius: 9999px; background: #ec2029; box-shadow: 0 0 0 1px #ec2029;
     }
 
-    @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(24px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
     .location-reveal {
         opacity: 0;
         animation: locationFadeUp .8s ease-out forwards;
@@ -181,175 +219,92 @@
         from { opacity: 0; transform: translateY(24px); }
         to { opacity: 1; transform: translateY(0); }
     }
-
-    /* CTA BUTTON HERO */
-    .btn-contact-hero {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.85rem 2.5rem;
-        background-color: #ec2029;
-        color: #ffffff;
-        font-weight: 700;
-        border: 2px solid #ec2029;
-        border-radius: 9999px;
-        transition: all 0.3s ease;
-        text-decoration: none;
-    }
-    .btn-contact-hero:hover {
-        background-color: transparent;
-        color: #ffffff;
-        border-color: #ffffff;
-        transform: translateY(-2px);
-    }
 </style>
 @endpush
 
 @section('content')
 <!-- ═══ 1. HERO SECTION ═══ -->
-<div class="pict-hero relative w-full min-h-[88vh] flex items-center overflow-hidden border-b border-white/10 pt-[env(safe-area-inset-top)]">
+<div class="pict-hero relative w-full min-h-[92vh] flex items-center overflow-hidden border-b border-white/10 pt-[env(safe-area-inset-top)]">
     
     <img src="{{ asset('assets/images/background.jpeg') }}" alt="Background" class="hero-bg-img">
     
-    <!-- Light Rain Background Effect -->
-    <!-- <div class="hero-light-rain">
-        <svg class="w-full h-full" viewBox="0 0 1440 900" preserveAspectRatio="none">
-            <line class="rain-streak" x1="120" y1="-100" x2="120" y2="40" stroke-width="2" />
-            <line class="rain-streak" x1="240" y1="-100" x2="240" y2="60" stroke-width="1.5" />
-            <line class="rain-streak" x1="380" y1="-100" x2="380" y2="50" stroke-width="2.5" />
-            <line class="rain-streak" x1="520" y1="-100" x2="520" y2="70" stroke-width="2" />
-            <line class="rain-streak" x1="660" y1="-100" x2="660" y2="45" stroke-width="1.8" />
-            <line class="rain-streak" x1="800" y1="-100" x2="800" y2="65" stroke-width="2.2" />
-            <line class="rain-streak" x1="940" y1="-100" x2="940" y2="55" stroke-width="1.5" />
-            <line class="rain-streak" x1="1080" y1="-100" x2="1080" y2="75" stroke-width="2.5" />
-            <line class="rain-streak" x1="1220" y1="-100" x2="1220" y2="40" stroke-width="2" />
-            <line class="rain-streak" x1="1350" y1="-100" x2="1350" y2="60" stroke-width="1.8" />
-            <line class="rain-streak" x1="70" y1="-100" x2="70" y2="50" stroke-width="2" />
-            <line class="rain-streak" x1="1300" y1="-100" x2="1300" y2="70" stroke-width="2.2" />
-        </svg>
-    </div> -->
+    <!-- Sophisticated Dark Navy Gradient Overlay & Horizon Sunlight Glow -->
+    <div class="hero-overlay-gradient"></div>
+    
+    <!-- Animated Light Particle / Dust Effect -->
+    <div class="hero-particles"></div>
     
     <!-- Konten Utama Hero -->
-   <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-20 lg:py-24 w-full mt-6">
+   <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-24 lg:py-32 w-full">
     <div class="flex flex-col items-center justify-center">
         
         <div class="hero-content space-y-6 flex flex-col items-center text-center w-full" data-aos="fade-up">
             
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] drop-shadow-md">
-                <span class="shiny-text shiny-text-light">PATIMBAN <br class="hidden sm:inline">INTERNATIONAL</span> <br>
-                <span class="shiny-text shiny-text-brand">CAR TERMINAL</span>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.12] drop-shadow-lg">
+                <span class="shiny-text shiny-text-light">PATIMBAN <br> <class="hidden sm:inline">INTERNATIONAL</span> <br>
+                <span class="shiny-text shiny-text-brand" style="text-shadow: 0 4px 20px rgba(236, 32, 41, 0.4);">CAR TERMINAL</span>
             </h1>
 
-            <p class="mx-auto text-slate-100 max-w-xl leading-relaxed text-base sm:text-lg border-l-4 border-[#ec2029] pl-4 font-normal bg-[#26347a]/60 backdrop-blur-md py-3 rounded-r-xl border-y border-r border-white/15 shadow-sm text-left sm:text-center">
-                Providing professional Cargo Handling services at Patimban Port
-            </p>
-
+            <!-- Description Card (Glassmorphism Panel) -->
+            <div class="glass-description-card mx-auto max-w-2xl px-6 sm:px-8 py-5 text-left sm:text-center text-slate-100 text-base sm:text-lg leading-relaxed">
+                Providing professional Cargo Handling services at Patimban Port with world-class smart logistics capabilities, operational excellence, and unmatched safety standards.
+            </div>
             
         </div>
     </div>
 </div>
 
-            <!-- Kolom Kanan: Animasi Kapal & Titik Garis Alur Keluar Masuk -->
-            <!-- <div class="lg:col-span-6 flex justify-center lg:justify-end items-center" data-aos="fade-left">
-                <div class="pict-vessel-scene border border-white/15 shadow-2xl">                
-                    <svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet">
-                        <defs>
-                            <filter id="pvGlow" x="-40%" y="-40%" width="180%" height="180%">
-                                <feGaussianBlur stdDeviation="2" result="blur"/>
-                                <feMerge>
-                                    <feMergeNode in="blur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-
-                            <path id="pvRouteOut" d="M 335,392 L 232,458 Q 165,503 65,545 Q -35,586 -150,624" fill="none"/>
-                            <path id="pvRouteIn" d="M -150,600 Q -35,562 65,521 Q 165,479 232,434 L 335,368" fill="none"/>
-
-                            <circle id="dotBlue" r="4.5" fill="#38bdf8" filter="url(#pvGlow)"/>
-                            <circle id="dotRed" r="4.5" fill="#ec2029" filter="url(#pvGlow)"/>
-
-                            <linearGradient id="pvSweepGrad" x1="0" y1="0" x2="1" y2="0">
-                                <stop offset="0%" stop-color="#ec2029" stop-opacity="0.55"/>
-                                <stop offset="100%" stop-color="#ec2029" stop-opacity="0"/>
-                            </linearGradient>
-                        </defs> -->
-
-                        <!-- RADAR -->
-                        <!-- <g transform="translate(1150,108)" fill="none" stroke="#26347a">
-                            <circle r="95" stroke-width="1" opacity="0.45"/>
-                            <circle r="63" stroke-width="1" opacity="0.45"/>
-                            <circle r="31" stroke-width="1" opacity="0.45"/>
-                            <path d="M -95 0 L 95 0 M 0 -95 L 0 95" stroke-width="0.7" opacity="0.3"/>
-                            <g class="pv-radar-sweep">
-                                <path d="M 0 0 L 95 0 A 95 95 0 0 1 67 67 Z" fill="url(#pvSweepGrad)" stroke="none"/>
-                            </g>
-                            <circle class="pv-radar-blip" cx="34" cy="-52" r="2.6" fill="#ec2029" stroke="none"/>
-                            <circle class="pv-radar-blip" cx="-18" cy="-70" r="2.2" fill="#ec2029" stroke="none" style="animation-delay:.8s"/>
-                        </g> -->
-
-                        <!-- SHIP GROUP -->
-                        <!-- <g class="pv-ship-float" filter="url(#pvGlow)">
-                            <g fill="none" stroke="#7fd8f2" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
-                                <path d="M 300 470 L 330 440 L 330 400 L 300 400 L 300 380 L 420 380 L 420 355 L 640 355 L 640 395 L 760 395 L 795 355 L 870 355 L 895 320 L 960 320 L 960 280 L 985 280 L 985 320 L 1010 320 L 1010 460 L 700 492 L 420 502 Z"/>
-                                <path d="M 315 400 L 315 360 M 305 365 L 325 365"/>
-                                <path d="M 420 380 L 420 355 M 460 380 L 460 355 M 500 380 L 500 355 M 540 380 L 540 355 M 580 380 L 580 355 M 620 380 L 620 355"/>
-                                <path d="M 420 367 L 640 367"/>
-                                <path d="M 460 355 L 480 305 L 500 355 M 480 305 L 480 280"/>
-                                <path d="M 570 355 L 590 300 L 610 355 M 590 300 L 590 270 L 630 270 L 630 300"/>
-                                <path d="M 795 355 L 795 395 L 820 355 L 820 395 L 845 355 L 845 395 L 870 355 L 870 395"/>
-                                <path d="M 895 320 L 895 355 L 920 320 L 920 355 L 945 320 L 945 355"/>
-                                <path d="M 960 280 L 960 320 M 975 280 L 975 320"/>
-                                <path d="M 995 280 L 995 210 M 985 220 L 1005 220 M 985 235 L 1005 235 M 995 210 L 995 195"/>
-                                <path d="M 300 400 L 190 470 L 190 500 L 300 470 Z"/>
-                                <path d="M 300 400 L 200 460 M 300 420 L 200 480 M 300 440 L 210 494"/>
-                                <rect x="345" y="440" width="55" height="14" rx="2"/>
-                            </g>
-                            <circle class="pv-mast-light" cx="995" cy="192" r="3" fill="#7fd8f2" stroke="none"/>
-                            <g stroke="#7fd8f2" fill="none">
-                                <path class="pv-wave" d="M 140 505 Q 240 495 320 502 T 480 500 T 640 504 T 800 498 T 1040 495" stroke-width="1.6" opacity="0.85"/>
-                                <path class="pv-wave pv-wave-2" d="M 120 522 Q 260 512 400 520 T 660 518 T 900 514 T 1060 512" stroke-width="1.2" opacity="0.5"/>
-                            </g>
-                        </g> -->
-
-                        <!-- GARIS ALUR & TITIK KELUAR MASUK KAPAL -->
-                        <!-- <g>
-                            <path d="M 335,392 L 232,458 Q 165,503 65,545 Q -35,586 -150,624" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.4"/>
-                            <path d="M -150,600 Q -35,562 65,521 Q 165,479 232,434 L 335,368" fill="none" stroke="#ec2029" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.4"/>
-
-                            <g><use href="#dotBlue"/><animateMotion dur="5s" begin="0s" repeatCount="indefinite"><mpath href="#pvRouteOut"/></animateMotion></g>
-                            <g><use href="#dotBlue"/><animateMotion dur="5s" begin="2.5s" repeatCount="indefinite"><mpath href="#pvRouteOut"/></animateMotion></g>
-                            <g><use href="#dotRed"/><animateMotion dur="5s" begin="1.2s" repeatCount="indefinite"><mpath href="#pvRouteIn"/></animateMotion></g>
-                            <g><use href="#dotRed"/><animateMotion dur="5s" begin="3.7s" repeatCount="indefinite"><mpath href="#pvRouteIn"/></animateMotion></g>
-                        </g>
-                    </svg> -->
-                <!-- </div>
-            </div> -->
-
 </div>
 
-
-
 <!-- ═══ 2. STATS STRIP ═══ -->
-<section class="stats-strip max-w-7xl mx-auto px-4 sm:px-6 mt-8 sm:mt-10 relative z-20" data-aos="fade-up">
-    <div class="bg-white rounded-2xl shadow-xl p-5 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-y-6 sm:gap-y-0 divide-x-0 md:divide-x divide-slate-200 border-t-4 border-red-600">
-        <div class="stat-item text-center px-2 sm:px-4">
-            <p class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-1"><span class="stat-number" data-target="400">200</span><span class="text-red-600 text-xl sm:text-2xl">k</span></p>
-            <p class="text-slate-500 text-[10px] sm:text-sm font-medium uppercase tracking-wide">Annual Capacity</p>
+<section class="stats-strip stats-strip-container max-w-7xl mx-auto px-4 sm:px-6 relative z-20" data-aos="fade-up">
+    <div class="stats-card-main p-6 sm:p-10 grid grid-cols-2 md:grid-cols-4 gap-y-8 sm:gap-y-0">
+        
+        <!-- Stat Item 1 -->
+        <div class="stat-item text-center px-3 sm:px-4 relative flex flex-col items-center">
+            <div class="w-12 h-12 rounded-xl bg-[#26347a]/10 text-[#26347a] flex items-center justify-center mb-3 shadow-inner">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10h1m10 0h1m-1 0H7m8 0h2a1 1 0 001-1v-2.586a1 1 0 00-.293-.707l-2.414-2.414A1 1 0 0015.586 9H13v7z"/></svg>
+            </div>
+            <p class="text-3xl sm:text-5xl font-extrabold text-[#26347a] mb-1 tracking-tight"><span class="stat-number" data-target="200">200</span><span class="text-[#ec2029] text-xl sm:text-3xl font-bold ml-0.5">k</span></p>
+            <p class="text-slate-500 text-xs sm:text-sm font-semibold uppercase tracking-wider">Vehicle Capacity</p>
         </div>
-        <div class="stat-item text-center px-2 sm:px-4 border-l border-slate-200 md:border-l-0">
-            <p class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-1"><span class="stat-number" data-target="600">600</span><span class="text-red-600 text-xl sm:text-2xl">k</span></p>
-            <p class="text-slate-500 text-[10px] sm:text-sm font-medium uppercase tracking-wide">Phase 3 Target</p>
+        
+        <div class="hidden md:block absolute right-0 top-1/4 bottom-1/4 w-[1px] stat-divider"></div>
+
+        <!-- Stat Item 2 -->
+        <div class="stat-item text-center px-3 sm:px-4 relative flex flex-col items-center">
+            <div class="w-12 h-12 rounded-xl bg-[#ec2029]/10 text-[#ec2029] flex items-center justify-center mb-3 shadow-inner">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            </div>
+            <p class="text-3xl sm:text-5xl font-extrabold text-[#26347a] mb-1 tracking-tight"><span class="stat-number" data-target="600">600</span><span class="text-[#ec2029] text-xl sm:text-3xl font-bold ml-0.5">k</span></p>
+            <p class="text-slate-500 text-xs sm:text-sm font-semibold uppercase tracking-wider">Expansion Target</p>
         </div>
-        <div class="stat-item text-center px-2 sm:px-4 border-t pt-4 md:border-t-0 md:pt-0 border-slate-200">
-            <p class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-1"><span class="stat-number" data-target="300">300</span><span class="text-slate-400 text-lg sm:text-xl ml-1">m</span></p>
-            <p class="text-slate-500 text-[10px] sm:text-sm font-medium uppercase tracking-wide">Berth Length</p>
+
+        <div class="hidden md:block absolute right-1/2 top-1/4 bottom-1/4 w-[1px] stat-divider" style="right: 50%;"></div>
+
+        <!-- Stat Item 3 -->
+        <div class="stat-item text-center px-3 sm:px-4 relative flex flex-col items-center">
+            <div class="w-12 h-12 rounded-xl bg-[#26347a]/10 text-[#26347a] flex items-center justify-center mb-3 shadow-inner">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            </div>
+            <p class="text-3xl sm:text-5xl font-extrabold text-[#26347a] mb-1 tracking-tight"><span class="stat-number" data-target="300">300</span><span class="text-slate-400 text-xl sm:text-2xl font-bold ml-1">m</span></p>
+            <p class="text-slate-500 text-xs sm:text-sm font-semibold uppercase tracking-wider">Berth Length</p>
         </div>
-        <div class="stat-item text-center px-2 sm:px-4 border-t border-l pt-4 md:border-t-0 md:pt-0 border-slate-200">
-            <p class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-1"><span class="text-slate-400 text-xl mr-1">&plusmn;</span><span class="stat-number" data-target="120">800</span><span class="text-slate-400 text-lg sm:text-xl ml-1">k</span></p>
-            <p class="text-slate-500 text-[10px] sm:text-sm font-medium uppercase tracking-wide">Capacity Expansion Target</p>
+
+        <div class="hidden md:block absolute left-3/4 top-1/4 bottom-1/4 w-[1px] stat-divider"></div>
+
+        <!-- Stat Item 4 -->
+        <div class="stat-item text-center px-3 sm:px-4 relative flex flex-col items-center">
+            <div class="w-12 h-12 rounded-xl bg-[#ec2029]/10 text-[#ec2029] flex items-center justify-center mb-3 shadow-inner">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            </div>
+            <p class="text-3xl sm:text-5xl font-extrabold text-[#26347a] mb-1 tracking-tight"><span class="text-slate-400 text-2xl mr-0.5">&plusmn;</span><span class="stat-number" data-target="800">800</span><span class="text-slate-400 text-xl sm:text-2xl font-bold ml-1">k</span></p>
+            <p class="text-slate-500 text-xs sm:text-sm font-semibold uppercase tracking-wider">Terminal Infrastructure</p>
         </div>
+
     </div>
 </section>
+
 
 <!-- ═══ 3. ABOUT US ═══ -->
 <section class="about-section py-20 bg-white" data-aos="fade-up">

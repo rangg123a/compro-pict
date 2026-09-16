@@ -28,44 +28,47 @@
     }
 </style>
 
-<!-- ═══ FLOATING CAPSULE NAVBAR (LIGHT THEME) ═══ -->
-<header class="fixed top-0 inset-x-0 z-50 px-3 sm:px-6 pointer-events-none" style="padding-top: max(0.5rem, env(safe-area-inset-top));">
-    <div class="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto bg-white/85 backdrop-blur-md border border-slate-200/80 rounded-full px-3 sm:px-6 py-2 shadow-xl shadow-slate-900/5">
+<!-- ═══ FLOATING COMPACT NAVBAR (LIGHT THEME) ═══ -->
+<header class="fixed top-0 inset-x-0 z-50 px-4 pointer-events-none" style="padding-top: max(0.75rem, env(safe-area-inset-top));">
+    <div class="max-w-6xl mx-auto flex items-center justify-between pointer-events-auto bg-white/90 backdrop-blur-xl border border-slate-200/90 rounded-full px-4 sm:px-5 py-2 shadow-xl shadow-slate-900/5 gap-4 relative z-50">
         
-        <!-- Brand Logo -->
-        <a href="{{ url('/') }}" class="flex items-center gap-2 sm:gap-3 shrink-0 group">
-            <img src="{{ asset('assets/images/pict.png') }}" alt="PICT Logo" class="relative z-10 h-7 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105 shrink-0 pl-1">
-            
-            <!-- Teks Nama Perusahaan -->
-            <div class="leading-tight">
-                <span class="text-slate-900 font-extrabold text-[14px] sm:text-sm tracking-tight sm:tracking-wider block">
-                    Patimban International Car <br class="sm:hidden"> Terminal
+        <!-- Brand Logo & Nama -->
+        <a href="{{ url('/') }}" class="flex items-center gap-2.5 shrink-0 group">
+            <img src="{{ asset('assets/images/pict.png') }}" alt="PICT Logo" class="relative z-10 h-7 sm:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105 shrink-0">
+            <div class="leading-tight hidden sm:block">
+                <span class="text-slate-900 font-extrabold text-[13px] tracking-tight block">
+                    Patimban International Car Terminal
                 </span>
             </div>
         </a>
 
-        <!-- ═══ GABUNGAN NAVIGASI & TOMBOL MOBILE ═══ -->
-        <div class="flex items-center gap-2 shrink-0">
-            
-            <!-- Desktop Navigation -->
-            <nav id="navContainer" class="relative hidden lg:flex items-center p-1 rounded-full bg-slate-100/80 border border-slate-200/50">
-                <span id="navSlider" class="absolute rounded-full bg-gradient-to-r from-red-600 to-rose-600 shadow-md shadow-red-600/30 pointer-events-none transition-all duration-300 opacity-0 z-0"></span>
-                <div class="relative flex items-center z-10">
-                    @foreach($navLinks as $key => $link)
-                        @php
-                            $targetPath = trim($link['url'], '/');
-                            $isCurrent = ($targetPath === '' && $currentPath === '') || ($targetPath !== '' && request()->is($targetPath . '*'));
-                        @endphp
-                        <a href="{{ url($link['url']) }}" data-nav-key="{{ $key }}" class="nav-tab relative inline-flex items-center justify-center px-4 py-2 rounded-full text-xs lg:text-[13px] font-medium transition-colors duration-200 select-none whitespace-nowrap {{ $isCurrent ? 'active-tab text-white font-bold' : 'text-slate-600 hover:text-slate-900' }}">
-                            {{ $link['label'] }}
-                        </a>
-                    @endforeach
-                </div>
-            </nav>
+        <!-- Desktop Navigation (Tengah & Kompak) -->
+        <nav id="navContainer" class="relative hidden lg:flex items-center p-1 rounded-full bg-slate-100/90 border border-slate-200/60">
+            <span id="navSlider" class="absolute rounded-full bg-gradient-to-r from-red-600 to-rose-600 shadow-md shadow-red-600/30 pointer-events-none transition-all duration-300 opacity-0 z-0"></span>
+            <div class="relative flex items-center z-10">
+                @foreach($navLinks as $key => $link)
+                    @php
+                        $targetPath = trim($link['url'], '/');
+                        $isCurrent = ($targetPath === '' && $currentPath === '') || ($targetPath !== '' && request()->is($targetPath . '*'));
+                    @endphp
+                    <a href="{{ url($link['url']) }}" data-nav-key="{{ $key }}" class="nav-tab relative inline-flex items-center justify-center px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors duration-200 select-none whitespace-nowrap {{ $isCurrent ? 'active-tab text-white font-bold' : 'text-slate-600 hover:text-slate-900' }}">
+                        {{ $link['label'] }}
+                    </a>
+                @endforeach
+            </div>
+        </nav>
 
-            <!-- Tombol Mobile -->
-            <button id="mobileMenuBtn" aria-label="Toggle Menu" class="flex lg:hidden w-10 h-10 rounded-full items-center justify-center text-slate-700 hover:text-slate-900 bg-slate-100 border border-slate-200 active:scale-90 transition tap-highlight-transparent shrink-0">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Kanan: Tombol PICTOS Login (Hanya Desktop) & Mobile Menu Toggle -->
+        <div class="flex items-center gap-2 shrink-0">
+            <!-- Tombol PICTOS Login (Desktop) -->
+            <a href="https://patimbancarterminal.com/login" target="_blank" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#0A2540] text-white text-xs font-bold tracking-wide hover:bg-[#1D4E74] transition-all shadow-sm border border-white/10 shrink-0">
+                <svg class="w-3.5 h-3.5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/></svg>
+                <span>PICTOS Login</span>
+            </a>
+
+            <!-- Tombol Mobile Menu (Burger) -->
+            <button id="mobileMenuBtn" type="button" aria-label="Toggle Menu" class="relative z-50 flex lg:hidden w-9 h-9 rounded-full items-center justify-center text-slate-700 hover:text-slate-900 bg-slate-100 border border-slate-200 active:scale-90 transition shrink-0 cursor-pointer">
+                <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"/>
                 </svg>
             </button>
@@ -73,20 +76,32 @@
     </div>
 
     <!-- Mobile Dropdown Menu -->
-    <div id="mobileMenu" class="lg:hidden mt-3 pointer-events-auto max-w-sm mx-auto is-closed">
-        <div class="bg-white/95 backdrop-blur-2xl border border-slate-200 rounded-3xl p-5 shadow-2xl shadow-slate-900/10 space-y-2">
-            @foreach($navLinks as $link)
-                @php
-                    $targetPath = trim($link['url'], '/');
-                    $isCurrent = ($targetPath === '' && $currentPath === '') || ($targetPath !== '' && request()->is($targetPath . '*'));
-                @endphp
-                <a href="{{ url($link['url']) }}" class="flex items-center justify-between px-5 py-3.5 rounded-2xl text-sm font-medium transition tap-highlight-transparent active:scale-95 {{ $isCurrent ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold shadow-md shadow-red-600/20' : 'text-slate-700 bg-slate-50 hover:bg-slate-100' }}">
-                    <span>{{ $link['label'] }}</span>
-                    @if($isCurrent)
-                        <span class="w-2 h-2 rounded-full bg-white inline-block"></span>
-                    @endif
-                </a>
-            @endforeach
+    <div id="mobileMenu" class="lg:hidden mt-3 pointer-events-auto max-w-xs mx-auto is-closed relative z-50">
+        <div class="bg-white/95 backdrop-blur-2xl border border-slate-200 rounded-3xl p-4 shadow-2xl shadow-slate-900/10 space-y-2">
+            
+            <!-- Tombol PICTOS Login (Masuk ke dalam Burger Menu Mobile) -->
+            <a href="https://patimbancarterminal.com/login" target="_blank" class="flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold bg-[#0A2540] text-white shadow-sm mb-2">
+                <span class="flex items-center gap-2">
+                    <svg class="w-3.5 h-3.5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/></svg>
+                    PICTOS Login
+                </span>
+                <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+
+            <div class="border-t border-slate-100 pt-2 space-y-1">
+                @foreach($navLinks as $link)
+                    @php
+                        $targetPath = trim($link['url'], '/');
+                        $isCurrent = ($targetPath === '' && $currentPath === '') || ($targetPath !== '' && request()->is($targetPath . '*'));
+                    @endphp
+                    <a href="{{ url($link['url']) }}" class="flex items-center justify-between px-4 py-2.5 rounded-2xl text-xs font-medium transition active:scale-95 {{ $isCurrent ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold shadow-md shadow-red-600/20' : 'text-slate-700 bg-slate-50 hover:bg-slate-100' }}">
+                        <span>{{ $link['label'] }}</span>
+                        @if($isCurrent)
+                            <span class="w-1.5 h-1.5 rounded-full bg-white inline-block"></span>
+                        @endif
+                    </a>
+                @endforeach
+            </div>
         </div>
     </div>
 </header>
@@ -193,25 +208,39 @@
         };
     }
 
-    // Toggle Mobile Menu Script
+    // ═══ Toggle Mobile Menu — pakai EVENT DELEGATION ═══
+    // Dipasang sekali di document, jadi tetap jalan walau elemen
+    // di-render ulang / partial ke-include lebih dari sekali /
+    // halaman berpindah lewat Swup (tanpa perlu re-attach listener).
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('#mobileMenuBtn');
+        const menu = document.getElementById('mobileMenu');
+        if (!menu) return;
+
+        if (btn) {
+            e.preventDefault();
+            e.stopPropagation();
+            menu.classList.toggle('is-closed');
+            return;
+        }
+
+        // Klik di luar menu -> tutup menu
+        if (!menu.contains(e.target)) {
+            menu.classList.add('is-closed');
+        }
+    });
+
+    // Tutup menu otomatis kalau salah satu link di dalamnya diklik
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('#mobileMenu a');
+        if (link) {
+            const menu = document.getElementById('mobileMenu');
+            if (menu) menu.classList.add('is-closed');
+        }
+    });
+
     document.addEventListener('DOMContentLoaded', () => {
         setupSlidingPill();
-
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                mobileMenu.classList.toggle('is-closed');
-            });
-
-            document.addEventListener('click', (e) => {
-                if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                    mobileMenu.classList.add('is-closed');
-                }
-            });
-        }
     });
 
     if (window.swup) {

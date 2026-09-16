@@ -18,8 +18,8 @@
 @section('content')
 
 {{-- ═══ HERO SECTION ═══ --}}
-<div class="hero-bg-contact min-h-[380px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-16 relative border-b border-slate-800 bg-slate-900 pt-[env(safe-area-inset-top)]" data-aos="fade-down">
-    <h2 class="text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
+<div class="hero-bg-contact min-h-[380px] flex flex-col items-start justify-center text-left px-6 sm:px-12 md:px-16 py-16 relative border-b border-slate-800 bg-slate-900 pt-28 sm:pt-32 md:pt-36" data-aos="fade-down">
+    <h2 class="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
         Get in Touch with PICT
     </h2>
     <p class="text-slate-200 max-w-2xl mt-4 leading-relaxed text-sm">

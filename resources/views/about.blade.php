@@ -45,13 +45,11 @@
 @section('content')
 
 {{-- ═══ 1. HERO SECTION ═══ --}}
-<div class="hero-bg-about min-h-[380px] flex flex-col items-start justify-center text-left px-8 md:px-16 py-16 relative border-b border-slate-200 bg-slate-900 pt-[env(safe-area-inset-top)]" data-aos="fade-down">
-  <br><br>
-    <h2 class="text-white text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
+<div class="hero-bg-about min-h-[420px] flex flex-col items-start justify-center text-left px-6 sm:px-12 md:px-16 py-16 relative border-b border-slate-200 bg-slate-900 pt-28 sm:pt-32 md:pt-36" data-aos="fade-down">
+    <h2 class="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
         A Modern Vehicle Terminal at the Heart of Indonesia's Automotive Industry
     </h2>
 </div>
-
 {{-- ═══ 2. COMPANY PROFILE ═══ --}}
 <section class="max-w-7xl mx-auto px-6 py-20 bg-white text-slate-800" data-aos="fade-up">
     <div class="grid lg:grid-cols-12 gap-14 items-start">

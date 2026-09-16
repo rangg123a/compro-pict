@@ -24,6 +24,7 @@ Route::view('/contact', 'contact')->name('contact');
 // Download Tariff PDF
 Route::get('/tarif/download/domestik', [Tariffcontroller::class, 'downloadDomestik'])->name('tarif.download.domestik');
 Route::get('/tarif/download/internasional', [Tariffcontroller::class, 'downloadInternasional'])->name('tarif.download.internasional');
+Route::get('/tarif/download/others', [Tariffcontroller::class, 'downloadOthers'])->name('tarif.download.others');
 
 // Fallback rute untuk menangkap halaman yang belum dibuat
 Route::fallback(function () {

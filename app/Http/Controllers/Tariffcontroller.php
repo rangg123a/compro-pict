@@ -33,4 +33,18 @@ class TariffController extends Controller
             'Content-Type' => 'application/pdf',
         ]);
     }
+
+       /**
+     * Force-download the International Tariff PDF.
+     */
+    public function downloadOthers()
+    {
+        $path = public_path('assets/pdf/Others_Tariff_2026.pdf');
+
+        abort_unless(file_exists($path), 404, 'Others tariff file not found.');
+
+        return response()->download($path, 'Others_Tariff_2026.pdf', [
+            'Content-Type' => 'application/pdf',
+        ]);
+    }
 }

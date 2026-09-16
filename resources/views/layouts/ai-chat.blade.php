@@ -64,6 +64,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let conversationHistory = [];
     let messageCounter = 0;
 
+    // Simpan HTML awal bagian pesan untuk keperluan reset total saat ditutup
+    const initialMessagesHTML = messagesContainer ? messagesContainer.innerHTML : '';
+
+    // Fungsi Reset Chat ke Kondisi Awal
+    function resetChatState() {
+        conversationHistory = [];
+        if (inputField) inputField.value = '';
+        if (messagesContainer) {
+            messagesContainer.innerHTML = initialMessagesHTML;
+        }
+    }
+
     // Fungsi Buka/Tutup Widget ke Samping Layar
     function toggleChatWidget() {
         const isMinimized = chatWidget.getAttribute('data-minimized') === 'true';
@@ -75,11 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
             chatWidget.setAttribute('data-minimized', 'false');
             toggleArrow.style.transform = 'rotate(180deg)'; // Panah berbalik arah
         } else {
-            // Tutup / Sembunyikan ke Pinggir
+            // Tutup / Sembunyikan ke Pinggir & Reset Total Chat
             chatWidget.classList.remove('translate-x-0');
             chatWidget.classList.add('-translate-x-[calc(100%-24px)]');
             chatWidget.setAttribute('data-minimized', 'true');
             toggleArrow.style.transform = 'rotate(0deg)';
+            
+            // Jeda sedikit agar transisi penutupan selesai sebelum data di-reset bersih
+            setTimeout(resetChatState, 300);
         }
     }
 
@@ -97,8 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (inputField) {
                 inputField.value = questionText;
             }
-            if (suggestedContainer) {
-                suggestedContainer.style.display = 'none';
+            const currentSuggested = document.getElementById('suggested-questions');
+            if (currentSuggested) {
+                currentSuggested.style.display = 'none';
             }
             handleSendMessage();
         }
@@ -109,8 +125,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = inputField.value.trim();
         if (!text) return;
 
-        if (suggestedContainer) {
-            suggestedContainer.style.display = 'none';
+        const currentSuggested = document.getElementById('suggested-questions');
+        if (currentSuggested) {
+            currentSuggested.style.display = 'none';
         }
 
         appendMessage(text, 'user');
@@ -183,7 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function appendMessage(text, sender, isLoading = false) {
-        if (!messagesContainer) return '';
+        const activeMessagesContainer = document.getElementById('ai-chat-messages');
+        if (!activeMessagesContainer) return '';
         const msgDiv = document.createElement('div');
         messageCounter++;
         const uniqueId = 'msg-' + Date.now() + '-' + messageCounter + '-' + Math.random().toString(36).slice(2, 7);
@@ -207,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         msgDiv.appendChild(bubble);
-        messagesContainer.appendChild(msgDiv);
+        activeMessagesContainer.appendChild(msgDiv);
         return uniqueId;
     }
 });

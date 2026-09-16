@@ -10,6 +10,10 @@
     $filePathIntl = public_path('assets/pdf/International_Tariff_2026.pdf');
     $fileExistsIntl = file_exists($filePathIntl);
     $pdfUrlIntl = $fileExistsIntl ? asset('assets/pdf/International_Tariff_2026.pdf') : '#';
+
+    $filePathOthers = public_path('assets/pdf/Others_Tariff_2026.pdf');
+    $fileExistsOthers = file_exists($filePathOthers);
+    $pdfUrlOthers = $fileExistsOthers ? asset('assets/pdf/Others_Tariff_2026.pdf') : '#';
 @endphp
 
 @push('styles')
@@ -94,18 +98,18 @@
         </div>
     </div>
 
-    <!-- HERO SECTION -->
-    <div class="relative w-full min-h-[450px] flex flex-col items-start justify-center text-left px-6 md:px-16 lg:px-24 py-24 pt-32 border-b border-slate-800 bg-slate-900 overflow-hidden">
+    <!-- HERO SECTION (Diperbaiki padding atasnya agar tidak mepet navbar) -->
+    <div class="relative w-full min-h-[420px] flex flex-col items-start justify-center text-left px-6 sm:px-12 md:px-16 lg:px-24 py-16 pt-28 sm:pt-32 md:pt-36 border-b border-slate-800 bg-slate-900 overflow-hidden">
         <!-- Overlay Gradient for better readability -->
         <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('{{ asset("assets/images/background.jpeg") }}');"></div>
         <div class="absolute inset-0 z-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-slate-900/40"></div>
 
         <div class="relative z-10 max-w-5xl w-full mx-auto" data-aos="fade-down">
-            <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl">
+            <h1 class="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl">
                 Terminal Service Tariffs
             </h1>
-            <p class="text-slate-300 max-w-xl mt-6 leading-relaxed text-base md:text-lg font-light">
-                Official fee structure for domestic and international vehicle handling services at Patimban Terminal.
+            <p class="text-slate-300 max-w-xl mt-4 sm:mt-6 leading-relaxed text-sm sm:text-base md:text-lg font-light">
+                Official fee structure for domestic, international, and other vehicle handling services at Patimban Terminal.
             </p>
         </div>
     </div>
@@ -187,6 +191,43 @@
                     </div>
                 </div>
             </div>
+
+            {{-- OTHERS --}}
+            <div class="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-200 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 overflow-hidden relative group">
+                <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-slate-200 group-hover:bg-red-600 transition-colors duration-300"></div>
+                <div class="p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 ml-2">
+                    <div class="flex items-start gap-5">
+                        <div class="hidden sm:flex items-center justify-center w-12 h-12 rounded-full bg-slate-50 border border-slate-100 text-slate-400 group-hover:text-red-600 group-hover:bg-red-50 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div>
+                            <div class="inline-flex items-center gap-2 mb-1 sm:hidden">
+                                <span class="bg-slate-100 text-slate-600 px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider">Others</span>
+                            </div>
+                            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 group-hover:text-red-600 transition-colors">Others Tariffs</h2>
+                            <p class="text-sm text-slate-500 mt-1.5">Official fee structure for other miscellaneous services.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col xs:flex-row gap-3 w-full sm:w-auto shrink-0 pt-4 sm:pt-0 border-t sm:border-0 border-slate-100">
+                        @if($fileExistsOthers)
+                            <button type="button" onclick="openPdfViewer('{{ $pdfUrlOthers }}', 'Others Tariff 2026')" class="w-full sm:w-auto bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 hover:text-slate-900 rounded-xl px-5 py-3 text-sm font-semibold transition-all shadow-sm flex items-center justify-center gap-2 group/btn">
+                                <svg class="w-4 h-4 text-slate-400 group-hover/btn:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                View Document
+                            </button>
+                            <button type="button" onclick="window.location.href='{{ route('tarif.download.others') }}'" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white rounded-xl px-5 py-3 text-sm font-semibold transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                Download PDF
+                            </button>
+                        @else
+                            <button type="button" onclick="showNotification('The Others Tariff PDF document is not yet available on the server.')" class="w-full sm:w-auto bg-slate-100 text-slate-400 rounded-xl px-5 py-3 text-sm font-semibold cursor-not-allowed flex items-center justify-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                                Unavailable
+                            </button>
+                        @endif
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="mt-12 text-center">
@@ -199,7 +240,7 @@
 
 </div>
 
-{{-- ═══ IN-PAGE PDF VIEWER MODAL ═══ --}}
+<!-- {{-- ═══ IN-PAGE PDF VIEWER MODAL ═══ --> 
 <div id="pdf-viewer-modal" class="fixed inset-0 z-[200] hidden">
     <div id="pdf-modal-backdrop" class="absolute inset-0 bg-slate-900/90 backdrop-blur-sm transition-opacity"></div>
 
@@ -311,7 +352,7 @@
         };
 
         // ═══════════════════════════════════════════════════════════
-        // IN-PAGE PDF VIEWER — zoom + freehand markup, no navigation
+        // IN-PAGE PDF VIEWER — zoom + freehand markup
         // ═══════════════════════════════════════════════════════════
         if (window['pdfjsLib']) {
             pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
@@ -351,7 +392,7 @@
         let currentPage = 1;
         let currentScale = BASE_SCALE;
         let currentTool = 'pan'; // pan | pen | eraser
-        let strokesByPage = {};  // { pageNum: [{color, width, erase, points:[{x,y} normalized 0-1]}] }
+        let strokesByPage = {};  // { pageNum: [{color, width, erase, points:[{x,y}]}] }
         let activeStroke = null;
         let isPointerDown = false;
         let renderToken = 0;

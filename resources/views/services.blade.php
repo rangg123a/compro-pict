@@ -113,7 +113,7 @@
             </div>
             <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-xs">★</div>
-                <span class="text-xs font-medium text-slate-200">EDI Custom Link</span>
+                <span class="text-xs font-medium text-slate-200">Lorem ipsum</span>
             </div>
         </div>
     </div>
@@ -169,10 +169,7 @@
                         <li>• Fresh Water Bunkering Support</li>
                     </ul>
                 </div>
-                <a href="{{ url('/contact') }}" class="inline-flex items-center gap-2 text-[#2563EB] font-bold text-xs uppercase tracking-wider">
-                    <span>Book Service</span>
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </a>
+              
             </div>
         </div>
 
@@ -193,11 +190,7 @@
                         <li>• Ramp Safety Supervision</li>
                         <li>• Lashing & Unlashing Audit</li>
                     </ul>
-                </div>
-                <a href="{{ url('/contact') }}" class="inline-flex items-center gap-2 text-[#D62828] font-bold text-xs uppercase tracking-wider">
-                    <span>Book Service</span>
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </a>
+</div>
             </div>
         </div>
 
@@ -214,15 +207,12 @@
                         Secure vehicle marshalling, digital slot allocation, and inventory reporting via TMS.
                     </p>
                     <ul class="space-y-2 text-xs text-slate-700 font-medium mb-6">
-                        <li>• 218K+ Annual Capacity Slots</li>
+                        <li>• 200K+ Annual Capacity Slots</li>
                         <li>• Automated RFID Bay Mapping</li>
                         <li>• 24/7 CCTV & Security Patrol</li>
                     </ul>
                 </div>
-                <a href="{{ url('/contact') }}" class="inline-flex items-center gap-2 text-[#2563EB] font-bold text-xs uppercase tracking-wider">
-                    <span>Book Service</span>
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </a>
+              
             </div>
         </div>
     </div>
@@ -259,7 +249,7 @@
                     <img src="{{ secure_asset('assets/images/car-3.jpeg') }}" alt="Washing Bay" class="w-full h-full object-cover">
                 </div>
                 <div class="w-full sm:w-1/2 p-8">
-                    <h3 class="text-xl font-bold text-[#071E3D] mb-2 font-heading">Washing & Detailing Bay</h3>
+                    <h3 class="text-xl font-bold text-[#071E3D] mb-2 font-heading">Washing</h3>
                     <p class="text-slate-600 text-sm leading-relaxed">
                         High-pressure automated exterior washing and salt-residue removal facilities to maintain showroom perfection upon vessel arrival.
                     </p>

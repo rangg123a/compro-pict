@@ -11,7 +11,6 @@ Route::get('/set-cookie', function () {
 });
 
 Route::view('/', 'welcome')->name('home');
-
 Route::view('/our-tariffs', 'our-tariffs')->name('our-tariffs');
 Route::view('/operations', 'operations')->name('operations');
 Route::view('/services', 'services')->name('services');

@@ -351,67 +351,32 @@ fetchPatimbanWeatherAll();
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-[var(--color-line)]">
+            <!-- 1. Smart Terminal Technology -->
             <div class="py-8 md:pr-8 md:border-r border-[var(--color-line)]">
-                <div class="spec-frame mb-5">
-                    <svg class="frame" viewBox="0 0 68 68" fill="none">
-                        <path d="M2 15V2H15" stroke="#0A2540" stroke-width="1.4"/>
-                        <path d="M53 2H66V15" stroke="#0A2540" stroke-width="1.4"/>
-                        <path d="M66 53V66H53" stroke="#0A2540" stroke-width="1.4"/>
-                        <path d="M15 66H2V53" stroke="#0A2540" stroke-width="1.4"/>
-                    </svg>
-                    <div class="icon-wrap">
-                        <svg viewBox="0 0 40 40" fill="none" class="w-full h-full">
-                            <circle cx="20" cy="20" r="2.4" fill="#0A2540"/>
-                            <path d="M20 20V6" stroke="#0A2540" stroke-width="1.3"/>
-                            <path d="M12.5 20a7.5 7.5 0 0115 0" stroke="#0A2540" stroke-width="1.3" fill="none"/>
-                            <path d="M6.5 20a13.5 13.5 0 0127 0" stroke="#0A2540" stroke-width="1" stroke-dasharray="1.5 3" fill="none"/>
-                        </svg>
-                    </div>
+                <div class="w-16 h-16 mb-5 mx-auto flex items-center justify-center">
+                    <img src="{{ secure_asset('assets/images/smart-icon.png') }}" alt="Smart Terminal" class="w-full h-full object-contain">
                 </div>
                 <h3 class="text-lg sm:text-xl font-bold text-[#0A2540] mb-2 font-heading">Smart terminal technology</h3>
                 <p class="text-[var(--color-muted)] text-xs sm:text-sm leading-relaxed">
                     A Terminal Management System, automated gate controls, and RFID tracking give operators instant visibility of every vessel and yard position.
                 </p>
             </div>
+
+            <!-- 2. International Safety Standard -->
             <div class="py-8 md:px-8 md:border-r border-[var(--color-line)] border-t md:border-t-0">
-                <div class="spec-frame mb-5">
-                    <svg class="frame" viewBox="0 0 68 68" fill="none">
-                        <path d="M2 15V2H15" stroke="#0A2540" stroke-width="1.4"/>
-                        <path d="M53 2H66V15" stroke="#0A2540" stroke-width="1.4"/>
-                        <path d="M66 53V66H53" stroke="#0A2540" stroke-width="1.4"/>
-                        <path d="M15 66H2V53" stroke="#0A2540" stroke-width="1.4"/>
-                    </svg>
-                    <div class="icon-wrap">
-                        <svg viewBox="0 0 40 40" fill="none" class="w-full h-full">
-                            <circle cx="20" cy="20" r="13" stroke="#B4232A" stroke-width="1.3"/>
-                            <path d="M20 9 L22.6 20 L20 31 L17.4 20 Z" stroke="#B4232A" stroke-width="1.1" fill="none"/>
-                            <path d="M20 6.5V10M20 30V33.5M7.5 20H11M29 20H32.5" stroke="#B4232A" stroke-width="1.1"/>
-                            <circle cx="20" cy="20" r="1.4" fill="#B4232A"/>
-                        </svg>
-                    </div>
+                <div class="w-16 h-16 mb-5 mx-auto flex items-center justify-center">
+                    <img src="{{ secure_asset('assets/images/internet-icon.png') }}" alt="International Safety" class="w-full h-full object-contain">
                 </div>
                 <h3 class="text-lg sm:text-xl font-bold text-[#0A2540] mb-2 font-heading">International safety standard</h3>
                 <p class="text-[var(--color-muted)] text-xs sm:text-sm leading-relaxed">
                     We hold to the ISPS Code and relevant ISO certifications, with safety protocols that protect personnel and cargo on every shift.
                 </p>
             </div>
+
+            <!-- 3. Efficient Automotive Logistics -->
             <div class="py-8 md:pl-8 border-t md:border-t-0">
-                <div class="spec-frame mb-5">
-                    <svg class="frame" viewBox="0 0 68 68" fill="none">
-                        <path d="M2 15V2H15" stroke="#0A2540" stroke-width="1.4"/>
-                        <path d="M53 2H66V15" stroke="#0A2540" stroke-width="1.4"/>
-                        <path d="M66 53V66H53" stroke="#0A2540" stroke-width="1.4"/>
-                        <path d="M15 66H2V53" stroke="#0A2540" stroke-width="1.4"/>
-                    </svg>
-                    <div class="icon-wrap">
-                        <svg viewBox="0 0 40 40" fill="none" class="w-full h-full">
-                            <path d="M6 33H33" stroke="#0A2540" stroke-width="1.3"/>
-                            <path d="M10 33V13L25 7" stroke="#0A2540" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-                            <path d="M17.5 10.5L29 14.5" stroke="#0A2540" stroke-width="1.3"/>
-                            <path d="M25 14.5V23.5" stroke="#0A2540" stroke-width="1" stroke-dasharray="1.4 2.2"/>
-                            <rect x="21.5" y="23.5" width="7" height="5.5" stroke="#0A2540" stroke-width="1.1"/>
-                        </svg>
-                    </div>
+                <div class="w-16 h-16 mb-5 mx-auto flex items-center justify-center">
+                    <img src="{{ secure_asset('assets/images/ekskapator-icon.png') }}" alt="Efficient Logistics" class="w-full h-full object-contain">
                 </div>
                 <h3 class="text-lg sm:text-xl font-bold text-[#0A2540] mb-2 font-heading">Efficient automotive logistics</h3>
                 <p class="text-[var(--color-muted)] text-xs sm:text-sm leading-relaxed">
@@ -419,7 +384,7 @@ fetchPatimbanWeatherAll();
                 </p>
             </div>
         </div>
-    </div>
+    </div> 
 </section>
 
 <!-- ═══ 4. TERMINAL OPERATION FLOW (COMPACT & RESPONSIVE) ═══ -->
@@ -575,9 +540,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p class="text-slate-200 text-xs sm:text-sm mb-4 max-w-md">
                         Deep-water berth facilities and experienced mooring teams for a fast, safe vessel turnaround.
                     </p>
-                    <a href="#contact" class="inline-flex items-center gap-2 text-white font-semibold text-xs sm:text-sm w-fit border-b border-white/40 pb-0.5 group-hover:border-white transition-colors">
-                        Learn more
-                    </a>
+               
                 </div>
             </div>
 
@@ -599,9 +562,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p class="text-slate-200 text-xs sm:text-sm mb-4 max-w-md">
                         High-capacity staging yards with automated tracking, surveillance, and weather protection.
                     </p>
-                    <a href="#contact" class="inline-flex items-center gap-2 text-white font-semibold text-xs sm:text-sm w-fit border-b border-white/40 pb-0.5 group-hover:border-white transition-colors">
-                        Learn more
-                    </a>
+               
                 </div>
             </div>
         </div>
@@ -621,54 +582,47 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--color-line)] border border-[var(--color-line)]">
+            
+            <!-- 1. Passenger Vehicle -->
             <div class="bg-white p-6 sm:p-8">
-                <svg viewBox="0 0 48 28" class="w-12 h-auto mb-4" fill="none">
-                    <path d="M4 20 Q4 14 10 13 L14 8 Q16 6 20 6 H30 Q34 6 36 9 L40 13 Q44 14 44 20" stroke="#0A2540" stroke-width="1.4" fill="none"/>
-                    <path d="M4 20 H44" stroke="#0A2540" stroke-width="1.4"/>
-                    <circle cx="13" cy="21" r="3.4" stroke="#0A2540" stroke-width="1.4" fill="#F5F3EE"/>
-                    <circle cx="35" cy="21" r="3.4" stroke="#0A2540" stroke-width="1.4" fill="#F5F3EE"/>
-                    <path d="M17 8 V13 M31 8 V13" stroke="#0A2540" stroke-width="1"/>
-                </svg>
+                <div class="w-14 h-14 mb-5 flex items-center justify-center">
+                    <img src="{{ secure_asset('assets/images/vehicle.png') }}" alt="Passenger Vehicle" class="w-full h-full object-contain">
+                </div>
                 <h3 class="text-base sm:text-lg font-bold text-[#0A2540] mb-1.5 font-heading">Passenger vehicle</h3>
                 <p class="text-[var(--color-muted)] text-xs leading-relaxed mb-4">Sedans, SUVs, MPVs, and electric vehicles handled under scratch-free procedures.</p>
                 <span class="text-[11px] font-medium text-[#B4232A]">Light vehicle</span>
             </div>
+
+            <!-- 2. Bus & Truck -->
             <div class="bg-white p-6 sm:p-8">
-                <svg viewBox="0 0 48 28" class="w-12 h-auto mb-4" fill="none">
-                    <path d="M4 20 V10 H30 L44 16 V20" stroke="#0A2540" stroke-width="1.4" fill="none"/>
-                    <path d="M4 20 H44" stroke="#0A2540" stroke-width="1.4"/>
-                    <path d="M30 10 V20" stroke="#0A2540" stroke-width="1"/>
-                    <circle cx="13" cy="21" r="3.2" stroke="#0A2540" stroke-width="1.4" fill="#F5F3EE"/>
-                    <circle cx="37" cy="21" r="3.2" stroke="#0A2540" stroke-width="1.4" fill="#F5F3EE"/>
-                </svg>
+                <div class="w-14 h-14 mb-5 flex items-center justify-center">
+                    <img src="{{ secure_asset('assets/images/bus-truck.png') }}" alt="Bus & Truck" class="w-full h-full object-contain">
+                </div>
                 <h3 class="text-base sm:text-lg font-bold text-[#0A2540] mb-1.5 font-heading">Bus &amp; truck</h3>
                 <p class="text-[var(--color-muted)] text-xs leading-relaxed mb-4">Heavy logistics trucks, industrial chassis, and transport vehicles with reinforced ramp pathways.</p>
                 <span class="text-[11px] font-medium text-[#1D4E74]">Commercial</span>
             </div>
+
+            <!-- 3. Heavy Equipment -->
             <div class="bg-white p-6 sm:p-8">
-                <svg viewBox="0 0 48 28" class="w-12 h-auto mb-4" fill="none">
-                    <rect x="6" y="16" width="16" height="8" rx="1" stroke="#0A2540" stroke-width="1.4"/>
-                    <path d="M18 16 L30 6 L34 10 L26 16" stroke="#0A2540" stroke-width="1.4" fill="none"/>
-                    <path d="M34 10 L40 14 L36 18" stroke="#0A2540" stroke-width="1.4" fill="none"/>
-                    <path d="M4 24 H24" stroke="#0A2540" stroke-width="1.4"/>
-                    <circle cx="9" cy="24" r="2.4" stroke="#0A2540" stroke-width="1.2"/>
-                    <circle cx="19" cy="24" r="2.4" stroke="#0A2540" stroke-width="1.2"/>
-                </svg>
+                <div class="w-14 h-14 mb-5 flex items-center justify-center">
+                    <img src="{{ secure_asset('assets/images/ekskapator.png') }}" alt="Heavy Equipment" class="w-full h-full object-contain">
+                </div>
                 <h3 class="text-base sm:text-lg font-bold text-[#0A2540] mb-1.5 font-heading">Heavy equipment</h3>
                 <p class="text-[var(--color-muted)] text-xs leading-relaxed mb-4">Excavators, wheel loaders, and bulldozers destined for mining and agricultural projects.</p>
                 <span class="text-[11px] font-medium text-[#B4232A]">Project cargo</span>
             </div>
+
+            <!-- 4. General Cargo -->
             <div class="bg-white p-6 sm:p-8">
-                <svg viewBox="0 0 40 40" class="w-10 h-auto mb-4" fill="none">
-                    <path d="M6 14 L20 8 L34 14 L20 20 Z" stroke="#0A2540" stroke-width="1.4" fill="none"/>
-                    <path d="M6 14 V26 L20 32 V20" stroke="#0A2540" stroke-width="1.4" fill="none"/>
-                    <path d="M34 14 V26 L20 32" stroke="#0A2540" stroke-width="1.4" fill="none"/>
-                    <path d="M13 11 L27 17" stroke="#0A2540" stroke-width="1"/>
-                </svg>
+                <div class="w-14 h-14 mb-5 flex items-center justify-center">
+                    <img src="{{ secure_asset('assets/images/cargo.png') }}" alt="General Cargo" class="w-full h-full object-contain">
+                </div>
                 <h3 class="text-base sm:text-lg font-bold text-[#0A2540] mb-1.5 font-heading">General cargo</h3>
                 <p class="text-[var(--color-muted)] text-xs leading-relaxed mb-4">Static cargo and non-vehicle shipments managed under standard warehousing procedures.</p>
                 <span class="text-[11px] font-medium text-[#1D4E74]">General cargo</span>
             </div>
+
         </div>
     </div>
 </section>
@@ -805,49 +759,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 @endpush
 
-<!-- ═══ 8. GLOBAL CONNECTION ═══ -->
-<section class="py-14 sm:py-20 bg-[var(--color-paper)] relative overflow-hidden border-t border-[var(--color-line)]">
-    <div class="max-w-7xl mx-auto px-5 sm:px-6 relative z-10">
-        <div class="max-w-2xl mb-10 sm:mb-14" data-aos="fade-up">
-            <div class="index-label mb-4">
-                <span class="lbl">Shipping network</span>
-            </div>
-            <h2 class="text-2xl sm:text-4xl font-extrabold text-[#0A2540] tracking-tight font-heading leading-tight">
-                Routes from Patimban
-            </h2>
-        </div>
 
-        <div class="plate rounded-xl overflow-hidden">
-            @php
-                $routes = [
-                    ['country' => 'Japan', 'note' => 'Primary hub'],
-                    ['country' => 'Thailand', 'note' => 'Regional route'],
-                    ['country' => 'China', 'note' => 'Strategic corridor'],
-                    ['country' => 'Asia (regional)', 'note' => 'Export market'],
-                ];
-            @endphp
-            @foreach($routes as $i => $r)
-            <div class="flex items-center justify-between px-6 py-4 {{ $i > 0 ? 'border-t border-[var(--color-line)]' : '' }}">
-                <div class="flex items-center gap-3">
-                    <span class="text-xs text-[var(--color-muted)] w-5">0{{ $i + 1 }}</span>
-                    <span class="text-[#0A2540] font-bold font-heading text-base sm:text-lg">{{ $r['country'] }}</span>
-                </div>
-                <span class="text-xs sm:text-sm text-[#1D4E74] font-medium">{{ $r['note'] }}</span>
-            </div>
-            @endforeach
-            <div class="flex items-center justify-between px-6 py-4 border-t border-[var(--color-line)] bg-[#0A2540]">
-                <div class="flex items-center gap-3">
-                    <span class="text-xs text-white/50 w-5">05</span>
-                    <span class="text-white font-bold font-heading text-base sm:text-lg">Indonesia</span>
-                </div>
-                <span class="text-xs sm:text-sm text-[#F5C6C6] font-medium">Patimban hub point of origin</span>
-            </div>
-        </div>
-        <p class="text-[var(--color-muted)] text-xs sm:text-sm max-w-2xl mt-6">
-            Deep-water berths accommodate the largest global car carriers, keeping international trade and the supply chain moving without interruption.
-        </p>
-    </div>
-</section>
 
 <!-- ═══ 9. CALL TO ACTION ═══ -->
 <section id="contact" class="py-16 sm:py-24 relative overflow-hidden bg-[#0A2540]">

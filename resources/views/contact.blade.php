@@ -94,6 +94,14 @@
                         class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-red-600 text-sm"></textarea>
                 </div>
 
+  <div>
+    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">No WhatsApp / Office</label>
+    <input type="text" id="whatsapp" required
+        oninput="this.value = this.value.replace(/[^0-9+\-()\s]/g, '')"
+        placeholder="Example: (021) 8382910 or 08123456789"
+        class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-red-600 text-sm">
+</div>
+
                 {{-- Google reCAPTCHA Widget dengan callback untuk membuka tombol --}}
                 <div class="pt-2">
                     <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Security Verification</label>

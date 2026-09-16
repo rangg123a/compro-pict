@@ -77,14 +77,14 @@
             <div class="stat-card bg-slate-50 border border-slate-200 rounded-xl p-6 flex items-center justify-between shadow-sm">
                 <div>
                     <p class="text-slate-500 text-xs uppercase tracking-wider font-semibold">Current Handling Capacity</p>
-                    <p class="text-2xl font-extrabold text-slate-900 tracking-tight mt-1">400,000 <span class="text-sm font-medium text-slate-500">units/year</span></p>
+                    <p class="text-2xl font-extrabold text-slate-900 tracking-tight mt-1">200,000 <span class="text-sm font-medium text-slate-500">units/year</span></p>
                 </div>
                 <div class="w-12 h-12 rounded-xl bg-[#ec2029]/10 text-[#ec2029] flex items-center justify-center font-bold">&#8594;</div>
             </div>
             <div class="stat-card bg-slate-50 border border-slate-200 rounded-xl p-6 flex items-center justify-between shadow-sm">
                 <div>
                     <p class="text-slate-500 text-xs uppercase tracking-wider font-semibold">Capacity Expansion Target</p>
-                    <p class="text-2xl font-extrabold text-slate-900 tracking-tight mt-1">600,000 <span class="text-sm font-medium text-slate-500">units/year</span></p>
+                    <p class="text-2xl font-extrabold text-slate-900 tracking-tight mt-1">800,000 <span class="text-sm font-medium text-slate-500">units/year</span></p>
                 </div>
                 <div class="w-12 h-12 rounded-xl bg-blue-600/10 text-blue-600 flex items-center justify-center font-bold">&#8599;</div>
             </div>

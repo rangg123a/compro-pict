@@ -37,6 +37,6 @@ return [
 
     'openrouter' => [
     'key' => env('AI_API_KEY'),
-],
+    ],
 
 ];

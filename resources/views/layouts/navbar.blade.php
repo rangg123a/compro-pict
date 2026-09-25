@@ -6,6 +6,7 @@
         'operations'     => ['label' => 'Operations',     'url' => '/operations'],
         'services'       => ['label' => 'Our Services',   'url' => '/services'],
         'sustainability' => ['label' => 'Sustainability', 'url' => '/sustainability'],
+        'news'           => ['label' => 'News',            'url' => '/news'],
         'contact'        => ['label' => 'Contact Us',     'url' => '/contact'],
     ];
 

@@ -42,17 +42,16 @@
     }
 
     /* Sophisticated navy gradient overlay with atmospheric horizon */
-    .hero-overlay-gradient {
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        pointer-events: none;
-        background:
-            radial-gradient(circle at 80% 65%, rgba(255, 180, 100, 0.12) 0%, transparent 45%),
-            linear-gradient(90deg, rgba(15, 23, 60, 0.92) 0%, rgba(26, 38, 96, 0.65) 50%, rgba(15, 23, 60, 0.35) 100%),
-            linear-gradient(180deg, rgba(10, 15, 35, 0.5) 0%, transparent 60%, rgba(10, 15, 35, 0.8) 100%);
-    }
-
+ .hero-overlay-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 80% 65%, rgba(255, 180, 100, 0.10) 0%, transparent 45%),
+        linear-gradient(90deg, rgba(15, 23, 60, 0.55) 0%, rgba(26, 38, 96, 0.35) 50%, rgba(15, 23, 60, 0.15) 100%),
+        linear-gradient(180deg, rgba(10, 15, 35, 0.25) 0%, transparent 60%, rgba(10, 15, 35, 0.45) 100%);
+}
     /* Light particle / dust effect */
     .hero-particles {
         position: absolute;
@@ -291,16 +290,16 @@
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-24 lg:py-32 w-full">
         <div class="hero-content space-y-6 flex flex-col items-center text-center" data-aos="fade-up">
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.12] drop-shadow-lg">
-                <span class="shiny-text shiny-text-light">
-                    PATIMBAN<br class="hidden sm:block">
-                    <span class="hidden sm:inline">INTERNATIONAL</span><span class="sm:hidden">INT'L</span>
-                </span>
-                <br>
-                <span class="shiny-text shiny-text-brand" style="text-shadow: 0 4px 20px rgba(236, 32, 41, 0.4);">
-                    CAR TERMINAL
-                </span>
-            </h1>
+        <h1 class="text-3xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.15] drop-shadow-lg">
+    <span class="shiny-text shiny-text-light">
+        PATIMBAN<br>
+        INTERNATIONAL
+    </span>
+    <br>
+    <span class="shiny-text shiny-text-brand" style="text-shadow: 0 4px 20px rgba(236, 32, 41, 0.4);">
+        CAR TERMINAL
+    </span>
+</h1>
 
             <div class="glass-description-card mx-auto max-w-2xl px-6 sm:px-8 py-5 text-slate-100 text-base sm:text-lg leading-relaxed">
                 Providing professional Cargo Handling services at Patimban Port with world-class smart logistics capabilities, operational excellence, and unmatched safety standards.
